@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinet d'Avocat Laperonnie — François-Xavier Laperonnie</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --charbon:       #060504;
+      --charbon-mid:   #0D0B09;
+      --charbon-light: #161310;
+      --charbon-card:  #100D0B;
+      --or:            #C4A040;
+      --or-pale:       #D4B252;
+      --or-dark:       #9A7A26;
+      --or-subtle:     rgba(196,160,64,0.10);
+      --blanc:         #F2EDE4;
+      --blanc-dim:     #C0BAB0;
+      --gris:          #787068;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      background: var(--charbon);
+      color: var(--blanc);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::after {
+      content:'';
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity:.025; pointer-events:none; z-index:9999;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.2rem 5rem;
+      transition: background .4s ease, padding .3s ease, border-color .3s ease;
+      border-bottom:1px solid transparent;
+    }
+    nav.scrolled {
+      background:rgba(6,5,4,.94);
+      backdrop-filter:blur(14px);
+      padding:0.75rem 5rem;
+      border-color:rgba(196,160,64,.14);
+    }
+    .nav-logo {
+      height:70px; opacity:.9; transition:opacity .2s;
+      filter: brightness(0) invert(1) sepia(0.55) saturate(5) hue-rotate(8deg) brightness(1.05);
+    }
+    .nav-logo:hover { opacity:1; }
+
+    .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
+    .nav-links a {
+      color:var(--blanc-dim);
+      text-decoration:none;
+      font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      position:relative; transition:color .2s;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+      background:var(--or);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-links a:hover { color:var(--or); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+
+    /* ─── NAV DROPDOWN ─── */
+    .nav-item-has-drop { position:relative; }
+    .nav-item-has-drop > a {
+      display:flex; align-items:center; gap:.45rem;
+    }
+    /* hide the default underline on the parent link */
+    .nav-item-has-drop > a::after { display:none; }
+
+    .drop-chevron {
+      display:inline-block; width:0; height:0;
+      border-left:3.5px solid transparent;
+      border-right:3.5px solid transparent;
+      border-top:3.5px solid currentColor;
+      transition:transform .25s ease;
+      margin-top:1px; flex-shrink:0;
+    }
+    .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
+
+    .nav-dropdown {
+      position:absolute; top:calc(100% + 1.1rem); left:50%;
+      transform:translateX(-50%) translateY(-8px);
+      min-width:210px;
+      background:rgba(6,5,4,.97);
+      border:1px solid rgba(196,160,64,.15);
+      border-top:2px solid var(--or);
+      backdrop-filter:blur(18px);
+      opacity:0; visibility:hidden;
+      transition:opacity .25s ease, transform .25s ease, visibility 0s .25s;
+      z-index:1001;
+    }
+    .nav-item-has-drop:hover .nav-dropdown {
+      opacity:1; visibility:visible;
+      transform:translateX(-50%) translateY(0);
+      transition:opacity .25s ease, transform .25s ease, visibility 0s 0s;
+    }
+    .nav-dropdown a {
+      display:block;
+      padding:.72rem 1.4rem;
+      font-size:.6rem; font-weight:600;
+      letter-spacing:.18em; text-transform:uppercase;
+      color:var(--blanc-dim); text-decoration:none;
+      border-bottom:1px solid rgba(196,160,64,.07);
+      transition:color .18s, background .18s, padding-left .18s;
+      position:relative;
+    }
+    .nav-dropdown a:last-child { border-bottom:none; }
+    .nav-dropdown a::before {
+      content:''; position:absolute;
+      left:0; top:0; bottom:0; width:2px;
+      background:var(--or);
+      transform:scaleY(0); transform-origin:bottom;
+      transition:transform .18s ease;
+    }
+    .nav-dropdown a:hover {
+      color:var(--or);
+      background:rgba(196,160,64,.04);
+      padding-left:1.8rem;
+    }
+    .nav-dropdown a:hover::before { transform:scaleY(1); }
+
+    .btn-rdv {
+      border:1px solid var(--or); color:var(--or); background:transparent;
+      padding:.6rem 1.6rem; font-size:.62rem; font-weight:700;
+      letter-spacing:.22em; text-transform:uppercase; text-decoration:none;
+      cursor:pointer; transition:background .22s ease, color .22s ease;
+    }
+    .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height:100vh; position:relative;
+      display:flex; flex-direction:column; justify-content:center;
+      overflow:hidden;
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 90% 70% at 65% 55%, rgba(196,160,64,.03) 0%, transparent 58%),
+        radial-gradient(ellipse 45% 90% at 18% 25%, rgba(196,160,64,.02) 0%, transparent 52%),
+        linear-gradient(155deg, #080706 0%, var(--charbon) 55%, #070605 100%);
+    }
+
+    /* geometric SVG watermark — left-side only */
+    .hero-geo {
+      position:absolute; left:3%; top:50%; transform:translateY(-50%);
+      width:min(38vw,460px); opacity:.032; pointer-events:none; z-index:1;
+    }
+
+    /* ─── HERO PHOTO ─── */
+    /* Container starts at 28% from left so the gradient has 72% of the page
+       to blend — the left edge is buried deep in charbon, never visible */
+    .hero-photo-side {
+      position:absolute; left:28%; right:0; top:0; bottom:0;
+      overflow:hidden; z-index:1;
+      isolation:isolate; will-change:opacity;
+      animation: photoSideReveal 1.6s cubic-bezier(0.22,1,0.36,1) 0.55s both;
+    }
+    @keyframes photoSideReveal {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+    .hero-photo-img {
+      width:100%; height:100%;
+      object-fit:cover; object-position:65% top;
+      filter: contrast(1.15) brightness(0.69) saturate(0.68);
+      animation: kenBurns 24s ease-in-out 2.2s infinite alternate;
+      transform-origin:65% 18%; will-change:transform;
+      display:block;
+    }
+    @keyframes kenBurns {
+      from { transform:scale(1) translateY(0); }
+      to   { transform:scale(1.07) translateY(-2.5%); }
+    }
+    /* warm gold colour-grade — blends only within the isolated container */
+    .hero-photo-grade {
+      position:absolute; inset:0; z-index:2;
+      background:rgba(170,130,12,0.18);
+      mix-blend-mode:overlay; pointer-events:none;
+      animation: gradeBreath 8s ease-in-out 3s infinite alternate;
+    }
+    @keyframes gradeBreath {
+      from { opacity:1; }
+      to   { opacity:.5; }
+    }
+    /* left-edge blend: starts fully opaque from the container's own left edge,
+       holds solid for ~35% of its width, then dissolves — guarantees no seam */
+    .hero-photo-blend {
+      position:absolute; inset:0; z-index:3; pointer-events:none;
+      background:linear-gradient(
+        to right,
+        var(--charbon) 0%,
+        var(--charbon) 10%,
+        rgba(6,5,4,.92) 22%,
+        rgba(6,5,4,.60) 38%,
+        rgba(6,5,4,.18) 58%,
+        rgba(6,5,4,.03) 75%,
+        transparent 88%
+      );
+    }
+    /* bottom vignette ties photo into the page */
+    .hero-photo-vignette {
+      position:absolute; bottom:0; left:0; right:0;
+      height:44%; z-index:3; pointer-events:none;
+      background:linear-gradient(to top, var(--charbon) 0%, transparent 100%);
+    }
+    /* top vignette — subtle */
+    .hero-photo-top {
+      position:absolute; top:0; left:0; right:0;
+      height:22%; z-index:3; pointer-events:none;
+      background:linear-gradient(to bottom, var(--charbon) 0%, transparent 100%);
+    }
+
+    .hero-content {
+      position:relative; z-index:2;
+      padding:0 2rem 0 9rem;
+      width:58%; max-width:800px;
+    }
+
+    /* entrance animations */
+    .h-reveal {
+      opacity:0; transform:translateY(22px);
+      animation:hRise .85s ease forwards;
+    }
+    @keyframes hRise { to { opacity:1; transform:translateY(0); } }
+    .hd1 { animation-delay:.15s; }
+    .hd2 { animation-delay:.30s; }
+    .hd3 { animation-delay:.45s; }
+    .hd4 { animation-delay:.58s; }
+    .hd5 { animation-delay:.70s; }
+    .hd6 { animation-delay:.82s; }
+
+    .hero-eyebrow {
+      font-size:.62rem; font-weight:600; letter-spacing:.4em; color:var(--or);
+      text-transform:uppercase; margin-bottom:1.75rem;
+      display:flex; align-items:center; gap:1rem;
+    }
+    .hero-eyebrow::before { content:''; width:38px; height:1px; background:var(--or); }
+
+    .hero-name {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(2.8rem,4.8vw,4.8rem);
+      font-weight:700; line-height:.95; letter-spacing:-.025em;
+      color:var(--blanc); margin-bottom:.25em;
+      hyphens:none; overflow-wrap:normal;
+    }
+    .hero-name .gold { color:var(--or); font-style:italic; }
+
+    .hero-job {
+      font-size:.64rem; font-weight:600; letter-spacing:.45em;
+      color:var(--gris); text-transform:uppercase; margin-bottom:2.25rem;
+    }
+
+    .hero-tagline {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(1.1rem,1.9vw,1.38rem);
+      font-weight:300; font-style:italic;
+      color:var(--blanc-dim); line-height:1.65;
+      max-width:460px; margin-bottom:2.75rem;
+    }
+
+    .hero-pillars {
+      display:flex; gap:1.75rem; align-items:center; margin-bottom:3.25rem;
+    }
+    .pillar-word { font-size:.58rem; font-weight:700; letter-spacing:.32em; color:var(--or); text-transform:uppercase; }
+    .pillar-dot  { width:5px; height:5px; background:var(--or); border-radius:50%; opacity:.45; }
+
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.75rem;
+      background:var(--or); color:var(--charbon);
+      padding:1rem 2.6rem; font-size:.62rem; font-weight:700;
+      letter-spacing:.26em; text-transform:uppercase; text-decoration:none;
+      box-shadow:0 4px 28px rgba(196,160,64,.28);
+      transition:background .24s ease, transform .2s ease, box-shadow .24s ease;
+    }
+    .btn-primary:hover {
+      background:var(--or-pale); transform:translateY(-2px);
+      box-shadow:0 8px 36px rgba(196,160,64,.38);
+    }
+    .btn-primary:active { transform:translateY(0); }
+
+    /* scroll cue */
+    .scroll-cue {
+      position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+      z-index:2; display:flex; flex-direction:column; align-items:center; gap:.5rem;
+      color:var(--gris); font-size:.55rem; letter-spacing:.28em; text-transform:uppercase;
+      cursor:pointer;
+    }
+    .scroll-cue-line {
+      width:1px; height:44px;
+      background:linear-gradient(to bottom, var(--or), transparent);
+      animation:scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity:.25; transform:scaleY(1); }
+      55%      { opacity:.85; transform:scaleY(.65); }
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background:var(--charbon-light);
+      border-top:1px solid rgba(196,160,64,.13);
+      border-bottom:1px solid rgba(196,160,64,.13);
+      display:grid; grid-template-columns:repeat(4,1fr);
+      padding:0 5rem;
+    }
+    .stat-cell {
+      padding:2.25rem 2rem;
+      border-right:1px solid rgba(196,160,64,.09);
+      display:flex; flex-direction:column; gap:.3rem;
+    }
+    .stat-cell:last-child { border-right:none; }
+    .stat-num {
+      font-family:'Playfair Display', serif;
+      font-size:2.4rem; font-weight:700; color:var(--or); line-height:1;
+    }
+    .stat-lbl {
+      font-size:.58rem; font-weight:600;
+      letter-spacing:.22em; text-transform:uppercase; color:var(--gris);
+    }
+
+    /* ─── SHARED SECTION ATOMS ─── */
+    .eyebrow {
+      font-size:.58rem; font-weight:600; letter-spacing:.42em;
+      color:var(--or); text-transform:uppercase;
+      display:flex; align-items:center; gap:1rem; margin-bottom:1rem;
+    }
+    .eyebrow::before { content:''; width:28px; height:1px; background:var(--or); flex-shrink:0; }
+
+    .section-title {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(1.9rem,3.6vw,2.9rem);
+      font-weight:700; line-height:1.18; letter-spacing:-.015em;
+      color:var(--blanc);
+    }
+    .section-title em { color:var(--or); font-style:italic; }
+
+    .gold-rule { width:56px; height:1px; background:linear-gradient(90deg,var(--or-dark),var(--or)); }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity:0; transform:translateY(26px);
+      transition:opacity .72s ease, transform .72s ease;
+    }
+    .reveal.vis { opacity:1; transform:translateY(0); }
+    .rd1 { transition-delay:.08s; }
+    .rd2 { transition-delay:.18s; }
+    .rd3 { transition-delay:.28s; }
+    .rd4 { transition-delay:.38s; }
+
+    /* ─── EXPERTISE ─── */
+    #expertise {
+      background:var(--charbon-mid);
+      padding:7rem 5rem;
+    }
+    .exp-header { margin-bottom:4rem; }
+
+    .exp-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.5px; background:rgba(196,160,64,.09);
+    }
+    .exp-card {
+      background:var(--charbon-card);
+      padding:3rem 2.5rem 3.5rem;
+      position:relative; overflow:hidden;
+      transition:background .3s ease;
+      cursor:default;
+    }
+    .exp-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--or-dark),var(--or-pale));
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .42s cubic-bezier(.4,0,.2,1);
+    }
+    .exp-card:hover { background:#1C1B16; }
+    .exp-card:hover::before { transform:scaleX(1); }
+
+    .exp-num {
+      font-family:'Playfair Display', serif;
+      font-size:.6rem; letter-spacing:.3em; color:var(--or-dark);
+      margin-bottom:1.4rem; font-weight:400;
+    }
+    .exp-icon {
+      width:40px; height:40px; color:var(--or); margin-bottom:1.5rem; opacity:.78;
+    }
+    .exp-title {
+      font-family:'Playfair Display', serif;
+      font-size:1.25rem; font-weight:600; color:var(--blanc);
+      margin-bottom:.9rem; line-height:1.3;
+    }
+    .exp-desc {
+      font-size:.79rem; color:var(--gris); line-height:1.82; font-weight:300;
+    }
+    .exp-arrow {
+      position:absolute; bottom:2.25rem; right:2.25rem;
+      width:30px; height:30px;
+      border:1px solid rgba(196,160,64,.2);
+      display:flex; align-items:center; justify-content:center; color:var(--or);
+      opacity:0; transform:translateX(-8px);
+      transition:opacity .3s ease, transform .3s ease;
+    }
+    .exp-card:hover .exp-arrow { opacity:1; transform:translateX(0); }
+
+    /* ─── ABOUT ─── */
+    #about {
+      padding:7rem 5rem;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:7rem; align-items:center;
+    }
+
+    .about-img-wrap { position:relative; }
+    .about-img-frame {
+      width:100%; aspect-ratio:3/4;
+      background:linear-gradient(145deg,#1E1D18 0%,#0F0E0C 100%);
+      position:relative; overflow:hidden;
+    }
+    .about-img-frame::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 60% 60% at 50% 38%, rgba(196,160,64,.07) 0%, transparent 68%);
+    }
+    .about-img-inner {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .about-logo-ghost { width:52%; opacity:.1; filter:grayscale(1) brightness(3); }
+
+    .about-placeholder-text {
+      position:absolute; inset:0;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:1.5rem;
+    }
+    .abt-initials {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(4rem,8vw,6.5rem); font-weight:700; font-style:italic;
+      color:rgba(196,160,64,.18); letter-spacing:-.03em; line-height:1;
+    }
+    .abt-divider { width:40px; height:1px; background:rgba(196,160,64,.25); }
+    .abt-label {
+      font-size:.55rem; font-weight:700; letter-spacing:.45em;
+      text-transform:uppercase; color:rgba(196,160,64,.3);
+    }
+    .about-frame-border {
+      position:absolute; top:-1.6rem; right:-1.6rem; bottom:1.6rem; left:1.6rem;
+      border:1px solid rgba(196,160,64,.14); pointer-events:none;
+    }
+    .about-experience-badge {
+      position:absolute; bottom:-1.8rem; left:-1.8rem;
+      background:var(--or); color:var(--charbon);
+      padding:1.4rem 1.8rem;
+    }
+    .badge-num {
+      font-family:'Playfair Display', serif;
+      font-size:2.1rem; font-weight:700; line-height:1;
+    }
+    .badge-txt {
+      font-size:.56rem; font-weight:700; letter-spacing:.2em;
+      text-transform:uppercase; margin-top:.2rem;
+    }
+
+    .about-copy p {
+      font-size:.86rem; color:var(--blanc-dim); line-height:1.92;
+      font-weight:300; margin-bottom:1.2rem;
+    }
+    .about-copy p strong { color:var(--blanc); font-weight:500; }
+    .about-signature {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.65rem; font-style:italic; font-weight:300;
+      color:var(--or); margin-top:2rem;
+    }
+
+    /* ─── QUOTE BAND ─── */
+    #quote {
+      background:var(--or);
+      padding:5.5rem 5rem;
+      position:relative; overflow:hidden;
+    }
+    #quote::before {
+      content:'"'; position:absolute; top:-3.5rem; left:4rem;
+      font-family:'Playfair Display', serif; font-size:22rem;
+      color:rgba(6,5,4,.09); line-height:1; pointer-events:none;
+    }
+    .quote-inner { position:relative; z-index:1; max-width:780px; }
+    .quote-text {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(1.5rem,3.2vw,2.6rem);
+      font-weight:400; font-style:italic;
+      color:var(--charbon); line-height:1.45; margin-bottom:2rem;
+    }
+    .quote-attr {
+      font-size:.6rem; font-weight:700; letter-spacing:.32em;
+      text-transform:uppercase; color:rgba(6,5,4,.55);
+      display:flex; align-items:center; gap:1rem;
+    }
+    .quote-attr::before { content:''; width:28px; height:1px; background:rgba(6,5,4,.35); }
+
+    /* ─── VALUES ─── */
+    #valeurs {
+      background:var(--charbon-mid);
+      padding:7rem 5rem;
+    }
+    .valeurs-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1.5rem; margin-top:4rem;
+    }
+    .val-card {
+      padding:2.25rem 2rem;
+      border:1px solid rgba(196,160,64,.1);
+      transition:border-color .3s ease, background .3s ease;
+    }
+    .val-card:hover {
+      border-color:rgba(196,160,64,.32);
+      background:rgba(196,160,64,.025);
+    }
+    .val-icon { width:34px; height:34px; color:var(--or); margin-bottom:1.25rem; }
+    .val-title {
+      font-family:'Playfair Display', serif;
+      font-size:1.08rem; font-weight:600; color:var(--blanc); margin-bottom:.7rem;
+    }
+    .val-desc { font-size:.77rem; color:var(--gris); line-height:1.78; font-weight:300; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      padding:7rem 5rem;
+      background:var(--charbon);
+      position:relative; overflow:hidden;
+    }
+
+    /* faint radial glow behind the section */
+    #testimonials::before {
+      content:'';
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,160,64,.04) 0%, transparent 70%);
+    }
+
+    .testi-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.5rem; margin-top:4rem;
+    }
+
+    .testi-card {
+      background:var(--charbon-card);
+      border:1px solid rgba(196,160,64,.1);
+      padding:3rem 2.5rem 2.5rem;
+      position:relative; overflow:hidden;
+      display:flex; flex-direction:column; gap:1.5rem;
+      transition:border-color .35s ease, transform .35s ease,
+                 box-shadow .35s ease;
+      cursor:default;
+    }
+    .testi-card:hover {
+      border-color:rgba(196,160,64,.35);
+      transform:translateY(-6px);
+      box-shadow:
+        0 12px 40px rgba(6,5,4,.6),
+        0 0 0 1px rgba(196,160,64,.08),
+        0 20px 60px rgba(196,160,64,.06);
+    }
+
+    /* top gold accent line that grows on hover */
+    .testi-card::before {
+      content:''; position:absolute;
+      top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, var(--or-dark), var(--or), var(--or-pale));
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .testi-card:hover::before { transform:scaleX(1); }
+
+    /* decorative large quote mark */
+    .testi-quote-mark {
+      font-family:'Playfair Display', serif;
+      font-size:5.5rem; line-height:.7; font-weight:700;
+      color:var(--or); opacity:.18;
+      position:absolute; top:1.4rem; left:2rem;
+      pointer-events:none; user-select:none;
+      transition:opacity .35s ease;
+    }
+    .testi-card:hover .testi-quote-mark { opacity:.28; }
+
+    /* stars */
+    .testi-stars {
+      display:flex; gap:.3rem; align-items:center;
+    }
+    .testi-star {
+      width:16px; height:16px;
+      color:var(--or);
+      opacity:0;
+      animation: starPop .4s cubic-bezier(.34,1.56,.64,1) forwards;
+    }
+    /* stagger each star */
+    .testi-star:nth-child(1) { animation-delay:var(--star-base,0s); }
+    .testi-star:nth-child(2) { animation-delay:calc(var(--star-base,0s) + .08s); }
+    .testi-star:nth-child(3) { animation-delay:calc(var(--star-base,0s) + .16s); }
+    .testi-star:nth-child(4) { animation-delay:calc(var(--star-base,0s) + .24s); }
+    .testi-star:nth-child(5) { animation-delay:calc(var(--star-base,0s) + .32s); }
+    @keyframes starPop {
+      from { opacity:0; transform:scale(.4) rotate(-20deg); }
+      to   { opacity:1; transform:scale(1) rotate(0deg); }
+    }
+
+    /* hold stars at opacity:0 until card is visible */
+    .testi-card:not(.vis) .testi-star { animation:none; opacity:0; }
+
+    .testi-text {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.08rem; font-weight:300; font-style:italic;
+      color:var(--blanc-dim); line-height:1.75;
+      flex:1;
+    }
+
+    .testi-author {
+      display:flex; flex-direction:column; gap:.3rem;
+      padding-top:1.25rem;
+      border-top:1px solid rgba(196,160,64,.1);
+    }
+    .testi-name {
+      font-size:.78rem; font-weight:700;
+      letter-spacing:.06em; color:var(--blanc);
+    }
+    .testi-role {
+      font-size:.68rem; font-weight:400;
+      color:var(--gris); letter-spacing:.05em;
+    }
+
+    @media(max-width:1100px) { .testi-grid { grid-template-columns:1fr; gap:1.5rem; } }
+    @media(max-width:720px)  {
+      #testimonials { padding-left:1.5rem; padding-right:1.5rem; }
+      .testi-grid { grid-template-columns:1fr; }
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { padding:7rem 5rem; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+
+    .contact-info-title {
+      font-family:'Playfair Display', serif;
+      font-size:clamp(1.8rem,3.2vw,2.7rem);
+      font-weight:700; color:var(--blanc); line-height:1.22; margin-bottom:1.4rem;
+    }
+    .contact-info-title em { color:var(--or); font-style:italic; }
+    .contact-intro { font-size:.83rem; color:var(--gris); line-height:1.85; font-weight:300; margin-bottom:2.5rem; }
+
+    .c-detail { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.5rem; }
+    .c-icon {
+      width:38px; height:38px; flex-shrink:0;
+      border:1px solid rgba(196,160,64,.22);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--or);
+    }
+    .c-label { font-size:.57rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.2rem; }
+    .c-value { font-size:.85rem; color:var(--blanc); font-weight:400; }
+
+    /* form */
+    .form-wrap {
+      background:var(--charbon-card);
+      border:1px solid rgba(196,160,64,.1);
+      padding:3rem;
+    }
+    .form-heading {
+      font-family:'Playfair Display', serif;
+      font-size:1.35rem; font-weight:600; color:var(--blanc); margin-bottom:2rem;
+    }
+    .fg { margin-bottom:1.4rem; }
+    .fg label {
+      display:block; font-size:.57rem; font-weight:700;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.45rem;
+    }
+    .fg input, .fg select, .fg textarea {
+      width:100%; background:rgba(255,255,255,.025);
+      border:1px solid rgba(196,160,64,.14);
+      color:var(--blanc); padding:.82rem 1rem;
+      font-family:'Montserrat', sans-serif;
+      font-size:.81rem; font-weight:300;
+      outline:none; resize:none;
+      transition:border-color .2s ease;
+      -webkit-appearance:none; appearance:none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--or); }
+    .fg input::placeholder, .fg textarea::placeholder { color:var(--gris); opacity:.5; }
+    .fg select option { background:var(--charbon-card); color:var(--blanc); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .btn-send {
+      width:100%; background:var(--or); color:var(--charbon);
+      border:none; padding:1.05rem; cursor:pointer;
+      font-family:'Montserrat', sans-serif;
+      font-size:.62rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+      transition:background .24s ease, box-shadow .24s ease;
+    }
+    .btn-send:hover {
+      background:var(--or-pale);
+      box-shadow:0 4px 24px rgba(196,160,64,.3);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background:#070707;
+      border-top:1px solid rgba(196,160,64,.1);
+      padding:4.5rem 5rem 2.5rem;
+    }
+    .footer-grid {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:4rem; margin-bottom:3rem;
+      padding-bottom:3rem;
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .footer-logo {
+      height:56px; opacity:.82; margin-bottom:1.25rem;
+      filter: brightness(0) invert(1) sepia(1) saturate(2.5) hue-rotate(5deg) brightness(1.1);
+    }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      #expertise, #about, #valeurs, #contact, #quote, footer { padding-left:2.5rem; padding-right:2.5rem; }
+      .stats-bar { padding-left:2.5rem; padding-right:2.5rem; }
+      .hero-content { padding:0 2.5rem; }
+      #about { grid-template-columns:1fr; gap:4.5rem; }
+      .exp-grid { grid-template-columns:1fr 1fr; }
+      .valeurs-grid { grid-template-columns:1fr 1fr; }
+      .stats-bar { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:720px) {
+      nav { padding:1.2rem 1.5rem; }
+      nav.scrolled { padding:0.9rem 1.5rem; }
+      .nav-links { display:none; }
+      .hero-photo-side { display:none; }
+      .hero-content { width:100%; max-width:100%; padding:0 1.5rem; }
+      #expertise, #about, #valeurs, #contact, #quote, footer, .stats-bar { padding-left:1.5rem; padding-right:1.5rem; }
+      .exp-grid { grid-template-columns:1fr; }
+      .valeurs-grid { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; gap:3rem; }
+      .form-row { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .stats-bar { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<nav id="navbar">
+  <a href="#hero">
+    <img src="brand_assets/LF Logo.png" alt="Cabinet Laperonnie" class="nav-logo" />
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item-has-drop">
+      <a href="#expertise">Expertise <span class="drop-chevron"></span></a>
+      <div class="nav-dropdown">
+        <a href="#expertise">Droit Pénal</a>
+        <a href="#expertise">Droit de la Famille</a>
+        <a href="#expertise">Cryptomonnaies</a>
+      </div>
+    </li>
+    <li><a href="#about">Le Cabinet</a></li>
+    <li><a href="#valeurs">Valeurs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
+</nav>
+
+
+<!-- ░░ HERO ░░ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- decorative geometry -->
+  <svg class="hero-geo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="60" y="60" width="380" height="380" stroke="#C9A542" stroke-width="1"/>
+    <rect x="100" y="100" width="300" height="300" stroke="#C9A542" stroke-width=".5"/>
+    <line x1="60" y1="60" x2="440" y2="440" stroke="#C9A542" stroke-width=".5"/>
+    <line x1="440" y1="60" x2="60" y2="440" stroke="#C9A542" stroke-width=".5"/>
+    <circle cx="250" cy="250" r="150" stroke="#C9A542" stroke-width=".5"/>
+    <circle cx="250" cy="250" r="80"  stroke="#C9A542" stroke-width=".5"/>
+    <circle cx="250" cy="250" r="20"  stroke="#C9A542" stroke-width=".5"/>
+    <line x1="250" y1="60" x2="250" y2="440" stroke="#C9A542" stroke-width=".3"/>
+    <line x1="60" y1="250" x2="440" y2="250" stroke="#C9A542" stroke-width=".3"/>
+  </svg>
+
+  <!-- lawyer photo — right side -->
+  <div class="hero-photo-side">
+    <img src="brand_assets/Photo of the lawyer.png"
+         alt="Maître François-Xavier Laperonnie"
+         class="hero-photo-img" />
+    <div class="hero-photo-grade"></div>
+    <div class="hero-photo-blend"></div>
+    <div class="hero-photo-vignette"></div>
+    <div class="hero-photo-top"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow h-reveal hd1">Cabinet d'Avocat</div>
+
+    <h1 class="hero-name h-reveal hd2">
+      François-Xavier<br/>
+      <span class="gold">Laperonnie</span>
+    </h1>
+
+    <p class="hero-job h-reveal hd3">Avocat au Barreau</p>
+
+    <p class="hero-tagline h-reveal hd4">
+      L'expertise juridique au service de vos intérêts —<br/>
+      avec rigueur, stratégie et un engagement sans compromis.
+    </p>
+
+    <div class="hero-pillars h-reveal hd5">
+      <span class="pillar-word">Droit</span>
+      <span class="pillar-dot"></span>
+      <span class="pillar-word">Stratégie</span>
+      <span class="pillar-dot"></span>
+      <span class="pillar-word">Défense</span>
+    </div>
+
+    <a href="#contact" class="btn-primary h-reveal hd6">
+      Consulter le cabinet
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="scroll-cue" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-cue-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+
+<!-- ░░ STATS BAR ░░ -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <span class="stat-num">15+</span>
+    <span class="stat-lbl">Années d'expérience</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">500+</span>
+    <span class="stat-lbl">Dossiers traités</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">3</span>
+    <span class="stat-lbl">Domaines d'expertise</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">98%</span>
+    <span class="stat-lbl">Clients satisfaits</span>
+  </div>
+</div>
+
+
+<!-- ░░ EXPERTISE ░░ -->
+<section id="expertise">
+  <div class="exp-header">
+    <div class="eyebrow">Nos domaines</div>
+    <h2 class="section-title">Trois domaines<br/><em>d'excellence</em></h2>
+  </div>
+
+  <div class="exp-grid">
+
+    <!-- ── Droit Pénal ── -->
+    <div class="exp-card reveal">
+      <div class="exp-num">01</div>
+      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="24" y1="5"  x2="24" y2="11"/>
+        <line x1="12" y1="11" x2="36" y2="11"/>
+        <line x1="15" y1="11" x2="7"  y2="28"/>
+        <line x1="33" y1="11" x2="41" y2="28"/>
+        <line x1="4"  y1="28" x2="44" y2="28"/>
+        <line x1="24" y1="28" x2="24" y2="43"/>
+        <line x1="16" y1="43" x2="32" y2="43"/>
+      </svg>
+      <h3 class="exp-title">Droit Pénal</h3>
+      <p class="exp-desc">Défense pénale devant toutes les juridictions. Assistance dès la garde à vue, tout au long de l'instruction et jusqu'au jugement — une présence constante à chaque étape de la procédure.</p>
+      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Crimes · Délits · Contraventions · Victimes · Appel</p>
+      <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+
+    <!-- ── Droit de la Famille ── -->
+    <div class="exp-card reveal rd1">
+      <div class="exp-num">02</div>
+      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="24" cy="12" r="6"/>
+        <circle cx="10" cy="30" r="5"/>
+        <circle cx="38" cy="30" r="5"/>
+        <line x1="24" y1="18" x2="14" y2="25"/>
+        <line x1="24" y1="18" x2="34" y2="25"/>
+        <path d="M5 43 c0-5.5 4.5-10 10-10"/>
+        <path d="M33 33 c5.5 0 10 4.5 10 10"/>
+        <path d="M15 43 c0-8 4-13 9-13 s9 5 9 13"/>
+      </svg>
+      <h3 class="exp-title">Droit de la Famille</h3>
+      <p class="exp-desc">Accompagnement humain et rigoureux dans toutes les procédures familiales. Divorce, séparation de corps, garde d'enfants, pension alimentaire, successions et régimes matrimoniaux.</p>
+      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Divorce · Garde · Succession · Adoption · PACS</p>
+      <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+
+    <!-- ── Cryptomonnaies ── -->
+    <div class="exp-card reveal rd2">
+      <div class="exp-num">03</div>
+      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="24" cy="24" r="10"/>
+        <line x1="24" y1="6"  x2="24" y2="14"/>
+        <line x1="24" y1="34" x2="24" y2="42"/>
+        <line x1="6"  y1="24" x2="14" y2="24"/>
+        <line x1="34" y1="24" x2="42" y2="24"/>
+        <path d="M21 19 c0 0 2-1 4 0 s3 2 3 3.5 s-2 3-4 3 s-4 1.5-4 3.5 s2 3.5 4 3.5 s4-1 4-1"/>
+        <line x1="24" y1="17" x2="24" y2="19"/>
+        <line x1="24" y1="30" x2="24" y2="32"/>
+      </svg>
+      <h3 class="exp-title">Cryptomonnaies</h3>
+      <p class="exp-desc">Expertise de pointe en droit des actifs numériques. Litiges liés aux cryptomonnaies, arnaques et fraudes blockchain, saisie d'actifs numériques et contentieux avec les plateformes d'échange.</p>
+      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Bitcoin · NFT · Fraudes · DeFi · Saisies numériques</p>
+      <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ░░ ABOUT ░░ -->
+<section id="about">
+
+  <div class="about-img-wrap reveal">
+    <div class="about-img-frame">
+      <div class="about-img-inner">
+        <img src="brand_assets/LF Logo.png" alt="" class="about-logo-ghost" />
+      </div>
+      <div class="about-placeholder-text">
+        <div class="abt-initials">FXL</div>
+        <div class="abt-divider"></div>
+        <div class="abt-label">Portrait à venir</div>
+      </div>
+    </div>
+    <div class="about-frame-border"></div>
+    <div class="about-experience-badge">
+      <div class="badge-num">15+</div>
+      <div class="badge-txt">Ans au barreau</div>
+    </div>
+  </div>
+
+  <div class="about-copy reveal rd2">
+    <div class="eyebrow">Le Cabinet</div>
+    <h2 class="section-title">Maître François-Xavier<br/><em>Laperonnie</em></h2>
+    <div class="gold-rule" style="margin:1.75rem 0 2rem"></div>
+
+    <p>Maître <strong>François-Xavier Laperonnie</strong> est avocat inscrit au barreau depuis plus de quinze ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé une expertise de terrain au sein de cabinets reconnus avant de créer sa propre structure.</p>
+
+    <p>Son approche est fondée sur l'écoute, la rigueur et une <strong>stratégie juridique sur mesure</strong>. Chaque dossier est traité avec la plus grande attention, qu'il s'agisse d'un particulier, d'un chef d'entreprise ou d'une société de grande envergure.</p>
+
+    <p>Convaincu que le droit est avant tout un outil au service des personnes, il s'engage à apporter des <strong>solutions concrètes, efficaces et adaptées</strong> aux enjeux de ses clients — en toutes circonstances.</p>
+
+    <div class="about-signature">François-Xavier Laperonnie</div>
+  </div>
+
+</section>
+
+
+<!-- ░░ QUOTE BAND ░░ -->
+<section id="quote">
+  <div class="quote-inner reveal">
+    <p class="quote-text">
+      "La justice n'est pas un droit acquis — elle se conquiert avec intelligence, méthode et un engagement sans faille envers ceux qui nous font confiance."
+    </p>
+    <div class="quote-attr">François-Xavier Laperonnie — Avocat au Barreau</div>
+  </div>
+</section>
+
+
+<!-- ░░ TESTIMONIALS ░░ -->
+<section id="testimonials">
+  <div class="eyebrow">Témoignages</div>
+  <h2 class="section-title">Ils nous ont fait<br/><em>confiance</em></h2>
+
+  <div class="testi-grid">
+
+    <!-- Card 1 – Pénal -->
+    <div class="testi-card reveal" style="--star-base:.6s">
+      <div class="testi-quote-mark">"</div>
+
+      <div class="testi-stars">
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+      </div>
+
+      <p class="testi-text">
+        "Maître Laperonnie a assuré ma défense dans une affaire pénale particulièrement complexe. Sa maîtrise du dossier, son calme et sa rigueur en audience ont fait toute la différence. J'ai été acquitté. Je lui dois beaucoup."
+      </p>
+
+      <div class="testi-author">
+        <span class="testi-name">Thomas M.</span>
+        <span class="testi-role">Affaire pénale — Cour d'appel de Paris</span>
+      </div>
+    </div>
+
+    <!-- Card 2 – Famille -->
+    <div class="testi-card reveal rd1" style="--star-base:.75s">
+      <div class="testi-quote-mark">"</div>
+
+      <div class="testi-stars">
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+      </div>
+
+      <p class="testi-text">
+        "Dans une période de divorce très douloureuse, Maître Laperonnie a su allier professionnalisme et bienveillance. Il a protégé mes droits et ceux de mes enfants avec une détermination exemplaire. Je le recommande sans hésitation."
+      </p>
+
+      <div class="testi-author">
+        <span class="testi-name">Sophie L.</span>
+        <span class="testi-role">Procédure de divorce — Garde d'enfants</span>
+      </div>
+    </div>
+
+    <!-- Card 3 – Crypto -->
+    <div class="testi-card reveal rd2" style="--star-base:.9s">
+      <div class="testi-quote-mark">"</div>
+
+      <div class="testi-stars">
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+      </div>
+
+      <p class="testi-text">
+        "J'ai perdu une somme importante suite à une arnaque sur une plateforme DeFi. Maître Laperonnie est l'un des rares avocats à réellement maîtriser ces enjeux. Il a su identifier les responsabilités et initier des démarches concrètes."
+      </p>
+
+      <div class="testi-author">
+        <span class="testi-name">Alexandre R.</span>
+        <span class="testi-role">Fraude aux cryptomonnaies — DeFi</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ░░ VALUES ░░ -->
+<section id="valeurs">
+  <div class="eyebrow">Notre engagement</div>
+  <h2 class="section-title" style="margin-bottom:0">Quatre piliers qui guident<br/><em>chaque dossier</em></h2>
+
+  <div class="valeurs-grid">
+
+    <div class="val-card reveal">
+      <svg class="val-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M17 3 L31 27 L3 27 Z"/>
+        <line x1="17" y1="13" x2="17" y2="21"/>
+        <circle cx="17" cy="23.5" r=".8" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3 class="val-title">Rigueur</h3>
+      <p class="val-desc">Chaque argument est pesé, chaque pièce vérifiée. Une analyse exhaustive est la fondation de toute défense solide.</p>
+    </div>
+
+    <div class="val-card reveal rd1">
+      <svg class="val-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="6" y="3" width="22" height="28" rx="1.5"/>
+        <line x1="11" y1="11" x2="23" y2="11"/>
+        <line x1="11" y1="16" x2="23" y2="16"/>
+        <line x1="11" y1="21" x2="18" y2="21"/>
+        <path d="M19 24 l5 5" stroke-linecap="round"/>
+      </svg>
+      <h3 class="val-title">Confidentialité</h3>
+      <p class="val-desc">Le secret professionnel est un pilier absolu. Vos informations sont traitées avec la plus stricte discrétion.</p>
+    </div>
+
+    <div class="val-card reveal rd2">
+      <svg class="val-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M17 3 L29 9 L29 25 L17 31 L5 25 L5 9 Z"/>
+        <polyline points="11,17 15,21 23,13"/>
+      </svg>
+      <h3 class="val-title">Engagement</h3>
+      <p class="val-desc">Votre dossier n'est jamais un simple numéro. Nous nous investissons pleinement dans chaque affaire, sans exception.</p>
+    </div>
+
+    <div class="val-card reveal rd3">
+      <svg class="val-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="17" cy="17" r="13"/>
+        <polyline points="17 9 17 17 22 20"/>
+      </svg>
+      <h3 class="val-title">Transparence</h3>
+      <p class="val-desc">Vous êtes informé à chaque étape. Honoraires clairs, stratégie expliquée, résultats communiqués sans délai.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ░░ CONTACT ░░ -->
+<section id="contact">
+  <div class="contact-grid">
+
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2 class="contact-info-title">Discutons de votre<br/><em>situation</em></h2>
+      <p class="contact-intro">Chaque situation est unique. Le cabinet vous propose une première consultation pour évaluer votre dossier et définir ensemble la stratégie la plus adaptée.</p>
+
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div><div class="c-label">Adresse</div><div class="c-value">12 Rue du Palais, 75001 Paris</div></div>
+      </div>
+
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div><div class="c-label">Téléphone</div><div class="c-value">+33 (0)1 XX XX XX XX</div></div>
+      </div>
+
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div><div class="c-label">Email</div><div class="c-value">contact@cabinet-laperonnie.fr</div></div>
+      </div>
+
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div><div class="c-label">Horaires</div><div class="c-value">Lundi – Vendredi, 9h – 19h</div></div>
+      </div>
+    </div>
+
+    <div class="form-wrap reveal rd2">
+      <h3 class="form-heading">Demande de consultation</h3>
+
+      <div class="form-row">
+        <div class="fg">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean" />
+        </div>
+        <div class="fg">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont" />
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" placeholder="jean.dupont@email.fr" />
+      </div>
+
+      <div class="fg">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="+33 6 XX XX XX XX" />
+      </div>
+
+      <div class="fg">
+        <label>Domaine juridique</label>
+        <select>
+          <option value="">Sélectionnez votre domaine</option>
+          <option>Droit Pénal</option>
+          <option>Droit de la Famille</option>
+          <option>Cryptomonnaies</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>Votre message</label>
+        <textarea rows="4" placeholder="Décrivez brièvement votre situation..."></textarea>
+      </div>
+
+      <button class="btn-send">Envoyer la demande →</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <img src="brand_assets/LF Logo.png" alt="Cabinet Laperonnie" class="footer-logo" />
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Paris et ses environs.</p>
+    </div>
+
+    <div>
+      <p class="f-col-title">Expertise</p>
+      <ul class="f-links">
+        <li><a href="#expertise">Droit Pénal</a></li>
+        <li><a href="#expertise">Droit de la Famille</a></li>
+        <li><a href="#expertise">Cryptomonnaies</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="f-col-title">Cabinet</p>
+      <ul class="f-links">
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Nos valeurs</a></li>
+        <li><a href="#">Publications</a></li>
+        <li><a href="#">Actualités juridiques</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="f-col-title">Contact</p>
+      <ul class="f-links">
+        <li><a href="#">Prendre rendez-vous</a></li>
+        <li><a href="#">12 Rue du Palais</a></li>
+        <li><a href="#">75001 Paris</a></li>
+        <li><a href="#">+33 (0)1 XX XX XX XX</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 Cabinet d'Avocat Laperonnie — François-Xavier Laperonnie. Tous droits réservés.</p>
+    <div class="footer-legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">RGPD</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // nav scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 70);
+  }, { passive: true });
+
+  // scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
