@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cabinet d'Avocat Laperonnie — François-Xavier Laperonnie</title>
+  <title>Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
   <style>
     :root {
@@ -146,6 +148,20 @@
       cursor:pointer; transition:background .22s ease, color .22s ease;
     }
     .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+
+    .nav-cta-group { display:flex; align-items:center; gap:1rem; }
+    .nav-phone {
+      display:flex; align-items:center; gap:.5rem;
+      color:var(--blanc-dim); text-decoration:none;
+      font-size:.62rem; font-weight:600; letter-spacing:.1em;
+      border:1px solid rgba(196,160,64,.18);
+      padding:.55rem 1.1rem;
+      transition:color .22s ease, border-color .22s ease, background .22s ease;
+      white-space:nowrap;
+    }
+    .nav-phone:hover { color:var(--or); border-color:rgba(196,160,64,.45); background:rgba(196,160,64,.05); }
+    .nav-phone svg { width:13px; height:13px; color:var(--or); flex-shrink:0; }
+    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
 
     /* ─── HERO ─── */
     #hero {
@@ -380,28 +396,68 @@
       gap:1.5px; background:rgba(196,160,64,.09);
     }
     .exp-card {
-      background:var(--charbon-card);
-      padding:3rem 2.5rem 3.5rem;
       position:relative; overflow:hidden;
-      transition:background .3s ease;
+      min-height:500px;
+      display:flex; flex-direction:column;
       cursor:default;
+      background:var(--charbon-card);
+      transition:box-shadow .4s ease;
     }
+    /* gold sweep line — must sit above all layers */
     .exp-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:2px;
       background:linear-gradient(90deg,var(--or-dark),var(--or-pale));
       transform:scaleX(0); transform-origin:left;
       transition:transform .42s cubic-bezier(.4,0,.2,1);
+      z-index:5;
     }
-    .exp-card:hover { background:#1C1B16; }
+    .exp-card:hover { box-shadow:0 0 0 1px rgba(196,160,64,.22) inset; }
     .exp-card:hover::before { transform:scaleX(1); }
 
+    /* full-bleed background image */
+    .exp-card-bg {
+      position:absolute; inset:0;
+      width:100%; height:100%; object-fit:cover;
+      z-index:0; display:block;
+      transition:transform .75s cubic-bezier(.4,0,.2,1);
+    }
+    .exp-card:hover .exp-card-bg { transform:scale(1.07); }
+
+    /* gradient overlay — transparent at top, near-solid at bottom */
+    .exp-card-overlay {
+      position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:linear-gradient(
+        to bottom,
+        rgba(6,5,4,.28)  0%,
+        rgba(6,5,4,.42)  28%,
+        rgba(6,5,4,.82)  56%,
+        rgba(6,5,4,.97)  76%,
+        rgba(6,5,4,1)   100%
+      );
+    }
+    /* warm gold colour grade */
+    .exp-card-tint {
+      position:absolute; inset:0; z-index:2; pointer-events:none;
+      background:rgba(196,160,64,.07); mix-blend-mode:overlay;
+    }
+
+    /* number — pinned top-left */
     .exp-num {
+      position:absolute; top:2.25rem; left:2.5rem; z-index:3;
       font-family:'Playfair Display', serif;
-      font-size:.6rem; letter-spacing:.3em; color:var(--or-dark);
-      margin-bottom:1.4rem; font-weight:400;
+      font-size:.6rem; letter-spacing:.3em;
+      color:rgba(196,160,64,.65); font-weight:400;
+    }
+    /* content body — pushed to bottom of card */
+    .exp-card-body {
+      position:relative; z-index:3;
+      flex:1; display:flex; flex-direction:column;
+      justify-content:flex-end;
+      padding:2.25rem 2.5rem 3rem;
     }
     .exp-icon {
-      width:40px; height:40px; color:var(--or); margin-bottom:1.5rem; opacity:.78;
+      width:40px; height:40px; color:var(--or);
+      margin-bottom:1.25rem; opacity:.88;
     }
     .exp-title {
       font-family:'Playfair Display', serif;
@@ -409,12 +465,12 @@
       margin-bottom:.9rem; line-height:1.3;
     }
     .exp-desc {
-      font-size:.79rem; color:var(--gris); line-height:1.82; font-weight:300;
+      font-size:.79rem; color:var(--blanc-dim); line-height:1.82; font-weight:300;
     }
     .exp-arrow {
-      position:absolute; bottom:2.25rem; right:2.25rem;
+      position:absolute; bottom:2.25rem; right:2.25rem; z-index:4;
       width:30px; height:30px;
-      border:1px solid rgba(196,160,64,.2);
+      border:1px solid rgba(196,160,64,.3);
       display:flex; align-items:center; justify-content:center; color:var(--or);
       opacity:0; transform:translateX(-8px);
       transition:opacity .3s ease, transform .3s ease;
@@ -712,6 +768,145 @@
       box-shadow:0 4px 24px rgba(196,160,64,.3);
     }
 
+    /* ─── MAP ─── */
+    #map-section {
+      position:relative;
+      background:var(--charbon);
+    }
+    .map-header {
+      display:grid; grid-template-columns:1fr 1fr;
+      align-items:end; gap:3rem;
+      padding:5rem 5rem 3rem;
+    }
+    .map-address-block {
+      display:flex; flex-direction:column; gap:1.25rem;
+    }
+    .map-address-line {
+      display:flex; align-items:flex-start; gap:.9rem;
+    }
+    .map-address-icon {
+      width:34px; height:34px; flex-shrink:0;
+      border:1px solid rgba(196,160,64,.2);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--or);
+    }
+    .map-address-label {
+      font-size:.56rem; font-weight:700; letter-spacing:.2em;
+      text-transform:uppercase; color:var(--gris); margin-bottom:.2rem;
+    }
+    .map-address-value {
+      font-size:.85rem; color:var(--blanc); font-weight:400;
+    }
+    /* MapLibre container */
+    #map-canvas {
+      width:100%; height:480px;
+      border-top:1px solid rgba(196,160,64,.1);
+    }
+    /* override MapLibre popup chrome */
+    .maplibregl-popup-content {
+      background:transparent !important;
+      padding:0 !important;
+      box-shadow:none !important;
+      border:none !important;
+    }
+    .maplibregl-popup-tip { display:none !important; }
+    .maplibregl-ctrl-attrib {
+      background:rgba(6,5,4,.7) !important;
+      color:rgba(196,160,64,.5) !important;
+    }
+    .maplibregl-ctrl-attrib a { color:rgba(196,160,64,.5) !important; }
+
+    /* custom gold pulse marker */
+    .map-marker-pin {
+      width:14px; height:14px;
+      background:var(--or);
+      border-radius:50%;
+      border:2px solid rgba(196,160,64,.4);
+      box-shadow:0 0 0 0 rgba(196,160,64,.5);
+      animation:mapPulse 2.4s ease-out infinite;
+      cursor:pointer;
+    }
+    @keyframes mapPulse {
+      0%   { box-shadow:0 0 0 0   rgba(196,160,64,.5); }
+      70%  { box-shadow:0 0 0 14px rgba(196,160,64,0);  }
+      100% { box-shadow:0 0 0 0   rgba(196,160,64,0);  }
+    }
+    /* map popup card */
+    .map-popup-card {
+      background:rgba(16,14,11,.97);
+      border:1px solid rgba(196,160,64,.2);
+      border-top:2px solid var(--or);
+      padding:1.1rem 1.3rem;
+      min-width:210px;
+      font-family:'Montserrat', sans-serif;
+    }
+    .map-popup-name {
+      font-family:'Playfair Display', serif;
+      font-size:.95rem; font-weight:600;
+      color:var(--blanc); margin-bottom:.35rem;
+    }
+    .map-popup-sub {
+      font-size:.62rem; font-weight:600;
+      letter-spacing:.15em; text-transform:uppercase;
+      color:var(--or); margin-bottom:.75rem;
+    }
+    .map-popup-detail {
+      font-size:.72rem; color:var(--gris);
+      line-height:1.6; font-weight:300;
+    }
+    .map-popup-detail + .map-popup-detail { margin-top:.3rem; }
+
+    @media(max-width:1100px) {
+      .map-header { grid-template-columns:1fr; padding:3rem 2.5rem 2.5rem; }
+    }
+    @media(max-width:720px) {
+      .map-header { padding:3rem 1.5rem 2rem; }
+      #map-canvas { height:340px; }
+    }
+
+    /* ─── CTA STRIP ─── */
+    .cta-strip {
+      background:var(--charbon-light);
+      border-top:1px solid rgba(196,160,64,.12);
+      border-bottom:1px solid rgba(196,160,64,.12);
+      padding:3rem 5rem;
+      display:flex; align-items:center; justify-content:space-between; gap:3rem;
+    }
+    .cta-strip-label {
+      font-size:.55rem; font-weight:700; letter-spacing:.4em;
+      text-transform:uppercase; color:var(--or); margin-bottom:.5rem;
+    }
+    .cta-strip-heading {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.15rem,2vw,1.65rem); font-weight:600;
+      color:var(--blanc); line-height:1.3;
+    }
+    .cta-strip-heading em { color:var(--or); font-style:italic; }
+    .cta-strip-actions { display:flex; align-items:center; gap:1rem; flex-shrink:0; }
+    .btn-cta-fill {
+      display:inline-flex; align-items:center; gap:.6rem;
+      background:var(--or); color:var(--charbon);
+      padding:.85rem 2rem; font-size:.62rem; font-weight:700;
+      letter-spacing:.22em; text-transform:uppercase; text-decoration:none;
+      transition:background .22s ease, box-shadow .22s ease; white-space:nowrap;
+    }
+    .btn-cta-fill:hover { background:var(--or-pale); box-shadow:0 4px 20px rgba(196,160,64,.3); }
+    .btn-cta-fill svg { width:12px; height:12px; }
+    .btn-cta-outline {
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1px solid rgba(196,160,64,.28); color:var(--blanc-dim);
+      padding:.82rem 1.4rem; font-size:.62rem; font-weight:600;
+      letter-spacing:.1em; text-decoration:none;
+      transition:color .22s, border-color .22s, background .22s; white-space:nowrap;
+    }
+    .btn-cta-outline:hover { color:var(--or); border-color:rgba(196,160,64,.5); background:rgba(196,160,64,.04); }
+    .btn-cta-outline svg { width:13px; height:13px; color:var(--or); }
+    @media(max-width:900px) {
+      .cta-strip { flex-direction:column; align-items:flex-start; padding:2.5rem; }
+      .cta-strip-actions { flex-wrap:wrap; }
+    }
+    @media(max-width:720px) { .cta-strip { padding:2rem 1.5rem; } }
+
     /* ─── FOOTER ─── */
     footer {
       background:#070707;
@@ -771,22 +966,30 @@
 <!-- ░░ NAV ░░ -->
 <nav id="navbar">
   <a href="#hero">
-    <img src="brand_assets/LF Logo.png" alt="Cabinet Laperonnie" class="nav-logo" />
+    <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" />
   </a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
       <a href="#expertise">Expertise <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a href="#expertise">Droit Pénal</a>
-        <a href="#expertise">Droit de la Famille</a>
-        <a href="#expertise">Cryptomonnaies</a>
+        <a href="droit-penal.html">Droit Pénal</a>
+        <a href="droit-famille.html">Droit de la Famille</a>
+        <a href="cryptomonnaies.html">Cryptomonnaies</a>
       </div>
     </li>
     <li><a href="#about">Le Cabinet</a></li>
     <li><a href="#valeurs">Valeurs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
+  <div class="nav-cta-group">
+    <a href="tel:+33XXXXXXXXXX" class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span>+33 (0)1 XX XX XX XX</span>
+    </a>
+    <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
+  </div>
 </nav>
 
 
@@ -810,7 +1013,7 @@
   <!-- lawyer photo — right side -->
   <div class="hero-photo-side">
     <img src="brand_assets/Photo of the lawyer.png"
-         alt="Maître François-Xavier Laperonnie"
+         alt="Maître François-Xavier LAPERONNIE"
          class="hero-photo-img" />
     <div class="hero-photo-grade"></div>
     <div class="hero-photo-blend"></div>
@@ -823,7 +1026,7 @@
 
     <h1 class="hero-name h-reveal hd2">
       François-Xavier<br/>
-      <span class="gold">Laperonnie</span>
+      <span class="gold">LAPERONNIE</span>
     </h1>
 
     <p class="hero-job h-reveal hd3">Avocat au Barreau</p>
@@ -881,69 +1084,106 @@
 <section id="expertise">
   <div class="exp-header">
     <div class="eyebrow">Nos domaines</div>
-    <h2 class="section-title">Trois domaines<br/><em>d'excellence</em></h2>
+    <h2 class="section-title">Trois domaines<br/><em style="font-size:clamp(3.2rem,6.5vw,6rem);line-height:1;letter-spacing:-.03em;display:inline-block;">d'excellence</em></h2>
   </div>
 
   <div class="exp-grid">
 
     <!-- ── Droit Pénal ── -->
-    <div class="exp-card reveal">
+    <div class="exp-card reveal" onclick="window.location='droit-penal.html'" style="cursor:pointer">
+      <img src="brand_assets/Droit Pénal.png" class="exp-card-bg" alt=""
+           style="filter:contrast(1.12) brightness(0.72) saturate(0.55); object-position:center 35%;"/>
+      <div class="exp-card-overlay"></div>
+      <div class="exp-card-tint"></div>
       <div class="exp-num">01</div>
-      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <line x1="24" y1="5"  x2="24" y2="11"/>
-        <line x1="12" y1="11" x2="36" y2="11"/>
-        <line x1="15" y1="11" x2="7"  y2="28"/>
-        <line x1="33" y1="11" x2="41" y2="28"/>
-        <line x1="4"  y1="28" x2="44" y2="28"/>
-        <line x1="24" y1="28" x2="24" y2="43"/>
-        <line x1="16" y1="43" x2="32" y2="43"/>
-      </svg>
-      <h3 class="exp-title">Droit Pénal</h3>
-      <p class="exp-desc">Défense pénale devant toutes les juridictions. Assistance dès la garde à vue, tout au long de l'instruction et jusqu'au jugement — une présence constante à chaque étape de la procédure.</p>
-      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Crimes · Délits · Contraventions · Victimes · Appel</p>
+      <div class="exp-card-body">
+        <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="24" y1="5"  x2="24" y2="11"/>
+          <line x1="12" y1="11" x2="36" y2="11"/>
+          <line x1="15" y1="11" x2="7"  y2="28"/>
+          <line x1="33" y1="11" x2="41" y2="28"/>
+          <line x1="4"  y1="28" x2="44" y2="28"/>
+          <line x1="24" y1="28" x2="24" y2="43"/>
+          <line x1="16" y1="43" x2="32" y2="43"/>
+        </svg>
+        <h3 class="exp-title">Droit Pénal</h3>
+        <p class="exp-desc">Défense pénale devant toutes les juridictions. Assistance dès la garde à vue, tout au long de l'instruction et jusqu'au jugement — une présence constante à chaque étape.</p>
+        <p class="exp-desc" style="margin-top:.75rem; font-size:.72rem; color:var(--gris);">Crimes · Délits · Contraventions · Victimes · Appel</p>
+      </div>
       <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
     </div>
 
     <!-- ── Droit de la Famille ── -->
-    <div class="exp-card reveal rd1">
+    <div class="exp-card reveal rd1" onclick="window.location='droit-famille.html'" style="cursor:pointer">
+      <img src="brand_assets/Droit de la famille.png" class="exp-card-bg" alt=""
+           style="filter:contrast(1.1) brightness(0.38) saturate(0.38); object-position:center 40%;"/>
+      <div class="exp-card-overlay"></div>
+      <div class="exp-card-tint" style="background:rgba(180,110,20,.1);"></div>
       <div class="exp-num">02</div>
-      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="24" cy="12" r="6"/>
-        <circle cx="10" cy="30" r="5"/>
-        <circle cx="38" cy="30" r="5"/>
-        <line x1="24" y1="18" x2="14" y2="25"/>
-        <line x1="24" y1="18" x2="34" y2="25"/>
-        <path d="M5 43 c0-5.5 4.5-10 10-10"/>
-        <path d="M33 33 c5.5 0 10 4.5 10 10"/>
-        <path d="M15 43 c0-8 4-13 9-13 s9 5 9 13"/>
-      </svg>
-      <h3 class="exp-title">Droit de la Famille</h3>
-      <p class="exp-desc">Accompagnement humain et rigoureux dans toutes les procédures familiales. Divorce, séparation de corps, garde d'enfants, pension alimentaire, successions et régimes matrimoniaux.</p>
-      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Divorce · Garde · Succession · Adoption · PACS</p>
+      <div class="exp-card-body">
+        <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="12" r="6"/>
+          <circle cx="10" cy="30" r="5"/>
+          <circle cx="38" cy="30" r="5"/>
+          <line x1="24" y1="18" x2="14" y2="25"/>
+          <line x1="24" y1="18" x2="34" y2="25"/>
+          <path d="M5 43 c0-5.5 4.5-10 10-10"/>
+          <path d="M33 33 c5.5 0 10 4.5 10 10"/>
+          <path d="M15 43 c0-8 4-13 9-13 s9 5 9 13"/>
+        </svg>
+        <h3 class="exp-title">Droit de la Famille</h3>
+        <p class="exp-desc">Accompagnement humain et rigoureux dans toutes les procédures familiales. Divorce, séparation, garde d'enfants, pension alimentaire, successions et régimes matrimoniaux.</p>
+        <p class="exp-desc" style="margin-top:.75rem; font-size:.72rem; color:var(--gris);">Divorce · Garde · Succession · Adoption · PACS</p>
+      </div>
       <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
     </div>
 
     <!-- ── Cryptomonnaies ── -->
-    <div class="exp-card reveal rd2">
+    <div class="exp-card reveal rd2" onclick="window.location='cryptomonnaies.html'" style="cursor:pointer">
+      <img src="brand_assets/Cryptomonnaies.png" class="exp-card-bg" alt=""
+           style="filter:contrast(1.15) brightness(0.55) saturate(0.65); object-position:center center;"/>
+      <div class="exp-card-overlay"></div>
+      <div class="exp-card-tint" style="background:rgba(196,160,64,.13);"></div>
       <div class="exp-num">03</div>
-      <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="24" cy="24" r="10"/>
-        <line x1="24" y1="6"  x2="24" y2="14"/>
-        <line x1="24" y1="34" x2="24" y2="42"/>
-        <line x1="6"  y1="24" x2="14" y2="24"/>
-        <line x1="34" y1="24" x2="42" y2="24"/>
-        <path d="M21 19 c0 0 2-1 4 0 s3 2 3 3.5 s-2 3-4 3 s-4 1.5-4 3.5 s2 3.5 4 3.5 s4-1 4-1"/>
-        <line x1="24" y1="17" x2="24" y2="19"/>
-        <line x1="24" y1="30" x2="24" y2="32"/>
-      </svg>
-      <h3 class="exp-title">Cryptomonnaies</h3>
-      <p class="exp-desc">Expertise de pointe en droit des actifs numériques. Litiges liés aux cryptomonnaies, arnaques et fraudes blockchain, saisie d'actifs numériques et contentieux avec les plateformes d'échange.</p>
-      <p class="exp-desc" style="margin-top:.9rem; font-size:.74rem;">Bitcoin · NFT · Fraudes · DeFi · Saisies numériques</p>
+      <div class="exp-card-body">
+        <svg class="exp-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="10"/>
+          <line x1="24" y1="6"  x2="24" y2="14"/>
+          <line x1="24" y1="34" x2="24" y2="42"/>
+          <line x1="6"  y1="24" x2="14" y2="24"/>
+          <line x1="34" y1="24" x2="42" y2="24"/>
+          <path d="M21 19 c0 0 2-1 4 0 s3 2 3 3.5 s-2 3-4 3 s-4 1.5-4 3.5 s2 3.5 4 3.5 s4-1 4-1"/>
+          <line x1="24" y1="17" x2="24" y2="19"/>
+          <line x1="24" y1="30" x2="24" y2="32"/>
+        </svg>
+        <h3 class="exp-title">Cryptomonnaies</h3>
+        <p class="exp-desc">Expertise de pointe en droit des actifs numériques. Litiges liés aux cryptomonnaies, arnaques et fraudes blockchain, saisies d'actifs et contentieux avec les plateformes d'échange.</p>
+        <p class="exp-desc" style="margin-top:.75rem; font-size:.72rem; color:var(--gris);">Bitcoin · NFT · Fraudes · DeFi · Saisies numériques</p>
+      </div>
       <div class="exp-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
     </div>
 
   </div>
 </section>
+
+
+<!-- ░░ CTA 1 ░░ -->
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">Cabinet LAPERONNIE</p>
+    <h3 class="cta-strip-heading">Votre situation juridique mérite<br/><em>une réponse immédiate.</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">
+      Prendre rendez-vous
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="tel:+33XXXXXXXXXX" class="btn-cta-outline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +33 (0)1 XX XX XX XX
+    </a>
+  </div>
+</div>
 
 
 <!-- ░░ ABOUT ░░ -->
@@ -969,16 +1209,16 @@
 
   <div class="about-copy reveal rd2">
     <div class="eyebrow">Le Cabinet</div>
-    <h2 class="section-title">Maître François-Xavier<br/><em>Laperonnie</em></h2>
+    <h2 class="section-title">Maître François-Xavier<br/><em>LAPERONNIE</em></h2>
     <div class="gold-rule" style="margin:1.75rem 0 2rem"></div>
 
-    <p>Maître <strong>François-Xavier Laperonnie</strong> est avocat inscrit au barreau depuis plus de quinze ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé une expertise de terrain au sein de cabinets reconnus avant de créer sa propre structure.</p>
+    <p>Maître <strong>François-Xavier LAPERONNIE</strong> est avocat inscrit au barreau depuis plus de quinze ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé une expertise de terrain au sein de cabinets reconnus avant de créer sa propre structure.</p>
 
     <p>Son approche est fondée sur l'écoute, la rigueur et une <strong>stratégie juridique sur mesure</strong>. Chaque dossier est traité avec la plus grande attention, qu'il s'agisse d'un particulier, d'un chef d'entreprise ou d'une société de grande envergure.</p>
 
     <p>Convaincu que le droit est avant tout un outil au service des personnes, il s'engage à apporter des <strong>solutions concrètes, efficaces et adaptées</strong> aux enjeux de ses clients — en toutes circonstances.</p>
 
-    <div class="about-signature">François-Xavier Laperonnie</div>
+    <div class="about-signature">François-Xavier LAPERONNIE</div>
   </div>
 
 </section>
@@ -990,7 +1230,7 @@
     <p class="quote-text">
       "La justice n'est pas un droit acquis — elle se conquiert avec intelligence, méthode et un engagement sans faille envers ceux qui nous font confiance."
     </p>
-    <div class="quote-attr">François-Xavier Laperonnie — Avocat au Barreau</div>
+    <div class="quote-attr">François-Xavier LAPERONNIE — Avocat au Barreau</div>
   </div>
 </section>
 
@@ -1025,7 +1265,7 @@
       </div>
 
       <p class="testi-text">
-        "Maître Laperonnie a assuré ma défense dans une affaire pénale particulièrement complexe. Sa maîtrise du dossier, son calme et sa rigueur en audience ont fait toute la différence. J'ai été acquitté. Je lui dois beaucoup."
+        "Maître LAPERONNIE a assuré ma défense dans une affaire pénale particulièrement complexe. Sa maîtrise du dossier, son calme et sa rigueur en audience ont fait toute la différence. J'ai été acquitté. Je lui dois beaucoup."
       </p>
 
       <div class="testi-author">
@@ -1057,7 +1297,7 @@
       </div>
 
       <p class="testi-text">
-        "Dans une période de divorce très douloureuse, Maître Laperonnie a su allier professionnalisme et bienveillance. Il a protégé mes droits et ceux de mes enfants avec une détermination exemplaire. Je le recommande sans hésitation."
+        "Dans une période de divorce très douloureuse, Maître LAPERONNIE a su allier professionnalisme et bienveillance. Il a protégé mes droits et ceux de mes enfants avec une détermination exemplaire. Je le recommande sans hésitation."
       </p>
 
       <div class="testi-author">
@@ -1089,7 +1329,7 @@
       </div>
 
       <p class="testi-text">
-        "J'ai perdu une somme importante suite à une arnaque sur une plateforme DeFi. Maître Laperonnie est l'un des rares avocats à réellement maîtriser ces enjeux. Il a su identifier les responsabilités et initier des démarches concrètes."
+        "J'ai perdu une somme importante suite à une arnaque sur une plateforme DeFi. Maître LAPERONNIE est l'un des rares avocats à réellement maîtriser ces enjeux. Il a su identifier les responsabilités et initier des démarches concrètes."
       </p>
 
       <div class="testi-author">
@@ -1100,6 +1340,25 @@
 
   </div>
 </section>
+
+
+<!-- ░░ CTA 2 ░░ -->
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">Rejoignez nos clients</p>
+    <h3 class="cta-strip-heading">Votre dossier mérite<br/><em>la même attention.</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">
+      Consulter le cabinet
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="tel:+33XXXXXXXXXX" class="btn-cta-outline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +33 (0)1 XX XX XX XX
+    </a>
+  </div>
+</div>
 
 
 <!-- ░░ VALUES ░░ -->
@@ -1249,12 +1508,65 @@
 </section>
 
 
+<!-- ░░ MAP ░░ -->
+<section id="map-section">
+  <div class="map-header">
+
+    <div>
+      <div class="eyebrow">Nous trouver</div>
+      <h2 class="section-title">Le cabinet est<br/><em>à Paris</em></h2>
+    </div>
+
+    <div class="map-address-block">
+      <div class="map-address-line">
+        <div class="map-address-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <div class="map-address-label">Adresse</div>
+          <div class="map-address-value">12 Rue du Palais, 75001 Paris</div>
+        </div>
+      </div>
+      <div class="map-address-line">
+        <div class="map-address-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <div class="map-address-label">Horaires</div>
+          <div class="map-address-value">Lundi – Vendredi, 9h – 19h</div>
+        </div>
+      </div>
+      <div class="map-address-line">
+        <div class="map-address-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="map-address-label">Téléphone</div>
+          <div class="map-address-value">+33 (0)1 XX XX XX XX</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="map-canvas"></div>
+</section>
+
+
 <!-- ░░ FOOTER ░░ -->
 <footer>
   <div class="footer-grid">
 
     <div>
-      <img src="brand_assets/LF Logo.png" alt="Cabinet Laperonnie" class="footer-logo" />
+      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Paris et ses environs.</p>
     </div>
 
@@ -1290,7 +1602,7 @@
   </div>
 
   <div class="footer-bottom">
-    <p class="footer-copy">© 2024 Cabinet d'Avocat Laperonnie — François-Xavier Laperonnie. Tous droits réservés.</p>
+    <p class="footer-copy">© 2024 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
     <div class="footer-legal">
       <a href="#">Mentions légales</a>
       <a href="#">Confidentialité</a>
@@ -1312,6 +1624,62 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ── Interactive map ──
+  // Coordinates: Île de la Cité, Paris — near the Palais de Justice
+  const OFFICE_LNG = 2.3467;
+  const OFFICE_LAT = 48.8553;
+
+  const map = new maplibregl.Map({
+    container: 'map-canvas',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [OFFICE_LNG, OFFICE_LAT],
+    zoom: 15,
+    pitch: 40,
+    bearing: -15,
+    attributionControl: { compact: true },
+  });
+
+  // Disable scroll-zoom so the page scrolls normally over the map
+  map.scrollZoom.disable();
+
+  // Re-enable scroll-zoom only when user clicks on the map
+  map.getCanvas().addEventListener('click', () => map.scrollZoom.enable());
+  map.getCanvas().addEventListener('mouseleave', () => map.scrollZoom.disable());
+
+  map.on('load', () => {
+    // Custom gold pulsing marker
+    const el = document.createElement('div');
+    el.className = 'map-marker-pin';
+
+    // Popup card
+    const popupHTML = `
+      <div class="map-popup-card">
+        <div class="map-popup-name">Cabinet LAPERONNIE</div>
+        <div class="map-popup-sub">François-Xavier LAPERONNIE</div>
+        <div class="map-popup-detail">📍 12 Rue du Palais, 75001 Paris</div>
+        <div class="map-popup-detail">🕐 Lun – Ven, 9h – 19h</div>
+        <div class="map-popup-detail">📞 +33 (0)1 XX XX XX XX</div>
+      </div>`;
+
+    const popup = new maplibregl.Popup({
+      offset: 20,
+      closeButton: false,
+      maxWidth: 'none',
+    }).setHTML(popupHTML);
+
+    new maplibregl.Marker({ element: el })
+      .setLngLat([OFFICE_LNG, OFFICE_LAT])
+      .setPopup(popup)
+      .addTo(map);
+
+    // Open popup by default
+    popup.addTo(map);
+    popup.setLngLat([OFFICE_LNG, OFFICE_LAT]);
+
+    // Subtle animated fly-in on first load
+    map.easeTo({ center: [OFFICE_LNG, OFFICE_LAT], zoom: 15.5, pitch: 45, bearing: -10, duration: 2200, easing: t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t });
+  });
 </script>
 
 </body>
