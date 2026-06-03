@@ -150,12 +150,39 @@
       #intro, #services, #contact, footer { padding-left:2.5rem; padding-right:2.5rem; }
       .page-hero-content { padding:0 2.5rem; }
     }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger:hover { border-color:rgba(196,160,64,.55); }
+    .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
+    .mob-nav.open { opacity:1; pointer-events:all; }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; letter-spacing:-.01em; transition:color .2s; }
+    .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
+    .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
+    .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; transition:all .2s; }
+    .mob-nav-phone:hover { background:rgba(196,160,64,.08); border-color:var(--or); }
+    .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+    .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
+    .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
+    .mob-cta-rdv { background:var(--or); color:var(--charbon); }
+
     @media(max-width:720px) {
-      nav { padding:1.2rem 1.5rem; } nav.scrolled { padding:.9rem 1.5rem; }
+      nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
+      .nav-logo { height:44px; }
       .nav-links { display:none; }
+      .nav-cta-group { display:none; }
+      .hamburger { display:flex; }
       .page-hero-content, #intro, #services, #contact, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .form-row { grid-template-columns:1fr; }
-      .footer-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; }
+      .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; }
+      body { padding-bottom:68px; }
     }
   </style>
 </head>
@@ -174,6 +201,8 @@
     </li>
     <li><a href="index.html#about">Le Cabinet</a></li>
     <li><a href="index.html#valeurs">Valeurs</a></li>
+    <li><a href="cases.html">Affaires</a></li>
+    <li><a href="blog.html">Actualités</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
@@ -183,7 +212,24 @@
     </a>
     <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <ul class="mob-nav-links">
+    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
+    <li><a href="droit-famille.html" class="mob-close active">Droit de la Famille</a></li>
+    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="cases.html" class="mob-close">Affaires</a></li>
+    <li><a href="blog.html" class="mob-close">Actualités</a></li>
+    <li><a href="#contact" class="mob-close">Contact</a></li>
+  </ul>
+  <div class="mob-nav-divider"></div>
+  <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
+</div>
 
 
 <section class="page-hero">
@@ -364,7 +410,7 @@
   <div class="footer-grid">
     <div>
       <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
-      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Paris et ses environs.</p>
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>
       <p class="f-col-title">Expertise</p>
@@ -379,15 +425,15 @@
       <ul class="f-links">
         <li><a href="index.html#about">À propos</a></li>
         <li><a href="index.html#valeurs">Nos valeurs</a></li>
-        <li><a href="index.html#testimonials">Témoignages</a></li>
+        <li><a href="cases.html">Affaires</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="#contact">Prendre rendez-vous</a></li>
-        <li><a href="#">12 Rue du Palais</a></li>
-        <li><a href="#">16000 Angoulême</a></li>
+        <li><a href="index.html#contact">Prendre rendez-vous</a></li>
+        <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
+        <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
     </div>
   </div>
@@ -404,6 +450,16 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
   }, { threshold:0.1, rootMargin:'0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mob-nav');
+  if (hamburger && mobNav) {
+    hamburger.addEventListener('click', () => { const o = mobNav.classList.toggle('open'); hamburger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
+  }
 </script>
+<div class="mob-cta-bar">
+  <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
+  <a href="#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+</div>
 </body>
 </html>

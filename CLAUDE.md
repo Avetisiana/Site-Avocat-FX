@@ -53,3 +53,4 @@
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
 - Never push to GitHub unless the user explicitly says to push
+- When updating the website always check in desktop and mobile version

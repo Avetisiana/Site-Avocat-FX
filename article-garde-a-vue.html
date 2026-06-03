@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Que faire en garde à vue ? — Cabinet LAPERONNIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; --cat:#DC503C; --cat-bg:rgba(220,80,60,.07); --cat-border:rgba(220,80,60,.3); }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
+    nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
+    .nav-logo { height:70px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo:hover { opacity:1; }
+    .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
+    .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+    .nav-links a:hover, .nav-links a.active { color:var(--or); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s,color .22s; }
+    .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+    .nav-cta-group { display:flex; align-items:center; gap:1rem; }
+    .nav-phone { display:flex; align-items:center; gap:.5rem; color:var(--blanc-dim); text-decoration:none; font-size:.62rem; font-weight:600; letter-spacing:.1em; border:1px solid rgba(196,160,64,.18); padding:.55rem 1.1rem; transition:color .22s,border-color .22s,background .22s; white-space:nowrap; }
+    .nav-phone:hover { color:var(--or); border-color:rgba(196,160,64,.45); background:rgba(196,160,64,.05); }
+    .nav-phone svg { width:13px; height:13px; color:var(--or); flex-shrink:0; }
+    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    .nav-item-has-drop { position:relative; }
+    .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
+    .nav-item-has-drop > a::after { display:none; }
+    .drop-chevron { display:inline-block; width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; border-top:3.5px solid currentColor; transition:transform .25s ease; margin-top:1px; flex-shrink:0; }
+    .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
+    .nav-dropdown { position:absolute; top:calc(100% + 1.1rem); left:50%; transform:translateX(-50%) translateY(-8px); min-width:210px; background:rgba(6,5,4,.97); border:1px solid rgba(196,160,64,.15); border-top:2px solid var(--or); backdrop-filter:blur(18px); opacity:0; visibility:hidden; transition:opacity .25s ease,transform .25s ease,visibility 0s .25s; z-index:1001; }
+    .nav-item-has-drop:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); transition:opacity .25s ease,transform .25s ease,visibility 0s 0s; }
+    .nav-dropdown a { display:block; padding:.72rem 1.4rem; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blanc-dim); text-decoration:none; border-bottom:1px solid rgba(196,160,64,.07); transition:color .18s,background .18s,padding-left .18s; position:relative; }
+    .nav-dropdown a:last-child { border-bottom:none; }
+    .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
+    .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
+    .nav-dropdown a:hover::before { transform:scaleY(1); }
+
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
+    .mob-nav.open { opacity:1; pointer-events:all; }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
+    .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
+    .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
+    .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; }
+    .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
+    .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
+    .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
+    .mob-cta-rdv { background:var(--or); color:var(--charbon); }
+
+    /* ARTICLE HEADER */
+    .article-header { padding:9rem 5rem 4rem; background:linear-gradient(160deg, #080706 0%, var(--charbon) 55%, #0A0908 100%); position:relative; overflow:hidden; }
+    .article-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%, rgba(220,80,60,.04) 0%, transparent 70%); }
+    .article-header-inner { position:relative; z-index:1; max-width:860px; }
+    .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
+    .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
+    .breadcrumb a:hover { color:var(--or); }
+    .breadcrumb-sep { color:rgba(196,160,64,.4); }
+    .article-tags { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:1.75rem; align-items:center; }
+    .tag-cat { font-size:.52rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding:.28rem .8rem; border:1px solid var(--cat-border); color:var(--cat); background:var(--cat-bg); }
+    .tag-read { font-size:.52rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gris); }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:700; line-height:1.1; letter-spacing:-.02em; color:var(--blanc); margin-bottom:1.5rem; }
+    .article-title em { color:var(--or); font-style:italic; }
+    .article-intro { font-family:'Cormorant Garamond',serif; font-size:clamp(1.05rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:720px; line-height:1.7; }
+    .article-meta-bar { display:flex; align-items:center; gap:2rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); flex-wrap:wrap; }
+    .author-block { display:flex; align-items:center; gap:1rem; }
+    .author-photo { width:44px; height:44px; border-radius:0; object-fit:cover; object-position:top; border:1px solid rgba(196,160,64,.2); filter:grayscale(.25); }
+    .author-info { display:flex; flex-direction:column; gap:.2rem; }
+    .author-name { font-size:.68rem; font-weight:600; color:var(--blanc); letter-spacing:.06em; }
+    .author-role { font-size:.58rem; font-weight:400; color:var(--gris); letter-spacing:.08em; }
+    .meta-sep { width:1px; height:28px; background:rgba(196,160,64,.15); }
+    .meta-date { font-size:.62rem; font-weight:500; color:var(--gris); letter-spacing:.1em; }
+
+    /* ARTICLE LAYOUT */
+    .article-layout { display:grid; grid-template-columns:260px 1fr; gap:0; padding:0 5rem 7rem; max-width:1280px; margin:0 auto; align-items:start; }
+
+    /* TOC SIDEBAR */
+    .article-sidebar { padding:4rem 2.5rem 4rem 0; background:var(--charbon); align-self:start; }
+    @media(min-width:1101px) { .article-sidebar { position:sticky; top:110px; z-index:10; } }
+    .toc-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; }
+    .toc-label::before { content:''; width:22px; height:1px; background:var(--or); }
+    .toc-nav { display:flex; flex-direction:column; border-left:1px solid rgba(196,160,64,.15); position:static; top:auto; left:auto; right:auto; width:auto; backdrop-filter:none; background:transparent; border-bottom:none; }
+    .toc-link { display:block; padding:.7rem 1.2rem; font-size:.68rem; font-weight:500; color:var(--gris); text-decoration:none; letter-spacing:.06em; position:relative; transition:color .2s,padding-left .2s; border-left:2px solid transparent; margin-left:-1px; }
+    .toc-link:hover { color:var(--blanc-dim); }
+    .toc-link.active { color:var(--or); border-left-color:var(--or); padding-left:1.4rem; }
+    .toc-back { display:flex; align-items:center; gap:.5rem; font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gris); text-decoration:none; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); transition:color .2s; }
+    .toc-back:hover { color:var(--or); }
+    .toc-back svg { width:12px; height:12px; }
+
+    /* ARTICLE CONTENT */
+    .article-content { padding:4rem 0 4rem 4rem; border-left:1px solid rgba(196,160,64,.08); }
+    .article-section { margin-bottom:4rem; padding-bottom:4rem; border-bottom:1px solid rgba(196,160,64,.07); scroll-margin-top:130px; }
+    .article-section:last-of-type { border-bottom:none; margin-bottom:2rem; }
+    .section-title { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:600; color:var(--blanc); margin-bottom:1.4rem; line-height:1.3; display:flex; align-items:flex-start; gap:.75rem; }
+    .section-title::before { content:''; width:3px; height:1.2em; background:var(--or); flex-shrink:0; margin-top:.15em; }
+    .article-content p { font-size:.88rem; color:var(--blanc-dim); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
+    .article-content p:last-child { margin-bottom:0; }
+    .article-content strong { color:var(--blanc); font-weight:600; }
+    .article-content ul, .article-content ol { margin:1.2rem 0 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.65rem; }
+    .article-content li { font-size:.88rem; color:var(--blanc-dim); line-height:1.8; font-weight:300; padding-left:.5rem; }
+    .article-content ul li::marker { color:var(--or); }
+    .article-content ol li::marker { color:var(--or); font-weight:600; }
+    .highlight-box { background:var(--charbon-card); border-left:3px solid var(--or); padding:1.5rem 1.75rem; margin:1.75rem 0; }
+    .highlight-box-title { font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); margin-bottom:.75rem; }
+    .highlight-box p { font-size:.84rem; color:var(--blanc-dim); line-height:1.8; margin-bottom:0; }
+
+    /* END CTA */
+    .article-cta-box { background:var(--charbon-card); border:1px solid rgba(196,160,64,.15); padding:2.5rem 2.75rem; margin-top:3rem; position:relative; overflow:hidden; }
+    .article-cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); }
+    .article-cta-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600; color:var(--blanc); margin-bottom:.75rem; line-height:1.3; }
+    .article-cta-text { font-size:.82rem; color:var(--gris); line-height:1.8; margin-bottom:1.75rem; font-weight:300; }
+    .article-cta-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-or { display:inline-flex; align-items:center; gap:.5rem; background:var(--or); color:var(--charbon); padding:.85rem 1.8rem; font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+    .btn-or:hover { background:var(--or-pale); }
+    .btn-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.3); color:var(--blanc-dim); padding:.85rem 1.8rem; font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+    .btn-outline:hover { color:var(--or); border-color:var(--or); }
+
+    /* FOOTER */
+    footer { background:#070707; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      .article-header, .article-layout, footer { padding-left:2.5rem; padding-right:2.5rem; }
+      .article-layout { grid-template-columns:1fr; }
+      .article-sidebar { position:static; padding:2rem 0 0; border-bottom:1px solid rgba(196,160,64,.1); margin-bottom:2rem; }
+      .toc-nav { flex-direction:row; flex-wrap:wrap; border-left:none; border-top:1px solid rgba(196,160,64,.15); padding-top:.5rem; }
+      .toc-link { border-left:none; border-bottom:2px solid transparent; padding:.5rem .75rem; }
+      .toc-link.active { border-bottom-color:var(--or); border-left-color:transparent; padding-left:.75rem; }
+      .article-content { padding:0; border-left:none; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
+    }
+    @media(max-width:720px) {
+      nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
+      .nav-logo { height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .article-header, .article-layout, footer { padding-left:1.5rem; padding-right:1.5rem; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
+      .article-cta-actions { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <ul class="nav-links">
+    <li class="nav-item-has-drop">
+      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <div class="nav-dropdown">
+        <a href="droit-penal.html">Droit Pénal</a>
+        <a href="droit-famille.html">Droit de la Famille</a>
+        <a href="cryptomonnaies.html">Cryptomonnaies</a>
+      </div>
+    </li>
+    <li><a href="index.html#about">Le Cabinet</a></li>
+    <li><a href="index.html#valeurs">Valeurs</a></li>
+    <li><a href="cases.html">Affaires</a></li>
+    <li><a href="blog.html" class="active">Actualités</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="tel:+33545383009" class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>05 45 38 30 09</span>
+    </a>
+    <a href="index.html#contact" class="btn-rdv">Prendre rendez-vous</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <ul class="mob-nav-links">
+    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
+    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="cases.html" class="mob-close">Affaires</a></li>
+    <li><a href="blog.html" class="mob-close active">Actualités</a></li>
+    <li><a href="index.html#contact" class="mob-close">Contact</a></li>
+  </ul>
+  <div class="mob-nav-divider"></div>
+  <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
+</div>
+
+
+<!-- HEADER -->
+<div class="article-header">
+  <div class="article-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="blog.html">Actualités</a><span class="breadcrumb-sep">›</span>
+      <span>Garde à vue</span>
+    </div>
+    <div class="article-tags">
+      <span class="tag-cat">Pénal</span>
+      <span class="tag-read">8 min de lecture</span>
+    </div>
+    <h1 class="article-title">Que faire si vous êtes convoqué <em>en garde à vue ?</em></h1>
+    <p class="article-intro">La garde à vue est une mesure privative de liberté décidée par un officier de police judiciaire. Elle peut durer de 24 à 96 heures selon les infractions. Connaître vos droits dès les premières heures est décisif pour la suite de la procédure.</p>
+    <div class="article-meta-bar">
+      <div class="author-block">
+        <img src="brand_assets/Photo of the lawyer.png" alt="Maître François-Xavier LAPERONNIE" class="author-photo" />
+        <div class="author-info">
+          <span class="author-name">Maître François-Xavier LAPERONNIE</span>
+          <span class="author-role">Avocat au Barreau de Charente</span>
+        </div>
+      </div>
+      <div class="meta-sep"></div>
+      <span class="meta-date">15 mai 2026</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ARTICLE LAYOUT -->
+<div class="article-layout">
+
+  <!-- TOC -->
+  <aside class="article-sidebar">
+    <div class="toc-label">Sommaire</div>
+    <div class="toc-nav">
+      <a href="#definition"  class="toc-link active">Qu'est-ce que la garde à vue ?</a>
+      <a href="#droits"      class="toc-link">Vos droits fondamentaux</a>
+      <a href="#premieres"   class="toc-link">Les premières heures</a>
+      <a href="#avocat"      class="toc-link">Le rôle de l'avocat</a>
+      <a href="#suites"      class="toc-link">Les suites possibles</a>
+      <a href="#conseils"    class="toc-link">Conseils pratiques</a>
+    </div>
+    <a href="blog.html" class="toc-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Retour aux actualités
+    </a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="article-content">
+
+    <div class="article-section" id="definition">
+      <h2 class="section-title">Qu'est-ce que la garde à vue ?</h2>
+      <p>La garde à vue est une mesure coercitive permettant à un officier de police judiciaire (OPJ) de retenir une personne dans les locaux de la police ou de la gendarmerie, pour les besoins d'une enquête. Elle peut être décidée lorsqu'il existe des raisons plausibles de soupçonner qu'une personne a commis ou tenté de commettre une infraction punie d'au moins un an d'emprisonnement.</p>
+      <p>La durée initiale est de <strong>24 heures</strong>, renouvelable une fois sur autorisation du procureur de la République, portant la durée maximale à <strong>48 heures</strong>. Pour certaines infractions graves — crime organisé, terrorisme, trafic de stupéfiants — cette durée peut être prolongée jusqu'à 96 heures (4 jours), voire 144 heures (6 jours) en matière terroriste.</p>
+      <p>Il est essentiel de comprendre que le placement en garde à vue ne signifie pas que vous êtes coupable. C'est une mesure d'investigation, non une sanction. Votre comportement pendant cette période peut néanmoins influencer la suite de la procédure.</p>
+    </div>
+
+    <div class="article-section" id="droits">
+      <h2 class="section-title">Vos droits fondamentaux</h2>
+      <p>Dès le début de la garde à vue, l'officier de police judiciaire a l'obligation légale de vous informer de l'ensemble de vos droits, dans une langue que vous comprenez. Ces droits sont les suivants :</p>
+      <ul>
+        <li><strong>Le droit de connaître la qualification, la date et le lieu présumé de l'infraction qui vous est reprochée.</strong> Vous devez savoir pourquoi vous êtes retenu.</li>
+        <li><strong>Le droit de faire prévenir un proche.</strong> Vous pouvez demander qu'un membre de votre famille ou un proche soit informé de votre placement en garde à vue. En pratique, c'est l'OPJ qui passe cet appel.</li>
+        <li><strong>Le droit d'être examiné par un médecin.</strong> Vous pouvez demander à tout moment l'intervention d'un médecin. En cas de doute sur votre état de santé, n'hésitez pas à exercer ce droit.</li>
+        <li><strong>Le droit de garder le silence.</strong> Vous n'êtes pas obligé de répondre aux questions des enquêteurs, à l'exception de votre identité. Ce droit est fondamental.</li>
+        <li><strong>Le droit d'être assisté par un avocat.</strong> Dès la première heure, vous pouvez demander à être assisté par l'avocat de votre choix ou, à défaut, par un avocat commis d'office.</li>
+      </ul>
+      <div class="highlight-box">
+        <div class="highlight-box-title">Point clé</div>
+        <p>Si vous ne comprenez pas la langue française, vous avez droit à un interprète tout au long de la garde à vue, y compris lors de l'entretien avec votre avocat. Ne renoncez pas à ce droit.</p>
+      </div>
+    </div>
+
+    <div class="article-section" id="premieres">
+      <h2 class="section-title">Les premières heures : comment réagir</h2>
+      <p>La façon dont vous vous comportez dans les premières heures de la garde à vue est déterminante. Voici les principes essentiels à respecter :</p>
+      <ol>
+        <li><strong>Demandez immédiatement un avocat.</strong> C'est la première chose à faire. Avant tout entretien avec les enquêteurs, exercez ce droit. L'avocat peut intervenir dès la première heure pour un entretien confidentiel de 30 minutes.</li>
+        <li><strong>Exercez votre droit au silence.</strong> Vous n'êtes pas obligé de vous expliquer avant d'avoir pu consulter un avocat. Répondre à la hâte, sans conseil juridique, peut vous conduire à des déclarations exploitables contre vous.</li>
+        <li><strong>Ne signez aucun document sans l'avoir lu et compris.</strong> Les procès-verbaux d'audition sont des pièces officielles qui seront versées au dossier pénal.</li>
+        <li><strong>Ne mentez pas.</strong> Si vous décidez de vous exprimer, dites la vérité. Les contradictions sont systématiquement exploitées par les enquêteurs.</li>
+        <li><strong>Restez calme.</strong> L'agitation, les protestations véhémentes ou l'agressivité ne servent pas votre intérêt. Elles peuvent également motiver un prolongement de la mesure.</li>
+      </ol>
+      <p>Il est fréquent que les enquêteurs tentent d'obtenir des aveux rapides en minimisant la gravité des faits ou en laissant entendre qu'une coopération immédiate entraînerait une clémence. Ce type de discours ne vous engage pas juridiquement, mais vos réponses, elles, s'inscriront définitivement dans le dossier.</p>
+    </div>
+
+    <div class="article-section" id="avocat">
+      <h2 class="section-title">Le rôle de l'avocat en garde à vue</h2>
+      <p>Depuis la loi du 14 avril 2011, l'avocat joue un rôle central en garde à vue. Son intervention ne se limite pas à un simple entretien de 30 minutes : il peut désormais <strong>assister aux auditions</strong> et y participer activement.</p>
+      <p>Concrètement, votre avocat peut :</p>
+      <ul>
+        <li>S'entretenir confidentiellement avec vous pendant 30 minutes dès la première heure (renouvelable après la prolongation).</li>
+        <li>Consulter certains éléments du dossier : le procès-verbal de placement en garde à vue, les certificats médicaux et les procès-verbaux des auditions déjà réalisées.</li>
+        <li>Assister à toutes vos auditions et poser des questions à leur issue.</li>
+        <li>Formuler des observations dans les procès-verbaux d'audition.</li>
+        <li>Vous conseiller sur l'opportunité de répondre aux questions ou d'exercer votre droit au silence.</li>
+      </ul>
+      <p>Si vous n'avez pas d'avocat, ne refusez pas la désignation d'un avocat commis d'office. Son assistance, même brève, peut faire une différence significative sur la stratégie à adopter face aux enquêteurs.</p>
+      <div class="highlight-box">
+        <div class="highlight-box-title">Bon à savoir</div>
+        <p>L'avocat commis d'office est rémunéré par l'État dans le cadre de l'aide juridictionnelle de garde à vue. Son intervention ne vous coûte rien. Ne refusez pas son assistance par crainte des honoraires.</p>
+      </div>
+    </div>
+
+    <div class="article-section" id="suites">
+      <h2 class="section-title">Les suites possibles après la garde à vue</h2>
+      <p>À l'issue de la garde à vue, plusieurs décisions sont possibles :</p>
+      <ul>
+        <li><strong>La remise en liberté sans suite.</strong> La procédure s'arrête là. L'affaire est classée sans suite par le parquet, faute de preuves suffisantes ou en raison de la faible gravité des faits.</li>
+        <li><strong>La remise en liberté avec convocation ultérieure.</strong> Vous êtes libéré, mais vous recevrez une convocation devant le tribunal ou un convocation à un nouvel acte d'investigation. Consultez sans attendre un avocat.</li>
+        <li><strong>La présentation au parquet (défèrement).</strong> Vous êtes conduit devant le procureur de la République. Cette étape peut mener à des poursuites immédiates, à une mise en examen ou à une comparution immédiate devant le tribunal correctionnel.</li>
+        <li><strong>La déferrement devant un juge d'instruction.</strong> Pour les affaires complexes ou graves, un juge d'instruction est saisi. Vous avez alors le statut de mis en cause puis, le cas échéant, de mis en examen.</li>
+      </ul>
+      <p>Quelle que soit la suite donnée, il est fortement recommandé de consulter un avocat rapidement après votre libération, même si vous n'avez pas été poursuivi. Les déclarations faites en garde à vue peuvent être utilisées dans des procédures ultérieures.</p>
+    </div>
+
+    <div class="article-section" id="conseils">
+      <h2 class="section-title">Conseils pratiques</h2>
+      <p>Voici quelques recommandations concrètes si vous êtes placé en garde à vue ou si vous craignez de l'être :</p>
+      <ul>
+        <li><strong>Notez le nom de votre avocat.</strong> Avoir le numéro de téléphone de votre avocat habituel ou d'un avocat pénaliste de confiance peut faire gagner un temps précieux.</li>
+        <li><strong>Informez un proche.</strong> Dès que vous apprenez que vous êtes convoqué ou que des policiers se présentent pour vous entendre, informez un proche de votre situation.</li>
+        <li><strong>Ne modifiez pas les preuves.</strong> Toute tentative de destruction ou de dissimulation de preuves constitue une infraction autonome aggravant votre situation.</li>
+        <li><strong>Évitez de contacter d'autres personnes impliquées.</strong> Les communications téléphoniques des personnes en garde à vue sont parfois surveillées ou analysées a posteriori.</li>
+        <li><strong>Consultez un avocat spécialisé en droit pénal.</strong> La garde à vue est le premier acte d'une procédure qui peut durer des mois ou des années. Une défense bien construite dès le début change l'issue des dossiers.</li>
+      </ul>
+    </div>
+
+    <div class="article-cta-box">
+      <div class="article-cta-title">Vous faites face à une garde à vue ou à une convocation policière ?</div>
+      <p class="article-cta-text">Maître François-Xavier LAPERONNIE intervient en urgence dès le placement en garde à vue, 24h/24. Ne laissez pas s'écouler du temps avant de consulter : chaque heure compte dans la construction de votre défense.</p>
+      <div class="article-cta-actions">
+        <a href="index.html#contact" class="btn-or">Prendre rendez-vous</a>
+        <a href="tel:+33545383009" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          05 45 38 30 09
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
+    </div>
+    <div>
+      <p class="f-col-title">Expertise</p>
+      <ul class="f-links">
+        <li><a href="droit-penal.html">Droit Pénal</a></li>
+        <li><a href="droit-famille.html">Droit de la Famille</a></li>
+        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Cabinet</p>
+      <ul class="f-links">
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#valeurs">Nos valeurs</a></li>
+        <li><a href="cases.html">Affaires</a></li>
+        <li><a href="blog.html">Actualités</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Contact</p>
+      <ul class="f-links">
+        <li><a href="index.html#contact">Prendre rendez-vous</a></li>
+        <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
+        <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
+    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">RGPD</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive:true });
+  const sections = document.querySelectorAll('.article-section');
+  const links = document.querySelectorAll('.toc-link');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { threshold:.25, rootMargin:'-100px 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mob-nav');
+  if (hamburger && mobNav) {
+    hamburger.addEventListener('click', () => { const o = mobNav.classList.toggle('open'); hamburger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
+  }
+</script>
+<div class="mob-cta-bar">
+  <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
+  <a href="index.html#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+</div>
+</body>
+</html>
