@@ -113,7 +113,6 @@ function buildNav(activeLink) {
       </div>
     </li>
     <li><a href="index.html#about">Le Cabinet</a></li>
-    <li><a href="index.html#valeurs">Valeurs</a></li>
     <li><a href="cases.html"${activeLink === 'cases' ? ' class="active"' : ''}>Affaires</a></li>
     <li><a href="blog.html"${activeLink === 'blog' ? ' class="active"' : ''}>Actualités</a></li>
     <li><a href="index.html#contact">Contact</a></li>
