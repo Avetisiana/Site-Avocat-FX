@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
     /* ─── NAV ─── */
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s,padding .3s,border-color .3s; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
-    .nav-logo { height:70px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo { height:95px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .nav-logo:hover { opacity:1; }
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
     .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; }
@@ -57,7 +57,7 @@
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
     .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s; padding:2rem; }
     .mob-nav.open { opacity:1; pointer-events:all; }
-    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
     .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
     .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
@@ -378,7 +378,7 @@
     }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .hero-inner { padding-left:1.5rem; padding-right:1.5rem; padding-bottom:4rem; }
       #bio, #parcours, #valeurs, #quote, #affaires-preview, #temoignages, #contact-cta, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .affaires-grid, .testi-grid, .valeurs-grid { grid-template-columns:1fr; }
@@ -458,11 +458,11 @@
 <!-- ░░ STATS BAR ░░ -->
 <div class="stats-bar">
   <div class="stat-cell reveal">
-    <div class="stat-num">15+</div>
+    <div class="stat-num">17+</div>
     <div class="stat-lbl">Ans d'exercice</div>
   </div>
   <div class="stat-cell reveal rd1">
-    <div class="stat-num">500+</div>
+    <div class="stat-num">2500+</div>
     <div class="stat-lbl">Dossiers traités</div>
   </div>
   <div class="stat-cell reveal rd2">
@@ -483,7 +483,7 @@
     <img src="brand_assets/Photo of the lawyer.png" alt="Maître François-Xavier LAPERONNIE" class="bio-photo" />
     <div class="bio-photo-frame"></div>
     <div class="bio-photo-accent">
-      <div class="bio-badge-num">15+</div>
+      <div class="bio-badge-num">17+</div>
       <div class="bio-badge-txt">Ans au barreau</div>
     </div>
   </div>
@@ -493,7 +493,7 @@
     <h2 class="section-title">Maître François-Xavier<br/><em>LAPERONNIE</em></h2>
     <div class="gold-rule" style="margin:1.75rem 0 2.25rem"></div>
 
-    <p>Maître <strong>François-Xavier LAPERONNIE</strong> est avocat inscrit au Barreau de la Charente depuis plus de quinze ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé son expertise au sein de cabinets parisiens reconnus avant de choisir Angoulême pour y créer sa propre structure.</p>
+    <p>Maître <strong>François-Xavier LAPERONNIE</strong> est avocat inscrit au Barreau de la Charente depuis plus de dix-sept ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé son expertise au sein de cabinets parisiens reconnus avant de choisir Angoulême pour y créer sa propre structure.</p>
 
     <p>Son parcours l'a conduit à défendre aussi bien des <strong>particuliers confrontés à des situations de crise</strong> que des chefs d'entreprise et des sociétés exposés à des enjeux juridiques complexes. Cette double expérience nourrit une approche singulière : rigoureuse dans l'analyse, pragmatique dans la solution.</p>
 
@@ -560,7 +560,7 @@
       <div class="tl-year">Auj.</div>
       <div class="tl-body">
         <div class="tl-title">Cabinet de référence en Charente</div>
-        <div class="tl-desc">Plus de 500 dossiers traités, une réputation bâtie sur des résultats concrets et une présence aux côtés de chaque client, de la première consultation au verdict final.</div>
+        <div class="tl-desc">Plus de 2 500 dossiers traités, une réputation bâtie sur des résultats concrets et une présence aux côtés de chaque client, de la première consultation au verdict final.</div>
       </div>
     </div>
 
