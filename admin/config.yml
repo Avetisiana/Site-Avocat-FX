@@ -1,0 +1,121 @@
+backend:
+  name: github
+  repo: Avetisiana/Site-Avocat-FX
+  branch: master
+  base_url: https://site-avocat-fx.vercel.app
+  auth_endpoint: api/auth
+
+media_folder: brand_assets
+public_folder: brand_assets
+
+locale: fr
+
+collections:
+  - name: articles
+    label: "Articles — Actualités"
+    label_singular: "Article"
+    folder: _content/articles
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{category}}) — {{date}}"
+    fields:
+      - label: "Titre"
+        name: title
+        widget: string
+        hint: "Titre complet de l'article"
+
+      - label: "Catégorie"
+        name: category
+        widget: select
+        options:
+          - { label: "Droit Pénal", value: penal }
+          - { label: "Droit de la Famille", value: famille }
+          - { label: "Cryptomonnaies", value: crypto }
+
+      - label: "Date de publication"
+        name: date
+        widget: string
+        hint: "Ex : 15 mai 2026"
+
+      - label: "Temps de lecture"
+        name: readTime
+        widget: string
+        default: "5 min de lecture"
+        hint: "Ex : 7 min de lecture"
+
+      - label: "Introduction (texte en italique sous le titre)"
+        name: intro
+        widget: text
+        hint: "Phrase d'accroche qui apparaît sous le titre, en italique"
+
+      - label: "Contenu de l'article"
+        name: body
+        widget: markdown
+        hint: "Utilisez ## pour les titres de sections (ils génèrent automatiquement le sommaire). Utilisez > **Titre du cadre** suivi du texte pour créer un encadré mis en valeur."
+
+      - label: "Titre du bloc contact (en bas de l'article)"
+        name: ctaTitle
+        widget: string
+        default: "Vous avez une question juridique ?"
+        hint: "Titre de la boîte de contact en bas de page"
+
+      - label: "Texte du bloc contact"
+        name: ctaText
+        widget: text
+        default: "Maître François-Xavier LAPERONNIE est disponible pour une première consultation confidentielle. N'attendez pas pour protéger vos droits."
+
+  - name: cases
+    label: "Affaires"
+    label_singular: "Affaire"
+    folder: _content/cases
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{outcome}}"
+    fields:
+      - label: "Titre de l'affaire"
+        name: title
+        widget: string
+        hint: "Ex : Acquittement en Cour d'assises — Accusation d'homicide volontaire"
+
+      - label: "Domaine"
+        name: domain
+        widget: select
+        options:
+          - { label: "Droit Pénal", value: penal }
+          - { label: "Droit de la Famille", value: famille }
+          - { label: "Cryptomonnaies", value: crypto }
+
+      - label: "Résultat (badge)"
+        name: outcome
+        widget: string
+        hint: "Ex : Acquittement, Garde exclusive obtenue, 85 000 € recouvrés"
+
+      - label: "Date"
+        name: date
+        widget: string
+        hint: "Ex : Octobre 2023"
+
+      - label: "Juridiction"
+        name: court
+        widget: string
+        hint: "Ex : Cour d'assises de Paris, Tribunal judiciaire"
+
+      - label: "Durée"
+        name: duration
+        widget: string
+        hint: "Ex : 14 mois d'instruction, Procédure d'urgence — 3 semaines"
+
+      - label: "Résumé (affiché sur la carte)"
+        name: excerpt
+        widget: text
+        hint: "2-3 phrases décrivant l'affaire, visibles sur la page Affaires"
+
+      - label: "Contenu de l'affaire"
+        name: body
+        widget: markdown
+        hint: "Utilisez ## pour les sections (Contexte, Les faits, Procédure, Stratégie, Résultat). Utilisez > **Titre** pour les encadrés."
+
+      - label: "Texte du résultat (encadré final)"
+        name: resultDetail
+        widget: text
+        hint: "Phrase courte décrivant précisément le verdict ou la décision obtenue"
