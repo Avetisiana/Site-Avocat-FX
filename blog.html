@@ -95,7 +95,8 @@
 
     /* PAGE HERO */
     .page-hero-sm { min-height:56vh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:5rem; background:linear-gradient(155deg, #0A0908 0%, var(--charbon) 60%, #080706 100%); }
-    .page-hero-sm::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 50% 60%, rgba(196,160,64,.04) 0%, transparent 70%); }
+    .hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; opacity:.22; filter:sepia(.3) saturate(.85); transform:scale(1.04); z-index:0; }
+    .page-hero-sm::before { content:''; position:absolute; inset:0; z-index:1; background: linear-gradient(to bottom, rgba(6,5,4,.6) 0%, rgba(6,5,4,.3) 40%, rgba(6,5,4,.8) 100%), radial-gradient(ellipse 80% 70% at 50% 60%, rgba(196,160,64,.05) 0%, transparent 70%); }
     .hero-content { position:relative; z-index:2; padding:0 5rem; }
     .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
     .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
@@ -231,6 +232,7 @@
 
 <!-- HERO -->
 <section class="page-hero-sm">
+  <img src="brand_assets/Actualités juridiques.png" alt="" class="hero-bg-img" aria-hidden="true" />
   <div class="hero-content">
     <div class="breadcrumb"><a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span><span>Actualités juridiques</span></div>
     <h1>Actualités <em>juridiques</em></h1>
