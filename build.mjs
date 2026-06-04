@@ -291,7 +291,7 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <style>
     :root { --cat:${cat.color}; --cat-bg:${cat.bg}; --cat-border:${cat.border}; }
 ${SHARED_CSS}
-    .article-header { padding:9rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
+    .article-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
     .article-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%,${cat.glow} 0%,transparent 70%); }
     .article-header-inner { position:relative; z-index:1; max-width:860px; }
     .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
@@ -464,7 +464,7 @@ function generateCaseHtml(slug, fm, tocLinks, sectionsHtml) {
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
 ${SHARED_CSS}
-    .case-header { padding:9rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
+    .case-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
     .case-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%,rgba(196,160,64,.04) 0%,transparent 70%); }
     .case-header-inner { position:relative; z-index:1; max-width:860px; }
     .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
