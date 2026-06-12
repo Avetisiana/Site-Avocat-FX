@@ -652,7 +652,7 @@ function generateExpertisePage(cfg, data) {
       </div>
     </div>
     <div class="form-wrap reveal rd2">
-      <form action="https://formsubmit.co/arthur.avetisian@hotmail.com" method="POST">
+      <form action="https://formsubmit.co/fx.laperonnie@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande de consultation — ${formDomain}" />
         <input type="hidden" name="_next" value="https://cabinet-laperonnie.fr/merci.html" />
         <input type="hidden" name="_captcha" value="false" />
