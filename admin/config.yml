@@ -119,3 +119,210 @@ collections:
         name: resultDetail
         widget: text
         hint: "Phrase courte décrivant précisément le verdict ou la décision obtenue"
+
+  - name: pages
+    label: "Contenu des pages"
+    files:
+
+      - name: homepage
+        label: "Page d'accueil"
+        file: _content/pages/homepage.yml
+        fields:
+          - {label: "Héro — Tagline", name: hero_tagline, widget: string}
+          - {label: "Stat 1 — Chiffre", name: stat1_num, widget: string}
+          - {label: "Stat 1 — Libellé", name: stat1_lbl, widget: string}
+          - {label: "Stat 2 — Chiffre", name: stat2_num, widget: string}
+          - {label: "Stat 2 — Libellé", name: stat2_lbl, widget: string}
+          - {label: "Stat 3 — Chiffre", name: stat3_num, widget: string}
+          - {label: "Stat 3 — Libellé", name: stat3_lbl, widget: string}
+          - {label: "Stat 4 — Chiffre", name: stat4_num, widget: string}
+          - {label: "Stat 4 — Libellé", name: stat4_lbl, widget: string}
+          - {label: "À propos — Paragraphe 1", name: about_p1, widget: text}
+          - {label: "À propos — Paragraphe 2", name: about_p2, widget: text}
+          - {label: "À propos — Paragraphe 3", name: about_p3, widget: text}
+          - {label: "Citation", name: quote_text, widget: text}
+          - {label: "Expertise Pénal — Titre", name: exp_penal_title, widget: string}
+          - {label: "Expertise Pénal — Description", name: exp_penal_desc, widget: text}
+          - {label: "Expertise Pénal — Tags", name: exp_penal_tags, widget: string}
+          - {label: "Expertise Famille — Titre", name: exp_famille_title, widget: string}
+          - {label: "Expertise Famille — Description", name: exp_famille_desc, widget: text}
+          - {label: "Expertise Famille — Tags", name: exp_famille_tags, widget: string}
+          - {label: "Expertise Crypto — Titre", name: exp_crypto_title, widget: string}
+          - {label: "Expertise Crypto — Description", name: exp_crypto_desc, widget: text}
+          - {label: "Expertise Crypto — Tags", name: exp_crypto_tags, widget: string}
+          - {label: "Témoignage 1 — Texte", name: testi1_text, widget: text}
+          - {label: "Témoignage 1 — Nom", name: testi1_name, widget: string}
+          - {label: "Témoignage 1 — Rôle", name: testi1_role, widget: string}
+          - {label: "Témoignage 2 — Texte", name: testi2_text, widget: text}
+          - {label: "Témoignage 2 — Nom", name: testi2_name, widget: string}
+          - {label: "Témoignage 2 — Rôle", name: testi2_role, widget: string}
+          - {label: "Témoignage 3 — Texte", name: testi3_text, widget: text}
+          - {label: "Témoignage 3 — Nom", name: testi3_name, widget: string}
+          - {label: "Témoignage 3 — Rôle", name: testi3_role, widget: string}
+
+      - name: cabinet
+        label: "Page Le Cabinet"
+        file: _content/pages/cabinet.yml
+        fields:
+          - {label: "Stat 1 — Chiffre", name: stat1_num, widget: string}
+          - {label: "Stat 1 — Libellé", name: stat1_lbl, widget: string}
+          - {label: "Stat 2 — Chiffre", name: stat2_num, widget: string}
+          - {label: "Stat 2 — Libellé", name: stat2_lbl, widget: string}
+          - {label: "Stat 3 — Chiffre", name: stat3_num, widget: string}
+          - {label: "Stat 3 — Libellé", name: stat3_lbl, widget: string}
+          - {label: "Stat 4 — Chiffre", name: stat4_num, widget: string}
+          - {label: "Stat 4 — Libellé", name: stat4_lbl, widget: string}
+          - {label: "Bio — Paragraphe 1", name: bio_p1, widget: text}
+          - {label: "Bio — Paragraphe 2", name: bio_p2, widget: text}
+          - {label: "Bio — Paragraphe 3", name: bio_p3, widget: text}
+          - {label: "Bio — Paragraphe 4", name: bio_p4, widget: text}
+          - {label: "Parcours 1 — Année", name: tl1_year, widget: string}
+          - {label: "Parcours 1 — Titre", name: tl1_title, widget: string}
+          - {label: "Parcours 1 — Description", name: tl1_desc, widget: text}
+          - {label: "Parcours 2 — Année", name: tl2_year, widget: string}
+          - {label: "Parcours 2 — Titre", name: tl2_title, widget: string}
+          - {label: "Parcours 2 — Description", name: tl2_desc, widget: text}
+          - {label: "Parcours 3 — Année", name: tl3_year, widget: string}
+          - {label: "Parcours 3 — Titre", name: tl3_title, widget: string}
+          - {label: "Parcours 3 — Description", name: tl3_desc, widget: text}
+          - {label: "Parcours 4 — Année", name: tl4_year, widget: string}
+          - {label: "Parcours 4 — Titre", name: tl4_title, widget: string}
+          - {label: "Parcours 4 — Description", name: tl4_desc, widget: text}
+          - {label: "Parcours 5 — Année", name: tl5_year, widget: string}
+          - {label: "Parcours 5 — Titre", name: tl5_title, widget: string}
+          - {label: "Parcours 5 — Description", name: tl5_desc, widget: text}
+          - {label: "Parcours 6 — Année", name: tl6_year, widget: string}
+          - {label: "Parcours 6 — Titre", name: tl6_title, widget: string}
+          - {label: "Parcours 6 — Description", name: tl6_desc, widget: text}
+          - {label: "Valeur 1 — Titre", name: val1_title, widget: string}
+          - {label: "Valeur 1 — Description", name: val1_desc, widget: text}
+          - {label: "Valeur 2 — Titre", name: val2_title, widget: string}
+          - {label: "Valeur 2 — Description", name: val2_desc, widget: text}
+          - {label: "Valeur 3 — Titre", name: val3_title, widget: string}
+          - {label: "Valeur 3 — Description", name: val3_desc, widget: text}
+          - {label: "Valeur 4 — Titre", name: val4_title, widget: string}
+          - {label: "Valeur 4 — Description", name: val4_desc, widget: text}
+          - {label: "Citation", name: quote_text, widget: text}
+          - {label: "Témoignage 1 — Texte", name: testi1_text, widget: text}
+          - {label: "Témoignage 1 — Nom", name: testi1_name, widget: string}
+          - {label: "Témoignage 1 — Rôle", name: testi1_role, widget: string}
+          - {label: "Témoignage 2 — Texte", name: testi2_text, widget: text}
+          - {label: "Témoignage 2 — Nom", name: testi2_name, widget: string}
+          - {label: "Témoignage 2 — Rôle", name: testi2_role, widget: string}
+          - {label: "Témoignage 3 — Texte", name: testi3_text, widget: text}
+          - {label: "Témoignage 3 — Nom", name: testi3_name, widget: string}
+          - {label: "Témoignage 3 — Rôle", name: testi3_role, widget: string}
+
+      - name: droit-penal
+        label: "Page Droit Pénal"
+        file: _content/pages/droit-penal.yml
+        fields:
+          - {label: "Héro — Sous-titre", name: hero_sub, widget: string}
+          - {label: "Héro — Titre ligne 1", name: hero_title1, widget: string}
+          - {label: "Héro — Titre ligne 2 (italique)", name: hero_title2, widget: string}
+          - {label: "Héro — Tagline", name: hero_tagline, widget: string}
+          - {label: "Intro — Titre ligne 1", name: intro_heading1, widget: string}
+          - {label: "Intro — Titre ligne 2 (italique)", name: intro_heading2, widget: string}
+          - {label: "Intro — Paragraphe 1", name: intro_p1, widget: text}
+          - {label: "Intro — Paragraphe 2 (supporte **gras**)", name: intro_p2, widget: text}
+          - {label: "Intro — Paragraphe 3 (supporte **gras**)", name: intro_p3, widget: text}
+          - {label: "Point clé 1 — Titre", name: key1_title, widget: string}
+          - {label: "Point clé 1 — Description", name: key1_desc, widget: string}
+          - {label: "Point clé 2 — Titre", name: key2_title, widget: string}
+          - {label: "Point clé 2 — Description", name: key2_desc, widget: string}
+          - {label: "Point clé 3 — Titre", name: key3_title, widget: string}
+          - {label: "Point clé 3 — Description", name: key3_desc, widget: string}
+          - {label: "Bandeau CTA 1 — Label", name: cta1_label, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 1", name: cta1_heading1, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 2 (italique)", name: cta1_heading2, widget: string}
+          - {label: "Services — Titre ligne 1", name: services_heading1, widget: string}
+          - {label: "Services — Titre ligne 2 (italique)", name: services_heading2, widget: string}
+          - {label: "Service 1 — Titre", name: svc1_title, widget: string}
+          - {label: "Service 1 — Description", name: svc1_desc, widget: text}
+          - {label: "Service 2 — Titre", name: svc2_title, widget: string}
+          - {label: "Service 2 — Description", name: svc2_desc, widget: text}
+          - {label: "Service 3 — Titre", name: svc3_title, widget: string}
+          - {label: "Service 3 — Description", name: svc3_desc, widget: text}
+          - {label: "Service 4 — Titre", name: svc4_title, widget: string}
+          - {label: "Service 4 — Description", name: svc4_desc, widget: text}
+          - {label: "Bandeau CTA 2 — Titre ligne 1", name: cta2_heading1, widget: string}
+          - {label: "Bandeau CTA 2 — Titre ligne 2 (italique)", name: cta2_heading2, widget: string}
+          - {label: "Contact — Titre ligne 1", name: contact_heading1, widget: string}
+          - {label: "Contact — Titre ligne 2 (italique)", name: contact_heading2, widget: string}
+          - {label: "Contact — Introduction", name: contact_intro, widget: text}
+
+      - name: droit-famille
+        label: "Page Droit de la Famille"
+        file: _content/pages/droit-famille.yml
+        fields:
+          - {label: "Héro — Sous-titre", name: hero_sub, widget: string}
+          - {label: "Héro — Titre ligne 1", name: hero_title1, widget: string}
+          - {label: "Héro — Titre ligne 2 (italique)", name: hero_title2, widget: string}
+          - {label: "Héro — Tagline", name: hero_tagline, widget: string}
+          - {label: "Intro — Titre ligne 1", name: intro_heading1, widget: string}
+          - {label: "Intro — Titre ligne 2 (italique)", name: intro_heading2, widget: string}
+          - {label: "Intro — Paragraphe 1", name: intro_p1, widget: text}
+          - {label: "Intro — Paragraphe 2 (supporte **gras**)", name: intro_p2, widget: text}
+          - {label: "Intro — Paragraphe 3 (supporte **gras**)", name: intro_p3, widget: text}
+          - {label: "Point clé 1 — Titre", name: key1_title, widget: string}
+          - {label: "Point clé 1 — Description", name: key1_desc, widget: string}
+          - {label: "Point clé 2 — Titre", name: key2_title, widget: string}
+          - {label: "Point clé 2 — Description", name: key2_desc, widget: string}
+          - {label: "Point clé 3 — Titre", name: key3_title, widget: string}
+          - {label: "Point clé 3 — Description", name: key3_desc, widget: string}
+          - {label: "Bandeau CTA 1 — Label", name: cta1_label, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 1", name: cta1_heading1, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 2 (italique)", name: cta1_heading2, widget: string}
+          - {label: "Services — Titre ligne 1", name: services_heading1, widget: string}
+          - {label: "Services — Titre ligne 2 (italique)", name: services_heading2, widget: string}
+          - {label: "Service 1 — Titre", name: svc1_title, widget: string}
+          - {label: "Service 1 — Description", name: svc1_desc, widget: text}
+          - {label: "Service 2 — Titre", name: svc2_title, widget: string}
+          - {label: "Service 2 — Description", name: svc2_desc, widget: text}
+          - {label: "Service 3 — Titre", name: svc3_title, widget: string}
+          - {label: "Service 3 — Description", name: svc3_desc, widget: text}
+          - {label: "Service 4 — Titre", name: svc4_title, widget: string}
+          - {label: "Service 4 — Description", name: svc4_desc, widget: text}
+          - {label: "Bandeau CTA 2 — Titre ligne 1", name: cta2_heading1, widget: string}
+          - {label: "Bandeau CTA 2 — Titre ligne 2 (italique)", name: cta2_heading2, widget: string}
+          - {label: "Contact — Titre ligne 1", name: contact_heading1, widget: string}
+          - {label: "Contact — Titre ligne 2 (italique)", name: contact_heading2, widget: string}
+          - {label: "Contact — Introduction", name: contact_intro, widget: text}
+
+      - name: cryptomonnaies
+        label: "Page Cryptomonnaies"
+        file: _content/pages/cryptomonnaies.yml
+        fields:
+          - {label: "Héro — Sous-titre", name: hero_sub, widget: string}
+          - {label: "Héro — Titre ligne 1", name: hero_title1, widget: string}
+          - {label: "Héro — Titre ligne 2 (italique)", name: hero_title2, widget: string}
+          - {label: "Héro — Tagline", name: hero_tagline, widget: string}
+          - {label: "Intro — Titre ligne 1", name: intro_heading1, widget: string}
+          - {label: "Intro — Titre ligne 2 (italique)", name: intro_heading2, widget: string}
+          - {label: "Intro — Paragraphe 1", name: intro_p1, widget: text}
+          - {label: "Intro — Paragraphe 2 (supporte **gras**)", name: intro_p2, widget: text}
+          - {label: "Intro — Paragraphe 3 (supporte **gras**)", name: intro_p3, widget: text}
+          - {label: "Point clé 1 — Titre", name: key1_title, widget: string}
+          - {label: "Point clé 1 — Description", name: key1_desc, widget: string}
+          - {label: "Point clé 2 — Titre", name: key2_title, widget: string}
+          - {label: "Point clé 2 — Description", name: key2_desc, widget: string}
+          - {label: "Point clé 3 — Titre", name: key3_title, widget: string}
+          - {label: "Point clé 3 — Description", name: key3_desc, widget: string}
+          - {label: "Bandeau CTA 1 — Label", name: cta1_label, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 1", name: cta1_heading1, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 2 (italique)", name: cta1_heading2, widget: string}
+          - {label: "Services — Titre ligne 1", name: services_heading1, widget: string}
+          - {label: "Services — Titre ligne 2 (italique)", name: services_heading2, widget: string}
+          - {label: "Service 1 — Titre", name: svc1_title, widget: string}
+          - {label: "Service 1 — Description", name: svc1_desc, widget: text}
+          - {label: "Service 2 — Titre", name: svc2_title, widget: string}
+          - {label: "Service 2 — Description", name: svc2_desc, widget: text}
+          - {label: "Service 3 — Titre", name: svc3_title, widget: string}
+          - {label: "Service 3 — Description", name: svc3_desc, widget: text}
+          - {label: "Service 4 — Titre", name: svc4_title, widget: string}
+          - {label: "Service 4 — Description", name: svc4_desc, widget: text}
+          - {label: "Bandeau CTA 2 — Titre ligne 1", name: cta2_heading1, widget: string}
+          - {label: "Bandeau CTA 2 — Titre ligne 2 (italique)", name: cta2_heading2, widget: string}
+          - {label: "Contact — Titre ligne 1", name: contact_heading1, widget: string}
+          - {label: "Contact — Titre ligne 2 (italique)", name: contact_heading2, widget: string}
+          - {label: "Contact — Introduction", name: contact_intro, widget: text}

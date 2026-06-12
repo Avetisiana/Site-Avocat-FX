@@ -5,6 +5,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const matter = require('gray-matter');
 const { marked } = require('marked');
+const yaml = require('js-yaml');
 
 // ─── Category config ──────────────────────────────────────────────────────────
 
@@ -168,7 +169,7 @@ const FOOTER = `
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact">Prendre rendez-vous</a></li>
+        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
@@ -257,19 +258,484 @@ const SHARED_CSS = `
     .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
     .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
-    footer { background:#070707; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
     .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
     .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
     .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
     .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
-    .f-links a:hover { color:var(--or); }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
     .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
     .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
     .footer-legal { display:flex; gap:2rem; }
     .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
     .footer-legal a:hover { color:var(--gris); }`;
+
+// ─── Page YAML loader ─────────────────────────────────────────────────────────
+
+function readPageYaml(slug) {
+  const filePath = path.join('_content/pages', `${slug}.yml`);
+  if (!fs.existsSync(filePath)) return null;
+  try {
+    return yaml.load(fs.readFileSync(filePath, 'utf8')) || {};
+  } catch (e) {
+    console.warn(`Warning: could not parse ${filePath}: ${e.message}`);
+    return null;
+  }
+}
+
+// ─── CMS marker injection ─────────────────────────────────────────────────────
+
+function injectCms(html, data) {
+  return html.replace(
+    /<!-- CMS:([a-zA-Z0-9_]+) -->([\s\S]*?)<!-- \/CMS:\1 -->/g,
+    (match, key) => {
+      if (data[key] === undefined) return match;
+      const val = String(data[key]);
+      return `<!-- CMS:${key} -->${marked.parseInline(val)}<!-- /CMS:${key} -->`;
+    }
+  );
+}
+
+// ─── SVG icons per expertise page ─────────────────────────────────────────────
+
+const SVGS_PENAL = [
+  `<rect x="8" y="10" width="32" height="28" rx="2"/><line x1="8" y1="18" x2="40" y2="18"/><circle cx="24" cy="30" r="5"/><line x1="19" y1="10" x2="29" y2="10"/>`,
+  `<circle cx="24" cy="20" r="10"/><path d="M10 42c0-7.7 6.3-14 14-14s14 6.3 14 14"/><line x1="24" y1="6" x2="24" y2="10"/><line x1="38" y1="20" x2="34" y2="20"/><line x1="14" y1="20" x2="10" y2="20"/>`,
+  `<line x1="24" y1="5" x2="24" y2="11"/><line x1="12" y1="11" x2="36" y2="11"/><line x1="15" y1="11" x2="7" y2="28"/><line x1="33" y1="11" x2="41" y2="28"/><line x1="4" y1="28" x2="44" y2="28"/><line x1="24" y1="28" x2="24" y2="42"/><line x1="16" y1="42" x2="32" y2="42"/>`,
+  `<path d="M24 6 L38 14 L38 30 C38 38 24 44 24 44 C24 44 10 38 10 30 L10 14 Z"/><polyline points="18,24 22,28 30,20"/>`,
+];
+
+const SVGS_FAMILLE = [
+  `<circle cx="24" cy="12" r="7"/><path d="M10 42c0-7.7 6.3-14 14-14s14 6.3 14 14"/><line x1="36" y1="20" x2="44" y2="20"/><line x1="40" y1="16" x2="40" y2="24"/>`,
+  `<circle cx="24" cy="10" r="6"/><circle cx="12" cy="28" r="5"/><circle cx="36" cy="28" r="5"/><line x1="24" y1="16" x2="15" y2="23"/><line x1="24" y1="16" x2="33" y2="23"/><path d="M7 42c0-5.5 4.5-10 10-10"/><path d="M31 32c5.5 0 10 4.5 10 10"/>`,
+  `<rect x="8" y="6" width="32" height="36" rx="1.5"/><line x1="15" y1="16" x2="33" y2="16"/><line x1="15" y1="22" x2="33" y2="22"/><line x1="15" y1="28" x2="26" y2="28"/><circle cx="34" cy="36" r="5"/><line x1="32" y1="36" x2="36" y2="36"/><line x1="34" y1="34" x2="34" y2="38"/>`,
+  `<path d="M24 6 L38 14 L38 34 L24 42 L10 34 L10 14 Z"/><line x1="24" y1="6" x2="24" y2="42"/><line x1="10" y1="14" x2="38" y2="34"/><line x1="38" y1="14" x2="10" y2="34"/>`,
+];
+
+const SVGS_CRYPTO = [
+  `<path d="M24 6 L38 14 L38 30 C38 38 24 44 24 44 C24 44 10 38 10 30 L10 14 Z"/><line x1="24" y1="18" x2="24" y2="28"/><circle cx="24" cy="32" r="1.5" fill="currentColor" stroke="none"/>`,
+  `<rect x="6" y="14" width="36" height="20" rx="3"/><line x1="6" y1="22" x2="42" y2="22"/><circle cx="15" cy="30" r="3"/><line x1="24" y1="27" x2="36" y2="27"/><line x1="24" y1="31" x2="32" y2="31"/>`,
+  `<circle cx="14" cy="24" r="6"/><circle cx="34" cy="12" r="6"/><circle cx="34" cy="36" r="6"/><line x1="20" y1="24" x2="28" y2="14"/><line x1="20" y1="24" x2="28" y2="34"/>`,
+  `<circle cx="24" cy="24" r="10"/><line x1="24" y1="6" x2="24" y2="14"/><line x1="24" y1="34" x2="24" y2="42"/><line x1="6" y1="24" x2="14" y2="24"/><line x1="34" y1="24" x2="42" y2="24"/><path d="M21 19c0 0 2-1 4 0s3 2 3 3.5s-2 3-4 3s-4 1.5-4 3.5s2 3.5 4 3.5s4-1 4-1"/><line x1="24" y1="17" x2="24" y2="19"/><line x1="24" y1="30" x2="24" y2="32"/>`,
+];
+
+// ─── Expertise page HTML generator ────────────────────────────────────────────
+
+function generateExpertisePage(cfg, data) {
+  const { slug, bg, bgPosition, bgFilter, activeNav, formDomain, svgs } = cfg;
+  const d = data;
+  const pi = (s) => marked.parseInline(String(s || ''));
+
+  const navActive = (href) => href === activeNav ? ' class="active"' : '';
+  const mobNavActive = (href) => href === activeNav ? ' class="mob-close active"' : ' class="mob-close"';
+
+  const PHONE_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+  const ARROW_SVG_SM = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${d.hero_title1} ${d.hero_title2} — Cabinet LAPERONNIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
+    nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
+    .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo:hover { opacity:1; }
+    .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
+    .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+    .nav-links a:hover { color:var(--or); } .nav-links a:hover::after { transform:scaleX(1); }
+    .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s ease,color .22s ease; }
+    .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+    .nav-cta-group { display:flex; align-items:center; gap:1rem; }
+    .nav-phone { display:flex; align-items:center; gap:.5rem; color:var(--blanc-dim); text-decoration:none; font-size:.62rem; font-weight:600; letter-spacing:.1em; border:1px solid rgba(196,160,64,.18); padding:.55rem 1.1rem; transition:color .22s,border-color .22s,background .22s; white-space:nowrap; }
+    .nav-phone:hover { color:var(--or); border-color:rgba(196,160,64,.45); background:rgba(196,160,64,.05); }
+    .nav-phone svg { width:13px; height:13px; color:var(--or); flex-shrink:0; }
+    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    .nav-item-has-drop { position:relative; }
+    .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
+    .nav-item-has-drop > a::after { display:none; }
+    .drop-chevron { display:inline-block; width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; border-top:3.5px solid currentColor; transition:transform .25s ease; margin-top:1px; flex-shrink:0; }
+    .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
+    .nav-dropdown { position:absolute; top:calc(100% + 1.1rem); left:50%; transform:translateX(-50%) translateY(-8px); min-width:210px; background:rgba(6,5,4,.97); border:1px solid rgba(196,160,64,.15); border-top:2px solid var(--or); backdrop-filter:blur(18px); opacity:0; visibility:hidden; transition:opacity .25s ease,transform .25s ease,visibility 0s .25s; z-index:1001; }
+    .nav-item-has-drop:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); transition:opacity .25s ease,transform .25s ease,visibility 0s 0s; }
+    .nav-dropdown a { display:block; padding:.72rem 1.4rem; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blanc-dim); text-decoration:none; border-bottom:1px solid rgba(196,160,64,.07); transition:color .18s,background .18s,padding-left .18s; position:relative; }
+    .nav-dropdown a:last-child { border-bottom:none; }
+    .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
+    .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
+    .nav-dropdown a:hover::before { transform:scaleY(1); }
+    .nav-dropdown a.active { color:var(--or); }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+    .reveal.vis { opacity:1; transform:translateY(0); }
+    .rd1 { transition-delay:.1s; } .rd2 { transition-delay:.2s; } .rd3 { transition-delay:.3s; }
+    .eyebrow { font-size:.58rem; font-weight:600; letter-spacing:.42em; color:var(--or); text-transform:uppercase; display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .eyebrow::before { content:''; width:28px; height:1px; background:var(--or); flex-shrink:0; }
+    .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3.6vw,2.9rem); font-weight:700; line-height:1.18; letter-spacing:-.015em; color:var(--blanc); }
+    .section-title em { color:var(--or); font-style:italic; }
+    .page-hero { min-height:70vh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:5rem; }
+    .page-hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:${bgPosition || 'center 35%'}; filter:${bgFilter || 'contrast(1.12) brightness(0.55) saturate(0.45)'}; z-index:0; }
+    .page-hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(to top, var(--charbon) 0%, rgba(6,5,4,.7) 40%, rgba(6,5,4,.3) 100%); }
+    .page-hero-tint { position:absolute; inset:0; z-index:2; pointer-events:none; background:rgba(196,160,64,.06); mix-blend-mode:overlay; }
+    .page-hero-content { position:relative; z-index:3; padding:0 5rem; }
+    .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
+    .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
+    .breadcrumb a:hover { color:var(--or); }
+    .breadcrumb-sep { color:rgba(196,160,64,.4); }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,5.5rem); font-weight:700; line-height:.95; letter-spacing:-.025em; color:var(--blanc); margin-bottom:.3em; }
+    .page-hero h1 em { color:var(--or); font-style:italic; }
+    .page-hero-sub { font-size:.62rem; font-weight:600; letter-spacing:.4em; text-transform:uppercase; color:var(--gris); margin-bottom:1.5rem; }
+    .page-hero-tagline { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:500px; line-height:1.65; }
+    .page-hero-rule { width:50px; height:1px; background:linear-gradient(90deg,var(--or-dark),var(--or)); margin-top:1.75rem; }
+    #intro { padding:6rem 5rem; background:var(--charbon-mid); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+    .intro-text p { font-size:.86rem; color:var(--blanc-dim); line-height:1.92; font-weight:300; margin-bottom:1.2rem; }
+    .intro-text p strong { color:var(--blanc); font-weight:500; }
+    .intro-keys { display:flex; flex-direction:column; gap:1.25rem; padding-top:1rem; }
+    .intro-key { padding:1.4rem 1.6rem; border:1px solid rgba(196,160,64,.12); background:rgba(196,160,64,.025); transition:border-color .3s; }
+    .intro-key:hover { border-color:rgba(196,160,64,.3); }
+    .intro-key-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--blanc); margin-bottom:.4rem; }
+    .intro-key-desc { font-size:.75rem; color:var(--gris); line-height:1.7; font-weight:300; }
+    #services { padding:6rem 5rem; }
+    .services-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5px; background:rgba(196,160,64,.08); margin-top:3.5rem; }
+    .service-card { background:var(--charbon-card); padding:3rem; position:relative; overflow:hidden; transition:background .3s ease; }
+    .service-card:hover { background:#161210; }
+    .service-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); transform:scaleX(0); transform-origin:left; transition:transform .42s cubic-bezier(.4,0,.2,1); }
+    .service-card:hover::before { transform:scaleX(1); }
+    .service-num { font-family:'Playfair Display',serif; font-size:.58rem; letter-spacing:.3em; color:var(--or-dark); font-weight:400; margin-bottom:1.25rem; }
+    .service-icon { width:36px; height:36px; color:var(--or); margin-bottom:1.25rem; opacity:.85; }
+    .service-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:var(--blanc); margin-bottom:.8rem; line-height:1.3; }
+    .service-desc { font-size:.79rem; color:var(--gris); line-height:1.82; font-weight:300; }
+    #contact { padding:6rem 5rem; background:var(--charbon-mid); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+    .contact-info-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.2vw,2.7rem); font-weight:700; color:var(--blanc); line-height:1.22; margin-bottom:1.4rem; }
+    .contact-info-title em { color:var(--or); font-style:italic; }
+    .contact-intro { font-size:.83rem; color:var(--gris); line-height:1.85; font-weight:300; margin-bottom:2.5rem; }
+    .c-detail { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.5rem; }
+    .c-icon { width:38px; height:38px; flex-shrink:0; border:1px solid rgba(196,160,64,.22); display:flex; align-items:center; justify-content:center; color:var(--or); }
+    .c-label { font-size:.57rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.2rem; }
+    .c-value { font-size:.85rem; color:var(--blanc); font-weight:400; }
+    .form-wrap { background:var(--charbon-card); border:1px solid rgba(196,160,64,.1); padding:3rem; }
+    .form-heading { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:600; color:var(--blanc); margin-bottom:.5rem; }
+    .form-domain-tag { display:inline-block; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); background:rgba(196,160,64,.08); border:1px solid rgba(196,160,64,.2); padding:.3rem .75rem; margin-bottom:1.75rem; }
+    .fg { margin-bottom:1.4rem; }
+    .fg label { display:block; font-size:.57rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.45rem; }
+    .fg input, .fg select, .fg textarea { width:100%; background:rgba(255,255,255,.025); border:1px solid rgba(196,160,64,.14); color:var(--blanc); padding:.82rem 1rem; font-family:'Montserrat',sans-serif; font-size:.81rem; font-weight:300; outline:none; resize:none; transition:border-color .2s ease; -webkit-appearance:none; appearance:none; }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--or); }
+    .fg input::placeholder, .fg textarea::placeholder { color:var(--gris); opacity:.5; }
+    .fg select option { background:var(--charbon-card); color:var(--blanc); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .btn-send { width:100%; background:var(--or); color:var(--charbon); border:none; padding:1.05rem; cursor:pointer; font-family:'Montserrat',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase; transition:background .24s ease,box-shadow .24s ease; }
+    .btn-send:hover { background:var(--or-pale); box-shadow:0 4px 24px rgba(196,160,64,.3); }
+    .cta-strip { background:var(--charbon-light); border-top:1px solid rgba(196,160,64,.12); border-bottom:1px solid rgba(196,160,64,.12); padding:3rem 5rem; display:flex; align-items:center; justify-content:space-between; gap:3rem; }
+    .cta-strip-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:.5rem; }
+    .cta-strip-heading { font-family:'Playfair Display',serif; font-size:clamp(1.15rem,2vw,1.65rem); font-weight:600; color:var(--blanc); line-height:1.3; }
+    .cta-strip-heading em { color:var(--or); font-style:italic; }
+    .cta-strip-actions { display:flex; align-items:center; gap:1rem; flex-shrink:0; }
+    .btn-cta-fill { display:inline-flex; align-items:center; gap:.6rem; background:var(--or); color:var(--charbon); padding:.85rem 2rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:background .22s,box-shadow .22s; white-space:nowrap; }
+    .btn-cta-fill:hover { background:var(--or-pale); box-shadow:0 4px 20px rgba(196,160,64,.3); }
+    .btn-cta-fill svg { width:12px; height:12px; }
+    .btn-cta-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.28); color:var(--blanc-dim); padding:.82rem 1.4rem; font-size:.62rem; font-weight:600; letter-spacing:.1em; text-decoration:none; transition:color .22s,border-color .22s,background .22s; white-space:nowrap; }
+    .btn-cta-outline:hover { color:var(--or); border-color:rgba(196,160,64,.5); background:rgba(196,160,64,.04); }
+    .btn-cta-outline svg { width:13px; height:13px; color:var(--or); }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger:hover { border-color:rgba(196,160,64,.55); }
+    .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
+    .mob-nav.open { opacity:1; pointer-events:all; }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
+    .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
+    .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
+    .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; transition:all .2s; }
+    .mob-nav-phone:hover { background:rgba(196,160,64,.08); border-color:var(--or); }
+    .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
+    .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
+    .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
+    .mob-cta-rdv { background:var(--or); color:var(--charbon); }
+    @media(max-width:900px) { .cta-strip { flex-direction:column; align-items:flex-start; padding:2.5rem; } .cta-strip-actions { flex-wrap:wrap; } }
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      #intro, .contact-grid, .footer-grid { grid-template-columns:1fr; gap:3rem; }
+      .services-grid { grid-template-columns:1fr; }
+      #intro, #services, #contact, footer { padding-left:2.5rem; padding-right:2.5rem; }
+      .page-hero-content { padding:0 2.5rem; }
+    }
+    @media(max-width:720px) {
+      nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
+      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .page-hero-content, #intro, #services, #contact, footer { padding-left:1.5rem; padding-right:1.5rem; }
+      .cta-strip { padding:2rem 1.5rem; } .form-row { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <ul class="nav-links">
+    <li class="nav-item-has-drop">
+      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <div class="nav-dropdown">
+        <a href="droit-penal.html"${navActive('droit-penal')}>Droit Pénal</a>
+        <a href="droit-famille.html"${navActive('droit-famille')}>Droit de la Famille</a>
+        <a href="cryptomonnaies.html"${navActive('cryptomonnaies')}>Cryptomonnaies</a>
+      </div>
+    </li>
+    <li><a href="cabinet.html">Le Cabinet</a></li>
+    <li><a href="cases.html">Affaires</a></li>
+    <li><a href="blog.html">Actualités</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="tel:+33545383009" class="nav-phone">${PHONE_SVG}<span>05 45 38 30 09</span></a>
+    <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <ul class="mob-nav-links">
+    <li><a href="droit-penal.html"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
+    <li><a href="droit-famille.html"${mobNavActive('droit-famille')}>Droit de la Famille</a></li>
+    <li><a href="cryptomonnaies.html"${mobNavActive('cryptomonnaies')}>Cryptomonnaies</a></li>
+    <li><a href="cases.html" class="mob-close">Affaires</a></li>
+    <li><a href="blog.html" class="mob-close">Actualités</a></li>
+    <li><a href="#contact" class="mob-close">Contact</a></li>
+  </ul>
+  <div class="mob-nav-divider"></div>
+  <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
+</div>
+
+<section class="page-hero">
+  <img src="brand_assets/${bg}" class="page-hero-bg" alt="" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-tint"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
+      <span>${d.hero_title1} ${d.hero_title2}</span>
+    </div>
+    <p class="page-hero-sub">${d.hero_sub}</p>
+    <h1>${d.hero_title1}<br/><em>${d.hero_title2}</em></h1>
+    <p class="page-hero-tagline">${d.hero_tagline}</p>
+    <div class="page-hero-rule"></div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="intro-text reveal">
+    <div class="eyebrow">Notre approche</div>
+    <h2 class="section-title" style="margin-bottom:1.75rem">${d.intro_heading1}<br/><em>${d.intro_heading2}</em></h2>
+    <p>${pi(d.intro_p1)}</p>
+    <p>${pi(d.intro_p2)}</p>
+    <p>${pi(d.intro_p3)}</p>
+  </div>
+  <div class="intro-keys reveal rd2">
+    <div class="intro-key">
+      <div class="intro-key-title">${d.key1_title}</div>
+      <div class="intro-key-desc">${d.key1_desc}</div>
+    </div>
+    <div class="intro-key">
+      <div class="intro-key-title">${d.key2_title}</div>
+      <div class="intro-key-desc">${d.key2_desc}</div>
+    </div>
+    <div class="intro-key">
+      <div class="intro-key-title">${d.key3_title}</div>
+      <div class="intro-key-desc">${d.key3_desc}</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">${d.cta1_label}</p>
+    <h3 class="cta-strip-heading">${d.cta1_heading1}<br/><em>${d.cta1_heading2}</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">Prendre rendez-vous ${ARROW_SVG_SM}</a>
+    <a href="tel:+33545383009" class="btn-cta-outline">${PHONE_SVG}05 45 38 30 09</a>
+  </div>
+</div>
+
+<section id="services">
+  <div class="eyebrow reveal">Nos prestations</div>
+  <h2 class="section-title reveal rd1">${d.services_heading1}<br/><em>${d.services_heading2}</em></h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">${svgs[0]}</svg>
+      <h3 class="service-title">${d.svc1_title}</h3>
+      <p class="service-desc">${d.svc1_desc}</p>
+    </div>
+    <div class="service-card reveal rd1">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">${svgs[1]}</svg>
+      <h3 class="service-title">${d.svc2_title}</h3>
+      <p class="service-desc">${d.svc2_desc}</p>
+    </div>
+    <div class="service-card reveal rd1">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">${svgs[2]}</svg>
+      <h3 class="service-title">${d.svc3_title}</h3>
+      <p class="service-desc">${d.svc3_desc}</p>
+    </div>
+    <div class="service-card reveal rd2">
+      <div class="service-num">04</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">${svgs[3]}</svg>
+      <h3 class="service-title">${d.svc4_title}</h3>
+      <p class="service-desc">${d.svc4_desc}</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">Cabinet LAPERONNIE</p>
+    <h3 class="cta-strip-heading">${d.cta2_heading1}<br/><em>${d.cta2_heading2}</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">Nous contacter ${ARROW_SVG_SM}</a>
+    <a href="tel:+33545383009" class="btn-cta-outline">${PHONE_SVG}05 45 38 30 09</a>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2 class="contact-info-title">${d.contact_heading1}<br/><em>${d.contact_heading2}</em></h2>
+      <p class="contact-intro">${d.contact_intro}</p>
+      <div class="c-detail">
+        <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="c-label">Adresse</div><div class="c-value">14 Rue d'Arcole, 16000 Angoulême</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="c-label">Téléphone</div><div class="c-value">05 45 38 30 09</div></div>
+      </div>
+      <div class="c-detail">
+        <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="c-label">Horaires</div><div class="c-value">Lundi – Vendredi, 9h – 19h</div></div>
+      </div>
+    </div>
+    <div class="form-wrap reveal rd2">
+      <h3 class="form-heading">Demande de consultation</h3>
+      <div class="form-domain-tag">${formDomain}</div>
+      <div class="form-row">
+        <div class="fg"><label>Prénom</label><input type="text" placeholder="Jean" /></div>
+        <div class="fg"><label>Nom</label><input type="text" placeholder="Dupont" /></div>
+      </div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jean.dupont@email.fr" /></div>
+      <div class="fg"><label>Téléphone</label><input type="tel" placeholder="+33 6 XX XX XX XX" /></div>
+      <div class="fg">
+        <label>Domaine juridique</label>
+        <select>
+          <option${formDomain === 'Droit Pénal' ? ' selected' : ''}>Droit Pénal</option>
+          <option${formDomain === 'Droit de la Famille' ? ' selected' : ''}>Droit de la Famille</option>
+          <option${formDomain === 'Cryptomonnaies' ? ' selected' : ''}>Cryptomonnaies</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="fg"><label>Votre message</label><textarea rows="4" placeholder="Décrivez brièvement votre situation..."></textarea></div>
+      <button class="btn-send">Envoyer la demande →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
+    </div>
+    <div>
+      <p class="f-col-title">Expertise</p>
+      <ul class="f-links">
+        <li><a href="droit-penal.html">Droit Pénal</a></li>
+        <li><a href="droit-famille.html">Droit de la Famille</a></li>
+        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Cabinet</p>
+      <ul class="f-links">
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#valeurs">Nos valeurs</a></li>
+        <li><a href="cases.html">Affaires</a></li>
+        <li><a href="blog.html">Actualités</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Contact</p>
+      <ul class="f-links">
+        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
+        <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
+    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">RGPD</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive:true });
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold:0.1, rootMargin:'0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mob-nav');
+  if (hamburger && mobNav) {
+    hamburger.addEventListener('click', () => { const o = mobNav.classList.toggle('open'); hamburger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
+  }
+</script>
+
+<div class="mob-cta-bar">
+  <a href="tel:+33545383009" class="mob-cta-call">${PHONE_SVG}Appeler</a>
+  <a href="#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+</div>
+
+</body>
+</html>`;
+}
 
 // ─── Article HTML generator ───────────────────────────────────────────────────
 
@@ -705,6 +1171,43 @@ async function build() {
     );
     fs.writeFileSync('cases.html', casesHtml);
     console.log('✓ cases.html updated');
+  }
+
+  // Process expertise pages (full template regeneration from YAML)
+  const expertisePages = [
+    { slug: 'droit-penal', bg: 'Droit Pénal.png', bgPosition: 'center 35%', bgFilter: 'contrast(1.12) brightness(0.55) saturate(0.45)', activeNav: 'droit-penal', formDomain: 'Droit Pénal', svgs: SVGS_PENAL },
+    { slug: 'droit-famille', bg: 'Droit de la famille.png', bgPosition: 'center 40%', bgFilter: 'contrast(1.1) brightness(0.42) saturate(0.35)', activeNav: 'droit-famille', formDomain: 'Droit de la Famille', svgs: SVGS_FAMILLE },
+    { slug: 'cryptomonnaies', bg: 'Cryptomonnaies.png', bgPosition: 'center center', bgFilter: 'contrast(1.15) brightness(0.5) saturate(0.6)', activeNav: 'cryptomonnaies', formDomain: 'Cryptomonnaies', svgs: SVGS_CRYPTO },
+  ];
+  for (const cfg of expertisePages) {
+    const data = readPageYaml(cfg.slug);
+    if (data) {
+      const html = generateExpertisePage(cfg, data);
+      fs.writeFileSync(`${cfg.slug}.html`, html);
+      console.log(`✓ ${cfg.slug}.html`);
+    }
+  }
+
+  // Process homepage (CMS marker injection)
+  if (fs.existsSync('index.html')) {
+    const data = readPageYaml('homepage');
+    if (data) {
+      let html = fs.readFileSync('index.html', 'utf8');
+      html = injectCms(html, data);
+      fs.writeFileSync('index.html', html);
+      console.log('✓ index.html updated');
+    }
+  }
+
+  // Process cabinet (CMS marker injection)
+  if (fs.existsSync('cabinet.html')) {
+    const data = readPageYaml('cabinet');
+    if (data) {
+      let html = fs.readFileSync('cabinet.html', 'utf8');
+      html = injectCms(html, data);
+      fs.writeFileSync('cabinet.html', html);
+      console.log('✓ cabinet.html updated');
+    }
   }
 
   console.log('\nBuild complete.');

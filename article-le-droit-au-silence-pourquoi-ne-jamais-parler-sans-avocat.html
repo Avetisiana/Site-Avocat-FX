@@ -1,20 +1,21 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Divorce amiable ou contentieux — Cabinet LAPERONNIE</title>
+  <title>Le droit au silence : pourquoi ne jamais parler sans avocat — Cabinet LAPERONNIE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; --cat:rgba(100,160,220,1); --cat-bg:rgba(100,160,220,.07); --cat-border:rgba(100,160,220,.3); }
+    :root { --cat:rgba(220,80,60,1); --cat-bg:rgba(220,80,60,.07); --cat-border:rgba(220,80,60,.3); }
+
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
     body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
-
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
     .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
@@ -43,15 +44,15 @@
     .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
     .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
     .nav-dropdown a:hover::before { transform:scaleY(1); }
-
     .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger:hover { border-color:rgba(196,160,64,.55); }
     .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
     .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
     .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
     .mob-nav.open { opacity:1; pointer-events:all; }
-    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
     .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
     .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
@@ -62,10 +63,21 @@
     .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
     .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
-
-    /* ARTICLE HEADER */
-    .article-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg, #080706 0%, var(--charbon) 55%, #0A0908 100%); position:relative; overflow:hidden; }
-    .article-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%, rgba(100,160,220,.04) 0%, transparent 70%); }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+    .article-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
+    .article-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%,rgba(220,80,60,.04) 0%,transparent 70%); }
     .article-header-inner { position:relative; z-index:1; max-width:860px; }
     .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
     .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
@@ -79,15 +91,14 @@
     .article-intro { font-family:'Cormorant Garamond',serif; font-size:clamp(1.05rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:720px; line-height:1.7; }
     .article-meta-bar { display:flex; align-items:center; gap:2rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); flex-wrap:wrap; }
     .author-block { display:flex; align-items:center; gap:1rem; }
-    .author-photo { width:44px; height:44px; border-radius:0; object-fit:cover; object-position:top; border:1px solid rgba(196,160,64,.2); filter:grayscale(.25); }
+    .author-photo { width:44px; height:44px; object-fit:cover; object-position:top; border:1px solid rgba(196,160,64,.2); filter:grayscale(.25); }
     .author-info { display:flex; flex-direction:column; gap:.2rem; }
     .author-name { font-size:.68rem; font-weight:600; color:var(--blanc); letter-spacing:.06em; }
     .author-role { font-size:.58rem; font-weight:400; color:var(--gris); letter-spacing:.08em; }
     .meta-sep { width:1px; height:28px; background:rgba(196,160,64,.15); }
     .meta-date { font-size:.62rem; font-weight:500; color:var(--gris); letter-spacing:.1em; }
-
     .article-layout { display:grid; grid-template-columns:260px 1fr; gap:0; padding:0 5rem 7rem; max-width:1280px; margin:0 auto; align-items:start; }
-    .article-sidebar { padding:4rem 2.5rem 4rem 0; background:var(--charbon); align-self:start; }
+    .article-sidebar { padding:4rem 2.5rem 4rem 0; align-self:start; }
     @media(min-width:1101px) { .article-sidebar { position:sticky; top:110px; z-index:10; } }
     .toc-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; }
     .toc-label::before { content:''; width:22px; height:1px; background:var(--or); }
@@ -98,7 +109,6 @@
     .toc-back { display:flex; align-items:center; gap:.5rem; font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gris); text-decoration:none; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); transition:color .2s; }
     .toc-back:hover { color:var(--or); }
     .toc-back svg { width:12px; height:12px; }
-
     .article-content { padding:4rem 0 4rem 4rem; border-left:1px solid rgba(196,160,64,.08); }
     .article-section { margin-bottom:4rem; padding-bottom:4rem; border-bottom:1px solid rgba(196,160,64,.07); scroll-margin-top:130px; }
     .article-section:last-of-type { border-bottom:none; margin-bottom:2rem; }
@@ -114,7 +124,6 @@
     .highlight-box { background:var(--charbon-card); border-left:3px solid var(--or); padding:1.5rem 1.75rem; margin:1.75rem 0; }
     .highlight-box-title { font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); margin-bottom:.75rem; }
     .highlight-box p { font-size:.84rem; color:var(--blanc-dim); line-height:1.8; margin-bottom:0; }
-
     .article-cta-box { background:var(--charbon-card); border:1px solid rgba(196,160,64,.15); padding:2.5rem 2.75rem; margin-top:3rem; position:relative; overflow:hidden; }
     .article-cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); }
     .article-cta-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600; color:var(--blanc); margin-bottom:.75rem; line-height:1.3; }
@@ -124,21 +133,6 @@
     .btn-or:hover { background:var(--or-pale); }
     .btn-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.3); color:var(--blanc-dim); padding:.85rem 1.8rem; font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
     .btn-outline:hover { color:var(--or); border-color:var(--or); }
-
-    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
-    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
-    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
-    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
-    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
-    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
-    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
-    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
-    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
-    .footer-legal { display:flex; gap:2rem; }
-    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
-    .footer-legal a:hover { color:var(--gris); }
-
     @media(max-width:1100px) {
       nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
       .article-header, .article-layout, footer { padding-left:2.5rem; padding-right:2.5rem; }
@@ -152,7 +146,7 @@
     }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .nav-logo { height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .article-header, .article-layout, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
@@ -179,10 +173,7 @@
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
-    <a href="tel:+33545383009" class="nav-phone">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>05 45 38 30 09</span>
-    </a>
+    <a href="tel:+33545383009" class="nav-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>05 45 38 30 09</span></a>
     <a href="index.html#contact" class="btn-rdv">Prendre rendez-vous</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
@@ -207,14 +198,14 @@
     <div class="breadcrumb">
       <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
       <a href="blog.html">Actualités</a><span class="breadcrumb-sep">›</span>
-      <span>Divorce</span>
+      <span>Pénal</span>
     </div>
     <div class="article-tags">
-      <span class="tag-cat">Famille</span>
-      <span class="tag-read">7 min de lecture</span>
+      <span class="tag-cat">Pénal</span>
+      <span class="tag-read">4 min de lecture</span>
     </div>
-    <h1 class="article-title">Divorce amiable ou contentieux : <em>quelle procédure choisir ?</em></h1>
-    <p class="article-intro">Depuis la réforme de 2017, le divorce par consentement mutuel se règle sans juge dans la grande majorité des cas. Mais selon votre situation, le divorce contentieux peut s'avérer plus adapté, voire inévitable. Tour d'horizon des deux voies.</p>
+    <h1 class="article-title">Le droit au silence : pourquoi ne jamais parler sans avocat</h1>
+    <p class="article-intro">Beaucoup de personnes interrogées par la police pensent que se taire les rendra suspects. C'est le contraire : le droit au silence est une protection fondamentale que tout avocat pénaliste vous conseillera d'exercer immédiatement.</p>
     <div class="article-meta-bar">
       <div class="author-block">
         <img src="brand_assets/Photo of the lawyer.png" alt="Maître François-Xavier LAPERONNIE" class="author-photo" />
@@ -224,7 +215,7 @@
         </div>
       </div>
       <div class="meta-sep"></div>
-      <span class="meta-date">3 avril 2026</span>
+      <span class="meta-date">4 juin 2026</span>
     </div>
   </div>
 </div>
@@ -233,12 +224,7 @@
   <aside class="article-sidebar">
     <div class="toc-label">Sommaire</div>
     <div class="toc-nav">
-      <a href="#reforme" class="toc-link active">La réforme de 2017</a>
-      <a href="#consentement" class="toc-link">Le divorce par consentement mutuel</a>
-      <a href="#contentieux" class="toc-link">Le divorce contentieux</a>
-      <a href="#choisir" class="toc-link">Comment choisir ?</a>
-      <a href="#enfants" class="toc-link">La question des enfants</a>
-      <a href="#conseils" class="toc-link">Conseils pratiques</a>
+
     </div>
     <a href="blog.html" class="toc-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -247,94 +233,34 @@
   </aside>
 
   <main class="article-content">
+<p>## Qu&#39;est-ce que le droit au silence ?</p>
+<p>Le droit au silence est le droit de ne pas répondre aux questions posées par les enquêteurs lors d&#39;une audition. Il s&#39;applique dès la garde à vue et tout au long de la procédure pénale.</p>
+<p>Ce droit est **garanti par la loi française** et par la Convention européenne des droits de l&#39;homme. L&#39;officier de police judiciaire a l&#39;obligation de vous en informer dès le début de votre audition.</p>
+<p>&gt; **Bon à savoir**</p>
+<p>&gt; Exercer votre droit au silence ne peut pas légalement être interprété comme un aveu ou une présomption de culpabilité. Votre silence ne vous nuit pas — vos déclarations hâtives, elles, peuvent vous nuire durablement.</p>
+<p>## Pourquoi l&#39;exercer systématiquement ?</p>
+<p>La pression d&#39;une audition pousse souvent les personnes à parler pour paraître coopératives. C&#39;est une erreur courante.</p>
+<p>Voici pourquoi rester silencieux est presque toujours la meilleure option dans un premier temps :</p>
+<p>- Tout ce que vous dites est immédiatement consigné dans un procès-verbal officiel</p>
+<p>- Une contradiction, même mineure, peut être exploitée tout au long de la procédure</p>
+<p>- Sans connaître l&#39;étendue du dossier contre vous, vous ne savez pas quelles informations sont déjà connues des enquêteurs</p>
+<p>- Une fois déclarée, une information ne peut plus être retirée du dossier</p>
+<p>## Quand peut-on parler ?</p>
+<p>Après avoir consulté votre avocat. L&#39;entretien avec votre avocat en garde à vue est confidentiel et dure 30 minutes. C&#39;est ce moment qui vous permettra de décider ensemble de la stratégie adaptée à votre situation.</p>
+<p>Dans certains cas, s&#39;exprimer peut être bénéfique — mais cette décision doit toujours être prise après conseil juridique, jamais sous la pression des enquêteurs.</p>
 
-    <div class="article-section" id="reforme">
-      <h2 class="section-title">La réforme du divorce de 2017</h2>
-      <p>La loi du 18 novembre 2016 a profondément modifié le divorce par consentement mutuel, entré en vigueur le 1er janvier 2017. Désormais, lorsque les deux époux s'accordent sur tous les aspects de leur séparation, <strong>le passage devant un juge n'est plus obligatoire</strong> : la convention de divorce est rédigée par les avocats des deux parties et déposée chez un notaire.</p>
-      <p>Cette réforme a considérablement simplifié et accéléré les procédures amiables. Elle n'a toutefois pas supprimé le divorce judiciaire, qui reste la seule voie possible dans de nombreuses situations. Comprendre les deux procédures est indispensable pour choisir celle qui protège au mieux vos intérêts.</p>
-    </div>
-
-    <div class="article-section" id="consentement">
-      <h2 class="section-title">Le divorce par consentement mutuel</h2>
-      <p>Depuis 2017, le divorce par consentement mutuel (DCM) sans juge fonctionne selon le schéma suivant : chaque époux mandate un avocat distinct, les deux avocats rédigent ensemble une <strong>convention de divorce</strong> qui règle tous les effets de la séparation, puis la convention est déposée chez un notaire qui lui confère force exécutoire.</p>
-      <p>Ce type de divorce présente plusieurs avantages majeurs :</p>
-      <ul>
-        <li><strong>Rapidité :</strong> la procédure peut aboutir en 3 à 6 mois, contre plusieurs années pour un divorce contentieux.</li>
-        <li><strong>Coût maîtrisé :</strong> les honoraires d'avocat et les frais de notaire sont généralement inférieurs à ceux d'un divorce judiciaire.</li>
-        <li><strong>Confidentialité :</strong> aucune audience publique, aucun dossier soumis à un tribunal.</li>
-        <li><strong>Flexibilité :</strong> les époux peuvent organiser librement leur séparation, sous réserve du respect des droits de chacun et de l'intérêt des enfants.</li>
-      </ul>
-      <div class="highlight-box">
-        <div class="highlight-box-title">Condition impérative</div>
-        <p>Le divorce par consentement mutuel sans juge est impossible lorsqu'un enfant mineur demande à être entendu par le juge. Dans ce cas, la procédure doit obligatoirement passer par le tribunal judiciaire.</p>
-      </div>
-      <p>La convention doit impérativement régler : la prestation compensatoire éventuelle, la liquidation du régime matrimonial, la résidence des enfants, la pension alimentaire et les droits de visite et d'hébergement. Aucun point ne peut être laissé en suspens.</p>
-    </div>
-
-    <div class="article-section" id="contentieux">
-      <h2 class="section-title">Le divorce contentieux</h2>
-      <p>Le divorce contentieux est le divorce judiciaire, prononcé par le juge aux affaires familiales (JAF). Il existe en quatre formes distinctes, selon la situation des époux :</p>
-      <ol>
-        <li><strong>Le divorce pour faute :</strong> invoqué lorsqu'un époux a commis une violation grave ou renouvelée des devoirs du mariage (infidélité, violences, abandons réitérés). Il reste difficile à prouver et engendre souvent des procédures conflictuelles et longues.</li>
-        <li><strong>Le divorce pour altération définitive du lien conjugal :</strong> possible lorsque les époux vivent séparément depuis au moins un an. Il ne nécessite pas de démonstration de faute.</li>
-        <li><strong>Le divorce pour acceptation du principe de la rupture :</strong> les époux reconnaissent tous deux vouloir divorcer mais ne s'accordent pas sur les conséquences. Le juge tranche les désaccords.</li>
-        <li><strong>Le nouveau divorce par consentement mutuel judiciaire :</strong> lorsqu'un enfant mineur souhaite être entendu par le juge, ou lorsque l'un des époux est sous tutelle ou curatelle.</li>
-      </ol>
-      <p>Le divorce contentieux est plus long (1 à 3 ans en moyenne), plus coûteux et plus éprouvant émotionnellement. Il est néanmoins parfois la seule option réaliste lorsque les époux ne parviennent pas à trouver un accord ou lorsque la situation le justifie.</p>
-    </div>
-
-    <div class="article-section" id="choisir">
-      <h2 class="section-title">Comment choisir entre les deux procédures ?</h2>
-      <p>Le choix entre divorce amiable et contentieux dépend essentiellement de trois facteurs :</p>
-      <ul>
-        <li><strong>L'accord des époux sur le principe et les conséquences :</strong> si les deux parties s'entendent sur l'essentiel (garde des enfants, logement, partage des biens), le consentement mutuel est toujours préférable.</li>
-        <li><strong>L'existence de faits graves :</strong> violences conjugales, dissimulation d'actifs, abandon de famille — ces éléments peuvent justifier un divorce pour faute ou rendre le consentement mutuel impraticable.</li>
-        <li><strong>La protection de vos intérêts financiers :</strong> dans certaines situations (patrimoine important, déséquilibre économique fort, activité professionnelle d'un époux dépendante de l'autre), le recours au juge offre des garanties que la convention amiable ne peut pas toujours assurer.</li>
-      </ul>
-      <div class="highlight-box">
-        <div class="highlight-box-title">Attention aux faux accords</div>
-        <p>Un divorce amiable signé sous pression ou sans conseil juridique indépendant peut être gravement préjudiciable. Chaque époux doit avoir son propre avocat, qui défend ses intérêts, et non un avocat commun qui ne peut défendre qu'un accord général.</p>
-      </div>
-    </div>
-
-    <div class="article-section" id="enfants">
-      <h2 class="section-title">La question des enfants dans le divorce</h2>
-      <p>Quelle que soit la procédure choisie, les arrangements relatifs aux enfants mineurs doivent toujours être <strong>conformes à leur intérêt supérieur</strong>. Le juge aux affaires familiales dispose d'un pouvoir de contrôle sur ces dispositions, même dans le cadre d'un divorce amiable.</p>
-      <p>Les points à régler concernant les enfants sont les suivants :</p>
-      <ul>
-        <li>La résidence habituelle (résidence principale chez l'un des parents ou résidence alternée)</li>
-        <li>Les droits de visite et d'hébergement de l'autre parent</li>
-        <li>L'autorité parentale (généralement exercée conjointement après le divorce)</li>
-        <li>La contribution à l'entretien et à l'éducation des enfants (pension alimentaire)</li>
-      </ul>
-      <p>En cas de désaccord sur ces points, le juge aux affaires familiales tranchera en tenant compte de multiples critères : l'âge des enfants, leur attachement à chaque parent, la situation professionnelle et géographique de chacun, et, pour les enfants en âge de s'exprimer, leur avis.</p>
-    </div>
-
-    <div class="article-section" id="conseils">
-      <h2 class="section-title">Conseils pratiques avant d'engager la procédure</h2>
-      <ul>
-        <li><strong>Consultez un avocat dès que vous envisagez le divorce.</strong> Même si vous souhaitez un divorce amiable, un conseil préalable vous permet de connaître vos droits et d'éviter de signer une convention déséquilibrée.</li>
-        <li><strong>Rassemblez vos documents patrimoniaux.</strong> Relevés bancaires, titres de propriété, contrat de mariage, bulletins de salaire : ces éléments sont indispensables pour liquider correctement votre régime matrimonial.</li>
-        <li><strong>Ne quittez pas le domicile conjugal sans précaution.</strong> Un départ précipité peut être interprété défavorablement par le juge, notamment en matière d'attribution du logement familial.</li>
-        <li><strong>Préservez la relation avec vos enfants.</strong> Évitez de les impliquer dans le conflit ou d'utiliser leur prise de position comme levier de négociation.</li>
-        <li><strong>Anticipez la prestation compensatoire.</strong> Si votre mariage a entraîné un déséquilibre économique durable (carrière sacrifiée, écart de revenus important), vous pouvez avoir droit à une prestation compensatoire — ou être tenu d'en verser une.</li>
-      </ul>
-    </div>
 
     <div class="article-cta-box">
-      <div class="article-cta-title">Vous envisagez un divorce ? Consultez avant de décider.</div>
-      <p class="article-cta-text">Maître François-Xavier LAPERONNIE vous accompagne dans toutes les procédures de droit de la famille, du divorce amiable au contentieux le plus complexe. Une première consultation vous permet de clarifier votre situation et de choisir la meilleure voie.</p>
+      <div class="article-cta-title">Convoqué ou placé en garde à vue ?</div>
+      <p class="article-cta-text">Maître François-Xavier LAPERONNIE intervient dès la première heure de garde à vue. Appelez immédiatement — chaque minute compte dans la construction de votre défense.</p>
       <div class="article-cta-actions">
         <a href="index.html#contact" class="btn-or">Prendre rendez-vous</a>
-        <a href="tel:+33545383009" class="btn-outline">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          05 45 38 30 09
-        </a>
+        <a href="tel:+33545383009" class="btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>05 45 38 30 09</a>
       </div>
     </div>
-
   </main>
 </div>
+
 
 <footer>
   <div class="footer-grid">
@@ -376,19 +302,7 @@
 
 <script>
   const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive:true });
-  const sections = document.querySelectorAll('.article-section');
-  const links = document.querySelectorAll('.toc-link');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const a = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { threshold:.25, rootMargin:'-100px 0px -55% 0px' });
-  sections.forEach(s => obs.observe(s));
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive: true });
   const hamburger = document.getElementById('hamburger');
   const mobNav = document.getElementById('mob-nav');
   if (hamburger && mobNav) {
@@ -396,10 +310,24 @@
     document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
   }
 </script>
+<script>
+  const sections = document.querySelectorAll('.article-section');
+  const links = document.querySelectorAll('.toc-link');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('.toc-link[href="#' + e.target.id + '"]');
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { threshold: .25, rootMargin: '-100px 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
 <div class="mob-cta-bar">
   <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
   <a href="index.html#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
 </div>
 </body>
 </html>
-

@@ -191,7 +191,7 @@
     /* ─── PARCOURS TIMELINE ─── */
     #parcours {
       padding:8rem 5rem;
-      background:var(--charbon-mid);
+      background:#221D16;
       position:relative; overflow:hidden;
     }
     #parcours::before {
@@ -346,14 +346,14 @@
     .btn-ghost svg { width:14px; height:14px; }
 
     /* ─── FOOTER ─── */
-    footer { background:#070707; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
     .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
     .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
     .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
     .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
-    .f-links a:hover { color:var(--or); }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
     .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
     .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
     .footer-legal { display:flex; gap:2rem; }
@@ -380,6 +380,7 @@
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
       .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .hero-inner { padding-left:1.5rem; padding-right:1.5rem; padding-bottom:4rem; }
+      .hero-photo { opacity:.6; object-position:center 15%; }
       #bio, #parcours, #valeurs, #quote, #affaires-preview, #temoignages, #contact-cta, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .affaires-grid, .testi-grid, .valeurs-grid { grid-template-columns:1fr; }
       .stats-bar { grid-template-columns:1fr 1fr; padding-left:1.5rem; padding-right:1.5rem; }
@@ -458,20 +459,20 @@
 <!-- ░░ STATS BAR ░░ -->
 <div class="stats-bar">
   <div class="stat-cell reveal">
-    <div class="stat-num">17+</div>
-    <div class="stat-lbl">Ans d'exercice</div>
+    <div class="stat-num"><!-- CMS:stat1_num -->17+<!-- /CMS:stat1_num --></div>
+    <div class="stat-lbl"><!-- CMS:stat1_lbl -->Ans d&#39;exercice<!-- /CMS:stat1_lbl --></div>
   </div>
   <div class="stat-cell reveal rd1">
-    <div class="stat-num">2500+</div>
-    <div class="stat-lbl">Dossiers traités</div>
+    <div class="stat-num"><!-- CMS:stat2_num -->2500+<!-- /CMS:stat2_num --></div>
+    <div class="stat-lbl"><!-- CMS:stat2_lbl -->Dossiers traités<!-- /CMS:stat2_lbl --></div>
   </div>
   <div class="stat-cell reveal rd2">
-    <div class="stat-num">3</div>
-    <div class="stat-lbl">Domaines d'expertise</div>
+    <div class="stat-num"><!-- CMS:stat3_num -->3<!-- /CMS:stat3_num --></div>
+    <div class="stat-lbl"><!-- CMS:stat3_lbl -->Domaines d&#39;expertise<!-- /CMS:stat3_lbl --></div>
   </div>
   <div class="stat-cell reveal rd3">
-    <div class="stat-num">16000</div>
-    <div class="stat-lbl">Angoulême, Charente</div>
+    <div class="stat-num"><!-- CMS:stat4_num -->16000<!-- /CMS:stat4_num --></div>
+    <div class="stat-lbl"><!-- CMS:stat4_lbl -->Angoulême, Charente<!-- /CMS:stat4_lbl --></div>
   </div>
 </div>
 
@@ -493,13 +494,13 @@
     <h2 class="section-title">Maître François-Xavier<br/><em>LAPERONNIE</em></h2>
     <div class="gold-rule" style="margin:1.75rem 0 2.25rem"></div>
 
-    <p>Maître <strong>François-Xavier LAPERONNIE</strong> est avocat inscrit au Barreau de la Charente depuis plus de dix-sept ans. Diplômé de l'École de Formation du Barreau de Paris, il a forgé son expertise au sein de cabinets parisiens reconnus avant de choisir Angoulême pour y créer sa propre structure.</p>
+    <p><!-- CMS:bio_p1 -->Maître <strong>François-Xavier LAPERONNIE</strong> est avocat inscrit au Barreau de la Charente depuis plus de dix-sept ans. Diplômé de l&#39;École de Formation du Barreau de Paris, il a forgé son expertise au sein de cabinets parisiens reconnus avant de choisir Angoulême pour y créer sa propre structure.<!-- /CMS:bio_p1 --></p>
 
-    <p>Son parcours l'a conduit à défendre aussi bien des <strong>particuliers confrontés à des situations de crise</strong> que des chefs d'entreprise et des sociétés exposés à des enjeux juridiques complexes. Cette double expérience nourrit une approche singulière : rigoureuse dans l'analyse, pragmatique dans la solution.</p>
+    <p><!-- CMS:bio_p2 -->Son parcours l&#39;a conduit à défendre aussi bien des <strong>particuliers confrontés à des situations de crise</strong> que des chefs d&#39;entreprise et des sociétés exposés à des enjeux juridiques complexes. Cette double expérience nourrit une approche singulière : rigoureuse dans l&#39;analyse, pragmatique dans la solution.<!-- /CMS:bio_p2 --></p>
 
-    <p>Pionnier dans l'intégration du <strong>droit des actifs numériques</strong>, il est l'un des rares avocats de la région à maîtriser les dimensions juridiques des cryptomonnaies — fraudes, fiscalité, litiges blockchain — dans un environnement réglementaire en constante évolution.</p>
+    <p><!-- CMS:bio_p3 -->Pionnier dans l&#39;intégration du <strong>droit des actifs numériques</strong>, il est l&#39;un des rares avocats de la région à maîtriser les dimensions juridiques des cryptomonnaies — fraudes, fiscalité, litiges blockchain — dans un environnement réglementaire en constante évolution.<!-- /CMS:bio_p3 --></p>
 
-    <p>Convaincu que le droit est un outil au service des personnes, il s'engage à apporter des <strong>solutions concrètes et adaptées</strong> à chaque dossier, sans compromis sur la qualité ni sur la relation de confiance avec ses clients.</p>
+    <p><!-- CMS:bio_p4 -->Convaincu que le droit est un outil au service des personnes, il s&#39;engage à apporter des <strong>solutions concrètes et adaptées</strong> à chaque dossier, sans compromis sur la qualité ni sur la relation de confiance avec ses clients.<!-- /CMS:bio_p4 --></p>
 
     <div class="bio-signature">François-Xavier LAPERONNIE</div>
   </div>
@@ -517,50 +518,50 @@
   <div class="timeline">
 
     <div class="timeline-item reveal">
-      <div class="tl-year">2006</div>
+      <div class="tl-year"><!-- CMS:tl1_year -->2006<!-- /CMS:tl1_year --></div>
       <div class="tl-body">
-        <div class="tl-title">École de Formation du Barreau de Paris (EFB)</div>
-        <div class="tl-desc">Formation au Certificat d'Aptitude à la Profession d'Avocat (CAPA). Spécialisation en droit pénal et procédure pénale.</div>
+        <div class="tl-title"><!-- CMS:tl1_title -->École de Formation du Barreau de Paris (EFB)<!-- /CMS:tl1_title --></div>
+        <div class="tl-desc"><!-- CMS:tl1_desc -->Formation au Certificat d&#39;Aptitude à la Profession d&#39;Avocat (CAPA). Spécialisation en droit pénal et procédure pénale.<!-- /CMS:tl1_desc --></div>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="tl-year">2007</div>
+      <div class="tl-year"><!-- CMS:tl2_year -->2007<!-- /CMS:tl2_year --></div>
       <div class="tl-body">
-        <div class="tl-title">Prestation de serment — Barreau de Paris</div>
-        <div class="tl-desc">Début d'exercice au sein de cabinets parisiens spécialisés en défense pénale et contentieux civil. Prise en charge de dossiers de première instance et d'appel.</div>
+        <div class="tl-title"><!-- CMS:tl2_title -->Prestation de serment — Barreau de Paris<!-- /CMS:tl2_title --></div>
+        <div class="tl-desc"><!-- CMS:tl2_desc -->Début d&#39;exercice au sein de cabinets parisiens spécialisés en défense pénale et contentieux civil. Prise en charge de dossiers de première instance et d&#39;appel.<!-- /CMS:tl2_desc --></div>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="tl-year">2011</div>
+      <div class="tl-year"><!-- CMS:tl3_year -->2011<!-- /CMS:tl3_year --></div>
       <div class="tl-body">
-        <div class="tl-title">Élargissement au droit de la famille</div>
-        <div class="tl-desc">Développement d'une double compétence en droit de la famille : divorces contentieux et amiables, garde d'enfants, autorité parentale, successions familiales complexes.</div>
+        <div class="tl-title"><!-- CMS:tl3_title -->Élargissement au droit de la famille<!-- /CMS:tl3_title --></div>
+        <div class="tl-desc"><!-- CMS:tl3_desc -->Développement d&#39;une double compétence en droit de la famille : divorces contentieux et amiables, garde d&#39;enfants, autorité parentale, successions familiales complexes.<!-- /CMS:tl3_desc --></div>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="tl-year">2014</div>
+      <div class="tl-year"><!-- CMS:tl4_year -->2014<!-- /CMS:tl4_year --></div>
       <div class="tl-body">
-        <div class="tl-title">Fondation du Cabinet LAPERONNIE à Angoulême</div>
-        <div class="tl-desc">Installation au Barreau de la Charente et ouverture du cabinet au 14 Rue d'Arcole, Angoulême. Développement d'une clientèle locale et régionale dans les trois domaines d'expertise.</div>
+        <div class="tl-title"><!-- CMS:tl4_title -->Fondation du Cabinet LAPERONNIE à Angoulême<!-- /CMS:tl4_title --></div>
+        <div class="tl-desc"><!-- CMS:tl4_desc -->Installation au Barreau de la Charente et ouverture du cabinet au 14 Rue d&#39;Arcole, Angoulême. Développement d&#39;une clientèle locale et régionale dans les trois domaines d&#39;expertise.<!-- /CMS:tl4_desc --></div>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="tl-year">2019</div>
+      <div class="tl-year"><!-- CMS:tl5_year -->2019<!-- /CMS:tl5_year --></div>
       <div class="tl-body">
-        <div class="tl-title">Intégration du droit des cryptomonnaies</div>
-        <div class="tl-desc">Formation approfondie sur les actifs numériques et leur cadre juridique. Premiers dossiers de fraudes DeFi, de contentieux blockchain et d'accompagnement fiscal des détenteurs de cryptomonnaies.</div>
+        <div class="tl-title"><!-- CMS:tl5_title -->Intégration du droit des cryptomonnaies<!-- /CMS:tl5_title --></div>
+        <div class="tl-desc"><!-- CMS:tl5_desc -->Formation approfondie sur les actifs numériques et leur cadre juridique. Premiers dossiers de fraudes DeFi, de contentieux blockchain et d&#39;accompagnement fiscal des détenteurs de cryptomonnaies.<!-- /CMS:tl5_desc --></div>
       </div>
     </div>
 
     <div class="timeline-item reveal">
-      <div class="tl-year">Auj.</div>
+      <div class="tl-year"><!-- CMS:tl6_year -->Auj.<!-- /CMS:tl6_year --></div>
       <div class="tl-body">
-        <div class="tl-title">Cabinet de référence en Charente</div>
-        <div class="tl-desc">Plus de 2 500 dossiers traités, une réputation bâtie sur des résultats concrets et une présence aux côtés de chaque client, de la première consultation au verdict final.</div>
+        <div class="tl-title"><!-- CMS:tl6_title -->Cabinet de référence en Charente<!-- /CMS:tl6_title --></div>
+        <div class="tl-desc"><!-- CMS:tl6_desc -->Plus de 2 500 dossiers traités, une réputation bâtie sur des résultats concrets et une présence aux côtés de chaque client, de la première consultation au verdict final.<!-- /CMS:tl6_desc --></div>
       </div>
     </div>
 
@@ -582,8 +583,8 @@
         <path d="M17 3 L31 27 L3 27 Z"/><line x1="17" y1="13" x2="17" y2="21"/>
         <circle cx="17" cy="23.5" r=".8" fill="currentColor" stroke="none"/>
       </svg>
-      <h3 class="val-title">Rigueur</h3>
-      <p class="val-desc">Chaque argument est pesé, chaque pièce vérifiée. Une analyse exhaustive est la fondation de toute défense solide.</p>
+      <h3 class="val-title"><!-- CMS:val1_title -->Rigueur<!-- /CMS:val1_title --></h3>
+      <p class="val-desc"><!-- CMS:val1_desc -->Chaque argument est pesé, chaque pièce vérifiée. Une analyse exhaustive est la fondation de toute défense solide.<!-- /CMS:val1_desc --></p>
     </div>
 
     <div class="val-card reveal rd1">
@@ -592,8 +593,8 @@
         <line x1="11" y1="11" x2="23" y2="11"/><line x1="11" y1="16" x2="23" y2="16"/>
         <line x1="11" y1="21" x2="18" y2="21"/><path d="M19 24 l5 5" stroke-linecap="round"/>
       </svg>
-      <h3 class="val-title">Confidentialité</h3>
-      <p class="val-desc">Le secret professionnel est un pilier absolu. Vos informations sont traitées avec la plus stricte discrétion.</p>
+      <h3 class="val-title"><!-- CMS:val2_title -->Confidentialité<!-- /CMS:val2_title --></h3>
+      <p class="val-desc"><!-- CMS:val2_desc -->Le secret professionnel est un pilier absolu. Vos informations sont traitées avec la plus stricte discrétion.<!-- /CMS:val2_desc --></p>
     </div>
 
     <div class="val-card reveal rd2">
@@ -601,16 +602,16 @@
         <path d="M17 3 L29 9 L29 25 L17 31 L5 25 L5 9 Z"/>
         <polyline points="11,17 15,21 23,13"/>
       </svg>
-      <h3 class="val-title">Engagement</h3>
-      <p class="val-desc">Votre dossier n'est jamais un simple numéro. Nous nous investissons pleinement dans chaque affaire, sans exception.</p>
+      <h3 class="val-title"><!-- CMS:val3_title -->Engagement<!-- /CMS:val3_title --></h3>
+      <p class="val-desc"><!-- CMS:val3_desc -->Votre dossier n&#39;est jamais un simple numéro. Nous nous investissons pleinement dans chaque affaire, sans exception.<!-- /CMS:val3_desc --></p>
     </div>
 
     <div class="val-card reveal rd3">
       <svg class="val-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.5">
         <circle cx="17" cy="17" r="13"/><polyline points="17 9 17 17 22 20"/>
       </svg>
-      <h3 class="val-title">Transparence</h3>
-      <p class="val-desc">Vous êtes informé à chaque étape. Honoraires clairs, stratégie expliquée, résultats communiqués sans délai.</p>
+      <h3 class="val-title"><!-- CMS:val4_title -->Transparence<!-- /CMS:val4_title --></h3>
+      <p class="val-desc"><!-- CMS:val4_desc -->Vous êtes informé à chaque étape. Honoraires clairs, stratégie expliquée, résultats communiqués sans délai.<!-- /CMS:val4_desc --></p>
     </div>
 
   </div>
@@ -620,7 +621,7 @@
 <!-- ░░ QUOTE ░░ -->
 <section id="quote">
   <p class="quote-text reveal">
-    "La justice n'est pas un droit acquis — elle se conquiert avec intelligence, méthode et un engagement sans faille envers ceux qui nous font confiance."
+    "<!-- CMS:quote_text -->La justice n&#39;est pas un droit acquis — elle se conquiert avec intelligence, méthode et un engagement sans faille envers ceux qui nous font confiance.<!-- /CMS:quote_text -->"
   </p>
   <div class="quote-attr reveal rd1">François-Xavier LAPERONNIE — Avocat au Barreau de Charente</div>
 </section>
@@ -702,10 +703,10 @@
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       </div>
-      <p class="testi-text">"Maître LAPERONNIE a assuré ma défense dans une affaire pénale particulièrement complexe. Sa maîtrise du dossier, son calme et sa rigueur en audience ont fait toute la différence. J'ai été acquitté. Je lui dois beaucoup."</p>
+      <p class="testi-text">"<!-- CMS:testi1_text -->Maître LAPERONNIE a assuré ma défense dans une affaire pénale particulièrement complexe. Sa maîtrise du dossier, son calme et sa rigueur en audience ont fait toute la différence. J&#39;ai été acquitté. Je lui dois beaucoup.<!-- /CMS:testi1_text -->"</p>
       <div class="testi-author">
-        <span class="testi-name">Thomas M.</span>
-        <span class="testi-role">Affaire pénale — Cour d'appel de Paris</span>
+        <span class="testi-name"><!-- CMS:testi1_name -->Thomas M.<!-- /CMS:testi1_name --></span>
+        <span class="testi-role"><!-- CMS:testi1_role -->Affaire pénale — Cour d&#39;appel de Paris<!-- /CMS:testi1_role --></span>
       </div>
     </div>
 
@@ -718,10 +719,10 @@
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       </div>
-      <p class="testi-text">"Dans une période de divorce très douloureuse, Maître LAPERONNIE a su allier professionnalisme et bienveillance. Il a protégé mes droits et ceux de mes enfants avec une détermination exemplaire. Je le recommande sans hésitation."</p>
+      <p class="testi-text">"<!-- CMS:testi2_text -->Dans une période de divorce très douloureuse, Maître LAPERONNIE a su allier professionnalisme et bienveillance. Il a protégé mes droits et ceux de mes enfants avec une détermination exemplaire. Je le recommande sans hésitation.<!-- /CMS:testi2_text -->"</p>
       <div class="testi-author">
-        <span class="testi-name">Sophie L.</span>
-        <span class="testi-role">Procédure de divorce — Garde d'enfants</span>
+        <span class="testi-name"><!-- CMS:testi2_name -->Sophie L.<!-- /CMS:testi2_name --></span>
+        <span class="testi-role"><!-- CMS:testi2_role -->Procédure de divorce — Garde d&#39;enfants<!-- /CMS:testi2_role --></span>
       </div>
     </div>
 
@@ -734,10 +735,10 @@
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
         <svg class="testi-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       </div>
-      <p class="testi-text">"J'ai perdu une somme importante suite à une arnaque sur une plateforme DeFi. Maître LAPERONNIE est l'un des rares avocats à réellement maîtriser ces enjeux. Il a su identifier les responsabilités et initier des démarches concrètes."</p>
+      <p class="testi-text">"<!-- CMS:testi3_text -->J&#39;ai perdu une somme importante suite à une arnaque sur une plateforme DeFi. Maître LAPERONNIE est l&#39;un des rares avocats à réellement maîtriser ces enjeux. Il a su identifier les responsabilités et initier des démarches concrètes.<!-- /CMS:testi3_text -->"</p>
       <div class="testi-author">
-        <span class="testi-name">Alexandre R.</span>
-        <span class="testi-role">Fraude aux cryptomonnaies — DeFi</span>
+        <span class="testi-name"><!-- CMS:testi3_name -->Alexandre R.<!-- /CMS:testi3_name --></span>
+        <span class="testi-role"><!-- CMS:testi3_role -->Fraude aux cryptomonnaies — DeFi<!-- /CMS:testi3_role --></span>
       </div>
     </div>
 
@@ -790,7 +791,7 @@
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact">Prendre rendez-vous</a></li>
+        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
@@ -825,3 +826,4 @@
 
 </body>
 </html>
+

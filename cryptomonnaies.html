@@ -1,33 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cryptomonnaies — Cabinet LAPERONNIE</title>
+  <title>Crypto- monnaies — Cabinet LAPERONNIE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --charbon:       #060504;
-      --charbon-mid:   #0D0B09;
-      --charbon-light: #161310;
-      --charbon-card:  #100D0B;
-      --or:            #C4A040;
-      --or-pale:       #D4B252;
-      --or-dark:       #9A7A26;
-      --blanc:         #F2EDE4;
-      --blanc-dim:     #C0BAB0;
-      --gris:          #787068;
-    }
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
-    body::after {
-      content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
     .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
@@ -35,8 +21,7 @@
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
     .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
-    .nav-links a:hover { color:var(--or); }
-    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-links a:hover { color:var(--or); } .nav-links a:hover::after { transform:scaleX(1); }
     .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s ease,color .22s ease; }
     .btn-rdv:hover { background:var(--or); color:var(--charbon); }
     .nav-cta-group { display:flex; align-items:center; gap:1rem; }
@@ -66,8 +51,8 @@
     .section-title em { color:var(--or); font-style:italic; }
     .page-hero { min-height:70vh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:5rem; }
     .page-hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; filter:contrast(1.15) brightness(0.5) saturate(0.6); z-index:0; }
-    .page-hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(to top, var(--charbon) 0%, rgba(6,5,4,.65) 40%, rgba(6,5,4,.2) 100%); }
-    .page-hero-tint { position:absolute; inset:0; z-index:2; pointer-events:none; background:rgba(196,160,64,.14); mix-blend-mode:overlay; }
+    .page-hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(to top, var(--charbon) 0%, rgba(6,5,4,.7) 40%, rgba(6,5,4,.3) 100%); }
+    .page-hero-tint { position:absolute; inset:0; z-index:2; pointer-events:none; background:rgba(196,160,64,.06); mix-blend-mode:overlay; }
     .page-hero-content { position:relative; z-index:3; padding:0 5rem; }
     .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
     .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
@@ -128,28 +113,19 @@
     .btn-cta-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.28); color:var(--blanc-dim); padding:.82rem 1.4rem; font-size:.62rem; font-weight:600; letter-spacing:.1em; text-decoration:none; transition:color .22s,border-color .22s,background .22s; white-space:nowrap; }
     .btn-cta-outline:hover { color:var(--or); border-color:rgba(196,160,64,.5); background:rgba(196,160,64,.04); }
     .btn-cta-outline svg { width:13px; height:13px; color:var(--or); }
-    @media(max-width:900px) { .cta-strip { flex-direction:column; align-items:flex-start; padding:2.5rem; } .cta-strip-actions { flex-wrap:wrap; } }
-    @media(max-width:720px) { .cta-strip { padding:2rem 1.5rem; } }
-    footer { background:#070707; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
     .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
     .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
     .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
     .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
-    .f-links a:hover { color:var(--or); }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
     .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
     .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
     .footer-legal { display:flex; gap:2rem; }
     .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
     .footer-legal a:hover { color:var(--gris); }
-    @media(max-width:1100px) {
-      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
-      #intro, .contact-grid, .footer-grid { grid-template-columns:1fr; gap:3rem; }
-      .services-grid { grid-template-columns:1fr; }
-      #intro, #services, #contact, footer { padding-left:2.5rem; padding-right:2.5rem; }
-      .page-hero-content { padding:0 2.5rem; }
-    }
     .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
     .hamburger:hover { border-color:rgba(196,160,64,.55); }
     .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
@@ -160,29 +136,31 @@
     .mob-nav.open { opacity:1; pointer-events:all; }
     .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
-    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; letter-spacing:-.01em; transition:color .2s; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
     .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
     .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
     .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; transition:all .2s; }
     .mob-nav-phone:hover { background:rgba(196,160,64,.08); border-color:var(--or); }
     .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
-    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
     .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
     .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
-
+    @media(max-width:900px) { .cta-strip { flex-direction:column; align-items:flex-start; padding:2.5rem; } .cta-strip-actions { flex-wrap:wrap; } }
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      #intro, .contact-grid, .footer-grid { grid-template-columns:1fr; gap:3rem; }
+      .services-grid { grid-template-columns:1fr; }
+      #intro, #services, #contact, footer { padding-left:2.5rem; padding-right:2.5rem; }
+      .page-hero-content { padding:0 2.5rem; }
+    }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:58px; }
-      .nav-links { display:none; }
-      .nav-cta-group { display:none; }
-      .hamburger { display:flex; }
+      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .page-hero-content, #intro, #services, #contact, footer { padding-left:1.5rem; padding-right:1.5rem; }
-      .form-row { grid-template-columns:1fr; }
-      .footer-grid { grid-template-columns:1fr; gap:2rem; }
-      .footer-bottom { flex-direction:column; gap:.75rem; }
-      .mob-cta-bar { display:flex; }
-      body { padding-bottom:68px; }
+      .cta-strip { padding:2rem 1.5rem; } .form-row { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
   </style>
 </head>
@@ -205,15 +183,10 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
-    <a href="tel:+33545383009" class="nav-phone">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>05 45 38 30 09</span>
-    </a>
+    <a href="tel:+33545383009" class="nav-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>05 45 38 30 09</span></a>
     <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
@@ -230,16 +203,14 @@
   <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
 </div>
 
-
 <section class="page-hero">
   <img src="brand_assets/Cryptomonnaies.png" class="page-hero-bg" alt="" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-tint"></div>
   <div class="page-hero-content">
     <div class="breadcrumb">
-      <a href="index.html">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Cryptomonnaies</span>
+      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
+      <span>Crypto- monnaies</span>
     </div>
     <p class="page-hero-sub">Innovation · Sécurité · Expertise</p>
     <h1>Crypto-<br/><em>monnaies</em></h1>
@@ -248,14 +219,13 @@
   </div>
 </section>
 
-
 <section id="intro">
   <div class="intro-text reveal">
     <div class="eyebrow">Notre approche</div>
     <h2 class="section-title" style="margin-bottom:1.75rem">Le droit du numérique,<br/><em>une expertise rare</em></h2>
     <p>Les cryptomonnaies et les actifs numériques constituent un environnement juridique en pleine évolution, souvent mal maîtrisé par les praticiens du droit traditionnels. Maître LAPERONNIE a développé une <strong>expertise de pointe</strong> dans ce domaine en constante mutation.</p>
-    <p>Qu'il s'agisse d'une arnaque à l'investissement, d'un litige avec une plateforme d'échange, d'une saisie d'actifs numériques ou d'un contentieux lié à la DeFi, le cabinet dispose des outils juridiques et techniques nécessaires pour <strong>défendre vos intérêts efficacement</strong>.</p>
-    <p>Dans un secteur où les fraudeurs exploitent l'anonymat et la complexité technologique, agir vite et avec précision est déterminant. Le cabinet intervient en <strong>urgence</strong> dès la détection d'une fraude.</p>
+    <p>Qu&#39;il s&#39;agisse d&#39;une arnaque à l&#39;investissement, d&#39;un litige avec une plateforme d&#39;échange, d&#39;une saisie d&#39;actifs numériques ou d&#39;un contentieux lié à la DeFi, le cabinet dispose des outils juridiques et techniques nécessaires pour <strong>défendre vos intérêts efficacement</strong>.</p>
+    <p>Dans un secteur où les fraudeurs exploitent l&#39;anonymat et la complexité technologique, agir vite et avec précision est déterminant. Le cabinet intervient en <strong>urgence</strong> dès la détection d&#39;une fraude.</p>
   </div>
   <div class="intro-keys reveal rd2">
     <div class="intro-key">
@@ -273,81 +243,48 @@
   </div>
 </section>
 
-<!-- CTA 1 -->
 <div class="cta-strip">
   <div>
     <p class="cta-strip-label">Réagissez maintenant</p>
     <h3 class="cta-strip-heading">Victime d'une arnaque crypto ?<br/><em>Chaque heure compte.</em></h3>
   </div>
   <div class="cta-strip-actions">
-    <a href="#contact" class="btn-cta-fill">Consultation urgente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="#contact" class="btn-cta-fill">Prendre rendez-vous <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <a href="tel:+33545383009" class="btn-cta-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>05 45 38 30 09</a>
   </div>
 </div>
-
 
 <section id="services">
   <div class="eyebrow reveal">Nos prestations</div>
   <h2 class="section-title reveal rd1">Quatre axes de notre<br/><em>expertise numérique</em></h2>
   <div class="services-grid">
-
     <div class="service-card reveal">
       <div class="service-num">01</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M24 6 L38 14 L38 30 C38 38 24 44 24 44 C24 44 10 38 10 30 L10 14 Z"/>
-        <line x1="24" y1="18" x2="24" y2="28"/>
-        <circle cx="24" cy="32" r="1.5" fill="currentColor" stroke="none"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6 L38 14 L38 30 C38 38 24 44 24 44 C24 44 10 38 10 30 L10 14 Z"/><line x1="24" y1="18" x2="24" y2="28"/><circle cx="24" cy="32" r="1.5" fill="currentColor" stroke="none"/></svg>
       <h3 class="service-title">Fraudes & arnaques aux cryptomonnaies</h3>
       <p class="service-desc">Faux sites d'investissement, rug pulls, pump & dump, phishing : Maître LAPERONNIE identifie les responsables, dépose plainte auprès des autorités compétentes (OCLCTIC, AMF) et engage des procédures de saisie et de recouvrement des actifs volés.</p>
     </div>
-
     <div class="service-card reveal rd1">
       <div class="service-num">02</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="6" y="14" width="36" height="20" rx="3"/>
-        <line x1="6" y1="22" x2="42" y2="22"/>
-        <circle cx="15" cy="30" r="3"/>
-        <line x1="24" y1="27" x2="36" y2="27"/>
-        <line x1="24" y1="31" x2="32" y2="31"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="14" width="36" height="20" rx="3"/><line x1="6" y1="22" x2="42" y2="22"/><circle cx="15" cy="30" r="3"/><line x1="24" y1="27" x2="36" y2="27"/><line x1="24" y1="31" x2="32" y2="31"/></svg>
       <h3 class="service-title">Litiges avec plateformes d'échange</h3>
       <p class="service-desc">Blocage de compte, gel de fonds, refus de retrait, frais abusifs : le cabinet engage des procédures contre les exchanges centralisés (Binance, Coinbase, Kraken, etc.) et décentralisés pour obtenir la restitution de vos actifs et des dommages et intérêts.</p>
     </div>
-
     <div class="service-card reveal rd1">
       <div class="service-num">03</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="14" cy="24" r="6"/>
-        <circle cx="34" cy="12" r="6"/>
-        <circle cx="34" cy="36" r="6"/>
-        <line x1="20" y1="24" x2="28" y2="14"/>
-        <line x1="20" y1="24" x2="28" y2="34"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="24" r="6"/><circle cx="34" cy="12" r="6"/><circle cx="34" cy="36" r="6"/><line x1="20" y1="24" x2="28" y2="14"/><line x1="20" y1="24" x2="28" y2="34"/></svg>
       <h3 class="service-title">Saisie & recouvrement d'actifs numériques</h3>
       <p class="service-desc">Maître LAPERONNIE maîtrise les procédures de saisie d'actifs numériques en France et à l'international, en coordination avec les autorités judiciaires et les prestataires de services sur actifs numériques (PSAN) pour tracer et récupérer des fonds détournés.</p>
     </div>
-
     <div class="service-card reveal rd2">
       <div class="service-num">04</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="24" cy="24" r="10"/>
-        <line x1="24" y1="6" x2="24" y2="14"/>
-        <line x1="24" y1="34" x2="24" y2="42"/>
-        <line x1="6" y1="24" x2="14" y2="24"/>
-        <line x1="34" y1="24" x2="42" y2="24"/>
-        <path d="M21 19c0 0 2-1 4 0s3 2 3 3.5s-2 3-4 3s-4 1.5-4 3.5s2 3.5 4 3.5s4-1 4-1"/>
-        <line x1="24" y1="17" x2="24" y2="19"/>
-        <line x1="24" y1="30" x2="24" y2="32"/>
-      </svg>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="10"/><line x1="24" y1="6" x2="24" y2="14"/><line x1="24" y1="34" x2="24" y2="42"/><line x1="6" y1="24" x2="14" y2="24"/><line x1="34" y1="24" x2="42" y2="24"/><path d="M21 19c0 0 2-1 4 0s3 2 3 3.5s-2 3-4 3s-4 1.5-4 3.5s2 3.5 4 3.5s4-1 4-1"/><line x1="24" y1="17" x2="24" y2="19"/><line x1="24" y1="30" x2="24" y2="32"/></svg>
       <h3 class="service-title">DeFi, NFT & smart contracts</h3>
       <p class="service-desc">Exploitation de faille dans un smart contract, vol de NFT, litige sur protocole DeFi : le cabinet analyse les aspects techniques et juridiques, identifie les recours disponibles et engage les actions appropriées en France et dans les juridictions étrangères concernées.</p>
     </div>
-
   </div>
 </section>
 
-<!-- CTA 2 -->
 <div class="cta-strip">
   <div>
     <p class="cta-strip-label">Cabinet LAPERONNIE</p>
@@ -359,12 +296,11 @@
   </div>
 </div>
 
-
 <section id="contact">
   <div class="contact-grid">
     <div class="reveal">
       <div class="eyebrow">Contact</div>
-      <h2 class="contact-info-title">Victime d'une fraude<br/>aux <em>cryptomonnaies ?</em></h2>
+      <h2 class="contact-info-title">Victime d'une fraude<br/><em>aux cryptomonnaies ?</em></h2>
       <p class="contact-intro">En matière de fraude aux actifs numériques, le temps est un facteur déterminant. Contactez le cabinet immédiatement pour une analyse confidentielle de votre situation.</p>
       <div class="c-detail">
         <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -403,7 +339,6 @@
   </div>
 </section>
 
-
 <footer>
   <div class="footer-grid">
     <div>
@@ -424,19 +359,20 @@
         <li><a href="index.html#about">À propos</a></li>
         <li><a href="index.html#valeurs">Nos valeurs</a></li>
         <li><a href="cases.html">Affaires</a></li>
+        <li><a href="blog.html">Actualités</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact">Prendre rendez-vous</a></li>
+        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2024 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
+    <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
     <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">RGPD</a></div>
   </div>
 </footer>
@@ -455,9 +391,11 @@
     document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
   }
 </script>
+
 <div class="mob-cta-bar">
   <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
   <a href="#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
 </div>
+
 </body>
 </html>
