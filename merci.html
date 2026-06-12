@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message envoyé — Cabinet LAPERONNIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --charbon:#060504; --or:#C4A040; --blanc:#F2EDE4; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; }
+    .icon { width:64px; height:64px; border-radius:50%; border:1.5px solid var(--or); display:flex; align-items:center; justify-content:center; margin:0 auto 2rem; }
+    .icon svg { color:var(--or); }
+    .eyebrow { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1rem; }
+    h1 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:400; line-height:1.2; margin-bottom:1.25rem; }
+    p { font-size:.9rem; line-height:1.75; color:rgba(242,237,228,.65); max-width:480px; margin-bottom:2.5rem; }
+    a { display:inline-block; border:1px solid var(--or); color:var(--or); text-decoration:none; padding:.7rem 2rem; font-size:.6rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; transition:background .22s,color .22s; }
+    a:hover { background:var(--or); color:var(--charbon); }
+  </style>
+</head>
+<body>
+  <div class="icon">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+  <p class="eyebrow">Message reçu</p>
+  <h1>Merci pour votre demande</h1>
+  <p>Maître LAPERONNIE a bien reçu votre message. Vous serez contacté dans les plus brefs délais, généralement sous 24 heures ouvrées.</p>
+  <a href="index.html">Retour à l'accueil</a>
+</body>
+</html>

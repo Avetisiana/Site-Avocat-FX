@@ -316,25 +316,30 @@
       </div>
     </div>
     <div class="form-wrap reveal rd2">
-      <h3 class="form-heading">Demande de consultation</h3>
-      <div class="form-domain-tag">Droit de la Famille</div>
-      <div class="form-row">
-        <div class="fg"><label>Prénom</label><input type="text" placeholder="Jean" /></div>
-        <div class="fg"><label>Nom</label><input type="text" placeholder="Dupont" /></div>
-      </div>
-      <div class="fg"><label>Email</label><input type="email" placeholder="jean.dupont@email.fr" /></div>
-      <div class="fg"><label>Téléphone</label><input type="tel" placeholder="+33 6 XX XX XX XX" /></div>
-      <div class="fg">
-        <label>Domaine juridique</label>
-        <select>
-          <option>Droit Pénal</option>
-          <option selected>Droit de la Famille</option>
-          <option>Cryptomonnaies</option>
-          <option>Autre</option>
-        </select>
-      </div>
-      <div class="fg"><label>Votre message</label><textarea rows="4" placeholder="Décrivez brièvement votre situation..."></textarea></div>
-      <button class="btn-send">Envoyer la demande →</button>
+      <form action="https://formsubmit.co/arthur.avetisian@hotmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande de consultation — Droit de la Famille" />
+        <input type="hidden" name="_next" value="https://cabinet-laperonnie.fr/merci.html" />
+        <input type="hidden" name="_captcha" value="false" />
+        <h3 class="form-heading">Demande de consultation</h3>
+        <div class="form-domain-tag">Droit de la Famille</div>
+        <div class="form-row">
+          <div class="fg"><label>Prénom</label><input type="text" name="prenom" placeholder="Jean" required /></div>
+          <div class="fg"><label>Nom</label><input type="text" name="nom" placeholder="Dupont" required /></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="jean.dupont@email.fr" required /></div>
+        <div class="fg"><label>Téléphone</label><input type="tel" name="telephone" placeholder="+33 6 XX XX XX XX" /></div>
+        <div class="fg">
+          <label>Domaine juridique</label>
+          <select name="domaine">
+            <option>Droit Pénal</option>
+            <option selected>Droit de la Famille</option>
+            <option>Cryptomonnaies</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="fg"><label>Votre message</label><textarea name="message" rows="4" placeholder="Décrivez brièvement votre situation..."></textarea></div>
+        <button type="submit" class="btn-send">Envoyer la demande →</button>
+      </form>
     </div>
   </div>
 </section>
