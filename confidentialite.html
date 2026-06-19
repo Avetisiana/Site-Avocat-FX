@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de Confidentialité — Cabinet LAPERONNIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
+    nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
+    .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo:hover { opacity:1; }
+    .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
+    .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+    .nav-links a:hover { color:var(--or); } .nav-links a:hover::after { transform:scaleX(1); }
+    .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s ease,color .22s ease; }
+    .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+    .nav-cta-group { display:flex; align-items:center; gap:1rem; }
+    .nav-phone { display:flex; align-items:center; gap:.5rem; color:var(--blanc-dim); text-decoration:none; font-size:.62rem; font-weight:600; letter-spacing:.1em; border:1px solid rgba(196,160,64,.18); padding:.55rem 1.1rem; transition:color .22s,border-color .22s,background .22s; white-space:nowrap; }
+    .nav-phone:hover { color:var(--or); border-color:rgba(196,160,64,.45); background:rgba(196,160,64,.05); }
+    .nav-phone svg { width:13px; height:13px; color:var(--or); flex-shrink:0; }
+    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    .nav-item-has-drop { position:relative; }
+    .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
+    .nav-item-has-drop > a::after { display:none; }
+    .drop-chevron { display:inline-block; width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; border-top:3.5px solid currentColor; transition:transform .25s ease; margin-top:1px; flex-shrink:0; }
+    .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
+    .nav-dropdown { position:absolute; top:calc(100% + 1.1rem); left:50%; transform:translateX(-50%) translateY(-8px); min-width:210px; background:rgba(6,5,4,.97); border:1px solid rgba(196,160,64,.15); border-top:2px solid var(--or); backdrop-filter:blur(18px); opacity:0; visibility:hidden; transition:opacity .25s ease,transform .25s ease,visibility 0s .25s; z-index:1001; }
+    .nav-item-has-drop:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); transition:opacity .25s ease,transform .25s ease,visibility 0s 0s; }
+    .nav-dropdown a { display:block; padding:.72rem 1.4rem; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blanc-dim); text-decoration:none; border-bottom:1px solid rgba(196,160,64,.07); transition:color .18s,background .18s,padding-left .18s; position:relative; }
+    .nav-dropdown a:last-child { border-bottom:none; }
+    .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
+    .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
+    .nav-dropdown a:hover::before { transform:scaleY(1); }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger:hover { border-color:rgba(196,160,64,.55); }
+    .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
+    .mob-nav.open { opacity:1; pointer-events:all; }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
+    .mob-nav-links a:hover { color:var(--or); }
+    .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
+    .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; transition:all .2s; }
+    .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
+    .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
+    .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
+    .mob-cta-rdv { background:var(--or); color:var(--charbon); }
+    .legal-hero { padding:10rem 5rem 5rem; border-bottom:1px solid rgba(196,160,64,.1); }
+    .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
+    .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
+    .breadcrumb a:hover { color:var(--or); }
+    .breadcrumb-sep { color:rgba(196,160,64,.4); }
+    .legal-eyebrow { font-size:.55rem; font-weight:700; letter-spacing:.42em; color:var(--or); text-transform:uppercase; display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; }
+    .legal-eyebrow::before { content:''; width:28px; height:1px; background:var(--or); flex-shrink:0; }
+    .legal-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,4rem); font-weight:700; letter-spacing:-.02em; line-height:1.05; color:var(--blanc); margin-bottom:1rem; }
+    .legal-hero h1 em { color:var(--or); font-style:italic; }
+    .legal-hero-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--blanc-dim); font-weight:300; }
+    .legal-hero-rule { width:50px; height:1px; background:linear-gradient(90deg,var(--or-dark),var(--or)); margin-top:2rem; }
+    .legal-body { max-width:820px; margin:0 auto; padding:5rem 5rem; }
+    .legal-section { margin-bottom:3.5rem; }
+    .legal-section h2 { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:600; color:var(--blanc); margin-bottom:1.1rem; padding-bottom:.75rem; border-bottom:1px solid rgba(196,160,64,.12); }
+    .legal-section h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--or-pale); margin-bottom:.6rem; margin-top:1.4rem; }
+    .legal-section p { font-size:.84rem; color:var(--blanc-dim); line-height:1.92; font-weight:300; margin-bottom:.85rem; }
+    .legal-section p strong { color:var(--blanc); font-weight:500; }
+    .legal-section a { color:var(--or); text-decoration:none; transition:opacity .2s; }
+    .legal-section a:hover { opacity:.75; }
+    .legal-section ul { margin:.6rem 0 .85rem 1.5rem; }
+    .legal-section ul li { font-size:.84rem; color:var(--blanc-dim); line-height:1.82; font-weight:300; margin-bottom:.35rem; }
+    .todo { background:rgba(196,160,64,.06); border:1px solid rgba(196,160,64,.3); border-left:3px solid var(--or); padding:1rem 1.4rem; margin:1rem 0 1.4rem; }
+    .todo-label { font-size:.52rem; font-weight:700; letter-spacing:.35em; text-transform:uppercase; color:var(--or); margin-bottom:.4rem; display:flex; align-items:center; gap:.5rem; }
+    .todo p { font-size:.78rem; color:var(--blanc-dim); margin:0; line-height:1.65; }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); }
+    .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; }
+    .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      .legal-hero { padding:9rem 2.5rem 4rem; }
+      .legal-body { padding:4rem 2.5rem; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; }
+    }
+    @media(max-width:720px) {
+      nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
+      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .legal-hero { padding:8rem 1.5rem 3rem; }
+      .legal-body { padding:3rem 1.5rem; }
+      footer { padding:4rem 1.5rem 2rem; }
+      .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <ul class="nav-links">
+    <li class="nav-item-has-drop">
+      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <div class="nav-dropdown">
+        <a href="droit-penal.html">Droit Pénal</a>
+        <a href="droit-famille.html">Droit de la Famille</a>
+        <a href="cryptomonnaies.html">Cryptomonnaies</a>
+      </div>
+    </li>
+    <li><a href="cabinet.html">Le Cabinet</a></li>
+    <li><a href="cases.html">Affaires</a></li>
+    <li><a href="blog.html">Actualités</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="tel:+33545383009" class="nav-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>05 45 38 30 09</span></a>
+    <a href="index.html#contact" class="btn-rdv">Prendre rendez-vous</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-nav" id="mob-nav">
+  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <ul class="mob-nav-links">
+    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
+    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="cases.html" class="mob-close">Affaires</a></li>
+    <li><a href="blog.html" class="mob-close">Actualités</a></li>
+    <li><a href="index.html#contact" class="mob-close">Contact</a></li>
+  </ul>
+  <div class="mob-nav-divider"></div>
+  <a href="tel:+33545383009" class="mob-nav-phone">05 45 38 30 09</a>
+</div>
+
+<div class="mob-cta-bar">
+  <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
+  <a href="index.html#contact" class="mob-cta-rdv">Rendez-vous</a>
+</div>
+
+<section class="legal-hero">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Politique de confidentialité</span>
+  </div>
+  <div class="legal-eyebrow">Protection des données</div>
+  <h1>Politique de <em>confidentialité</em></h1>
+  <p class="legal-hero-sub">Comment nous collectons, utilisons et protégeons vos données personnelles</p>
+  <div class="legal-hero-rule"></div>
+</section>
+
+<div class="legal-body">
+
+  <div class="legal-section">
+    <h2>1. Responsable du traitement</h2>
+    <p>Le responsable du traitement des données personnelles collectées via ce site est :</p>
+    <p>
+      <strong>Maître François-Xavier LAPERONNIE</strong><br />
+      14 Rue d'Arcole, 16000 Angoulême<br />
+      Téléphone : <a href="tel:+33545383009">05 45 38 30 09</a><br />
+      Email : <a href="mailto:fx.laperonnie@gmail.com">fx.laperonnie@gmail.com</a>
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. Données collectées</h2>
+    <p>Dans le cadre de l'utilisation de ce site, nous sommes amenés à collecter les données personnelles suivantes :</p>
+    <h3>Via le formulaire de contact</h3>
+    <ul>
+      <li>Prénom et nom</li>
+      <li>Adresse email</li>
+      <li>Numéro de téléphone</li>
+      <li>Domaine juridique de votre demande</li>
+      <li>Contenu de votre message</li>
+    </ul>
+    <h3>Via la navigation sur le site</h3>
+    <ul>
+      <li>Données de connexion (adresse IP, type de navigateur, pages consultées, durée de visite)</li>
+      <li>Données de navigation collectées via des cookies techniques</li>
+    </ul>
+    <div class="todo">
+      <div class="todo-label">⚠ À compléter si applicable</div>
+      <p>Si vous ajoutez à l'avenir un espace client, un formulaire de prise de rendez-vous en ligne, ou tout autre service nécessitant la collecte de données supplémentaires (numéro de dossier, pièces jointes, etc.), pensez à mettre à jour cette liste.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. Finalités du traitement</h2>
+    <p>Les données collectées sont utilisées exclusivement aux fins suivantes :</p>
+    <ul>
+      <li>Répondre à vos demandes de contact et de consultation</li>
+      <li>Assurer la gestion de la relation client et du suivi de dossier</li>
+      <li>Améliorer la qualité et le fonctionnement du site</li>
+      <li>Respecter nos obligations légales en tant que professionnel du droit</li>
+    </ul>
+    <p>Vos données ne sont jamais utilisées à des fins commerciales, revendues à des tiers, ni transmises à des partenaires sans votre consentement explicite.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. Base légale du traitement</h2>
+    <p>Les traitements effectués reposent sur les bases légales suivantes :</p>
+    <ul>
+      <li><strong>Consentement</strong> (article 6.1.a du RGPD) : pour l'envoi du formulaire de contact</li>
+      <li><strong>Intérêt légitime</strong> (article 6.1.f du RGPD) : pour l'analyse des statistiques de navigation et l'amélioration du site</li>
+      <li><strong>Obligation légale</strong> (article 6.1.c du RGPD) : pour les obligations imposées aux avocats en matière de conservation des données de dossier</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. Durée de conservation</h2>
+    <ul>
+      <li><strong>Données de contact (formulaire)</strong> : conservées pendant 3 ans à compter du dernier contact, conformément aux recommandations de la CNIL pour la gestion des prospects.</li>
+      <li><strong>Données de dossier client</strong> : conservées conformément aux obligations déontologiques et légales applicables aux avocats (en général 5 ans après la clôture du dossier).</li>
+      <li><strong>Données de navigation</strong> : conservées pendant 13 mois maximum, conformément aux recommandations de la CNIL.</li>
+    </ul>
+    <div class="todo">
+      <div class="todo-label">⚠ À vérifier avec votre Ordre</div>
+      <p>La durée de conservation des données de dossier peut varier selon les règles déontologiques propres à votre barreau. Il est recommandé de vérifier les durées exactes applicables auprès du Bâtonnier ou du référent déontologie de votre Ordre.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. Vos droits</h2>
+    <p>Conformément au Règlement (UE) 2016/679 (RGPD) et à la loi Informatique et Libertés modifiée, vous disposez des droits suivants sur vos données :</p>
+    <ul>
+      <li><strong>Droit d'accès</strong> : obtenir une copie des données vous concernant</li>
+      <li><strong>Droit de rectification</strong> : corriger des données inexactes ou incomplètes</li>
+      <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données (« droit à l'oubli »)</li>
+      <li><strong>Droit à la limitation</strong> : suspendre temporairement le traitement de vos données</li>
+      <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré et lisible par machine</li>
+      <li><strong>Droit d'opposition</strong> : vous opposer à un traitement fondé sur l'intérêt légitime</li>
+    </ul>
+    <p>Pour exercer ces droits, adressez votre demande par email à <a href="mailto:fx.laperonnie@gmail.com">fx.laperonnie@gmail.com</a> ou par courrier à l'adresse du cabinet. Une réponse vous sera apportée dans un délai de 30 jours.</p>
+    <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+  </div>
+
+  <div class="legal-section">
+    <h2>7. Cookies</h2>
+    <p>Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement. Aucun cookie publicitaire ou de pistage tiers n'est déposé sans votre consentement.</p>
+    <div class="todo">
+      <div class="todo-label">⚠ À compléter si vous ajoutez des outils d'analyse</div>
+      <p>Si vous intégrez à l'avenir un outil comme Google Analytics, Plausible, Hotjar ou tout autre outil de mesure d'audience, vous devrez mettre en place un bandeau de consentement aux cookies et lister ici les cookies déposés, leur finalité et leur durée de vie.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>8. Sécurité</h2>
+    <p>Le Cabinet LAPERONNIE met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation. Les données transmises via le formulaire de contact sont acheminées par un protocole HTTPS sécurisé.</p>
+    <p>Conformément au secret professionnel auquel est soumis tout avocat, les informations que vous partagez dans le cadre d'une relation client bénéficient d'une protection renforcée.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>9. Mise à jour</h2>
+    <p>Cette politique de confidentialité a été mise à jour le <strong>20 juin 2026</strong>. Nous nous réservons le droit de la modifier à tout moment pour la maintenir conforme à la réglementation en vigueur.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
+    </div>
+    <div>
+      <p class="f-col-title">Expertise</p>
+      <ul class="f-links">
+        <li><a href="droit-penal.html">Droit Pénal</a></li>
+        <li><a href="droit-famille.html">Droit de la Famille</a></li>
+        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Cabinet</p>
+      <ul class="f-links">
+        <li><a href="cabinet.html">À propos</a></li>
+        <li><a href="cases.html">Affaires</a></li>
+        <li><a href="blog.html">Actualités</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Contact</p>
+      <ul class="f-links">
+        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
+        <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
+    <div class="footer-legal">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="rgpd.html">RGPD</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mob-nav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobNav.classList.toggle('open'); document.body.style.overflow = mobNav.classList.contains('open') ? 'hidden' : ''; });
+  document.querySelectorAll('.mob-close').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobNav.classList.remove('open'); document.body.style.overflow = ''; }));
+</script>
+</body>
+</html>
