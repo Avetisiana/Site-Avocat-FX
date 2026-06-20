@@ -177,7 +177,7 @@ const FOOTER = `
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
-    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">RGPD</a></div>
+    <div class="footer-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="rgpd.html">RGPD</a></div>
   </div>
 </footer>`;
 
@@ -339,7 +339,16 @@ function generateExpertisePage(cfg, data) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${d.hero_title1} ${d.hero_title2} — Cabinet LAPERONNIE</title>
+  <title>${cfg.metaTitle}</title>
+  <meta name="description" content="${cfg.metaDesc}" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cabinet-laperonnie.fr/${slug}.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="${cfg.metaTitle}" />
+  <meta property="og:description" content="${cfg.metaDesc}" />
+  <meta property="og:url" content="https://cabinet-laperonnie.fr/${slug}.html" />
+  <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
+  <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
@@ -499,6 +508,40 @@ function generateExpertisePage(cfg, data) {
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Cabinet LAPERONNIE",
+    "description": "${cfg.metaDesc}",
+    "url": "https://cabinet-laperonnie.fr/${slug}.html",
+    "telephone": "+33545383009",
+    "email": "fx.laperonnie@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14 Rue d'Arcole",
+      "addressLocality": "Angoulême",
+      "postalCode": "16000",
+      "addressRegion": "Charente",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.648866,
+      "longitude": 0.154784
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Angoulême"},
+      {"@type": "AdministrativeArea", "name": "Charente"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -714,7 +757,7 @@ function generateExpertisePage(cfg, data) {
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
-    <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">RGPD</a></div>
+    <div class="footer-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="rgpd.html">RGPD</a></div>
   </div>
 </footer>
 
@@ -753,10 +796,52 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${pageTitle} — Cabinet LAPERONNIE</title>
+  <title>${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE</title>
+  ${fm.description ? `<meta name="description" content="${fm.description}" />` : ''}
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cabinet-laperonnie.fr/article-${slug}.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE" />
+  ${fm.description ? `<meta property="og:description" content="${fm.description}" />` : ''}
+  <meta property="og:url" content="https://cabinet-laperonnie.fr/article-${slug}.html" />
+  <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
+  <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Cabinet LAPERONNIE",
+    "url": "https://cabinet-laperonnie.fr",
+    "telephone": "+33545383009",
+    "email": "fx.laperonnie@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14 Rue d'Arcole",
+      "addressLocality": "Angoulême",
+      "postalCode": "16000",
+      "addressRegion": "Charente",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.648866,
+      "longitude": 0.154784
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Angoulême"},
+      {"@type": "AdministrativeArea", "name": "Charente"}
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root { --cat:${cat.color}; --cat-bg:${cat.bg}; --cat-border:${cat.border}; }
@@ -1180,9 +1265,9 @@ async function build() {
 
   // Process expertise pages (full template regeneration from YAML)
   const expertisePages = [
-    { slug: 'droit-penal', bg: 'Droit Pénal.png', bgPosition: 'center 35%', bgFilter: 'contrast(1.12) brightness(0.55) saturate(0.45)', activeNav: 'droit-penal', formDomain: 'Droit Pénal', svgs: SVGS_PENAL },
-    { slug: 'droit-famille', bg: 'Droit de la famille.png', bgPosition: 'center 40%', bgFilter: 'contrast(1.1) brightness(0.42) saturate(0.35)', activeNav: 'droit-famille', formDomain: 'Droit de la Famille', svgs: SVGS_FAMILLE },
-    { slug: 'cryptomonnaies', bg: 'Cryptomonnaies.png', bgPosition: 'center center', bgFilter: 'contrast(1.15) brightness(0.5) saturate(0.6)', activeNav: 'cryptomonnaies', formDomain: 'Cryptomonnaies', svgs: SVGS_CRYPTO },
+    { slug: 'droit-penal', bg: 'Droit Pénal.png', bgPosition: 'center 35%', bgFilter: 'contrast(1.12) brightness(0.55) saturate(0.45)', activeNav: 'droit-penal', formDomain: 'Droit Pénal', svgs: SVGS_PENAL, metaTitle: 'Avocat Droit Pénal Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat en droit pénal à Angoulême et en Charente. Garde à vue, défense pénale, instruction, jugement. Maître LAPERONNIE intervient 7j/7. ☎ 05 45 38 30 09' },
+    { slug: 'droit-famille', bg: 'Droit de la famille.png', bgPosition: 'center 40%', bgFilter: 'contrast(1.1) brightness(0.42) saturate(0.35)', activeNav: 'droit-famille', formDomain: 'Droit de la Famille', svgs: SVGS_FAMILLE, metaTitle: 'Avocat Divorce & Famille Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat divorce et droit de la famille à Angoulême (Charente). Garde d\'enfants, pension alimentaire, succession. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
+    { slug: 'cryptomonnaies', bg: 'Cryptomonnaies.png', bgPosition: 'center center', bgFilter: 'contrast(1.15) brightness(0.5) saturate(0.6)', activeNav: 'cryptomonnaies', formDomain: 'Cryptomonnaies', svgs: SVGS_CRYPTO, metaTitle: 'Avocat Cryptomonnaies Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat spécialisé en cryptomonnaies à Angoulême. Arnaque, fraude blockchain, litiges DeFi en Charente. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
   ];
   for (const cfg of expertisePages) {
     const data = readPageYaml(cfg.slug);
