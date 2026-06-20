@@ -91,6 +91,15 @@
     .service-icon { width:36px; height:36px; color:var(--or); margin-bottom:1.25rem; opacity:.85; }
     .service-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:var(--blanc); margin-bottom:.8rem; line-height:1.3; }
     .service-desc { font-size:.79rem; color:var(--gris); line-height:1.82; font-weight:300; }
+    .faq-list { display:flex; flex-direction:column; gap:0; border-top:1px solid rgba(196,160,64,.12); }
+    .faq-item { border-bottom:1px solid rgba(196,160,64,.12); }
+    .faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.4rem 0; background:transparent; border:none; color:var(--blanc); font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; cursor:pointer; text-align:left; }
+    .faq-q span { flex:1; }
+    .faq-chevron { width:18px; height:18px; flex-shrink:0; color:var(--or); transition:transform .3s ease; }
+    .faq-item.open .faq-chevron { transform:rotate(180deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+    .faq-item.open .faq-a { max-height:300px; }
+    .faq-a p { font-size:.83rem; color:var(--blanc-dim); line-height:1.88; font-weight:300; padding-bottom:1.4rem; }
     #contact { padding:6rem 5rem; background:var(--charbon-mid); }
     .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
     .contact-info-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.2vw,2.7rem); font-weight:700; color:var(--blanc); line-height:1.22; margin-bottom:1.4rem; }
@@ -102,6 +111,7 @@
     .c-value { font-size:.85rem; color:var(--blanc); font-weight:400; }
     .form-wrap { background:var(--charbon-card); border:1px solid rgba(196,160,64,.1); padding:3rem; }
     .form-heading { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:600; color:var(--blanc); margin-bottom:.5rem; }
+    .form-sub { font-size:.72rem; color:var(--gris); margin-bottom:1.5rem; font-style:italic; }
     .form-domain-tag { display:inline-block; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); background:rgba(196,160,64,.08); border:1px solid rgba(196,160,64,.2); padding:.3rem .75rem; margin-bottom:1.75rem; }
     .fg { margin-bottom:1.4rem; }
     .fg label { display:block; font-size:.57rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.45rem; }
@@ -204,6 +214,34 @@
     "areaServed": [
       {"@type": "City", "name": "Angoulême"},
       {"@type": "AdministrativeArea", "name": "Charente"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Puis-je demander un avocat dès la garde à vue ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Oui, c'est un droit fondamental garanti par la loi. Dès la première heure de garde à vue, vous pouvez exiger la présence d'un avocat — de jour comme de nuit, y compris le week-end."}
+      },
+      {
+        "@type": "Question",
+        "name": "Le cabinet intervient-il en urgence ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Oui. Maître LAPERONNIE est joignable 7j/7 pour les situations d'urgence pénale : garde à vue, convocation au commissariat, mise en examen ou placement en détention provisoire."}
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte un avocat en droit pénal ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Les honoraires sont fixés en toute transparence lors du premier entretien, selon la nature et la complexité du dossier. L'aide juridictionnelle peut être accordée sous conditions de ressources."}
+      },
+      {
+        "@type": "Question",
+        "name": "La première consultation est-elle payante ?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Le premier entretien est confidentiel et sans engagement. C'est l'occasion de présenter votre situation et de définir ensemble la stratégie la plus adaptée."}
+      }
     ]
   }
   </script>
@@ -329,6 +367,44 @@
   </div>
 </section>
 
+<section id="faq" style="padding:6rem 5rem; background:var(--charbon);">
+  <div style="max-width:760px; margin:0 auto;">
+    <div class="eyebrow">Questions fréquentes</div>
+    <h2 class="section-title" style="margin-bottom:3rem;">Une défense pénale<br/><em>sans compromis</em> — <em style="font-size:.7em;color:var(--blanc-dim);font-style:normal;">FAQ</em></h2>
+    <div class="faq-list">
+      
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span>Puis-je demander un avocat dès la garde à vue ?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><p>Oui, c'est un droit fondamental garanti par la loi. Dès la première heure de garde à vue, vous pouvez exiger la présence d'un avocat — de jour comme de nuit, y compris le week-end.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span>Le cabinet intervient-il en urgence ?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><p>Oui. Maître LAPERONNIE est joignable 7j/7 pour les situations d'urgence pénale : garde à vue, convocation au commissariat, mise en examen ou placement en détention provisoire.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span>Combien coûte un avocat en droit pénal ?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><p>Les honoraires sont fixés en toute transparence lors du premier entretien, selon la nature et la complexité du dossier. L'aide juridictionnelle peut être accordée sous conditions de ressources.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+          <span>La première consultation est-elle payante ?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><p>Le premier entretien est confidentiel et sans engagement. C'est l'occasion de présenter votre situation et de définir ensemble la stratégie la plus adaptée.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="cta-strip">
   <div>
     <p class="cta-strip-label">Cabinet LAPERONNIE</p>
@@ -365,13 +441,9 @@
         <input type="hidden" name="_next" value="https://cabinet-laperonnie.fr/merci.html" />
         <input type="hidden" name="_captcha" value="false" />
         <h3 class="form-heading">Demande de consultation</h3>
-        <div class="form-domain-tag">Droit Pénal</div>
-        <div class="form-row">
-          <div class="fg"><label>Prénom</label><input type="text" name="prenom" placeholder="Jean" required /></div>
-          <div class="fg"><label>Nom</label><input type="text" name="nom" placeholder="Dupont" required /></div>
-        </div>
-        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="jean.dupont@email.fr" required /></div>
-        <div class="fg"><label>Téléphone</label><input type="tel" name="telephone" placeholder="+33 6 XX XX XX XX" /></div>
+        <p class="form-sub">Premier entretien confidentiel — sans engagement</p>
+        <div class="fg"><label>Nom complet</label><input type="text" name="nom" placeholder="Jean Dupont" required /></div>
+        <div class="fg"><label>Téléphone</label><input type="tel" name="telephone" placeholder="+33 6 XX XX XX XX" required /></div>
         <div class="fg">
           <label>Domaine juridique</label>
           <select name="domaine">
@@ -381,8 +453,7 @@
             <option>Autre</option>
           </select>
         </div>
-        <div class="fg"><label>Votre message</label><textarea name="message" rows="4" placeholder="Décrivez brièvement votre situation..."></textarea></div>
-        <button type="submit" class="btn-send">Envoyer la demande →</button>
+        <button type="submit" class="btn-send">Envoyer — Réponse sous 24h →</button>
       </form>
     </div>
   </div>
@@ -445,6 +516,13 @@
   <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
   <a href="#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
 </div>
+
+<!-- TODO: replace 336XXXXXXXXX with the lawyer's mobile WhatsApp number e.g. 336XXXXXXXX -->
+<a href="https://wa.me/336XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20avec%20Ma%C3%AEtre%20LAPERONNIE." class="wa-btn" target="_blank" rel="noopener" aria-label="Contacter par WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
 </body>
 </html>
