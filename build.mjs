@@ -342,6 +342,7 @@ function generateExpertisePage(cfg, data) {
   <title>${cfg.metaTitle}</title>
   <meta name="description" content="${cfg.metaDesc}" />
   <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="canonical" href="https://cabinet-laperonnie.fr/${slug}.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${cfg.metaTitle}" />
@@ -799,6 +800,7 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <title>${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE</title>
   ${fm.description ? `<meta name="description" content="${fm.description}" />` : ''}
   <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="canonical" href="https://cabinet-laperonnie.fr/article-${slug}.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE" />
@@ -1013,6 +1015,7 @@ function generateCaseHtml(slug, fm, tocLinks, sectionsHtml) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${pageTitle} — Cabinet LAPERONNIE</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
