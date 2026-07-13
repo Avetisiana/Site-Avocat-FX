@@ -822,10 +822,11 @@
     }
     .maplibregl-popup-tip { display:none !important; }
     .maplibregl-ctrl-attrib {
-      background:rgba(6,5,4,.7) !important;
-      color:rgba(196,160,64,.5) !important;
+      background:rgba(255,255,255,.85) !important;
+      color:rgba(80,70,60,.6) !important;
+      font-size:.65rem !important;
     }
-    .maplibregl-ctrl-attrib a { color:rgba(196,160,64,.5) !important; }
+    .maplibregl-ctrl-attrib a { color:rgba(80,70,60,.6) !important; }
 
     /* custom gold pulse marker */
     .map-marker-pin {
@@ -1728,7 +1729,7 @@
 
   const map = new maplibregl.Map({
     container: 'map-canvas',
-    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
     center: [OFFICE_LNG, OFFICE_LAT],
     zoom: 15,
     pitch: 40,
