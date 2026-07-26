@@ -1,13 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2RW9YDSJCQ"></script>
+  <!-- Consentement cookies — GA chargé uniquement après accord RGPD -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-2RW9YDSJCQ");
+  (function(){
+    var GA='G-2RW9YDSJCQ',CK='laperonnie_consent';
+    function loadGA(){
+      if(window._gaOk)return;window._gaOk=1;
+      var s=document.createElement('script');
+      s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());gtag('config',GA);
+    }
+    window.acceptCookies=function(){
+      localStorage.setItem(CK,'ok');
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='none';
+      loadGA();
+    };
+    window.refuseCookies=function(){
+      localStorage.setItem(CK,'no');
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='none';
+    };
+    window.manageCookies=function(){
+      localStorage.removeItem(CK);
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='flex';
+    };
+    document.addEventListener('DOMContentLoaded',function(){
+      var c=localStorage.getItem(CK);
+      if(!c){var b=document.getElementById('cookie-banner');if(b)b.style.display='flex';}
+      else if(c==='ok')loadGA();
+    });
+  })();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -266,7 +294,10 @@
 
   <div class="legal-section">
     <h2>7. Cookies</h2>
-    <p>Ce site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement. Aucun cookie publicitaire ou de pistage tiers n'est déposé sans votre consentement.</p>
+    <p>Ce site utilise <strong>Google Analytics</strong> (Google LLC, États-Unis) afin de mesurer l'audience et d'analyser la navigation (pages visitées, durée de session, provenance géographique). Ce service dépose des cookies de traçage sur votre terminal.</p>
+    <p>Conformément au RGPD et aux recommandations de la CNIL, ces cookies ne sont déposés qu'<strong>après votre consentement explicite</strong>. Lors de votre première visite, une bannière vous permet d'accepter ou de refuser leur dépôt. Votre choix est mémorisé dans votre navigateur (clé localStorage <code>laperonnie_consent</code>) et reste valable pour vos prochaines visites.</p>
+    <p>En cas de refus, Google Analytics n'est pas chargé et aucun cookie de mesure n'est déposé. Vous pouvez modifier votre choix à tout moment :</p>
+    <p><button onclick="manageCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.4);color:#C4A040;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.3rem;cursor:pointer;">Gérer mes cookies</button></p>
   </div>
 
   <div class="legal-section">
@@ -337,5 +368,17 @@
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
+
+<!-- Bannière consentement cookies RGPD/CNIL -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
+  <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
+    Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
+    <a href="/confidentialite.html" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+  </p>
+  <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
+    <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>
+    <button onclick="acceptCookies()" style="background:#C4A040;border:1px solid #C4A040;color:#060504;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.3rem;cursor:pointer;white-space:nowrap;transition:opacity .2s;">Accepter</button>
+  </div>
+</div>
 </body>
 </html>
