@@ -1,4 +1,4 @@
-﻿import fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 
@@ -6,6 +6,10 @@ const require = createRequire(import.meta.url);
 const matter = require('gray-matter');
 const { marked } = require('marked');
 const yaml = require('js-yaml');
+
+// ─── Vercel Analytics ─────────────────────────────────────────────────────────
+
+const VERCEL_ANALYTICS = `<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>`;
 
 // ─── Category config ──────────────────────────────────────────────────────────
 
@@ -181,7 +185,7 @@ const FOOTER = `
   </div>
 </footer>`;
 
-// ─── Shared mob CTA bar ───────────────────────────────────────────────────────
+// ─── Shared mob CTA bar ─────────────────────��─────────────────────────────────
 
 const MOB_CTA = `
 <div class="mob-cta-bar">
@@ -577,6 +581,7 @@ function generateExpertisePage(cfg, data) {
     ]
   }
   </script>
+  ${VERCEL_ANALYTICS}
 </head>
 <body>
 
@@ -971,6 +976,7 @@ ${SHARED_CSS}
       .article-cta-actions { flex-direction:column; }
     }
   </style>
+  ${VERCEL_ANALYTICS}
 </head>
 <body>
 ${buildNav('blog')}
@@ -1130,6 +1136,7 @@ ${SHARED_CSS}
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
   </style>
+  ${VERCEL_ANALYTICS}
 </head>
 <body>
 ${buildNav('cases')}
