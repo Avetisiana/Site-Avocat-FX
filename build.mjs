@@ -364,8 +364,7 @@ function generateExpertisePage(cfg, data) {
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -858,7 +857,7 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -892,7 +891,6 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
     ]
   }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root { --cat:${cat.color}; --cat-bg:${cat.bg}; --cat-border:${cat.border}; }
 ${SHARED_CSS}
@@ -1067,8 +1065,7 @@ function generateCaseHtml(slug, fm, tocLinks, sectionsHtml) {
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
 ${SHARED_CSS}
     .case-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }

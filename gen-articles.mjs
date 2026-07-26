@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 
 const NAV = `<nav id="navbar">
   <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
@@ -116,7 +116,7 @@ function build(a) {
   <title>${a.metaTitle} — Cabinet LAPERONNIE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"><\/script>
   ${css(a.catColor, a.catBg, a.catBorder, a.heroAccent)}
 </head>
