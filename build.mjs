@@ -355,11 +355,11 @@ function generateExpertisePage(cfg, data) {
   <meta name="description" content="${cfg.metaDesc}" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="canonical" href="https://cabinet-laperonnie.fr/${slug}.html" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/${slug}.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${cfg.metaTitle}" />
   <meta property="og:description" content="${cfg.metaDesc}" />
-  <meta property="og:url" content="https://cabinet-laperonnie.fr/${slug}.html" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/${slug}.html" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -537,7 +537,7 @@ function generateExpertisePage(cfg, data) {
     "@type": "LegalService",
     "name": "Cabinet LAPERONNIE",
     "description": "${cfg.metaDesc}",
-    "url": "https://cabinet-laperonnie.fr/${slug}.html",
+    "url": "https://laperonnie-avocat.fr/${slug}.html",
     "telephone": "+33545383009",
     "email": "fx.laperonnie@gmail.com",
     "address": {
@@ -750,7 +750,7 @@ function generateExpertisePage(cfg, data) {
     <div class="form-wrap reveal rd2">
       <form action="https://formsubmit.co/fx.laperonnie@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande de consultation — ${formDomain}" />
-        <input type="hidden" name="_next" value="https://cabinet-laperonnie.fr/merci.html" />
+        <input type="hidden" name="_next" value="https://laperonnie-avocat.fr/merci.html" />
         <input type="hidden" name="_captcha" value="false" />
         <h3 class="form-heading">Demande de consultation</h3>
         <p class="form-sub">Premier entretien confidentiel — sans engagement</p>
@@ -849,11 +849,11 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   ${fm.description ? `<meta name="description" content="${fm.description}" />` : ''}
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="canonical" href="https://cabinet-laperonnie.fr/article-${slug}.html" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/article-${slug}.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE" />
   ${fm.description ? `<meta property="og:description" content="${fm.description}" />` : ''}
-  <meta property="og:url" content="https://cabinet-laperonnie.fr/article-${slug}.html" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/article-${slug}.html" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -864,7 +864,7 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Cabinet LAPERONNIE",
-    "url": "https://cabinet-laperonnie.fr",
+    "url": "https://laperonnie-avocat.fr",
     "telephone": "+33545383009",
     "email": "fx.laperonnie@gmail.com",
     "address": {
