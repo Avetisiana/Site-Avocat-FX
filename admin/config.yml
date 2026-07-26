@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Avetisiana/Site-Avocat-FX
   branch: master
-  base_url: https://laperonnie-avocat.fr
+  base_url: https://site-avocat-fx.vercel.app
   auth_endpoint: api/auth
 
 media_folder: brand_assets
