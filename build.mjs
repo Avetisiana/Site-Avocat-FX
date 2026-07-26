@@ -1,4 +1,4 @@
-﻿import fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 
@@ -181,7 +181,7 @@ const FOOTER = `
   </div>
 </footer>`;
 
-// ─── Shared mob CTA bar ───────────────────────────────────────────────────────
+// ─── Shared mob CTA bar ─────────────────────��─────────────────────────────────
 
 const MOB_CTA = `
 <div class="mob-cta-bar">
@@ -210,6 +210,14 @@ const SHARED_JS = `
     document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
   }
 </script>`;
+
+// ─── Vercel Web Analytics ─────────────────────────────────────────────────────
+
+const ANALYTICS_SCRIPT = `
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>`;
 
 // ─── Shared CSS (nav + footer + utils) ───────────────────────────────────────
 
@@ -576,7 +584,7 @@ function generateExpertisePage(cfg, data) {
       }`).join(',\n      ')}
     ]
   }
-  </script>
+  </script>${ANALYTICS_SCRIPT}
 </head>
 <body>
 
@@ -970,7 +978,7 @@ ${SHARED_CSS}
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
       .article-cta-actions { flex-direction:column; }
     }
-  </style>
+  </style>${ANALYTICS_SCRIPT}
 </head>
 <body>
 ${buildNav('blog')}
@@ -1129,7 +1137,7 @@ ${SHARED_CSS}
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
-  </style>
+  </style>${ANALYTICS_SCRIPT}
 </head>
 <body>
 ${buildNav('cases')}
