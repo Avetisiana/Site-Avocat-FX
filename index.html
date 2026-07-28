@@ -109,13 +109,14 @@
       filter: brightness(0) invert(1) sepia(0.55) saturate(5) hue-rotate(8deg) brightness(1.05);
     }
     .nav-logo:hover { opacity:1; }
+    nav > a { flex-shrink:0; }
 
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
     .nav-links a {
       color:var(--blanc-dim);
       text-decoration:none;
       font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
-      position:relative; transition:color .2s;
+      position:relative; transition:color .2s; white-space:nowrap;
     }
     .nav-links a::after {
       content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
@@ -206,6 +207,13 @@
     }
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
+    @media(max-width:1100px) {
+      nav { padding:1rem 2.5rem; }
+      nav.scrolled { padding:.75rem 2.5rem; }
+      .nav-logo { height:80px; }
+      .nav-links { gap:1.5rem; }
+      .btn-rdv { white-space:nowrap; }
+    }
     @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
 
     /* ─── HERO ─── */
@@ -1180,7 +1188,9 @@
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
   <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
-    <li><a href="#expertise" class="mob-close">Expertise</a></li>
+    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
+    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
     <li><a href="cabinet.html" class="mob-close">Le Cabinet</a></li>
     <li><a href="cases.html" class="mob-close">Affaires</a></li>
     <li><a href="blog.html" class="mob-close">Actualités</a></li>
