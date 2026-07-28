@@ -674,7 +674,10 @@ function generateExpertisePage(cfg, data) {
 </div>
 
 <section class="page-hero">
-  <img src="brand_assets/${bg}" class="page-hero-bg" alt="" fetchpriority="high" width="1920" height="1280" />
+  <picture>
+    <source srcset="brand_assets/${bg.replace('.webp', '.avif')}" type="image/avif">
+    <img src="brand_assets/${bg}" class="page-hero-bg" alt="" fetchpriority="high" width="1920" height="1280" />
+  </picture>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-tint"></div>
   <div class="page-hero-content">
