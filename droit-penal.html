@@ -52,7 +52,9 @@
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="image" href="brand_assets/Droit Pénal.webp" type="image/webp" />
   <style>
     :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -288,7 +290,7 @@
 <body>
 
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="index.html"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
       <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
@@ -311,7 +313,7 @@
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
-  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html" class="mob-close active">Droit Pénal</a></li>
     <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
@@ -325,7 +327,7 @@
 </div>
 
 <section class="page-hero">
-  <img src="brand_assets/Droit Pénal.png" class="page-hero-bg" alt="" />
+  <img src="brand_assets/Droit Pénal.webp" class="page-hero-bg" alt="" fetchpriority="high" width="1920" height="1280" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-tint"></div>
   <div class="page-hero-content">
@@ -501,7 +503,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>

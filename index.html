@@ -53,9 +53,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <!-- Fonts: non-render-blocking; display=swap prevents invisible text -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" rel="stylesheet" /></noscript>
+  <!-- MapLibre: non-render-blocking -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" /></noscript>
+  <script defer src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <!-- LCP image preload: tells browser to fetch the hero photo immediately -->
+  <link rel="preload" as="image" href="brand_assets/Photo of the lawyer.webp" type="image/webp" />
 
   <style>
     :root {
@@ -1155,7 +1161,7 @@
 <!-- ░░ NAV ░░ -->
 <nav id="navbar">
   <a href="#hero">
-    <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" />
+    <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" />
   </a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
@@ -1186,7 +1192,7 @@
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
-  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
     <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
@@ -1220,9 +1226,11 @@
 
   <!-- lawyer photo — right side -->
   <div class="hero-photo-side">
-    <img src="brand_assets/Photo of the lawyer.png"
+    <img src="brand_assets/Photo of the lawyer.webp"
          alt="Maître François-Xavier LAPERONNIE"
-         class="hero-photo-img" />
+         class="hero-photo-img"
+         fetchpriority="high"
+         width="1200" height="1600" />
     <div class="hero-photo-grade"></div>
     <div class="hero-photo-blend"></div>
     <div class="hero-photo-vignette"></div>
@@ -1298,7 +1306,8 @@
 
     <!-- ── Droit Pénal ── -->
     <div class="exp-card reveal" onclick="window.location='droit-penal.html'" style="cursor:pointer">
-      <img src="brand_assets/Droit Pénal.png" class="exp-card-bg" alt=""
+      <img src="brand_assets/Droit Pénal.webp" class="exp-card-bg" alt=""
+           loading="lazy" width="1920" height="1280"
            style="filter:contrast(1.12) brightness(0.72) saturate(0.55); object-position:center 35%;"/>
       <div class="exp-card-overlay"></div>
       <div class="exp-card-tint"></div>
@@ -1322,7 +1331,8 @@
 
     <!-- ── Droit de la Famille ── -->
     <div class="exp-card reveal rd1" onclick="window.location='droit-famille.html'" style="cursor:pointer">
-      <img src="brand_assets/Droit de la famille.png" class="exp-card-bg" alt=""
+      <img src="brand_assets/Droit de la famille.webp" class="exp-card-bg" alt=""
+           loading="lazy" width="1920" height="1280"
            style="filter:contrast(1.1) brightness(0.38) saturate(0.38); object-position:center 40%;"/>
       <div class="exp-card-overlay"></div>
       <div class="exp-card-tint" style="background:rgba(180,110,20,.1);"></div>
@@ -1347,7 +1357,8 @@
 
     <!-- ── Cryptomonnaies ── -->
     <div class="exp-card reveal rd2" onclick="window.location='cryptomonnaies.html'" style="cursor:pointer">
-      <img src="brand_assets/Cryptomonnaies.png" class="exp-card-bg" alt=""
+      <img src="brand_assets/Cryptomonnaies.webp" class="exp-card-bg" alt=""
+           loading="lazy" width="1920" height="1280"
            style="filter:contrast(1.15) brightness(0.55) saturate(0.65); object-position:center center;"/>
       <div class="exp-card-overlay"></div>
       <div class="exp-card-tint" style="background:rgba(196,160,64,.13);"></div>
@@ -1398,7 +1409,7 @@
 
   <div class="about-img-wrap reveal">
     <div class="about-img-frame">
-      <img src="brand_assets/Photo avocat.jpeg" alt="Maître François-Xavier LAPERONNIE, avocat à Angoulême" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+      <img src="brand_assets/Photo avocat.webp" alt="Maître François-Xavier LAPERONNIE, avocat à Angoulême" loading="lazy" width="800" height="1067" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
     </div>
     <div class="about-frame-border"></div>
     <div class="about-experience-badge">
@@ -1705,7 +1716,7 @@
   <div class="footer-grid">
 
     <div>
-      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
 
@@ -1762,59 +1773,54 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // ── Interactive map ──
-  const OFFICE_LNG = 0.15478420855165548;
-  const OFFICE_LAT = 45.648866470828835;
+  // ── Interactive map — runs after deferred maplibre.js has loaded ──
+  document.addEventListener('DOMContentLoaded', function() {
+    const OFFICE_LNG = 0.15478420855165548;
+    const OFFICE_LAT = 45.648866470828835;
 
-  const map = new maplibregl.Map({
-    container: 'map-canvas',
-    style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
-    center: [OFFICE_LNG, OFFICE_LAT],
-    zoom: 15,
-    pitch: 40,
-    bearing: -15,
-    attributionControl: { compact: true },
-  });
+    const map = new maplibregl.Map({
+      container: 'map-canvas',
+      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      center: [OFFICE_LNG, OFFICE_LAT],
+      zoom: 15,
+      pitch: 40,
+      bearing: -15,
+      attributionControl: { compact: true },
+    });
 
-  // Disable scroll-zoom so the page scrolls normally over the map
-  map.scrollZoom.disable();
+    map.scrollZoom.disable();
+    map.getCanvas().addEventListener('click', () => map.scrollZoom.enable());
+    map.getCanvas().addEventListener('mouseleave', () => map.scrollZoom.disable());
 
-  // Re-enable scroll-zoom only when user clicks on the map
-  map.getCanvas().addEventListener('click', () => map.scrollZoom.enable());
-  map.getCanvas().addEventListener('mouseleave', () => map.scrollZoom.disable());
+    map.on('load', () => {
+      const el = document.createElement('div');
+      el.className = 'map-marker-pin';
 
-  map.on('load', () => {
-    // Custom gold pulsing marker
-    const el = document.createElement('div');
-    el.className = 'map-marker-pin';
+      const popupHTML = `
+        <div class="map-popup-card">
+          <div class="map-popup-name">Cabinet LAPERONNIE</div>
+          <div class="map-popup-sub">François-Xavier LAPERONNIE</div>
+          <div class="map-popup-detail">📍 14 Rue d'Arcole, 16000 Angoulême</div>
+          <div class="map-popup-detail">🕐 Lun – Ven, 8h – 19h</div>
+          <div class="map-popup-detail">📞 05 45 38 30 09</div>
+        </div>`;
 
-    // Popup card
-    const popupHTML = `
-      <div class="map-popup-card">
-        <div class="map-popup-name">Cabinet LAPERONNIE</div>
-        <div class="map-popup-sub">François-Xavier LAPERONNIE</div>
-        <div class="map-popup-detail">📍 14 Rue d'Arcole, 16000 Angoulême</div>
-        <div class="map-popup-detail">🕐 Lun – Ven, 8h – 19h</div>
-        <div class="map-popup-detail">📞 05 45 38 30 09</div>
-      </div>`;
+      const popup = new maplibregl.Popup({
+        offset: 20,
+        closeButton: false,
+        maxWidth: 'none',
+      }).setHTML(popupHTML);
 
-    const popup = new maplibregl.Popup({
-      offset: 20,
-      closeButton: false,
-      maxWidth: 'none',
-    }).setHTML(popupHTML);
+      new maplibregl.Marker({ element: el })
+        .setLngLat([OFFICE_LNG, OFFICE_LAT])
+        .setPopup(popup)
+        .addTo(map);
 
-    new maplibregl.Marker({ element: el })
-      .setLngLat([OFFICE_LNG, OFFICE_LAT])
-      .setPopup(popup)
-      .addTo(map);
+      popup.addTo(map);
+      popup.setLngLat([OFFICE_LNG, OFFICE_LAT]);
 
-    // Open popup by default
-    popup.addTo(map);
-    popup.setLngLat([OFFICE_LNG, OFFICE_LAT]);
-
-    // Subtle animated fly-in on first load
-    map.easeTo({ center: [OFFICE_LNG, OFFICE_LAT], zoom: 15.5, pitch: 45, bearing: -10, duration: 2200, easing: t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t });
+      map.easeTo({ center: [OFFICE_LNG, OFFICE_LAT], zoom: 15.5, pitch: 45, bearing: -10, duration: 2200, easing: t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t });
+    });
   });
 
   // ── Mobile hamburger ──

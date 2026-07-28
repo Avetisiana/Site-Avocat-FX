@@ -117,7 +117,7 @@ const NAV_PHONE_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 function buildNav(activeLink) {
   return `
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="index.html"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
       <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
@@ -140,7 +140,7 @@ function buildNav(activeLink) {
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
-  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
     <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
@@ -160,7 +160,7 @@ const FOOTER = `
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>
@@ -416,7 +416,9 @@ function generateExpertisePage(cfg, data) {
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" as="image" href="brand_assets/${bg}" type="image/webp" />
   <style>
     :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -635,7 +637,7 @@ function generateExpertisePage(cfg, data) {
 <body>
 
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="index.html"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
       <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
@@ -658,7 +660,7 @@ function generateExpertisePage(cfg, data) {
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
-  <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
     <li><a href="droit-famille.html"${mobNavActive('droit-famille')}>Droit de la Famille</a></li>
@@ -672,7 +674,7 @@ function generateExpertisePage(cfg, data) {
 </div>
 
 <section class="page-hero">
-  <img src="brand_assets/${bg}" class="page-hero-bg" alt="" />
+  <img src="brand_assets/${bg}" class="page-hero-bg" alt="" fetchpriority="high" width="1920" height="1280" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-tint"></div>
   <div class="page-hero-content">
@@ -827,7 +829,7 @@ function generateExpertisePage(cfg, data) {
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="brand_assets/LF Logo.png" alt="Cabinet LAPERONNIE" class="footer-logo" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>
@@ -947,7 +949,8 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <meta property="og:locale" content="fr_FR" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1192,7 +1195,8 @@ function generateCaseHtml(slug, fm, tocLinks, sectionsHtml) {
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
   <style>
 ${SHARED_CSS}
     .case-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
@@ -1443,9 +1447,9 @@ async function build() {
 
   // Process expertise pages (full template regeneration from YAML)
   const expertisePages = [
-    { slug: 'droit-penal', bg: 'Droit Pénal.png', bgPosition: 'center 35%', bgFilter: 'contrast(1.12) brightness(0.55) saturate(0.45)', activeNav: 'droit-penal', formDomain: 'Droit Pénal', svgs: SVGS_PENAL, metaTitle: 'Avocat Droit Pénal Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat en droit pénal à Angoulême et en Charente. Garde à vue, défense pénale, instruction, jugement. Maître LAPERONNIE intervient 7j/7. ☎ 05 45 38 30 09' },
-    { slug: 'droit-famille', bg: 'Droit de la famille.png', bgPosition: 'center 40%', bgFilter: 'contrast(1.1) brightness(0.42) saturate(0.35)', activeNav: 'droit-famille', formDomain: 'Droit de la Famille', svgs: SVGS_FAMILLE, metaTitle: 'Avocat Divorce & Famille Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat divorce et droit de la famille à Angoulême (Charente). Garde d\'enfants, pension alimentaire, succession. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
-    { slug: 'cryptomonnaies', bg: 'Cryptomonnaies.png', bgPosition: 'center center', bgFilter: 'contrast(1.15) brightness(0.5) saturate(0.6)', activeNav: 'cryptomonnaies', formDomain: 'Cryptomonnaies', svgs: SVGS_CRYPTO, metaTitle: 'Avocat Cryptomonnaies Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat spécialisé en cryptomonnaies à Angoulême. Arnaque, fraude blockchain, litiges DeFi en Charente. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
+    { slug: 'droit-penal', bg: 'Droit Pénal.webp', bgPosition: 'center 35%', bgFilter: 'contrast(1.12) brightness(0.55) saturate(0.45)', activeNav: 'droit-penal', formDomain: 'Droit Pénal', svgs: SVGS_PENAL, metaTitle: 'Avocat Droit Pénal Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat en droit pénal à Angoulême et en Charente. Garde à vue, défense pénale, instruction, jugement. Maître LAPERONNIE intervient 7j/7. ☎ 05 45 38 30 09' },
+    { slug: 'droit-famille', bg: 'Droit de la famille.webp', bgPosition: 'center 40%', bgFilter: 'contrast(1.1) brightness(0.42) saturate(0.35)', activeNav: 'droit-famille', formDomain: 'Droit de la Famille', svgs: SVGS_FAMILLE, metaTitle: 'Avocat Divorce & Famille Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat divorce et droit de la famille à Angoulême (Charente). Garde d\'enfants, pension alimentaire, succession. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
+    { slug: 'cryptomonnaies', bg: 'Cryptomonnaies.webp', bgPosition: 'center center', bgFilter: 'contrast(1.15) brightness(0.5) saturate(0.6)', activeNav: 'cryptomonnaies', formDomain: 'Cryptomonnaies', svgs: SVGS_CRYPTO, metaTitle: 'Avocat Cryptomonnaies Angoulême — Cabinet LAPERONNIE | Charente', metaDesc: 'Avocat spécialisé en cryptomonnaies à Angoulême. Arnaque, fraude blockchain, litiges DeFi en Charente. Maître LAPERONNIE. ☎ 05 45 38 30 09' },
   ];
   for (const cfg of expertisePages) {
     const data = readPageYaml(cfg.slug);
