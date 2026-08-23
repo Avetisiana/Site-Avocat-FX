@@ -34,11 +34,7 @@ Le point commun de toutes les situations d’audition libre est l’absence de c
 
 Ce régime, initialement conçu pour la procédure pénale de droit commun, a été étendu par le législateur à de nombreux domaines connexes où des agents disposent de pouvoirs d'enquête : c'est le cas en droit du travail, en droit de la consommation , ou encore en droit de l'environnement . Cette généralisation témoigne de l'importance croissante de cette procédure dans le paysage pénal français.
 
-
-
 **1/ Audition libre et garde à vue : quelles différences concrètes ?**
-
-
 
 La différence essentielle entre l'audition libre et la garde à vue tient à la privation de liberté.
 
@@ -50,11 +46,7 @@ De la même façon, la durée de mesure est différente de la garde à vue puisq
 
 Cette distinction n'est cependant pas toujours aussi étanche qu'elle y paraît en pratique, ce qui explique pourquoi il est indispensable de bien comprendre son statut dès la convocation.
 
-
-
 **2/ Dans quels cas les enquêteurs peuvent-ils recourir à l'audition libre ?**
-
-
 
 Le recours à l'audition libre par les enquêteurs (police ou gendarmerie) suppose la réunion de deux conditions cumulatives fixées par l'article 61-1 du Code de procédure pénale.  
 
@@ -62,15 +54,9 @@ Le recours à l'audition libre par les enquêteurs (police ou gendarmerie) suppo
 
    L'absence de contrainte : la personne ne doit pas avoir été conduite de force par les services de police ou de gendarmerie devant l'officier de police judiciaire. Si la force publique a dû être employée pour l'amener, l'audition libre est exclue et seule la garde à vue peut être envisagée.
 
-
-
 La Cour de cassation a pu préciser que les garanties de l'audition libre ne s'imposent que si les soupçons plausibles existent dès le début de l'audition. Si ces soupçons n'apparaissent qu'au cours de l'entretien — par exemple lorsque la personne, initialement entendue comme simple témoin, révèle des éléments l'impliquant — les enquêteurs doivent alors lui notifier immédiatement ses droits (Cass. crim., 16 janv. 2024, n° 22-84.243) . De même, une simple déclaration spontanée et succincte recueillie lors d'un contrôle sur la voie publique, en dehors de toute audition formelle visant une personne déterminée, n'entre pas dans le champ de ces obligations (Cass. crim., 6 juin 2023, n° 22-86.685) .
 
-
-
 **3/ Quels sont vos droits lors d'une audition libre ?**
-
-
 
 Avant tout début d'interrogatoire, la loi impose aux enquêteurs de notifier à la personne suspectée une série de droits fondamentaux   :
 
@@ -90,8 +76,6 @@ Lorsqu'une convocation écrite est adressée au préalable, elle doit déjà men
 
  • Le droit à des conseils juridiques gratuits dans une structure d'accès au droit.
 
-
-
 **4/ Que se passe-t-il en cas de non-respect de vos droits ?** 
 
 Le non-respect des formalités prévues à l'article 61-1 du Code de procédure pénale (par exemple l'absence de notification du droit de se taire ou du droit de quitter les locaux peut entraîner la nullité du procès-verbal d'audition. 
@@ -102,31 +86,19 @@ Les nullités d'ordre public. Certaines violations graves échappent à l'exige
 
 Ces décisions montrent que la contestation d'une audition libre irrégulière est une stratégie de défense, qui suppose une analyse fine du dossier par un avocat pénaliste — d'où l'intérêt de solliciter cette analyse le plus tôt possible après l'audition.
 
-
-
 **5/  Les pièges à éviter lors d'une audition libre**
 
+Le sentiment de sécurité trompeur. Le mot « libre » rassure à tort. De nombreuses personnes convoquées pensent qu'il suffit de « s'expliquer » rapidement pour clore l'affaire, alors que chaque propos tenu est consigné par écrit et pourra être exploité devant un tribunal.
 
+Le risque d'auto-incrimination. Face à des questions précises posées par des enquêteurs expérimentés, il est fréquent de faire, sans en avoir conscience, des déclarations qui aggravent sa situation. Le droit de se taire est l'outil de défense le plus négligé, alors qu'il est pourtant expressément garanti (C. pr. pén., art. 61-1) .
 
-6. Le sentiment de sécurité trompeur. Le mot « libre » rassure à tort. De nombreuses personnes convoquées pensent qu'il suffit de « s'expliquer » rapidement pour clore l'affaire, alors que chaque propos tenu est consigné par écrit et pourra être exploité devant un tribunal.
+La bascule soudaine en garde à vue. Une audition libre peut, à tout moment, se transformer en garde à vue (C. pr. pén., art. 61-1) . Si les déclarations faites révèlent des éléments graves, ou si les enquêteurs estiment nécessaire de retenir la personne sous contrainte, ils peuvent décider de ce placement immédiat.
 
+La méconnaissance du rôle limité mais essentiel de l'avocat. Beaucoup renoncent à solliciter un avocat en pensant que son intervention est inutile puisqu'il n'a pas accès complet au dossier à ce stade. C'est une erreur : sa présence permet de vérifier le respect du formalisme légal, de conseiller sur l'attitude à adopter et de consigner d'éventuels manquements exploitables ultérieurement dans le cadre d'une nullité.
 
-7. Le risque d'auto-incrimination. Face à des questions précises posées par des enquêteurs expérimentés, il est fréquent de faire, sans en avoir conscience, des déclarations qui aggravent sa situation. Le droit de se taire est l'outil de défense le plus négligé, alors qu'il est pourtant expressément garanti (C. pr. pén., art. 61-1) .
-
-
-8. La bascule soudaine en garde à vue. Une audition libre peut, à tout moment, se transformer en garde à vue (C. pr. pén., art. 61-1) . Si les déclarations faites révèlent des éléments graves, ou si les enquêteurs estiment nécessaire de retenir la personne sous contrainte, ils peuvent décider de ce placement immédiat.
-
-
-9. La méconnaissance du rôle limité mais essentiel de l'avocat. Beaucoup renoncent à solliciter un avocat en pensant que son intervention est inutile puisqu'il n'a pas accès complet au dossier à ce stade. C'est une erreur : sa présence permet de vérifier le respect du formalisme légal, de conseiller sur l'attitude à adopter et de consigner d'éventuels manquements exploitables ultérieurement dans le cadre d'une nullité.
-
-
-10. Le cas particulier des mineurs. Pour les mineurs, des garanties renforcées s'appliquent, l'assistance d'un avocat lors d'une audition libre étant obligatoire dans de nombreux cas afin de protéger le mineur face à la pression de l'interrogatoire. Les parents doivent être particulièrement vigilants dès réception d'une convocation concernant leur enfant mineur.
-
-
+Le cas particulier des mineurs. Pour les mineurs, des garanties renforcées s'appliquent, l'assistance d'un avocat lors d'une audition libre étant obligatoire dans de nombreux cas afin de protéger le mineur face à la pression de l'interrogatoire. Les parents doivent être particulièrement vigilants dès réception d'une convocation concernant leur enfant mineur.
 
 **Les conseils de Maître François-Xavier LAPERONNIE**
-
-
 
 Contacter un avocat pénaliste dès la réception d'une convocation à une audition libre présente plusieurs avantages concrets :
 
