@@ -60,11 +60,43 @@ function slugify(text) {
     .replace(/^-|-$/g, '');
 }
 
+// Turn a date the lawyer typed in the CMS ("05 août 2026", "2026-04-15") into
+// an ISO date (YYYY-MM-DD) for <lastmod> and BlogPosting schema. Returns null if
+// it can't be parsed — callers then simply omit the date.
+const FR_MONTHS = {
+  janvier: '01', février: '02', fevrier: '02', mars: '03', avril: '04', mai: '05',
+  juin: '06', juillet: '07', août: '08', aout: '08', septembre: '09', octobre: '10',
+  novembre: '11', décembre: '12', decembre: '12',
+};
+function toISODate(input) {
+  if (!input) return null;
+  const s = String(input).trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  const m = s.toLowerCase().match(/(\d{1,2})\s+([a-zà-ÿ]+)\s+(\d{4})/);
+  if (m && FR_MONTHS[m[2]]) return `${m[3]}-${FR_MONTHS[m[2]]}-${m[1].padStart(2, '0')}`;
+  return null;
+}
+
+// The CMS markdown editor lets the lawyer mark section headings either with "## "
+// or, as they often do, with a whole line in bold (**Titre :**). Normalise the
+// second form to "## Titre" so the table of contents / section layout works
+// without asking them to change how they write.
+function normalizeHeadings(markdown) {
+  return markdown
+    .split('\n')
+    .map((line) => {
+      const m = line.trim().match(/^\*\*([^*]+?)\*\*$/);
+      if (!m) return line;
+      return `## ${m[1].replace(/\s*:\s*$/, '').trim()}`;
+    })
+    .join('\n');
+}
+
 // Convert markdown body into { tocLinks, sectionsHtml }
 // Each ## heading becomes a section div with a scroll-spy id.
 // Blockquotes become styled highlight boxes.
 function processBody(markdown) {
-  const parts = markdown.split(/^## /m);
+  const parts = normalizeHeadings(markdown).split(/^## /m);
   const preamble = parts[0].trim();
   const sections = parts.slice(1);
 
@@ -898,6 +930,31 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   const cat = CATS[fm.category] || CATS.penal;
   const pageTitle = fm.title.replace(/<[^>]+>/g, '');
 
+  // Meta description: use the explicit `description` field verbatim (the author
+  // wrote it to length); otherwise fall back to the intro, trimmed on a word to
+  // ~155 chars, so no article ever ships without one.
+  const explicitDesc = String(fm.description || '').replace(/\s+/g, ' ').trim();
+  const fallbackDesc = String(fm.intro || fm.excerpt || '')
+    .replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const trimmedFallback = fallbackDesc.length > 158
+    ? fallbackDesc.slice(0, 155).replace(/\s+\S*$/, '') + '…'
+    : fallbackDesc;
+  const metaDesc = (explicitDesc || trimmedFallback).replace(/"/g, '&quot;');
+
+  const isoDate = toISODate(fm.date);
+  const blogPosting = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: pageTitle,
+    ...(metaDesc ? { description: metaDesc.replace(/&quot;/g, '"') } : {}),
+    ...(isoDate ? { datePublished: isoDate, dateModified: isoDate } : {}),
+    author: { '@type': 'Person', name: 'François-Xavier Laperonnie', jobTitle: 'Avocat', url: 'https://laperonnie-avocat.fr/cabinet.html' },
+    publisher: { '@type': 'Organization', name: 'Cabinet LAPERONNIE', logo: { '@type': 'ImageObject', url: 'https://laperonnie-avocat.fr/brand_assets/LF-Logo.svg' } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://laperonnie-avocat.fr/article-${slug}.html` },
+    inLanguage: 'fr-FR',
+    isPartOf: { '@type': 'Blog', name: 'Actualités juridiques — Cabinet LAPERONNIE', '@id': 'https://laperonnie-avocat.fr/blog.html' },
+  };
+
   return `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -940,13 +997,13 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE</title>
-  ${fm.description ? `<meta name="description" content="${fm.description}" />` : ''}
+  ${metaDesc ? `<meta name="description" content="${metaDesc}" />` : ''}
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="canonical" href="https://laperonnie-avocat.fr/article-${slug}.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE" />
-  ${fm.description ? `<meta property="og:description" content="${fm.description}" />` : ''}
+  ${metaDesc ? `<meta property="og:description" content="${metaDesc}" />` : ''}
   <meta property="og:url" content="https://laperonnie-avocat.fr/article-${slug}.html" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
@@ -954,6 +1011,9 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
+  <script type="application/ld+json">
+${JSON.stringify(blogPosting, null, 2)}
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1003,6 +1063,7 @@ ${SHARED_CSS}
     .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:700; line-height:1.1; letter-spacing:-.02em; color:var(--blanc); margin-bottom:1.5rem; }
     .article-title em { color:var(--or); font-style:italic; }
     .article-intro { font-family:'Cormorant Garamond',serif; font-size:clamp(1.05rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:720px; line-height:1.7; }
+    .article-intro + .article-intro { margin-top:.9rem; }
     .article-meta-bar { display:flex; align-items:center; gap:2rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); flex-wrap:wrap; }
     .author-block { display:flex; align-items:center; gap:1rem; }
     .author-photo { width:44px; height:44px; object-fit:cover; object-position:top; border:1px solid rgba(196,160,64,.2); filter:grayscale(.25); }
@@ -1083,7 +1144,7 @@ ${buildNav('blog')}
       <span class="tag-read">${fm.readTime || '5 min de lecture'}</span>
     </div>
     <h1 class="article-title">${fm.title}</h1>
-    <p class="article-intro">${fm.intro || ''}</p>
+    ${String(fm.intro || '').trim().split(/\n+/).filter(Boolean).map(p => `<p class="article-intro">${p.trim()}</p>`).join('\n    ') || '<p class="article-intro"></p>'}
     <div class="article-meta-bar">
       <div class="author-block">
         <img src="brand_assets/Photo of the lawyer.png" alt="Maître François-Xavier LAPERONNIE" class="author-photo" />
@@ -1383,6 +1444,50 @@ function generateCaseCard(slug, fm) {
     </a>`;
 }
 
+// ─── Sitemap ──────────────────────────────────────────────────────────────────
+
+const SITE_ORIGIN = 'https://laperonnie-avocat.fr';
+
+// Fixed pages that always belong in the sitemap. Blog/Affaires listing pages get
+// their <lastmod> from the freshest item they contain (added in writeSitemap).
+const SITEMAP_STATIC = [
+  { loc: '/', priority: '1.0' },
+  { loc: '/cabinet.html', priority: '0.8' },
+  { loc: '/droit-penal.html', priority: '0.9' },
+  { loc: '/droit-famille.html', priority: '0.9' },
+  { loc: '/cryptomonnaies.html', priority: '0.9' },
+  { loc: '/blog.html', priority: '0.8' },
+  { loc: '/cases.html', priority: '0.5' },
+  { loc: '/mentions-legales.html', priority: '0.2' },
+  { loc: '/confidentialite.html', priority: '0.2' },
+  { loc: '/rgpd.html', priority: '0.2' },
+];
+
+function writeSitemap(articles, cases) {
+  const newest = [...articles, ...cases]
+    .map(e => e.lastmod).filter(Boolean).sort().pop() || null;
+
+  const newestCase = cases.map(c => c.lastmod).filter(Boolean).sort().pop() || null;
+  const rows = [];
+  for (const p of SITEMAP_STATIC) {
+    const lastmod = p.loc === '/blog.html' ? newest
+      : p.loc === '/cases.html' ? newestCase
+      : null;
+    rows.push({ loc: p.loc, priority: p.priority, lastmod });
+  }
+  for (const a of articles) rows.push({ loc: a.loc, priority: '0.7', lastmod: a.lastmod });
+  for (const c of cases) rows.push({ loc: c.loc, priority: '0.6', lastmod: c.lastmod });
+
+  const body = rows.map(({ loc, priority, lastmod }) => {
+    const url = SITE_ORIGIN + encodeURI(loc);
+    return `  <url><loc>${url}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}<priority>${priority}</priority></url>`;
+  }).join('\n');
+
+  fs.writeFileSync('sitemap.xml',
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`);
+}
+
 // ─── Main build ───────────────────────────────────────────────────────────────
 
 async function build() {
@@ -1391,43 +1496,59 @@ async function build() {
 
   let newArticleCards = '';
   let newCaseCards = '';
+  const sitemapArticles = [];
+  const sitemapCases = [];
+
+  // Read a content folder into [{ slug, fm, markdown, iso }], newest first.
+  // `slug` keeps the .md filename so URLs already indexed by Google stay stable;
+  // new files get a clean ASCII slug from the CMS (see admin/config.yml).
+  const readCollection = (dir) => {
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir)
+      .filter(f => f.endsWith('.md'))
+      .map((file) => {
+        const { data: fm, content: markdown } = matter(fs.readFileSync(path.join(dir, file), 'utf8'));
+        return { slug: path.basename(file, '.md'), fm, markdown, iso: toISODate(fm.date) };
+      })
+      .sort((a, b) => (b.iso || '').localeCompare(a.iso || ''));
+  };
+
+  // Remove previously generated pages so an article/affaire deleted in the CMS
+  // also disappears from the site. Guarded: only runs when there is fresh
+  // content to rebuild from, so a broken checkout can't wipe the blog.
+  const cleanGenerated = (prefix, hasContent) => {
+    if (!hasContent) return;
+    for (const f of fs.readdirSync('.')) {
+      if (f.startsWith(`${prefix}-`) && f.endsWith('.html')) fs.unlinkSync(f);
+    }
+  };
+
+  const articles = readCollection(articlesDir);
+  const cases = readCollection(casesDir);
+  cleanGenerated('article', articles.length > 0);
+  cleanGenerated('case', cases.length > 0);
 
   // Process articles
-  if (fs.existsSync(articlesDir)) {
-    const files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.md'));
-    for (const file of files) {
-      const raw = fs.readFileSync(path.join(articlesDir, file), 'utf8');
-      const { data: fm, content: markdown } = matter(raw);
-      const slug = path.basename(file, '.md');
-
-      const { tocLinks, sectionsHtml } = processBody(markdown);
-      const html = generateArticleHtml(slug, fm, tocLinks, sectionsHtml);
-      fs.writeFileSync(`article-${slug}.html`, html);
-
-      newArticleCards += generateArticleCard(slug, fm);
-      console.log(`✓ article-${slug}.html`);
-    }
+  for (const { slug, fm, markdown, iso } of articles) {
+    const { tocLinks, sectionsHtml } = processBody(markdown);
+    fs.writeFileSync(`article-${slug}.html`, generateArticleHtml(slug, fm, tocLinks, sectionsHtml));
+    newArticleCards += generateArticleCard(slug, fm);
+    sitemapArticles.push({ loc: `/article-${slug}.html`, lastmod: iso });
+    console.log(`✓ article-${slug}.html`);
   }
 
   // Process cases
-  if (fs.existsSync(casesDir)) {
-    const files = fs.readdirSync(casesDir).filter(f => f.endsWith('.md'));
-    for (const file of files) {
-      const raw = fs.readFileSync(path.join(casesDir, file), 'utf8');
-      const { data: fm, content: markdown } = matter(raw);
-      const slug = path.basename(file, '.md');
-
-      const { tocLinks, sectionsHtml } = generateCaseSectionsHtml(markdown);
-      const html = generateCaseHtml(slug, fm, tocLinks, sectionsHtml);
-      fs.writeFileSync(`case-${slug}.html`, html);
-
-      newCaseCards += generateCaseCard(slug, fm);
-      console.log(`✓ case-${slug}.html`);
-    }
+  for (const { slug, fm, markdown, iso } of cases) {
+    const { tocLinks, sectionsHtml } = generateCaseSectionsHtml(markdown);
+    fs.writeFileSync(`case-${slug}.html`, generateCaseHtml(slug, fm, tocLinks, sectionsHtml));
+    newCaseCards += generateCaseCard(slug, fm);
+    sitemapCases.push({ loc: `/case-${slug}.html`, lastmod: iso });
+    console.log(`✓ case-${slug}.html`);
   }
 
-  // Inject article cards into blog.html
-  if (newArticleCards && fs.existsSync('blog.html')) {
+  // Inject article cards into blog.html (runs even when empty, so removing the
+  // last article clears the listing too)
+  if (fs.existsSync('blog.html')) {
     let blogHtml = fs.readFileSync('blog.html', 'utf8');
     blogHtml = blogHtml.replace(
       /<!-- CMS_ARTICLES_START -->[\s\S]*?<!-- CMS_ARTICLES_END -->/,
@@ -1438,7 +1559,7 @@ async function build() {
   }
 
   // Inject case cards into cases.html
-  if (newCaseCards && fs.existsSync('cases.html')) {
+  if (fs.existsSync('cases.html')) {
     let casesHtml = fs.readFileSync('cases.html', 'utf8');
     casesHtml = casesHtml.replace(
       /<!-- CMS_CASES_START -->[\s\S]*?<!-- CMS_CASES_END -->/,
@@ -1484,6 +1605,11 @@ async function build() {
       console.log('✓ cabinet.html updated');
     }
   }
+
+  // Regenerate sitemap.xml from what actually exists, so a new article published
+  // in the CMS lands in the sitemap on the next deploy with no manual step.
+  writeSitemap(sitemapArticles, sitemapCases);
+  console.log('✓ sitemap.xml');
 
   console.log('\nBuild complete.');
 }

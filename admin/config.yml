@@ -10,6 +10,13 @@ public_folder: brand_assets
 
 locale: fr
 
+# New entries get clean ASCII slugs (accents stripped, no special chars) so
+# article URLs stay simple — e.g. "La garde à vue" -> la-garde-a-vue
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: articles
     label: "Articles — Actualités"
