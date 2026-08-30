@@ -57,8 +57,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" rel="stylesheet" /></noscript>
   <!-- MapLibre: chargé uniquement quand la section carte entre dans le viewport -->
-  <!-- LCP image preload: hero photo — desktop only (hidden on mobile). AVIF = what <picture> serves. -->
-  <link rel="preload" as="image" href="brand_assets/Photo%20of%20the%20lawyer.avif" type="image/avif" media="(min-width:721px)" fetchpriority="high" />
+  <!-- LCP image preload: hero photo — desktop only (hidden on mobile via media query) -->
+  <link rel="preload" as="image" href="brand_assets/Photo of the lawyer.webp" type="image/webp" media="(min-width:721px)" />
 
   <style>
     :root {
@@ -1230,7 +1230,8 @@
     <picture>
       <!-- mobile: .hero-photo-side is display:none — serve a 1x1 placeholder so the real photo is never downloaded -->
       <source media="(max-width:720px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <source srcset="brand_assets/Photo%20of%20the%20lawyer.avif" type="image/avif">
+      <!-- desktop: WebP only. The kenBurns zoom + contrast filter on this element makes a low-quality
+           AVIF visibly artefacted and can stutter the animation — keep the q82 WebP here. -->
       <img src="brand_assets/Photo of the lawyer.webp"
            alt="Maître François-Xavier LAPERONNIE"
            class="hero-photo-img"
