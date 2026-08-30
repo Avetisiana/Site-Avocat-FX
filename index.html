@@ -57,7 +57,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" rel="stylesheet" /></noscript>
   <!-- MapLibre: chargé uniquement quand la section carte entre dans le viewport -->
-  <!-- LCP image preload: tells browser to fetch the hero photo immediately -->
+  <!-- LCP image preload: hero photo — desktop only (hidden on mobile via media query) -->
   <link rel="preload" as="image" href="brand_assets/Photo of the lawyer.webp" type="image/webp" media="(min-width:721px)" />
 
   <style>
@@ -1192,7 +1192,7 @@
   </button>
 </nav>
 
-<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
@@ -1228,6 +1228,8 @@
   <!-- lawyer photo — right side -->
   <div class="hero-photo-side">
     <picture>
+      <!-- mobile: .hero-photo-side is display:none — serve a 1x1 placeholder so the real photo is never downloaded -->
+      <source media="(max-width:720px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
       <source srcset="brand_assets/Photo of the lawyer.avif" type="image/avif">
       <img src="brand_assets/Photo of the lawyer.webp"
            alt="Maître François-Xavier LAPERONNIE"

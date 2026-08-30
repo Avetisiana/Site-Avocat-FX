@@ -171,7 +171,7 @@ function buildNav(activeLink) {
   <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
@@ -691,7 +691,7 @@ function generateExpertisePage(cfg, data) {
   <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
 </nav>
 
-<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true">
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
     <li><a href="droit-penal.html"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
