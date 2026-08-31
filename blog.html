@@ -43,17 +43,18 @@
   <title>Actualités Juridiques — Avocat Angoulême | Cabinet LAPERONNIE</title>
   <meta name="description" content="Articles juridiques par Maître LAPERONNIE, avocat à Angoulême. Droit pénal, droit de la famille, cryptomonnaies — l'actualité du droit en Charente." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://laperonnie-avocat.fr/blog.html" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/blog" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Actualités Juridiques — Avocat Angoulême | Cabinet LAPERONNIE" />
   <meta property="og:description" content="Articles juridiques par Maître LAPERONNIE, avocat à Angoulême. Droit pénal, famille, cryptomonnaies en Charente." />
-  <meta property="og:url" content="https://laperonnie-avocat.fr/blog.html" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/blog" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
-  <style>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>        @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
     :root {
       --charbon:       #060504;
       --charbon-mid:   #0D0B09;
@@ -69,9 +70,7 @@
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
-    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
-
-    /* NAV */
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("brand_assets/noise.png"); }
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
     .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
@@ -100,16 +99,12 @@
     .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
     .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
     .nav-dropdown a:hover::before { transform:scaleY(1); }
-
-    /* HAMBURGER */
     .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
     .hamburger:hover { border-color:rgba(196,160,64,.55); }
     .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
     .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
-
-    /* MOBILE NAV PANEL */
     .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
     .mob-nav.open { opacity:1; pointer-events:all; }
     .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
@@ -119,8 +114,6 @@
     .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
     .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; transition:all .2s; }
     .mob-nav-phone:hover { background:rgba(196,160,64,.08); border-color:var(--or); }
-
-    /* STICKY MOBILE BOTTOM BAR */
     .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
     .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
     .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
@@ -128,17 +121,11 @@
     .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
     .mob-cta-rdv:hover { background:var(--or-pale); }
-
-    /* REVEAL */
     .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
     .reveal.vis { opacity:1; transform:translateY(0); }
     .rd1 { transition-delay:.1s; } .rd2 { transition-delay:.2s; } .rd3 { transition-delay:.3s; }
-
-    /* ATOMS */
     .eyebrow { font-size:.58rem; font-weight:600; letter-spacing:.42em; color:var(--or); text-transform:uppercase; display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
     .eyebrow::before { content:''; width:28px; height:1px; background:var(--or); flex-shrink:0; }
-
-    /* PAGE HERO */
     .page-hero-sm { min-height:56vh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:5rem; background:linear-gradient(155deg, #0A0908 0%, var(--charbon) 60%, #080706 100%); }
     .hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; opacity:.22; filter:sepia(.3) saturate(.85); transform:scale(1.04); z-index:0; }
     .page-hero-sm::before { content:''; position:absolute; inset:0; z-index:1; background: linear-gradient(to bottom, rgba(6,5,4,.6) 0%, rgba(6,5,4,.3) 40%, rgba(6,5,4,.8) 100%), radial-gradient(ellipse 80% 70% at 50% 60%, rgba(196,160,64,.05) 0%, transparent 70%); }
@@ -151,19 +138,11 @@
     .page-hero-sm h1 em { color:var(--or); font-style:italic; }
     .page-hero-desc { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.7vw,1.2rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:560px; line-height:1.65; margin-top:1.25rem; }
     .hero-rule { width:50px; height:1px; background:linear-gradient(90deg,var(--or-dark),var(--or)); margin-top:1.75rem; }
-
-    /* BLOG SECTION */
     #blog-list { padding:6rem 5rem; }
-
-    /* FILTER TABS */
     .blog-filter { display:flex; gap:.75rem; margin-bottom:3.5rem; flex-wrap:wrap; }
     .filter-btn { font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding:.5rem 1.2rem; border:1px solid rgba(196,160,64,.18); color:var(--gris); background:transparent; cursor:pointer; transition:all .2s; }
     .filter-btn:hover, .filter-btn.active { color:var(--or); border-color:var(--or); background:rgba(196,160,64,.05); }
-
-    /* ARTICLE GRID */
     .articles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-
-    /* ARTICLE CARD */
     .article-card {
       background:var(--charbon-card);
       padding:2.5rem 2.25rem 2.75rem;
@@ -175,23 +154,18 @@
     .article-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); transform:scaleX(0); transform-origin:left; transition:transform .42s cubic-bezier(.4,0,.2,1); }
     .article-card:hover { background:#161210; }
     .article-card:hover::before { transform:scaleX(1); }
-
     .article-card-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem; }
     .article-cat { display:inline-flex; align-items:center; font-size:.52rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding:.25rem .7rem; border:1px solid; }
     .article-cat.penal    { color:rgba(220,80,60,1);  border-color:rgba(220,80,60,.3);  background:rgba(220,80,60,.07); }
     .article-cat.famille  { color:rgba(100,160,220,1); border-color:rgba(100,160,220,.3); background:rgba(100,160,220,.07); }
     .article-cat.crypto   { color:var(--or-pale);       border-color:rgba(196,160,64,.3); background:rgba(196,160,64,.07); }
     .article-read-time { font-size:.56rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gris); }
-
     .article-title { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:700; color:#FFFFFF; line-height:1.28; letter-spacing:-.01em; flex:1; }
     .article-excerpt { font-size:.8rem; color:var(--blanc-dim); line-height:1.8; font-weight:300; }
-
     .article-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:1.1rem; border-top:1px solid rgba(196,160,64,.08); margin-top:auto; }
     .article-date { font-size:.6rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gris); }
     .article-cta { display:inline-flex; align-items:center; gap:.45rem; font-size:.6rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--or); transition:gap .2s; }
     .article-card:hover .article-cta { gap:.75rem; }
-
-    /* FOOTER */
     footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
     .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
@@ -205,8 +179,6 @@
     .footer-legal { display:flex; gap:2rem; }
     .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
     .footer-legal a:hover { color:var(--gris); }
-
-    /* RESPONSIVE */
     @media(max-width:1100px) {
       nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
       .articles-grid { grid-template-columns:1fr 1fr; }
@@ -231,32 +203,32 @@
     .wa-btn:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,.5); }
     .wa-btn svg { width:28px; height:28px; }
     @media(max-width:720px) { .wa-btn { bottom:calc(68px + 1rem); right:1rem; width:46px; height:46px; } .wa-btn svg { width:24px; height:24px; } }
-  </style>
+</style>
 </head>
 <body>
 
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF%20Logo.webp" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="/"><img src="brand_assets/LF%20Logo.webp" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
-      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <a href="/#expertise">Expertise <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a href="droit-penal.html">Droit Pénal</a>
-        <a href="droit-famille.html">Droit de la Famille</a>
-        <a href="cryptomonnaies.html">Cryptomonnaies</a>
+        <a href="/droit-penal">Droit Pénal</a>
+        <a href="/droit-famille">Droit de la Famille</a>
+        <a href="/cryptomonnaies">Cryptomonnaies</a>
       </div>
     </li>
-    <li><a href="cabinet.html">Le Cabinet</a></li>
-    <li><a href="cases.html">Affaires</a></li>
-    <li><a href="blog.html" class="active">Actualités</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/cases">Affaires</a></li>
+    <li><a href="/blog" class="active">Actualités</a></li>
+    <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
     <a href="tel:+33545383009" class="nav-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       <span>05 45 38 30 09</span>
     </a>
-    <a href="index.html#contact" class="btn-rdv">Prendre rendez-vous</a>
+    <a href="/#contact" class="btn-rdv">Prendre rendez-vous</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
     <span></span><span></span><span></span>
@@ -266,12 +238,12 @@
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
   <img src="brand_assets/LF%20Logo.webp" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
   <ul class="mob-nav-links">
-    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
-    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
-    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
-    <li><a href="cases.html" class="mob-close">Affaires</a></li>
-    <li><a href="blog.html" class="mob-close active">Actualités</a></li>
-    <li><a href="index.html#contact" class="mob-close">Contact</a></li>
+    <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
+    <li><a href="/droit-famille" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/cases" class="mob-close">Affaires</a></li>
+    <li><a href="/blog" class="mob-close active">Actualités</a></li>
+    <li><a href="/#contact" class="mob-close">Contact</a></li>
   </ul>
   <div class="mob-nav-divider"></div>
   <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
@@ -282,7 +254,7 @@
 <section class="page-hero-sm">
   <img src="brand_assets/Actualités juridiques.png" alt="" class="hero-bg-img" aria-hidden="true" />
   <div class="hero-content">
-    <div class="breadcrumb"><a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span><span>Actualités juridiques</span></div>
+    <div class="breadcrumb"><a href="/">Accueil</a><span class="breadcrumb-sep">›</span><span>Actualités juridiques</span></div>
     <h1>Actualités <em>juridiques</em></h1>
     <p class="page-hero-desc">Analyses pratiques et conseils du cabinet sur les questions juridiques du quotidien, rédigés par Maître François-Xavier LAPERONNIE.</p>
     <div class="hero-rule"></div>
@@ -301,7 +273,7 @@
 
   <div class="articles-grid">
     <!-- CMS_ARTICLES_START -->
-    <a href="article-divorce-par-consentement-mutuel-cout-delai-et-etapes.html" class="article-card reveal" data-cat="famille">
+    <a href="/article-divorce-par-consentement-mutuel-cout-delai-et-etapes" class="article-card reveal" data-cat="famille">
       <div class="article-card-top">
         <span class="article-cat famille">Famille</span>
         <span class="article-read-time">5 min de lecture</span>
@@ -315,7 +287,7 @@ Le divorce par consentement mutuel permet, depui…</p>
         <span class="article-cta">Lire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-    <a href="article-audition-libre-vos-droits-et-pieges-a-eviter.html" class="article-card reveal" data-cat="penal">
+    <a href="/article-audition-libre-vos-droits-et-pieges-a-eviter" class="article-card reveal" data-cat="penal">
       <div class="article-card-top">
         <span class="article-cat penal">Pénal</span>
         <span class="article-read-time">5 min de lecture</span>
@@ -329,7 +301,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
         <span class="article-cta">Lire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-    <a href="article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement.html" class="article-card reveal" data-cat="crypto">
+    <a href="/article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement" class="article-card reveal" data-cat="crypto">
       <div class="article-card-top">
         <span class="article-cat crypto">Cryptomonnaies</span>
         <span class="article-read-time">4 min de lecture</span>
@@ -341,7 +313,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
         <span class="article-cta">Lire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-    <a href="article-la-garde-a-vue.html" class="article-card reveal" data-cat="penal">
+    <a href="/article-la-garde-a-vue" class="article-card reveal" data-cat="penal">
       <div class="article-card-top">
         <span class="article-cat penal">Pénal</span>
         <span class="article-read-time">7 min de lecture</span>
@@ -353,7 +325,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
         <span class="article-cta">Lire <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </a>
-    <a href="article-avocat-divorce-angouleme.html" class="article-card reveal" data-cat="famille">
+    <a href="/article-avocat-divorce-angouleme" class="article-card reveal" data-cat="famille">
       <div class="article-card-top">
         <span class="article-cat famille">Famille</span>
         <span class="article-read-time">7 min de lecture</span>
@@ -380,24 +352,24 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
     <div>
       <p class="f-col-title">Expertise</p>
       <ul class="f-links">
-        <li><a href="droit-penal.html">Droit Pénal</a></li>
-        <li><a href="droit-famille.html">Droit de la Famille</a></li>
-        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+        <li><a href="/droit-penal">Droit Pénal</a></li>
+        <li><a href="/droit-famille">Droit de la Famille</a></li>
+        <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Cabinet</p>
       <ul class="f-links">
-        <li><a href="index.html#about">À propos</a></li>
-        <li><a href="index.html#valeurs">Nos valeurs</a></li>
-        <li><a href="cases.html">Affaires</a></li>
-        <li><a href="blog.html">Actualités</a></li>
+        <li><a href="/#about">À propos</a></li>
+        <li><a href="/#valeurs">Nos valeurs</a></li>
+        <li><a href="/cases">Affaires</a></li>
+        <li><a href="/blog">Actualités</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="/#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
@@ -405,7 +377,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
-    <div class="footer-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="rgpd.html">RGPD</a></div>
+    <div class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/rgpd">RGPD</a></div>
   </div>
 </footer>
 
@@ -454,7 +426,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Appeler
   </a>
-  <a href="index.html#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+  <a href="/#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
 </div>
 <!-- TODO: replace 33677933504 with the lawyer's mobile WhatsApp number e.g. 336XXXXXXXX -->
 <a href="https://wa.me/33677933504?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20avec%20Ma%C3%AEtre%20LAPERONNIE." class="wa-btn" target="_blank" rel="noopener" aria-label="Contacter par WhatsApp">
@@ -468,7 +440,7 @@ Vous avez reçu une convocation de la gendarmerie ou du commissariat pour une «
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
   <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
     Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
-    <a href="/confidentialite.html" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+    <a href="/confidentialite" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
   </p>
   <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
     <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>

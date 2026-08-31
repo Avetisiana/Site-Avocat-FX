@@ -51,16 +51,15 @@
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Fonts: non-render-blocking; display=swap prevents invisible text -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@700&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
   <!-- MapLibre: chargé uniquement quand la section carte entre dans le viewport -->
   <!-- LCP image preload: hero photo — desktop only (hidden on mobile via media query) -->
   <link rel="preload" as="image" href="brand_assets/Photo of the lawyer.webp" type="image/webp" media="(min-width:721px)" />
 
-  <style>
+  <style>        @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
     :root {
       --charbon:       #060504;
       --charbon-mid:   #0D0B09;
@@ -74,26 +73,20 @@
       --blanc-dim:     #C0BAB0;
       --gris:          #787068;
     }
-
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-
     body {
       background: var(--charbon);
       color: var(--blanc);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
     }
-
-    /* ─── NOISE OVERLAY ─── */
     body::after {
       content:'';
       position:fixed; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-image:url("brand_assets/noise.png");
       opacity:.025; pointer-events:none; z-index:9999;
     }
-
-    /* ─── NAV ─── */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
@@ -108,12 +101,11 @@
       border-color:rgba(196,160,64,.14);
     }
     .nav-logo {
-      height:110px; opacity:.9; transition:opacity .2s;
+      width:auto; height:110px; opacity:.9; transition:opacity .2s;
       filter: brightness(0) invert(1) sepia(0.55) saturate(5) hue-rotate(8deg) brightness(1.05);
     }
     .nav-logo:hover { opacity:1; }
     nav > a { flex-shrink:0; }
-
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
     .nav-links a {
       color:var(--blanc-dim);
@@ -129,15 +121,11 @@
     }
     .nav-links a:hover { color:var(--or); }
     .nav-links a:hover::after { transform:scaleX(1); }
-
-    /* ─── NAV DROPDOWN ─── */
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a {
       display:flex; align-items:center; gap:.45rem;
     }
-    /* hide the default underline on the parent link */
     .nav-item-has-drop > a::after { display:none; }
-
     .drop-chevron {
       display:inline-block; width:0; height:0;
       border-left:3.5px solid transparent;
@@ -147,7 +135,6 @@
       margin-top:1px; flex-shrink:0;
     }
     .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
-
     .nav-dropdown {
       position:absolute; top:calc(100% + 1.1rem); left:50%;
       transform:translateX(-50%) translateY(-8px);
@@ -189,7 +176,6 @@
       padding-left:1.8rem;
     }
     .nav-dropdown a:hover::before { transform:scaleY(1); }
-
     .btn-rdv {
       border:1px solid var(--or); color:var(--or); background:transparent;
       padding:.6rem 1.6rem; font-size:.62rem; font-weight:700;
@@ -197,7 +183,6 @@
       cursor:pointer; transition:background .22s ease, color .22s ease;
     }
     .btn-rdv:hover { background:var(--or); color:var(--charbon); }
-
     .nav-cta-group { display:flex; align-items:center; gap:1rem; }
     .nav-phone {
       display:flex; align-items:center; gap:.5rem;
@@ -213,13 +198,11 @@
     @media(max-width:1100px) {
       nav { padding:1rem 2.5rem; }
       nav.scrolled { padding:.75rem 2.5rem; }
-      .nav-logo { height:80px; }
+      .nav-logo { width:auto; height:80px; }
       .nav-links { gap:1.5rem; }
       .btn-rdv { white-space:nowrap; }
     }
     @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
-
-    /* ─── HERO ─── */
     #hero {
       min-height:100vh; position:relative;
       display:flex; flex-direction:column; justify-content:center;
@@ -232,16 +215,10 @@
         radial-gradient(ellipse 45% 90% at 18% 25%, rgba(196,160,64,.02) 0%, transparent 52%),
         linear-gradient(155deg, #080706 0%, var(--charbon) 55%, #070605 100%);
     }
-
-    /* geometric SVG watermark — left-side only */
     .hero-geo {
       position:absolute; left:3%; top:50%; transform:translateY(-50%);
       width:min(38vw,460px); opacity:.032; pointer-events:none; z-index:1;
     }
-
-    /* ─── HERO PHOTO ─── */
-    /* Container starts at 28% from left so the gradient has 72% of the page
-       to blend — the left edge is buried deep in charbon, never visible */
     .hero-photo-side {
       position:absolute; left:28%; right:0; top:0; bottom:0;
       overflow:hidden; z-index:1;
@@ -264,19 +241,12 @@
       from { transform:scale(1) translateY(0); }
       to   { transform:scale(1.07) translateY(-2.5%); }
     }
-    /* warm gold colour-grade — blends only within the isolated container */
     .hero-photo-grade {
       position:absolute; inset:0; z-index:2;
       background:rgba(170,130,12,0.18);
       mix-blend-mode:overlay; pointer-events:none;
-      animation: gradeBreath 8s ease-in-out 3s infinite alternate;
+      opacity:.8;
     }
-    @keyframes gradeBreath {
-      from { opacity:1; }
-      to   { opacity:.5; }
-    }
-    /* left-edge blend: starts fully opaque from the container's own left edge,
-       holds solid for ~35% of its width, then dissolves — guarantees no seam */
     .hero-photo-blend {
       position:absolute; inset:0; z-index:3; pointer-events:none;
       background:linear-gradient(
@@ -290,26 +260,21 @@
         transparent 88%
       );
     }
-    /* bottom vignette ties photo into the page */
     .hero-photo-vignette {
       position:absolute; bottom:0; left:0; right:0;
       height:44%; z-index:3; pointer-events:none;
       background:linear-gradient(to top, var(--charbon) 0%, transparent 100%);
     }
-    /* top vignette — subtle */
     .hero-photo-top {
       position:absolute; top:0; left:0; right:0;
       height:22%; z-index:3; pointer-events:none;
       background:linear-gradient(to bottom, var(--charbon) 0%, transparent 100%);
     }
-
     .hero-content {
       position:relative; z-index:2;
       padding:0 2rem 0 9rem;
       width:58%; max-width:800px;
     }
-
-    /* entrance animations */
     .h-reveal {
       opacity:0; transform:translateY(22px);
       animation:hRise .85s ease forwards;
@@ -321,14 +286,12 @@
     .hd4 { animation-delay:.58s; }
     .hd5 { animation-delay:.70s; }
     .hd6 { animation-delay:.82s; }
-
     .hero-eyebrow {
       font-size:.62rem; font-weight:600; letter-spacing:.4em; color:var(--or);
       text-transform:uppercase; margin-bottom:1.75rem;
       display:flex; align-items:center; gap:1rem;
     }
     .hero-eyebrow::before { content:''; width:38px; height:1px; background:var(--or); }
-
     .hero-name {
       font-family:'Playfair Display', serif;
       font-size:clamp(2.8rem,4.8vw,4.8rem);
@@ -337,14 +300,11 @@
       hyphens:none; overflow-wrap:normal;
     }
     .hero-name .gold { color:var(--or); font-style:normal; font-family:'Cinzel',serif; font-weight:700; letter-spacing:.12em; }
-    /* accessible / SEO text kept out of the visual layout (no paint, no reflow) */
     .visually-hidden { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
-
     .hero-job {
       font-size:.64rem; font-weight:600; letter-spacing:.45em;
       color:var(--gris); text-transform:uppercase; margin-bottom:2.25rem;
     }
-
     .hero-tagline {
       font-family:'Cormorant Garamond', serif;
       font-size:clamp(1.1rem,1.9vw,1.38rem);
@@ -352,13 +312,11 @@
       color:var(--blanc-dim); line-height:1.65;
       max-width:460px; margin-bottom:2.75rem;
     }
-
     .hero-pillars {
       display:flex; gap:1.75rem; align-items:center; margin-bottom:3.25rem;
     }
     .pillar-word { font-size:.58rem; font-weight:700; letter-spacing:.32em; color:var(--or); text-transform:uppercase; }
     .pillar-dot  { width:5px; height:5px; background:var(--or); border-radius:50%; opacity:.45; }
-
     .btn-primary {
       display:inline-flex; align-items:center; gap:.75rem;
       background:var(--or); color:var(--charbon);
@@ -372,8 +330,6 @@
       box-shadow:0 8px 36px rgba(196,160,64,.38);
     }
     .btn-primary:active { transform:translateY(0); }
-
-    /* scroll cue */
     .scroll-cue {
       position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
       z-index:2; display:flex; flex-direction:column; align-items:center; gap:.5rem;
@@ -389,8 +345,6 @@
       0%,100% { opacity:.25; transform:scaleY(1); }
       55%      { opacity:.85; transform:scaleY(.65); }
     }
-
-    /* ─── STATS BAR ─── */
     .stats-bar {
       background:var(--charbon-light);
       border-top:1px solid rgba(196,160,64,.13);
@@ -412,15 +366,12 @@
       font-size:.58rem; font-weight:600;
       letter-spacing:.22em; text-transform:uppercase; color:var(--gris);
     }
-
-    /* ─── SHARED SECTION ATOMS ─── */
     .eyebrow {
       font-size:.58rem; font-weight:600; letter-spacing:.42em;
       color:var(--or); text-transform:uppercase;
       display:flex; align-items:center; gap:1rem; margin-bottom:1rem;
     }
     .eyebrow::before { content:''; width:28px; height:1px; background:var(--or); flex-shrink:0; }
-
     .section-title {
       font-family:'Playfair Display', serif;
       font-size:clamp(1.9rem,3.6vw,2.9rem);
@@ -428,10 +379,7 @@
       color:var(--blanc);
     }
     .section-title em { color:var(--or); font-style:italic; }
-
     .gold-rule { width:56px; height:1px; background:linear-gradient(90deg,var(--or-dark),var(--or)); }
-
-    /* ─── REVEAL ─── */
     .reveal {
       opacity:0; transform:translateY(26px);
       transition:opacity .72s ease, transform .72s ease;
@@ -441,14 +389,11 @@
     .rd2 { transition-delay:.18s; }
     .rd3 { transition-delay:.28s; }
     .rd4 { transition-delay:.38s; }
-
-    /* ─── EXPERTISE ─── */
     #expertise {
       background:var(--charbon-mid);
       padding:7rem 5rem;
     }
     .exp-header { margin-bottom:4rem; }
-
     .exp-grid {
       display:grid; grid-template-columns:repeat(3,1fr);
       gap:1.5px; background:rgba(196,160,64,.09);
@@ -461,7 +406,6 @@
       background:var(--charbon-card);
       transition:box-shadow .4s ease;
     }
-    /* gold sweep line — must sit above all layers */
     .exp-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:2px;
       background:linear-gradient(90deg,var(--or-dark),var(--or-pale));
@@ -471,8 +415,6 @@
     }
     .exp-card:hover { box-shadow:0 0 0 1px rgba(196,160,64,.22) inset; }
     .exp-card:hover::before { transform:scaleX(1); }
-
-    /* full-bleed background image */
     .exp-card-bg {
       position:absolute; inset:0;
       width:100%; height:100%; object-fit:cover;
@@ -480,8 +422,6 @@
       transition:transform .75s cubic-bezier(.4,0,.2,1);
     }
     .exp-card:hover .exp-card-bg { transform:scale(1.07); }
-
-    /* gradient overlay — transparent at top, near-solid at bottom */
     .exp-card-overlay {
       position:absolute; inset:0; z-index:1; pointer-events:none;
       background:linear-gradient(
@@ -493,20 +433,16 @@
         rgba(6,5,4,1)   100%
       );
     }
-    /* warm gold colour grade */
     .exp-card-tint {
       position:absolute; inset:0; z-index:2; pointer-events:none;
       background:rgba(196,160,64,.07); mix-blend-mode:overlay;
     }
-
-    /* number — pinned top-left */
     .exp-num {
       position:absolute; top:2.25rem; left:2.5rem; z-index:3;
       font-family:'Playfair Display', serif;
       font-size:.6rem; letter-spacing:.3em;
       color:rgba(196,160,64,.65); font-weight:400;
     }
-    /* content body — pushed to bottom of card */
     .exp-card-body {
       position:relative; z-index:3;
       flex:1; display:flex; flex-direction:column;
@@ -534,14 +470,11 @@
       transition:opacity .3s ease, transform .3s ease;
     }
     .exp-card:hover .exp-arrow { opacity:1; transform:translateX(0); }
-
-    /* ─── ABOUT ─── */
     #about {
       padding:7rem 5rem;
       display:grid; grid-template-columns:1fr 1fr;
       gap:7rem; align-items:center;
     }
-
     .about-img-wrap { position:relative; }
     .about-img-frame {
       width:100%; aspect-ratio:3/4;
@@ -557,7 +490,6 @@
       display:flex; align-items:center; justify-content:center;
     }
     .about-logo-ghost { width:52%; opacity:.1; filter:grayscale(1) brightness(3); }
-
     .about-placeholder-text {
       position:absolute; inset:0;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -590,7 +522,6 @@
       font-size:.56rem; font-weight:700; letter-spacing:.2em;
       text-transform:uppercase; margin-top:.2rem;
     }
-
     .about-copy p {
       font-size:.86rem; color:var(--blanc-dim); line-height:1.92;
       font-weight:300; margin-bottom:1.2rem;
@@ -601,8 +532,6 @@
       font-size:1.65rem; font-style:italic; font-weight:300;
       color:var(--or); margin-top:2rem;
     }
-
-    /* ─── QUOTE BAND ─── */
     #quote {
       background:var(--or);
       padding:5.5rem 5rem;
@@ -626,8 +555,6 @@
       display:flex; align-items:center; gap:1rem;
     }
     .quote-attr::before { content:''; width:28px; height:1px; background:rgba(6,5,4,.35); }
-
-    /* ─── VALUES ─── */
     #valeurs {
       background:var(--charbon-mid);
       padding:7rem 5rem;
@@ -651,27 +578,21 @@
       font-size:1.08rem; font-weight:600; color:var(--blanc); margin-bottom:.7rem;
     }
     .val-desc { font-size:.77rem; color:var(--gris); line-height:1.78; font-weight:300; }
-
-    /* ─── TESTIMONIALS ─── */
     #testimonials {
       padding:7rem 5rem;
       background:var(--charbon);
       position:relative; overflow:hidden;
     }
-
-    /* faint radial glow behind the section */
     #testimonials::before {
       content:'';
       position:absolute; inset:0; pointer-events:none;
       background:
         radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,160,64,.04) 0%, transparent 70%);
     }
-
     .testi-grid {
       display:grid; grid-template-columns:repeat(3,1fr);
       gap:1.5rem; margin-top:4rem;
     }
-
     .testi-card {
       background:var(--charbon-card);
       border:1px solid rgba(196,160,64,.1);
@@ -690,8 +611,6 @@
         0 0 0 1px rgba(196,160,64,.08),
         0 20px 60px rgba(196,160,64,.06);
     }
-
-    /* top gold accent line that grows on hover */
     .testi-card::before {
       content:''; position:absolute;
       top:0; left:0; right:0; height:2px;
@@ -700,8 +619,6 @@
       transition:transform .45s cubic-bezier(.4,0,.2,1);
     }
     .testi-card:hover::before { transform:scaleX(1); }
-
-    /* decorative large quote mark */
     .testi-quote-mark {
       font-family:'Playfair Display', serif;
       font-size:5.5rem; line-height:.7; font-weight:700;
@@ -711,8 +628,6 @@
       transition:opacity .35s ease;
     }
     .testi-card:hover .testi-quote-mark { opacity:.28; }
-
-    /* stars */
     .testi-stars {
       display:flex; gap:.3rem; align-items:center;
     }
@@ -722,7 +637,6 @@
       opacity:0;
       animation: starPop .4s cubic-bezier(.34,1.56,.64,1) forwards;
     }
-    /* stagger each star */
     .testi-star:nth-child(1) { animation-delay:var(--star-base,0s); }
     .testi-star:nth-child(2) { animation-delay:calc(var(--star-base,0s) + .08s); }
     .testi-star:nth-child(3) { animation-delay:calc(var(--star-base,0s) + .16s); }
@@ -732,17 +646,13 @@
       from { opacity:0; transform:scale(.4) rotate(-20deg); }
       to   { opacity:1; transform:scale(1) rotate(0deg); }
     }
-
-    /* hold stars at opacity:0 until card is visible */
     .testi-card:not(.vis) .testi-star { animation:none; opacity:0; }
-
     .testi-text {
       font-family:'Cormorant Garamond', serif;
       font-size:1.08rem; font-weight:300; font-style:italic;
       color:var(--blanc-dim); line-height:1.75;
       flex:1;
     }
-
     .testi-author {
       display:flex; flex-direction:column; gap:.3rem;
       padding-top:1.25rem;
@@ -756,17 +666,13 @@
       font-size:.68rem; font-weight:400;
       color:var(--gris); letter-spacing:.05em;
     }
-
     @media(max-width:1100px) { .testi-grid { grid-template-columns:1fr; gap:1.5rem; } }
     @media(max-width:720px)  {
       #testimonials { padding-left:1.5rem; padding-right:1.5rem; }
       .testi-grid { grid-template-columns:1fr; }
     }
-
-    /* ─── CONTACT ─── */
     #contact { padding:7rem 5rem; }
     .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
-
     .contact-info-title {
       font-family:'Playfair Display', serif;
       font-size:clamp(1.8rem,3.2vw,2.7rem);
@@ -774,7 +680,6 @@
     }
     .contact-info-title em { color:var(--or); font-style:italic; }
     .contact-intro { font-size:.83rem; color:var(--gris); line-height:1.85; font-weight:300; margin-bottom:2.5rem; }
-
     .c-detail { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.5rem; }
     .c-icon {
       width:38px; height:38px; flex-shrink:0;
@@ -784,8 +689,6 @@
     }
     .c-label { font-size:.57rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); margin-bottom:.2rem; }
     .c-value { font-size:.85rem; color:var(--blanc); font-weight:400; }
-
-    /* form */
     .form-wrap {
       background:var(--charbon-card);
       border:1px solid rgba(196,160,64,.1);
@@ -826,8 +729,6 @@
       background:var(--or-pale);
       box-shadow:0 4px 24px rgba(196,160,64,.3);
     }
-
-    /* ─── MAP ─── */
     #map-section {
       position:relative;
       background:var(--charbon);
@@ -856,13 +757,11 @@
     .map-address-value {
       font-size:.85rem; color:var(--blanc); font-weight:400;
     }
-    /* MapLibre container */
     #map-canvas {
       width:100%; height:480px;
       border-top:1px solid rgba(196,160,64,.1);
       filter: brightness(0.80) saturate(2.2) contrast(1.08);
     }
-    /* override MapLibre popup chrome */
     .maplibregl-popup-content {
       background:transparent !important;
       padding:0 !important;
@@ -876,8 +775,6 @@
       font-size:.65rem !important;
     }
     .maplibregl-ctrl-attrib a { color:rgba(80,70,60,.6) !important; }
-
-    /* custom gold pulse marker */
     .map-marker-pin {
       width:14px; height:14px;
       background:var(--or);
@@ -892,7 +789,6 @@
       70%  { box-shadow:0 0 0 14px rgba(196,160,64,0);  }
       100% { box-shadow:0 0 0 0   rgba(196,160,64,0);  }
     }
-    /* map popup card */
     .map-popup-card {
       background:rgba(16,14,11,.97);
       border:1px solid rgba(196,160,64,.2);
@@ -916,7 +812,6 @@
       line-height:1.6; font-weight:400;
     }
     .map-popup-detail + .map-popup-detail { margin-top:.3rem; }
-
     @media(max-width:1100px) {
       .map-header { grid-template-columns:1fr; padding:3rem 2.5rem 2.5rem; }
     }
@@ -924,8 +819,6 @@
       .map-header { padding:3rem 1.5rem 2rem; }
       #map-canvas { height:340px; }
     }
-
-    /* ─── CTA STRIP ─── */
     .cta-strip {
       background:var(--charbon-light);
       border-top:1px solid rgba(196,160,64,.12);
@@ -967,8 +860,6 @@
       .cta-strip-actions { flex-wrap:wrap; }
     }
     @media(max-width:720px) { .cta-strip { padding:2rem 1.5rem; } }
-
-    /* ─── FOOTER ─── */
     footer {
       background:#1A1714;
       border-top:1px solid rgba(196,160,64,.1);
@@ -981,7 +872,7 @@
       border-bottom:1px solid rgba(255,255,255,.05);
     }
     .footer-logo {
-      height:56px; opacity:.82; margin-bottom:1.25rem;
+      width:auto; height:56px; opacity:.82; margin-bottom:1.25rem;
       filter: brightness(0) invert(1) sepia(1) saturate(2.5) hue-rotate(5deg) brightness(1.1);
     }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
@@ -994,8 +885,6 @@
     .footer-legal { display:flex; gap:2rem; }
     .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
     .footer-legal a:hover { color:var(--gris); }
-
-    /* ─── HAMBURGER ─── */
     .hamburger {
       display:none; flex-direction:column; justify-content:center; gap:5px;
       width:38px; height:38px; padding:7px; cursor:pointer;
@@ -1011,8 +900,6 @@
     .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
-
-    /* ─── MOBILE NAV PANEL ─── */
     .mob-nav {
       position:fixed; inset:0; z-index:1050;
       background:rgba(6,5,4,.98); backdrop-filter:blur(24px);
@@ -1023,7 +910,7 @@
     }
     .mob-nav.open { opacity:1; pointer-events:all; }
     .mob-nav-logo {
-      position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75;
+      position:absolute; top:1.4rem; left:1.4rem; width:auto; height:42px; opacity:.75;
       filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05);
     }
     .mob-nav-links {
@@ -1045,8 +932,6 @@
       transition:all .2s;
     }
     .mob-nav-phone:hover { background:rgba(196,160,64,.08); border-color:var(--or); }
-
-    /* ─── STICKY MOBILE BOTTOM BAR ─── */
     .mob-cta-bar {
       display:none; position:fixed; bottom:0; left:0; right:0; z-index:990;
       background:rgba(6,5,4,.97); backdrop-filter:blur(14px);
@@ -1063,8 +948,6 @@
     .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
     .mob-cta-rdv:hover { background:var(--or-pale); }
-
-    /* ─── RESPONSIVE ─── */
     @media(max-width:1100px) {
       nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
       #expertise, #about, #valeurs, #contact, #quote, footer { padding-left:2.5rem; padding-right:2.5rem; }
@@ -1078,7 +961,7 @@
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; }
       nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:58px; }
+      .nav-logo { width:auto; height:58px; }
       .nav-links { display:none; }
       .nav-cta-group { display:none; }
       .hamburger { display:flex; }
@@ -1107,7 +990,7 @@
     .wa-btn:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,.5); }
     .wa-btn svg { width:28px; height:28px; }
     @media(max-width:720px) { .wa-btn { bottom:calc(68px + 1rem); right:1rem; width:46px; height:46px; } .wa-btn svg { width:24px; height:24px; } }
-  </style>
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1161,21 +1044,21 @@
 
 <!-- ░░ NAV ░░ -->
 <nav id="navbar">
-  <a href="#hero">
-    <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" />
+  <a href="/">
+    <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" width="1536" height="1024" />
   </a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
       <a href="#expertise">Expertise <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a href="droit-penal.html">Droit Pénal</a>
-        <a href="droit-famille.html">Droit de la Famille</a>
-        <a href="cryptomonnaies.html">Cryptomonnaies</a>
+        <a href="/droit-penal">Droit Pénal</a>
+        <a href="/droit-famille">Droit de la Famille</a>
+        <a href="/cryptomonnaies">Cryptomonnaies</a>
       </div>
     </li>
-    <li><a href="cabinet.html">Le Cabinet</a></li>
-    <li><a href="cases.html">Affaires</a></li>
-    <li><a href="blog.html">Actualités</a></li>
+    <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/cases">Affaires</a></li>
+    <li><a href="/blog">Actualités</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
@@ -1193,14 +1076,14 @@
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
-  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" width="1536" height="1024" />
   <ul class="mob-nav-links">
-    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
-    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
-    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
-    <li><a href="cabinet.html" class="mob-close">Le Cabinet</a></li>
-    <li><a href="cases.html" class="mob-close">Affaires</a></li>
-    <li><a href="blog.html" class="mob-close">Actualités</a></li>
+    <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
+    <li><a href="/droit-famille" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/cabinet" class="mob-close">Le Cabinet</a></li>
+    <li><a href="/cases" class="mob-close">Affaires</a></li>
+    <li><a href="/blog" class="mob-close">Actualités</a></li>
     <li><a href="#contact" class="mob-close">Contact</a></li>
   </ul>
   <div class="mob-nav-divider"></div>
@@ -1428,9 +1311,9 @@
     <div class="about-img-frame">
       <picture>
         <source type="image/avif" sizes="(max-width:720px) calc(100vw - 3rem), 600px"
-                srcset="brand_assets/Photo%20avocat-768.avif 768w, brand_assets/Photo%20avocat.avif 1365w">
+                srcset="brand_assets/Photo%20avocat-400.avif 400w, brand_assets/Photo%20avocat-768.avif 768w, brand_assets/Photo%20avocat.avif 1365w">
         <source type="image/webp" sizes="(max-width:720px) calc(100vw - 3rem), 600px"
-                srcset="brand_assets/Photo%20avocat-768.webp 768w, brand_assets/Photo%20avocat.webp 1365w">
+                srcset="brand_assets/Photo%20avocat-400.webp 400w, brand_assets/Photo%20avocat-768.webp 768w, brand_assets/Photo%20avocat.webp 1365w">
         <img src="brand_assets/Photo avocat.webp" alt="Maître François-Xavier LAPERONNIE, avocat à Angoulême" loading="lazy" width="800" height="1067" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
       </picture>
     </div>
@@ -1698,7 +1581,7 @@
     <div class="form-wrap reveal rd2">
       <form action="https://formsubmit.co/fx.laperonnie@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande de consultation — Cabinet LAPERONNIE" />
-        <input type="hidden" name="_next" value="https://laperonnie-avocat.fr/merci.html" />
+        <input type="hidden" name="_next" value="https://laperonnie-avocat.fr/merci" />
         <input type="hidden" name="_captcha" value="false" />
         <h3 class="form-heading">Demande de consultation</h3>
         <p class="form-sub">Premier entretien confidentiel — sans engagement</p>
@@ -1739,16 +1622,16 @@
   <div class="footer-grid">
 
     <div>
-      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" width="1536" height="1024" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
 
     <div>
       <p class="f-col-title">Expertise</p>
       <ul class="f-links">
-        <li><a href="droit-penal.html">Droit Pénal</a></li>
-        <li><a href="droit-famille.html">Droit de la Famille</a></li>
-        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+        <li><a href="/droit-penal">Droit Pénal</a></li>
+        <li><a href="/droit-famille">Droit de la Famille</a></li>
+        <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
       </ul>
     </div>
 
@@ -1757,7 +1640,7 @@
       <ul class="f-links">
         <li><a href="#about">À propos</a></li>
         <li><a href="#valeurs">Nos valeurs</a></li>
-        <li><a href="cases.html">Affaires</a></li>
+        <li><a href="/cases">Affaires</a></li>
       </ul>
     </div>
 
@@ -1775,9 +1658,9 @@
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
     <div class="footer-legal">
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="confidentialite.html">Confidentialité</a>
-      <a href="rgpd.html">RGPD</a>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Confidentialité</a>
+      <a href="/rgpd">RGPD</a>
     </div>
   </div>
 </footer>
@@ -1887,7 +1770,7 @@
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
   <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
     Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
-    <a href="/confidentialite.html" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+    <a href="/confidentialite" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
   </p>
   <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
     <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>

@@ -2,12 +2,13 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": ".",
+  "cleanUrls": true,
   "redirects": [
-    { "source": "/article-la-garde-à-vue.html", "destination": "/article-la-garde-a-vue.html", "permanent": true },
-    { "source": "/article-la-garde-%C3%A0-vue.html", "destination": "/article-la-garde-a-vue.html", "permanent": true },
-    { "source": "/article-quest-ce-quune-cryptomonnaie-définition-origine-et-fonctionnement.html", "destination": "/article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement.html", "permanent": true },
-    { "source": "/article-quest-ce-quune-cryptomonnaie-d%C3%A9finition-origine-et-fonctionnement.html", "destination": "/article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement.html", "permanent": true },
-    { "source": "/article-audition-libre-vos-droits-et-pièges-à-éviter.html", "destination": "/article-audition-libre-vos-droits-et-pieges-a-eviter.html", "permanent": true },
-    { "source": "/article-audition-libre-vos-droits-et-pi%C3%A8ges-%C3%A0-%C3%A9viter.html", "destination": "/article-audition-libre-vos-droits-et-pieges-a-eviter.html", "permanent": true }
+    { "source": "/article-la-garde-à-vue.html", "destination": "/article-la-garde-a-vue", "permanent": true },
+    { "source": "/article-la-garde-%C3%A0-vue.html", "destination": "/article-la-garde-a-vue", "permanent": true },
+    { "source": "/article-quest-ce-quune-cryptomonnaie-définition-origine-et-fonctionnement.html", "destination": "/article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement", "permanent": true },
+    { "source": "/article-quest-ce-quune-cryptomonnaie-d%C3%A9finition-origine-et-fonctionnement.html", "destination": "/article-quest-ce-quune-cryptomonnaie-definition-origine-et-fonctionnement", "permanent": true },
+    { "source": "/article-audition-libre-vos-droits-et-pièges-à-éviter.html", "destination": "/article-audition-libre-vos-droits-et-pieges-a-eviter", "permanent": true },
+    { "source": "/article-audition-libre-vos-droits-et-pi%C3%A8ges-%C3%A0-%C3%A9viter.html", "destination": "/article-audition-libre-vos-droits-et-pieges-a-eviter", "permanent": true }
   ]
 }

@@ -42,10 +42,11 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <title>Message envoyé — Cabinet LAPERONNIE</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>        @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
     :root { --charbon:#060504; --or:#C4A040; --blanc:#F2EDE4; }
     * { margin:0; padding:0; box-sizing:border-box; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; }
@@ -56,7 +57,7 @@
     p { font-size:.9rem; line-height:1.75; color:rgba(242,237,228,.65); max-width:480px; margin-bottom:2.5rem; }
     a { display:inline-block; border:1px solid var(--or); color:var(--or); text-decoration:none; padding:.7rem 2rem; font-size:.6rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; transition:background .22s,color .22s; }
     a:hover { background:var(--or); color:var(--charbon); }
-  </style>
+</style>
 </head>
 <body>
   <div class="icon">
@@ -67,13 +68,13 @@
   <p class="eyebrow">Message reçu</p>
   <h1>Merci pour votre demande</h1>
   <p>Maître LAPERONNIE a bien reçu votre message. Vous serez contacté dans les plus brefs délais, généralement sous 24 heures ouvrées.</p>
-  <a href="index.html">Retour à l'accueil</a>
+  <a href="/">Retour à l'accueil</a>
 
 <!-- Bannière consentement cookies RGPD/CNIL -->
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
   <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
     Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
-    <a href="/confidentialite.html" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+    <a href="/confidentialite" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
   </p>
   <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
     <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>

@@ -39,7 +39,7 @@ const COOKIE_BANNER_HTML = `<!-- Bannière consentement cookies RGPD/CNIL -->
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
   <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
     Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
-    <a href="/confidentialite.html" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+    <a href="/confidentialite" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
   </p>
   <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
     <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>
@@ -149,37 +149,37 @@ const NAV_PHONE_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 function buildNav(activeLink) {
   return `
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="/"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" width="1536" height="1024" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
-      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <a href="/#expertise">Expertise <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a href="droit-penal.html">Droit Pénal</a>
-        <a href="droit-famille.html">Droit de la Famille</a>
-        <a href="cryptomonnaies.html">Cryptomonnaies</a>
+        <a href="/droit-penal">Droit Pénal</a>
+        <a href="/droit-famille">Droit de la Famille</a>
+        <a href="/cryptomonnaies">Cryptomonnaies</a>
       </div>
     </li>
-    <li><a href="cabinet.html">Le Cabinet</a></li>
-    <li><a href="cases.html"${activeLink === 'cases' ? ' class="active"' : ''}>Affaires</a></li>
-    <li><a href="blog.html"${activeLink === 'blog' ? ' class="active"' : ''}>Actualités</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/cases"${activeLink === 'cases' ? ' class="active"' : ''}>Affaires</a></li>
+    <li><a href="/blog"${activeLink === 'blog' ? ' class="active"' : ''}>Actualités</a></li>
+    <li><a href="/#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
     <a href="tel:+33545383009" class="nav-phone">${NAV_PHONE_SVG}<span>05 45 38 30 09</span></a>
-    <a href="index.html#contact" class="btn-rdv">Prendre rendez-vous</a>
+    <a href="/#contact" class="btn-rdv">Prendre rendez-vous</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
-  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" width="1536" height="1024" />
   <ul class="mob-nav-links">
-    <li><a href="droit-penal.html" class="mob-close">Droit Pénal</a></li>
-    <li><a href="droit-famille.html" class="mob-close">Droit de la Famille</a></li>
-    <li><a href="cryptomonnaies.html" class="mob-close">Cryptomonnaies</a></li>
-    <li><a href="cases.html" class="mob-close${activeLink === 'cases' ? ' active' : ''}">Affaires</a></li>
-    <li><a href="blog.html" class="mob-close${activeLink === 'blog' ? ' active' : ''}">Actualités</a></li>
-    <li><a href="index.html#contact" class="mob-close">Contact</a></li>
+    <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
+    <li><a href="/droit-famille" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/cases" class="mob-close${activeLink === 'cases' ? ' active' : ''}">Affaires</a></li>
+    <li><a href="/blog" class="mob-close${activeLink === 'blog' ? ' active' : ''}">Actualités</a></li>
+    <li><a href="/#contact" class="mob-close">Contact</a></li>
   </ul>
   <div class="mob-nav-divider"></div>
   <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
@@ -192,30 +192,30 @@ const FOOTER = `
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" width="1536" height="1024" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>
       <p class="f-col-title">Expertise</p>
       <ul class="f-links">
-        <li><a href="droit-penal.html">Droit Pénal</a></li>
-        <li><a href="droit-famille.html">Droit de la Famille</a></li>
-        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+        <li><a href="/droit-penal">Droit Pénal</a></li>
+        <li><a href="/droit-famille">Droit de la Famille</a></li>
+        <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Cabinet</p>
       <ul class="f-links">
-        <li><a href="index.html#about">À propos</a></li>
-        <li><a href="index.html#valeurs">Nos valeurs</a></li>
-        <li><a href="cases.html">Affaires</a></li>
-        <li><a href="blog.html">Actualités</a></li>
+        <li><a href="/#about">À propos</a></li>
+        <li><a href="/#valeurs">Nos valeurs</a></li>
+        <li><a href="/cases">Affaires</a></li>
+        <li><a href="/blog">Actualités</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="/#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
@@ -223,7 +223,7 @@ const FOOTER = `
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
-    <div class="footer-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="rgpd.html">RGPD</a></div>
+    <div class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/rgpd">RGPD</a></div>
   </div>
 </footer>`;
 
@@ -232,7 +232,7 @@ const FOOTER = `
 const MOB_CTA = `
 <div class="mob-cta-bar">
   <a href="tel:+33545383009" class="mob-cta-call">${NAV_PHONE_SVG}Appeler</a>
-  <a href="index.html#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+  <a href="/#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
 </div>`;
 
 const WA_BTN = `
@@ -259,15 +259,14 @@ const SHARED_JS = `
 
 // ─── Shared CSS (nav + footer + utils) ───────────────────────────────────────
 
-const SHARED_CSS = `
-    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
+const SHARED_CSS = `    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
-    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("brand_assets/noise.png"); }
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
-    .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo { width:auto; height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .nav-logo:hover { opacity:1; }
     nav > a { flex-shrink:0; }
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
@@ -281,7 +280,7 @@ const SHARED_CSS = `
     .nav-phone { display:flex; align-items:center; gap:.5rem; color:#E8352A; text-decoration:none; font-size:.80rem; font-weight:700; letter-spacing:.08em; border:1px solid rgba(232,53,42,.35); padding:.55rem 1.1rem; transition:color .22s ease, border-color .22s ease, background .22s ease; white-space:nowrap; }
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
-    @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
+    @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
     @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
@@ -303,7 +302,7 @@ const SHARED_CSS = `
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
     .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
     .mob-nav.open { opacity:1; pointer-events:all; }
-    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; width:auto; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
     .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
     .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
@@ -316,7 +315,7 @@ const SHARED_CSS = `
     .mob-cta-rdv { background:var(--or); color:var(--charbon); }
     footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
-    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-logo { width:auto; height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
     .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
     .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
@@ -439,27 +438,27 @@ function generateExpertisePage(cfg, data) {
   <meta name="description" content="${cfg.metaDesc}" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="canonical" href="https://laperonnie-avocat.fr/${slug}.html" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/${slug}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${cfg.metaTitle}" />
   <meta property="og:description" content="${cfg.metaDesc}" />
-  <meta property="og:url" content="https://laperonnie-avocat.fr/${slug}.html" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/${slug}" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
   <link rel="preload" as="image" href="brand_assets/${bg}" type="image/webp" />
-  <style>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>    @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
     :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
-    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("brand_assets/noise.png"); }
     nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
     nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
-    .nav-logo { height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo { width:auto; height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .nav-logo:hover { opacity:1; }
     nav > a { flex-shrink:0; }
     .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
@@ -472,7 +471,7 @@ function generateExpertisePage(cfg, data) {
     .nav-phone { display:flex; align-items:center; gap:.5rem; color:#E8352A; text-decoration:none; font-size:.80rem; font-weight:700; letter-spacing:.08em; border:1px solid rgba(232,53,42,.35); padding:.55rem 1.1rem; transition:color .22s ease, border-color .22s ease, background .22s ease; white-space:nowrap; }
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
-    @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
+    @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
     @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
@@ -570,7 +569,7 @@ function generateExpertisePage(cfg, data) {
     .btn-cta-outline svg { width:13px; height:13px; color:var(--or); }
     footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
-    .footer-logo { height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-logo { width:auto; height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
     .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
     .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
@@ -589,7 +588,7 @@ function generateExpertisePage(cfg, data) {
     .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
     .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
     .mob-nav.open { opacity:1; pointer-events:all; }
-    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; width:auto; height:54px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
     .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
     .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
     .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
@@ -611,20 +610,20 @@ function generateExpertisePage(cfg, data) {
     }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .nav-logo { width:auto; height:58px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .page-hero-content, #intro, #services, #contact, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .cta-strip { padding:2rem 1.5rem; } .form-row { grid-template-columns:1fr; }
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
-  </style>
+</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Cabinet LAPERONNIE",
     "description": "${cfg.metaDesc}",
-    "url": "https://laperonnie-avocat.fr/${slug}.html",
+    "url": "https://laperonnie-avocat.fr/${slug}",
     "telephone": "+33545383009",
     "email": "fx.laperonnie@gmail.com",
     "address": {
@@ -669,19 +668,19 @@ function generateExpertisePage(cfg, data) {
 <body>
 
 <nav id="navbar">
-  <a href="index.html"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" /></a>
+  <a href="/"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" width="1536" height="1024" /></a>
   <ul class="nav-links">
     <li class="nav-item-has-drop">
-      <a href="index.html#expertise">Expertise <span class="drop-chevron"></span></a>
+      <a href="/#expertise">Expertise <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a href="droit-penal.html"${navActive('droit-penal')}>Droit Pénal</a>
-        <a href="droit-famille.html"${navActive('droit-famille')}>Droit de la Famille</a>
-        <a href="cryptomonnaies.html"${navActive('cryptomonnaies')}>Cryptomonnaies</a>
+        <a href="/droit-penal"${navActive('droit-penal')}>Droit Pénal</a>
+        <a href="/droit-famille"${navActive('droit-famille')}>Droit de la Famille</a>
+        <a href="/cryptomonnaies"${navActive('cryptomonnaies')}>Cryptomonnaies</a>
       </div>
     </li>
-    <li><a href="cabinet.html">Le Cabinet</a></li>
-    <li><a href="cases.html">Affaires</a></li>
-    <li><a href="blog.html">Actualités</a></li>
+    <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/cases">Affaires</a></li>
+    <li><a href="/blog">Actualités</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta-group">
@@ -692,13 +691,13 @@ function generateExpertisePage(cfg, data) {
 </nav>
 
 <div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
-  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" />
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" width="1536" height="1024" />
   <ul class="mob-nav-links">
-    <li><a href="droit-penal.html"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
-    <li><a href="droit-famille.html"${mobNavActive('droit-famille')}>Droit de la Famille</a></li>
-    <li><a href="cryptomonnaies.html"${mobNavActive('cryptomonnaies')}>Cryptomonnaies</a></li>
-    <li><a href="cases.html" class="mob-close">Affaires</a></li>
-    <li><a href="blog.html" class="mob-close">Actualités</a></li>
+    <li><a href="/droit-penal"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
+    <li><a href="/droit-famille"${mobNavActive('droit-famille')}>Droit de la Famille</a></li>
+    <li><a href="/cryptomonnaies"${mobNavActive('cryptomonnaies')}>Cryptomonnaies</a></li>
+    <li><a href="/cases" class="mob-close">Affaires</a></li>
+    <li><a href="/blog" class="mob-close">Actualités</a></li>
     <li><a href="#contact" class="mob-close">Contact</a></li>
   </ul>
   <div class="mob-nav-divider"></div>
@@ -714,7 +713,7 @@ function generateExpertisePage(cfg, data) {
   <div class="page-hero-tint"></div>
   <div class="page-hero-content">
     <div class="breadcrumb">
-      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="/">Accueil</a><span class="breadcrumb-sep">›</span>
       <span>${d.hero_title1} ${d.hero_title2}</span>
     </div>
     <p class="page-hero-sub">${d.hero_sub}</p>
@@ -840,7 +839,7 @@ function generateExpertisePage(cfg, data) {
     <div class="form-wrap reveal rd2">
       <form action="https://formsubmit.co/fx.laperonnie@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande de consultation — ${formDomain}" />
-        <input type="hidden" name="_next" value="https://laperonnie-avocat.fr/merci.html" />
+        <input type="hidden" name="_next" value="https://laperonnie-avocat.fr/merci" />
         <input type="hidden" name="_captcha" value="false" />
         <h3 class="form-heading">Demande de consultation</h3>
         <p class="form-sub">Premier entretien confidentiel — sans engagement</p>
@@ -864,30 +863,30 @@ function generateExpertisePage(cfg, data) {
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" />
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" width="1536" height="1024" />
       <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
     </div>
     <div>
       <p class="f-col-title">Expertise</p>
       <ul class="f-links">
-        <li><a href="droit-penal.html">Droit Pénal</a></li>
-        <li><a href="droit-famille.html">Droit de la Famille</a></li>
-        <li><a href="cryptomonnaies.html">Cryptomonnaies</a></li>
+        <li><a href="/droit-penal">Droit Pénal</a></li>
+        <li><a href="/droit-famille">Droit de la Famille</a></li>
+        <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Cabinet</p>
       <ul class="f-links">
-        <li><a href="index.html#about">À propos</a></li>
-        <li><a href="index.html#valeurs">Nos valeurs</a></li>
-        <li><a href="cases.html">Affaires</a></li>
-        <li><a href="blog.html">Actualités</a></li>
+        <li><a href="/#about">À propos</a></li>
+        <li><a href="/#valeurs">Nos valeurs</a></li>
+        <li><a href="/cases">Affaires</a></li>
+        <li><a href="/blog">Actualités</a></li>
       </ul>
     </div>
     <div>
       <p class="f-col-title">Contact</p>
       <ul class="f-links">
-        <li><a href="index.html#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="/#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
         <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
         <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
       </ul>
@@ -895,7 +894,7 @@ function generateExpertisePage(cfg, data) {
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
-    <div class="footer-legal"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="rgpd.html">RGPD</a></div>
+    <div class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/rgpd">RGPD</a></div>
   </div>
 </footer>
 
@@ -948,11 +947,11 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
     headline: pageTitle,
     ...(metaDesc ? { description: metaDesc.replace(/&quot;/g, '"') } : {}),
     ...(isoDate ? { datePublished: isoDate, dateModified: isoDate } : {}),
-    author: { '@type': 'Person', name: 'François-Xavier Laperonnie', jobTitle: 'Avocat', url: 'https://laperonnie-avocat.fr/cabinet.html' },
+    author: { '@type': 'Person', name: 'François-Xavier Laperonnie', jobTitle: 'Avocat', url: 'https://laperonnie-avocat.fr/cabinet' },
     publisher: { '@type': 'Organization', name: 'Cabinet LAPERONNIE', logo: { '@type': 'ImageObject', url: 'https://laperonnie-avocat.fr/brand_assets/LF-Logo.svg' } },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://laperonnie-avocat.fr/article-${slug}.html` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://laperonnie-avocat.fr/article-${slug}` },
     inLanguage: 'fr-FR',
-    isPartOf: { '@type': 'Blog', name: 'Actualités juridiques — Cabinet LAPERONNIE', '@id': 'https://laperonnie-avocat.fr/blog.html' },
+    isPartOf: { '@type': 'Blog', name: 'Actualités juridiques — Cabinet LAPERONNIE', '@id': 'https://laperonnie-avocat.fr/blog' },
   };
 
   return `<!DOCTYPE html>
@@ -1000,17 +999,13 @@ function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
   ${metaDesc ? `<meta name="description" content="${metaDesc}" />` : ''}
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="canonical" href="https://laperonnie-avocat.fr/article-${slug}.html" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/article-${slug}" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="${pageTitle} — Avocat Angoulême | Cabinet LAPERONNIE" />
   ${metaDesc ? `<meta property="og:description" content="${metaDesc}" />` : ''}
-  <meta property="og:url" content="https://laperonnie-avocat.fr/article-${slug}.html" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/article-${slug}" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
   <script type="application/ld+json">
 ${JSON.stringify(blogPosting, null, 2)}
   </script>
@@ -1047,7 +1042,11 @@ ${JSON.stringify(blogPosting, null, 2)}
     ]
   }
   </script>
-  <style>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>    @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
     :root { --cat:${cat.color}; --cat-bg:${cat.bg}; --cat-border:${cat.border}; }
 ${SHARED_CSS}
     .article-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
@@ -1121,13 +1120,13 @@ ${SHARED_CSS}
     }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .nav-logo { width:auto; height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .article-header, .article-layout, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
       .article-cta-actions { flex-direction:column; }
     }
-  </style>
+</style>
 </head>
 <body>
 ${buildNav('blog')}
@@ -1135,8 +1134,8 @@ ${buildNav('blog')}
 <div class="article-header">
   <div class="article-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
-      <a href="blog.html">Actualités</a><span class="breadcrumb-sep">›</span>
+      <a href="/">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="/blog">Actualités</a><span class="breadcrumb-sep">›</span>
       <span>${cat.label}</span>
     </div>
     <div class="article-tags">
@@ -1165,7 +1164,7 @@ ${buildNav('blog')}
     <div class="toc-nav">
 ${tocLinks}
     </div>
-    <a href="blog.html" class="toc-back">
+    <a href="/blog" class="toc-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Retour aux actualités
     </a>
@@ -1178,7 +1177,7 @@ ${sectionsHtml}
       <div class="article-cta-title">${fm.ctaTitle || 'Vous avez une question juridique ?'}</div>
       <p class="article-cta-text">${fm.ctaText || 'Maître François-Xavier LAPERONNIE est disponible pour une première consultation confidentielle.'}</p>
       <div class="article-cta-actions">
-        <a href="index.html#contact" class="btn-or">Prendre rendez-vous</a>
+        <a href="/#contact" class="btn-or">Prendre rendez-vous</a>
         <a href="tel:+33545383009" class="btn-outline">${NAV_PHONE_SVG}05 45 38 30 09</a>
       </div>
     </div>
@@ -1257,11 +1256,11 @@ function generateCaseHtml(slug, fm, tocLinks, sectionsHtml) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${pageTitle} — Cabinet LAPERONNIE</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" /></noscript>
-  <style>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>    @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
 ${SHARED_CSS}
     .case-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
     .case-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%,rgba(196,160,64,.04) 0%,transparent 70%); }
@@ -1319,12 +1318,12 @@ ${SHARED_CSS}
     }
     @media(max-width:720px) {
       nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
-      .nav-logo { height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .nav-logo { width:auto; height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
       .case-header, .case-layout, footer { padding-left:1.5rem; padding-right:1.5rem; }
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
-  </style>
+</style>
 </head>
 <body>
 ${buildNav('cases')}
@@ -1332,8 +1331,8 @@ ${buildNav('cases')}
 <div class="case-header">
   <div class="case-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">Accueil</a><span class="breadcrumb-sep">›</span>
-      <a href="cases.html">Affaires</a><span class="breadcrumb-sep">›</span>
+      <a href="/">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="/cases">Affaires</a><span class="breadcrumb-sep">›</span>
       <span>${domainLabel}</span>
     </div>
     <div class="case-tags">
@@ -1355,7 +1354,7 @@ ${buildNav('cases')}
     <nav class="sidebar-nav">
 ${tocLinks}
     </nav>
-    <a href="cases.html" class="sidebar-back">
+    <a href="/cases" class="sidebar-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Retour aux affaires
     </a>
@@ -1413,7 +1412,7 @@ const ARROW_SVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" s
 function generateArticleCard(slug, fm) {
   const cat = CATS[fm.category] || CATS.penal;
   return `
-    <a href="article-${slug}.html" class="article-card reveal" data-cat="${fm.category}">
+    <a href="/article-${slug}" class="article-card reveal" data-cat="${fm.category}">
       <div class="article-card-top">
         <span class="article-cat ${fm.category}">${cat.label}</span>
         <span class="article-read-time">${fm.readTime || '5 min de lecture'}</span>
@@ -1429,7 +1428,7 @@ function generateArticleCard(slug, fm) {
 
 function generateCaseCard(slug, fm) {
   return `
-    <a href="case-${slug}.html" class="case-card reveal">
+    <a href="/case-${slug}" class="case-card reveal">
       <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
         <div class="case-domain-tag">${CATS[fm.domain]?.label || fm.domain}</div>
         <div class="case-outcome">${fm.outcome || ''}</div>
@@ -1452,15 +1451,15 @@ const SITE_ORIGIN = 'https://laperonnie-avocat.fr';
 // their <lastmod> from the freshest item they contain (added in writeSitemap).
 const SITEMAP_STATIC = [
   { loc: '/', priority: '1.0' },
-  { loc: '/cabinet.html', priority: '0.8' },
-  { loc: '/droit-penal.html', priority: '0.9' },
-  { loc: '/droit-famille.html', priority: '0.9' },
-  { loc: '/cryptomonnaies.html', priority: '0.9' },
-  { loc: '/blog.html', priority: '0.8' },
-  { loc: '/cases.html', priority: '0.5' },
-  { loc: '/mentions-legales.html', priority: '0.2' },
-  { loc: '/confidentialite.html', priority: '0.2' },
-  { loc: '/rgpd.html', priority: '0.2' },
+  { loc: '/cabinet', priority: '0.8' },
+  { loc: '/droit-penal', priority: '0.9' },
+  { loc: '/droit-famille', priority: '0.9' },
+  { loc: '/cryptomonnaies', priority: '0.9' },
+  { loc: '/blog', priority: '0.8' },
+  { loc: '/cases', priority: '0.5' },
+  { loc: '/mentions-legales', priority: '0.2' },
+  { loc: '/confidentialite', priority: '0.2' },
+  { loc: '/rgpd', priority: '0.2' },
 ];
 
 function writeSitemap(articles, cases) {
@@ -1470,8 +1469,8 @@ function writeSitemap(articles, cases) {
   const newestCase = cases.map(c => c.lastmod).filter(Boolean).sort().pop() || null;
   const rows = [];
   for (const p of SITEMAP_STATIC) {
-    const lastmod = p.loc === '/blog.html' ? newest
-      : p.loc === '/cases.html' ? newestCase
+    const lastmod = p.loc === '/blog' ? newest
+      : p.loc === '/cases' ? newestCase
       : null;
     rows.push({ loc: p.loc, priority: p.priority, lastmod });
   }
@@ -1533,7 +1532,7 @@ async function build() {
     const { tocLinks, sectionsHtml } = processBody(markdown);
     fs.writeFileSync(`article-${slug}.html`, generateArticleHtml(slug, fm, tocLinks, sectionsHtml));
     newArticleCards += generateArticleCard(slug, fm);
-    sitemapArticles.push({ loc: `/article-${slug}.html`, lastmod: iso });
+    sitemapArticles.push({ loc: `/article-${slug}`, lastmod: iso });
     console.log(`✓ article-${slug}.html`);
   }
 
@@ -1542,7 +1541,7 @@ async function build() {
     const { tocLinks, sectionsHtml } = generateCaseSectionsHtml(markdown);
     fs.writeFileSync(`case-${slug}.html`, generateCaseHtml(slug, fm, tocLinks, sectionsHtml));
     newCaseCards += generateCaseCard(slug, fm);
-    sitemapCases.push({ loc: `/case-${slug}.html`, lastmod: iso });
+    sitemapCases.push({ loc: `/case-${slug}`, lastmod: iso });
     console.log(`✓ case-${slug}.html`);
   }
 
