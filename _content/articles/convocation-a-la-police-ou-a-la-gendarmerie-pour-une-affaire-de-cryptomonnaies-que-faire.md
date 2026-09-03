@@ -17,8 +17,6 @@ ctaText: Maître François-Xavier LAPERONNIE est disponible pour une première
 ---
 ## Pourquoi peut-on être convoqué pour une affaire liée aux cryptomonnaies ?
 
-
-
 Les cryptomonnaies peuvent apparaître dans de nombreuses procédures pénales comme par exemple : 
 
 **Le blanchiment :** Cette infraction consiste à faciliter la justification mensongère de l'origine des biens ou revenus de l'auteur d'un crime ou d'un délit, ou à apporter son concours à une opération de placement, de dissimulation ou de conversion du produit direct ou indirect d'une infraction *(Code pénal, art. 324-1)* . La Cour de cassation a eu l'occasion d'appliquer ces principes directement aux flux transitant par la blockchain et les portefeuilles numériques, notamment lorsqu'ils proviennent d'escroqueries *(Cass.crim., 24 sept. 2025, n° 24-81.705)* . 
@@ -37,11 +35,7 @@ La présence d'une transaction sur la blockchain ne permet toutefois pas, à ell
 
 L'origine des fonds, la connaissance de cette origine, la finalité des transactions et le rôle effectivement joué par la personne constituent autant d'éléments susceptibles d'être déterminants.
 
-
-
 ## Que signifie une convocation de la police ou dela gendarmerie ?
-
-
 
 Une convocation peut intervenir à différents stades d'une enquête et pour différentes raisons.
 
@@ -55,12 +49,7 @@ Lorsqu'une convocation écrite est adressée à une personne soupçonnée et que
 
 **→ À lire également : https://laperonnie-avocat.fr/article-audition-libre-vos-droits-et-pieges-a-eviter**
 
-
-
 ## Pourquoi consulter un avocat avant l'audition ?
-
-
-
 
 Dans une affaire impliquant des cryptomonnaies, préparer l'audition en amont peut présenter un intérêt particulier.
 
@@ -74,12 +63,7 @@ L'avocat peut également examiner la convocation, expliquer le cadre procédural
 
 Cette préparation est d'autant plus importante qu'une déclaration faite au cours d'une audition est consignée dans la procédure et peut ensuite être confrontée aux autres éléments recueillis parles enquêteurs.
 
-
-
 ## Les enquêteurs peuvent-ils connaître vos transactions en cryptomonnaies ?
-
-
-
 
 Le caractère pseudonyme de nombreuses blockchains ne signifie pas nécessairement que les opérations sont anonymes.
 
@@ -91,11 +75,7 @@ Une enquête peut donc porter sur la provenance de crypto-actifs, leur circulati
 
 Pour autant, **l'existence d'un flux financier ou d'une transaction crypto ne suffit pas nécessairement à démontrer la participation consciente de son bénéficiaire à une infraction**. L'analyse du contexte reste essentielle.
 
-
-
 ## Une convocation peut-elle conduire à une garde àvue ?
-
-
 
 Selon les éléments recueillis au cours de l'enquête et les nécessités de celle-ci, la situation procédurale d'une personne peut évoluer.
 
@@ -119,11 +99,7 @@ Selon les circonstances du dossier, l'enquête peut égalementconduire à s'int�
 
 Les questions relatives à la saisie d'un wallet, d'un portefeuille matériel ou de crypto-actifs méritent cependant une analyse spécifique.
 
-
-
 ## Que faire avant de se rendre à la convocation ?
-
-
 
 Il est généralement préférable de ne pas attendre le jour de l'audition pour s'interroger sur la procédure.
 
@@ -135,23 +111,13 @@ Il convient en revanche d'éviter toute initiative susceptible d'être interpré
 
 Lorsque la convocation concerne des faits susceptibles d'entraîner une responsabilité pénale, prendre conseil auprès d'un avoca tavant l'audition permet de connaître ses droits et de préparer sa défense en fonction de la situation concrète.
 
-
-
-
 ## Que se passe-t-il si vous ignorez la convocation?
-
-
 
 Une convocation régulière, notamment dans le cadre d'une enquête préliminaire, n'est pas une simple invitation : elle emporte une obligation de comparaître *(Code de procédure pénale, art.78)* . En cas d'absence de réponse, ou lorsqu'il existe des raisons de craindre que la personne convoquée ne défère pas à la convocation, l'officier de police judiciaire peut, avec l'autorisation préalable du procureur de la République, la contraindre à comparaître par la force publique.
 
 Ignorer une convocation n'est donc jamais une stratégie efficace: elle expose à une aggravation de la situation procédurale (recours à la contrainte, voire orientation vers une garde à vue plutôt qu'une audition libre) sans offrir la moindre protection supplémentaire. La réponse appropriée consiste, le cas échéant, à solliciter un report auprès du service enquêteur pour permettre une préparation adéquate avec un avocat, plutôt qu'à s'abstenir purement et simplement de répondre.
 
-
-
-## L'intervention d'un avocat en droit pénal descryptomonnaies
-
-
-
+## L'intervention d'un avocat en droit pénal des cryptomonnaies
 
 Les procédures pénales impliquant des crypto-actifs présentent une double particularité : elles nécessitent de maîtriser les règles de la procédure pénale tout en comprenant le fonctionnement des transactions et outils propres aux cryptomonnaies.
 
@@ -159,21 +125,17 @@ Le Cabinet LAPERONNIE intervient en matière pénale et dans les dossiers impliq
 
 Le cabinet peut intervenir dès la convocation afin d'analyser la situation, préparer l'audition et assister la personne mise en cause lorsque les conditions légales le permettent.
 
-**Le cabinet intervient dans les dossiers liés auxcryptomonnaies sur l'ensemble du territoire français.**
-
-
+**Le cabinet intervient dans les dossiers liés aux cryptomonnaies sur l'ensemble du territoire français.**
 
 ### Vous êtes convoqué par la police ou la gendarmerie dans une affaire impliquant des cryptomonnaies ?
 
-
-
-Une préparation en amont de l'audition permet d'identifier lesenjeux de la procédure et d'organiser utilement sa défense.
+Une préparation en amont de l'audition permet d'identifier les enjeux de la procédure et d'organiser utilement sa défense.
 
 **Contactez le Cabinet Laperonnie pour exposer votre situation.**
 
 ### FAQ
 
-**Pourquoi la police me convoque-t-elle pour descryptomonnaies ?**
+**Pourquoi la police me convoque-t-elle pour des cryptomonnaies ?**
 
 Une convocation peut notamment résulter de transactions ou de comptes apparus dans une enquête. Elle ne signifie pas à elle seule que la personne est coupable d'une infraction.
 
