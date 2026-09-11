@@ -11,6 +11,11 @@ intro: >-
   Un compte ouvert sur une plateforme d'échange, une adresse de wallet, un transfert en Bitcoin, Ethereum ou autre crypto-actif peut apparaître dans le cadre d'une enquête pénale. La personne convoquée ne sait alors pas toujours ce qui lui est reproché, ni quelles informations les enquêteurs détiennent déjà.
 
   La convocation ne signifie pas nécessairement qu'une infraction a été commise. Elle doit cependant être prise au sérieux, en particulier lorsque la personne est susceptible d'être entendue comme mise en cause.
+relatedLinks:
+  - label: audition libre vos droits et pièges à éviter
+    article: audition-libre-vos-droits-et-pieges-a-eviter
+  - label: la garde à vue
+    article: la-garde-a-vue
 ctaTitle: Vous avez une question juridique ?
 ctaText: Maître François-Xavier LAPERONNIE est disponible pour une première
   consultation confidentielle. N'attendez pas pour protéger vos droits.
