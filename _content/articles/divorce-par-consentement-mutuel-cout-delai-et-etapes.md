@@ -15,6 +15,9 @@ intro: >-
 
 
   Je vous explique, étape par étape, comment fonctionne cette procédure, ses conditions, son coût réel et les situations où elle n'est pas possible.
+relatedLinks:
+  - label: "Divorce à Angoulême : choisir le bon avocat et comprendre la procédure"
+    article: avocat-divorce-angouleme
 ctaTitle: Vous avez une question juridique ?
 ctaText: Maître François-Xavier LAPERONNIE est disponible pour une première
   consultation confidentielle. N'attendez pas pour protéger vos droits.
