@@ -14,6 +14,9 @@ intro: >-
   Un ordinateur, un téléphone, un hardware wallet de type Ledger, certaines données informatiques ou encore des crypto-actifs détenus auprès d’une plateforme peuvent être concernés par les opérations de saisie.
 
   Mais jusqu’où les enquêteurs peuvent-ils aller ? Peuvent-ils saisir un Ledger ? Accéder à un compte ouvert sur une plateforme d’échange comme binance ou coinbase ? Que deviennent les cryptomonnaies saisies ? Et quels recours sont possibles ?
+relatedLinks:
+  - article: convocation-a-la-police-ou-a-la-gendarmerie-pour-une-affaire-de-cryptomonnaies-que-faire
+    label: Convocation à la police
 ctaTitle: Vous avez une question juridique ?
 ctaText: Maître François-Xavier LAPERONNIE est disponible pour une première
   consultation confidentielle. N'attendez pas pour protéger vos droits.
