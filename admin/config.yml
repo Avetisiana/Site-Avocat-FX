@@ -60,6 +60,27 @@ collections:
         widget: markdown
         hint: "Utilisez ## pour les titres de sections (ils génèrent automatiquement le sommaire). Utilisez > **Titre du cadre** suivi du texte pour créer un encadré mis en valeur."
 
+      - label: "Boutons vers d'autres articles (bas de page)"
+        name: relatedLinks
+        widget: list
+        required: false
+        label_singular: "Bouton"
+        summary: "{{fields.label}}"
+        hint: "Facultatif. Ajoutez un ou plusieurs boutons qui renvoient le lecteur vers un autre article. Laissez vide si vous n'en voulez pas."
+        fields:
+          - label: "Texte du bouton"
+            name: label
+            widget: string
+            hint: "Ce que le lecteur verra sur le bouton. Ex : Lire aussi : que faire en garde a vue ?"
+          - label: "Article de destination"
+            name: article
+            widget: relation
+            collection: articles
+            search_fields: ["title"]
+            value_field: "{{slug}}"
+            display_fields: ["title"]
+            hint: "Choisissez l'article vers lequel ce bouton doit renvoyer."
+
       - label: "Titre du bloc contact (en bas de l'article)"
         name: ctaTitle
         widget: string

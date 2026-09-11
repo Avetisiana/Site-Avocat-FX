@@ -1,6 +1,5 @@
 ﻿User-agent: *
 Allow: /
-Disallow: /merci.html
 Disallow: /admin/
 
 Sitemap: https://laperonnie-avocat.fr/sitemap.xml

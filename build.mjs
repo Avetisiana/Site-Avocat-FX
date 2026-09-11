@@ -923,6 +923,28 @@ ${COOKIE_BANNER_HTML}
 </html>`;
 }
 
+// Renders the CMS "relatedLinks" list (label + target article slug) as buttons.
+// Empty / missing list -> nothing is output at all.
+function generateRelatedLinks(fm) {
+  const items = Array.isArray(fm.relatedLinks) ? fm.relatedLinks : [];
+  const links = items
+    .filter(l => l && l.label && l.article)
+    .map(l => `
+        <a href="/article-${slugify(String(l.article))}" class="related-btn">
+          <span>${l.label}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>`)
+    .join('');
+  if (!links) return '';
+  return `
+    <div class="related-box">
+      <div class="related-label">Lire aussi</div>
+      <div class="related-list">${links}
+      </div>
+    </div>
+`;
+}
+
 // ─── Article HTML generator ───────────────────────────────────────────────────
 
 function generateArticleHtml(slug, fm, tocLinks, sectionsHtml) {
@@ -1098,6 +1120,14 @@ ${SHARED_CSS}
     .highlight-box { background:var(--charbon-card); border-left:3px solid var(--or); padding:1.5rem 1.75rem; margin:1.75rem 0; }
     .highlight-box-title { font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); margin-bottom:.75rem; }
     .highlight-box p { font-size:.84rem; color:var(--blanc-dim); line-height:1.8; margin-bottom:0; }
+    .related-box { margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.12); }
+    .related-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.25rem; display:flex; align-items:center; gap:.75rem; }
+    .related-label::before { content:''; width:22px; height:1px; background:var(--or); }
+    .related-list { display:flex; flex-direction:column; gap:.6rem; }
+    .related-btn { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.95rem 1.35rem; border:1px solid rgba(196,160,64,.22); background:var(--charbon-card); color:var(--blanc-dim); text-decoration:none; font-size:.8rem; font-weight:500; line-height:1.45; transition:border-color .2s, color .2s, background .2s; }
+    .related-btn:hover { border-color:var(--or); color:var(--or); background:#161210; }
+    .related-btn svg { width:14px; height:14px; flex-shrink:0; color:var(--or); transition:transform .25s; }
+    .related-btn:hover svg { transform:translateX(4px); }
     .article-cta-box { background:var(--charbon-card); border:1px solid rgba(196,160,64,.15); padding:2.5rem 2.75rem; margin-top:3rem; position:relative; overflow:hidden; }
     .article-cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); }
     .article-cta-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600; color:var(--blanc); margin-bottom:.75rem; line-height:1.3; }
@@ -1107,6 +1137,8 @@ ${SHARED_CSS}
     .btn-or:hover { background:var(--or-pale); }
     .btn-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.3); color:var(--blanc-dim); padding:.85rem 1.8rem; font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
     .btn-outline:hover { color:var(--or); border-color:var(--or); }
+    .btn-outline svg { width:13px; height:13px; flex-shrink:0; }
+    .btn-outline { white-space:nowrap; }
     @media(max-width:1100px) {
       nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
       .article-header, .article-layout, footer { padding-left:2.5rem; padding-right:2.5rem; }
@@ -1173,7 +1205,7 @@ ${tocLinks}
   <main class="article-content">
 ${sectionsHtml}
 
-    <div class="article-cta-box">
+${generateRelatedLinks(fm)}    <div class="article-cta-box">
       <div class="article-cta-title">${fm.ctaTitle || 'Vous avez une question juridique ?'}</div>
       <p class="article-cta-text">${fm.ctaText || 'Maître François-Xavier LAPERONNIE est disponible pour une première consultation confidentielle.'}</p>
       <div class="article-cta-actions">
