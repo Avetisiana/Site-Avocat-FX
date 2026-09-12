@@ -37,9 +37,7 @@ Cette recherche peut notamment intervenir dans des dossiers concernant :
 
 La blockchain permet par ailleurs de retracer publiquement un grand nombre de transactions. L’enjeu pour les enquêteurs consiste souvent à relier une adresse blockchain ou un portefeuille à une personne physique.
 
-La découverte d’un téléphone, d’un ordinateur, d’un hardware wallet ou de documents relatifs à une plateforme d’échange peut contribuer à établir ce lien.\
-\
-[Les cryptomonnaies sont elles reconnues Juridiquement en france.](https://laperonnie-avocat.fr/article-les-cryptomonnaies-sont-elles-reconnues-juridiquement-en-france)
+La découverte d’un téléphone, d’un ordinateur, d’un hardware wallet ou de documents relatifs à une plateforme d’échange peut contribuer à établir ce lien.
 
 **La police peut-elle saisir un téléphone ou un ordinateur ?**
 
