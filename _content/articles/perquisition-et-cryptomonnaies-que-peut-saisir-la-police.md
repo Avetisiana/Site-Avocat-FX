@@ -39,7 +39,7 @@ La blockchain permet par ailleurs de retracer publiquement un grand nombre de tr
 
 La découverte d’un téléphone, d’un ordinateur, d’un hardware wallet ou de documents relatifs à une plateforme d’échange peut contribuer à établir ce lien.\
 \
-Les cryptomonnaies sont elles reconnues Juridiquement en france.<https://laperonnie-avocat.fr/article-les-cryptomonnaies-sont-elles-reconnues-juridiquement-en-france>
+[Les cryptomonnaies sont elles reconnues Juridiquement en france.](https://laperonnie-avocat.fr/article-les-cryptomonnaies-sont-elles-reconnues-juridiquement-en-france)
 
 **La police peut-elle saisir un téléphone ou un ordinateur ?**
 
