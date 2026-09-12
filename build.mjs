@@ -129,6 +129,23 @@ function processBody(markdown) {
 // > Texte du cadre
 const ARROW_SVG_BTN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
 
+// A link that occupies a line of its own and points inside the site becomes a
+// button. The link text stays the button label, so wording and destination are
+// independent and the author only uses the editor's normal link dialog.
+//
+// "A line of its own" has to account for the CMS: its rich-text editor emits
+// soft breaks (markdown `\` -> <br>) rather than real paragraph breaks, so the
+// link usually sits inside the preceding paragraph after one or more <br>.
+// Lines are therefore split on <br> as well as on paragraph boundaries.
+// The site's own absolute URL is accepted (that is what the address bar gives)
+// and normalised back to a bare path. Links inside a sentence, and external
+// links, are left untouched.
+const LONE_LINK = /^<a href="(?:https?:\/\/(?:www\.)?laperonnie-avocat\.fr)?(\/[^"]*)"([^>]*)>([\s\S]*?)<\/a>$/;
+
+function linkButton(href, attrs, label) {
+  return `<a href="${href}"${attrs} class="related-btn related-btn--inline"><span>${label}</span>${ARROW_SVG_BTN}</a>`;
+}
+
 function postProcess(html) {
   return html
     .replace(
@@ -143,14 +160,30 @@ function postProcess(html) {
         return `<div class="highlight-box"><p>${content}</p></div>`;
       }
     )
-    // A link alone in its own paragraph, pointing inside the site, becomes a
-    // button. The link text is the button label, so wording and destination
-    // stay independent. Links inside a sentence are left as normal links.
-    .replace(
-      /<p>\s*<a href="(\/[^"]*)"([^>]*)>([\s\S]*?)<\/a>\s*<\/p>/g,
-      (_, href, attrs, label) =>
-        `<a href="${href}"${attrs} class="related-btn related-btn--inline"><span>${label}</span>${ARROW_SVG_BTN}</a>`
-    );
+    .replace(/<p>([\s\S]*?)<\/p>/g, (whole, inner) => {
+      const lines = inner.split(/\s*<br\s*\/?>\s*/);
+      if (!lines.some((l) => LONE_LINK.test(l.trim()))) return whole;
+
+      const out = [];
+      let buffer = [];
+      const flush = () => {
+        // drop <br> left dangling at either end once a button was lifted out
+        const text = buffer.join('<br>').replace(/^(?:\s*<br\s*\/?>)+|(?:<br\s*\/?>\s*)+$/g, '').trim();
+        if (text) out.push(`<p>${text}</p>`);
+        buffer = [];
+      };
+      for (const line of lines) {
+        const m = LONE_LINK.exec(line.trim());
+        if (m) {
+          flush();
+          out.push(linkButton(m[1], m[2], m[3]));
+        } else {
+          buffer.push(line);
+        }
+      }
+      flush();
+      return out.join('');
+    });
 }
 
 // ─── Shared nav HTML ──────────────────────────────────────────────────────────
