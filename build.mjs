@@ -127,19 +127,30 @@ function processBody(markdown) {
 // Convert blockquotes to highlight-box divs
 // > **Titre du cadre**
 // > Texte du cadre
+const ARROW_SVG_BTN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
 function postProcess(html) {
-  return html.replace(
-    /<blockquote>\s*<p>([\s\S]*?)<\/p>\s*<\/blockquote>/g,
-    (_, content) => {
-      const titleMatch = content.match(/^<strong>(.*?)<\/strong>\s*/);
-      if (titleMatch) {
-        const title = titleMatch[1];
-        const body = content.replace(/^<strong>.*?<\/strong>\s*/, '').trim();
-        return `<div class="highlight-box"><div class="highlight-box-title">${title}</div><p>${body}</p></div>`;
+  return html
+    .replace(
+      /<blockquote>\s*<p>([\s\S]*?)<\/p>\s*<\/blockquote>/g,
+      (_, content) => {
+        const titleMatch = content.match(/^<strong>(.*?)<\/strong>\s*/);
+        if (titleMatch) {
+          const title = titleMatch[1];
+          const body = content.replace(/^<strong>.*?<\/strong>\s*/, '').trim();
+          return `<div class="highlight-box"><div class="highlight-box-title">${title}</div><p>${body}</p></div>`;
+        }
+        return `<div class="highlight-box"><p>${content}</p></div>`;
       }
-      return `<div class="highlight-box"><p>${content}</p></div>`;
-    }
-  );
+    )
+    // A link alone in its own paragraph, pointing inside the site, becomes a
+    // button. The link text is the button label, so wording and destination
+    // stay independent. Links inside a sentence are left as normal links.
+    .replace(
+      /<p>\s*<a href="(\/[^"]*)"([^>]*)>([\s\S]*?)<\/a>\s*<\/p>/g,
+      (_, href, attrs, label) =>
+        `<a href="${href}"${attrs} class="related-btn related-btn--inline"><span>${label}</span>${ARROW_SVG_BTN}</a>`
+    );
 }
 
 // ─── Shared nav HTML ──────────────────────────────────────────────────────────
@@ -1126,6 +1137,10 @@ ${SHARED_CSS}
     .related-list { display:flex; flex-direction:column; gap:.6rem; }
     .related-btn { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.95rem 1.35rem; border:1px solid rgba(196,160,64,.22); background:var(--charbon-card); color:var(--blanc-dim); text-decoration:none; font-size:.8rem; font-weight:500; line-height:1.45; transition:border-color .2s, color .2s, background .2s; }
     .related-btn:hover { border-color:var(--or); color:var(--or); background:#161210; }
+    .related-btn--inline { margin:1.9rem 0; }
+    /* plain links written in the article body (markdown produces no class) */
+    .article-content a:not([class]) { color:var(--or-pale); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(196,160,64,.45); transition:color .2s, text-decoration-color .2s; }
+    .article-content a:not([class]):hover { color:var(--or); text-decoration-color:var(--or); }
     .related-btn svg { width:14px; height:14px; flex-shrink:0; color:var(--or); transition:transform .25s; }
     .related-btn:hover svg { transform:translateX(4px); }
     .article-cta-box { background:var(--charbon-card); border:1px solid rgba(196,160,64,.15); padding:2.5rem 2.75rem; margin-top:3rem; position:relative; overflow:hidden; }
