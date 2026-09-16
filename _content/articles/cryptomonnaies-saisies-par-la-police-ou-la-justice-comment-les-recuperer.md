@@ -32,12 +32,9 @@ ctaText: Maître François-Xavier LAPERONNIE est disponible pour une première
 ---
 **Pourquoi la police ou la justice peut-elle saisir des cryptomonnaies ?**
 
-
 Les crypto-actifs peuvent être concernés par une saisie pénale au même titre que d’autres éléments du patrimoine.
 
-
 Une telle mesure peut notamment intervenir dans des enquêtes portant sur :
-
 
    • le blanchiment ;
    • l’escroquerie ;
@@ -47,37 +44,27 @@ Une telle mesure peut notamment intervenir dans des enquêtes portant sur :
    • la cybercriminalité ;
    • certaines infractions économiques ou financières.
 
-
 La saisie peut également viser des biens susceptibles de faire ultérieurement l’objet d’une confiscation.
-
 
 Dans ce contexte, les enquêteurs cherchent notamment à déterminer l’origine des crypto-actifs, les conditions dans lesquelles ils ont été acquis, leur propriétaire réel et leur éventuel lien avec les faits faisant l’objet de l’enquête.
 
-
 **Saisie et confiscation : quelle différence ?**
-
 
 Cette distinction est fondamentale.
 
-
 La saisie intervient au cours de la procédure. Elle place temporairement certains biens ou droits sous main de justice.
 La confiscation, quant à elle, peut notamment être prononcée définitivement par une juridiction lorsque les conditions prévues par la loi sont réunies.
-
 
 Par conséquent :
 cryptomonnaies saisies ≠ cryptomonnaies définitivement confisquées.
 Une personne peut donc voir ses crypto-actifs immobilisés pendant une enquête sans qu’une décision définitive ait encore été prise sur leur sort.
 C’est précisément pendant cette période que la question des recours, de la mainlevée ou de la restitution peut se poser.
 
-
 **Comment savoir sur quel fondement les cryptomonnaies ont été saisies ?**
-
 
 C’est l’une des premières questions à examiner.
 
-
 Il n’existe pas une seule procédure applicable à toutes les saisies.
-
 
 Le régime dépend notamment :
     • de la nature de l’enquête ;
@@ -86,13 +73,10 @@ Le régime dépend notamment :
     • de la manière dont les crypto-actifs étaient détenus ;
     • du motif juridique invoqué pour les saisir.
 
-
 Il est donc essentiel de récupérer et d’examiner les documents relatifs à la mesure : procès-verbal, ordonnance, notification ou tout document remis à la personne concernée.
 Le recours approprié dépend directement du fondement utilisé.
 
-
 **Les cryptomonnaies détenues sur une plateforme peuvent-elles être saisies ?**
-
 
 Oui.
 Le Code de procédure pénale prévoit expressément la possibilité de saisir, sous certaines conditions, des crypto-actifs détenus sur un compte ouvert auprès d’un établissement habilité à tenir ce type de compte.
@@ -100,9 +84,7 @@ L’article 706-154 du Code de procédure pénale prévoit notamment un mécanis
 Le juge des libertés et de la détention ou le juge d’instruction intervient ensuite, dans les conditions prévues par ce texte, pour se prononcer sur le maintien ou la mainlevée de la mesure.
 Ainsi, conserver ses cryptomonnaies auprès d’une plateforme d’échange ne les met pas à l’abri d’une saisie judiciaire.
 
-
 **Peut-on contester une saisie de crypto-actifs ?**
-
 
 Oui, dans certaines situations.
 Les modalités et délais de contestation varient selon le fondement de la saisie.
@@ -111,9 +93,7 @@ Cette décision peut être déférée à la chambre de l’instruction dans les 
 Les délais peuvent être particulièrement courts.
 Il est donc déconseillé d’attendre plusieurs semaines avant de faire examiner les documents relatifs à la saisie.
 
-
 **Dans quels cas peut-on demander la restitution de cryptomonnaies ?**
-
 
 La possibilité d’obtenir une restitution dépend de la situation procédurale et du motif pour lequel les crypto-actifs sont maintenus sous main de justice.
 Plusieurs arguments peuvent notamment être examinés selon le dossier :
@@ -126,22 +106,16 @@ Plusieurs arguments peuvent notamment être examinés selon le dossier :
 Il ne suffit cependant pas d’affirmer que les cryptomonnaies sont licites.
 Il faut, autant que possible, pouvoir le démontrer.
 
-
 **Comment prouver l’origine licite de ses cryptomonnaies ?**
-
 
 C’est probablement l’un des aspects les plus importants d’un dossier de restitution.
 La blockchain conserve un historique des transactions, mais cet historique ne suffit pas toujours à expliquer juridiquement et économiquement l’origine des fonds.
 
-
 Il peut donc être nécessaire de reconstituer le parcours des actifs.
-
 
 Par exemple :
 
-
 compte bancaire → virement vers une plateforme → achat de BTC → transfert vers un wallet → échanges ultérieurs.
-
 
 Les éléments utiles peuvent notamment comprendre :
     • relevés bancaires ;
@@ -155,9 +129,7 @@ Les éléments utiles peuvent notamment comprendre :
     • transactions enregistrées sur la blockchain.
 L’objectif consiste à pouvoir expliquer de manière cohérente d’où viennent les fonds et comment ils sont arrivés jusqu’au portefeuille saisi.
 
-
 **La blockchain peut-elle aider à récupérer des cryptomonnaies saisies ?**
-
 
 Oui, potentiellement.
 La traçabilité de nombreuses blockchains constitue souvent un outil d’enquête, mais elle peut également présenter un intérêt pour la défense.
@@ -165,9 +137,7 @@ Si une personne a acheté légalement des bitcoins plusieurs années auparavant,
 L’analyse doit cependant être rapprochée des éléments extérieurs à la blockchain : comptes bancaires, plateformes utilisées, identité du titulaire des comptes et justificatifs d’acquisition.
 La blockchain peut donc contribuer à démontrer la cohérence d’une origine licite, mais elle doit être replacée dans son contexte.
 
-
 **Que se passe-t-il si les cryptomonnaies appartiennent à un tiers ?**
-
 
 La question de la propriété réelle est particulièrement importante.
 Un wallet ou un compte peut être découvert dans le cadre d’une enquête concernant une personne alors que tout ou partie des actifs est revendiqué par un tiers.
@@ -176,15 +146,12 @@ Il lui appartient alors de pouvoir justifier ses droits.
 L’article 706-154 du Code de procédure pénale prévoit d’ailleurs, dans son champ d’application, la notification de la décision aux tiers connus ayant des droits sur les crypto-actifs concernés et organise leur intervention dans la procédure.
 Une simple affirmation de propriété sera généralement insuffisante : les justificatifs financiers et la traçabilité des transactions prennent ici encore une importance particulière.
 
-
 **Quel est le rôle de l’AGRASC concernant les cryptomonnaies saisies ?**
-
 
 L’AGRASC : Agence de gestion et de recouvrement des avoirs saisis et confisqués joue désormais un rôle important dans la gestion des crypto-actifs saisis.
 
 En effet, l’AGRASC assure sur mandat judiciaire la gestion centralisée des sommes saisies, la garde des biens qui lui sont confiés, ainsi que leur aliénation (C. proc. pén., art. 706-160) .
 S'agissant des crypto-actifs, dont la valeur peut fluctuer fortement, la loi permet une vente ou conversion anticipée en euros, avant tout jugement définitif, mais cette faculté n'est pas automatique et obéit à des conditions précises.
-
 
 **Les cryptomonnaies peuvent-elles être vendues avant la fin du procès ?**
 
@@ -195,16 +162,13 @@ Cette distinction est essentielle lorsqu’une restitution intervient ultérieur
 
 **Combien de temps une saisie de cryptomonnaies peut-elle durer ?**
 
-
 Il n’existe pas de réponse unique.
 La durée dépend de la procédure, des investigations en cours, du fondement de la saisie et des décisions judiciaires successives.
 Dans certaines affaires complexes, notamment économiques ou financières, la procédure peut durer longtemps.
 C’est précisément pour cette raison qu’il peut être utile de ne pas attendre passivement l’issue du dossier lorsque des crypto-actifs représentant une valeur importante sont immobilisés.
 L’opportunité d’une contestation ou d’une demande de restitution doit être examinée au regard du dossier.
 
-
 **Que faire immédiatement lorsque ses cryptomonnaies ont été saisies ?**
-
 
 Plusieurs réflexes sont utiles.
 Il convient d’abord de conserver tous les documents relatifs à la saisie et de relever précisément la date à laquelle les décisions ont été notifiées.
@@ -229,9 +193,7 @@ En cas de refus, ou de silence gardé par le Procureur de la République, la dé
 
 Lorsqu'une information judiciaire est ouverte, la demande de restitution est portée devant le juge d'instruction : Les praticiens doivent donc veiller à saisir la juridiction désormais compétente sous peine d'irrecevabilité du recours.
 
-
 **Pourquoi faire intervenir un avocat dans une saisie de crypto-actifs ?**
-
 
 Les saisies de cryptomonnaies se trouvent au croisement de plusieurs matières : procédure pénale, saisies patrimoniales et fonctionnement technique des actifs numériques.
 L’analyse du dossier suppose notamment de comprendre :
@@ -242,39 +204,29 @@ L’analyse du dossier suppose notamment de comprendre :
     • quel lien existe éventuellement avec l’infraction poursuivie ;
     • quelle procédure permet de contester leur maintien sous main de justice ou d’en demander la restitution.
 
-
 **Le Cabinet LAPERONNIE** intervient en droit pénal ainsi que dans les dossiers impliquant des cryptomonnaies et crypto-actifs.
-
 
 Basé à Angoulême, le cabinet peut intervenir dans les dossiers liés aux cryptomonnaies sur l’ensemble du territoire français.
 
-
 **FAQ – Cryptomonnaies saisies et restitution**
-
 
 **Une saisie signifie-t-elle que mes cryptomonnaies sont perdues ?**
 Non. Une saisie n’est pas synonyme de confiscation définitive. Le sort des crypto-actifs dépendra notamment de la procédure et des décisions judiciaires prises ultérieurement.
 
-
 **Puis-je demander la restitution de mes bitcoins ou ethers ?**
 Selon le stade de la procédure, le fondement de la saisie et votre situation, une contestation, une demande de mainlevée ou une demande de restitution peut être envisageable.
-
 
 **Comment prouver que mes cryptomonnaies ont une origine légale ?**
 Les relevés bancaires, historiques de plateformes, justificatifs d’achat, déclarations fiscales pertinentes et transactions enregistrées sur la blockchain peuvent notamment permettre de reconstituer l’origine et le parcours des actifs.
 
-
 **Que faire si les cryptomonnaies saisies ne m’appartiennent pas ?**
 La personne qui revendique la propriété ou des droits sur les crypto-actifs doit pouvoir les justifier. Selon la procédure utilisée, des voies de recours peuvent être ouvertes aux tiers concernés.
-
 
 **Quel est le délai pour contester une saisie ?**
 Il dépend du fondement juridique de la saisie. Dans le régime particulier de l’article 706-154 du Code de procédure pénale, la décision de maintien ou de mainlevée peut être déférée à la chambre de l’instruction dans un délai de dix jours à compter de sa notification. Il convient donc de faire examiner rapidement les documents reçus.
 
-
 **L’AGRASC peut-elle restituer des cryptomonnaies ?**
 Des crypto-actifs gérés dans le cadre des saisies peuvent effectivement être restitués lorsque les conditions d’une confiscation définitive ne sont pas réunies. La direction de l’AGRASC indiquait en 2025 que 30 millions d’euros d’actifs numériques avaient ainsi été restitués.
-
 
 **Puis-je bénéficier de la hausse du cours des cryptomonnaies pendant leur saisie ?**
 
