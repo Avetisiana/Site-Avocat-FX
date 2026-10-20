@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Consentement cookies — GA chargé uniquement après accord RGPD -->
+  <script>
+  (function(){
+    var GA='G-2RW9YDSJCQ',CK='laperonnie_consent';
+    function loadGA(){
+      if(window._gaOk)return;window._gaOk=1;
+      var s=document.createElement('script');
+      s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());gtag('config',GA);
+    }
+    window.acceptCookies=function(){
+      localStorage.setItem(CK,'ok');
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='none';
+      loadGA();
+    };
+    window.refuseCookies=function(){
+      localStorage.setItem(CK,'no');
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='none';
+    };
+    window.manageCookies=function(){
+      localStorage.removeItem(CK);
+      var b=document.getElementById('cookie-banner');
+      if(b)b.style.display='flex';
+    };
+    document.addEventListener('DOMContentLoaded',function(){
+      var c=localStorage.getItem(CK);
+      if(!c){var b=document.getElementById('cookie-banner');if(b)b.style.display='flex';}
+      else if(c==='ok')loadGA();
+    });
+  })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blanchiment et cryptomonnaies : que risque-t-on et comment se défendre ? — Avocat Angoulême | Cabinet LAPERONNIE</title>
+  <meta name="description" content="Les cryptomonnaies occupent désormais une place importante dans les enquêtes pénales portant sur des mouvements de fonds. Bitcoin, Ethereum, stablecoins,…" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="canonical" href="https://laperonnie-avocat.fr/article-blanchiment-et-cryptomonnaies-que-risque-t-on-et-comment-se-defendre" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Blanchiment et cryptomonnaies : que risque-t-on et comment se défendre ? — Avocat Angoulême | Cabinet LAPERONNIE" />
+  <meta property="og:description" content="Les cryptomonnaies occupent désormais une place importante dans les enquêtes pénales portant sur des mouvements de fonds. Bitcoin, Ethereum, stablecoins,…" />
+  <meta property="og:url" content="https://laperonnie-avocat.fr/article-blanchiment-et-cryptomonnaies-que-risque-t-on-et-comment-se-defendre" />
+  <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
+  <meta property="og:locale" content="fr_FR" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Blanchiment et cryptomonnaies : que risque-t-on et comment se défendre ?",
+  "description": "Les cryptomonnaies occupent désormais une place importante dans les enquêtes pénales portant sur des mouvements de fonds. Bitcoin, Ethereum, stablecoins,…",
+  "datePublished": "2026-10-10",
+  "dateModified": "2026-10-10",
+  "author": {
+    "@type": "Person",
+    "name": "François-Xavier Laperonnie",
+    "jobTitle": "Avocat",
+    "url": "https://laperonnie-avocat.fr/cabinet"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cabinet LAPERONNIE",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://laperonnie-avocat.fr/brand_assets/LF-Logo.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://laperonnie-avocat.fr/article-blanchiment-et-cryptomonnaies-que-risque-t-on-et-comment-se-defendre"
+  },
+  "inLanguage": "fr-FR",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Actualités juridiques — Cabinet LAPERONNIE",
+    "@id": "https://laperonnie-avocat.fr/blog"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Cabinet LAPERONNIE",
+    "url": "https://laperonnie-avocat.fr",
+    "telephone": "+33545383009",
+    "email": "fx.laperonnie@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14 Rue d'Arcole",
+      "addressLocality": "Angoulême",
+      "postalCode": "16000",
+      "addressRegion": "Charente",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.648866,
+      "longitude": 0.154784
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Angoulême"},
+      {"@type": "AdministrativeArea", "name": "Charente"}
+    ]
+  }
+  </script>
+  <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand_assets/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>    @font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Cinzel-700.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400i.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-300.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-400.woff2) format('woff2')}@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/CormorantGaramond-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:300;font-display:swap;src:url(brand_assets/fonts/Montserrat-300.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/Montserrat-400.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(brand_assets/fonts/Montserrat-500.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/Montserrat-600.woff2) format('woff2')}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/Montserrat-700.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600i.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-400.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-600.woff2) format('woff2')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(brand_assets/fonts/PlayfairDisplay-700.woff2) format('woff2')}
+    :root { --cat:var(--or-pale); --cat-bg:rgba(196,160,64,.07); --cat-border:rgba(196,160,64,.3); }
+    :root { --charbon:#060504; --charbon-mid:#0D0B09; --charbon-light:#161310; --charbon-card:#100D0B; --or:#C4A040; --or-pale:#D4B252; --or-dark:#9A7A26; --blanc:#F2EDE4; --blanc-dim:#C0BAB0; --gris:#787068; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--charbon); color:var(--blanc); font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.025; background-image:url("brand_assets/noise.png"); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 5rem; transition:background .4s ease,padding .3s ease,border-color .3s ease; border-bottom:1px solid transparent; }
+    nav.scrolled { background:rgba(6,5,4,.96); backdrop-filter:blur(14px); padding:.75rem 5rem; border-color:rgba(196,160,64,.14); }
+    .nav-logo { width:auto; height:110px; opacity:.9; transition:opacity .2s; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .nav-logo:hover { opacity:1; }
+    nav > a { flex-shrink:0; }
+    .nav-links { display:flex; gap:2.75rem; list-style:none; align-items:center; }
+    .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; white-space:nowrap; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+    .nav-links a:hover, .nav-links a.active { color:var(--or); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
+    .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s,color .22s; }
+    .btn-rdv:hover { background:var(--or); color:var(--charbon); }
+    .nav-cta-group { display:flex; align-items:center; gap:1rem; }
+    .nav-phone { display:flex; align-items:center; gap:.5rem; color:#E8352A; text-decoration:none; font-size:.80rem; font-weight:700; letter-spacing:.08em; border:1px solid rgba(232,53,42,.35); padding:.55rem 1.1rem; transition:color .22s ease, border-color .22s ease, background .22s ease; white-space:nowrap; }
+    .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
+    .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
+    @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
+    @media(max-width:1500px) { .nav-links { gap:1.9rem; } }
+    @media(max-width:1400px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1300px) { nav .nav-links { display:none; } nav .hamburger { display:flex; } nav .nav-cta-group { margin-left:auto; margin-right:1rem; } }
+    .nav-item-has-drop { position:relative; }
+    .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
+    .nav-item-has-drop > a::after { display:none; }
+    .drop-chevron { display:inline-block; width:0; height:0; border-left:3.5px solid transparent; border-right:3.5px solid transparent; border-top:3.5px solid currentColor; transition:transform .25s ease; margin-top:1px; flex-shrink:0; }
+    .nav-item-has-drop:hover .drop-chevron { transform:rotate(180deg); }
+    .nav-dropdown { position:absolute; top:calc(100% + 1.1rem); left:50%; transform:translateX(-50%) translateY(-8px); min-width:210px; background:rgba(6,5,4,.97); border:1px solid rgba(196,160,64,.15); border-top:2px solid var(--or); backdrop-filter:blur(18px); opacity:0; visibility:hidden; transition:opacity .25s ease,transform .25s ease,visibility 0s .25s; z-index:1001; }
+    .nav-item-has-drop:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); transition:opacity .25s ease,transform .25s ease,visibility 0s 0s; }
+    .nav-dropdown a { display:block; padding:.72rem 1.4rem; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blanc-dim); text-decoration:none; border-bottom:1px solid rgba(196,160,64,.07); transition:color .18s,background .18s,padding-left .18s; position:relative; }
+    .nav-dropdown a:last-child { border-bottom:none; }
+    .nav-dropdown a::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--or); transform:scaleY(0); transform-origin:bottom; transition:transform .18s ease; }
+    .nav-dropdown a:hover { color:var(--or); background:rgba(196,160,64,.04); padding-left:1.8rem; }
+    .nav-dropdown a:hover::before { transform:scaleY(1); }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; padding:7px; cursor:pointer; background:transparent; border:1px solid rgba(196,160,64,.22); transition:border-color .2s; flex-shrink:0; }
+    .hamburger:hover { border-color:rgba(196,160,64,.55); }
+    .hamburger span { display:block; width:100%; height:1px; background:var(--or); transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .25s ease; transform-origin:center; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+    .mob-nav { position:fixed; inset:0; z-index:1050; background:rgba(6,5,4,.98); backdrop-filter:blur(24px); display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; padding:2rem; }
+    .mob-nav.open { opacity:1; pointer-events:all; }
+    .mob-nav-logo { position:absolute; top:1.4rem; left:1.4rem; width:auto; height:42px; opacity:.75; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .mob-nav-links { list-style:none; display:flex; flex-direction:column; align-items:center; gap:1.75rem; margin-bottom:3rem; }
+    .mob-nav-links a { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,6vw,2.2rem); font-weight:600; color:var(--blanc); text-decoration:none; transition:color .2s; }
+    .mob-nav-links a:hover, .mob-nav-links a.active { color:var(--or); }
+    .mob-nav-divider { width:32px; height:1px; background:rgba(196,160,64,.25); margin-bottom:2.5rem; }
+    .mob-nav-phone { font-size:.65rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); text-decoration:none; border:1px solid rgba(196,160,64,.28); padding:.65rem 2rem; }
+    .mob-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; z-index:990; background:rgba(6,5,4,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(196,160,64,.15); padding:.65rem 1.25rem; gap:.6rem; align-items:stretch; }
+    .mob-cta-call, .mob-cta-rdv { flex:1; display:flex; align-items:center; justify-content:center; gap:.45rem; padding:.75rem .5rem; font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
+    .mob-cta-call { border:1px solid rgba(196,160,64,.28); color:var(--or); }
+    .mob-cta-call svg { width:13px; height:13px; flex-shrink:0; }
+    .mob-cta-rdv { background:var(--or); color:var(--charbon); }
+    footer { background:#1A1714; border-top:1px solid rgba(196,160,64,.1); padding:4.5rem 5rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.05); }
+    .footer-logo { width:auto; height:56px; opacity:.78; margin-bottom:1.25rem; filter:brightness(0) invert(1) sepia(.45) saturate(5) hue-rotate(8deg) brightness(1.05); }
+    .footer-blurb { font-size:.76rem; color:var(--gris); line-height:1.82; font-weight:300; max-width:270px; }
+    .f-col-title { font-size:.57rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--or); margin-bottom:1.2rem; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .f-links a { font-size:.76rem; color:var(--gris); text-decoration:none; font-weight:300; transition:color .2s; }
+    .f-links a:hover { color:var(--or); } .f-rdv-btn { display:inline-block; background:#B83232; color:#F2EDE4!important; padding:.42rem 1.05rem; font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none!important; margin-top:.3rem; transition:background .22s,transform .15s; } .f-rdv-btn:hover { background:#D94040!important; color:#fff!important; }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-copy { font-size:.66rem; color:rgba(122,118,110,.45); font-weight:300; }
+    .footer-legal { display:flex; gap:2rem; }
+    .footer-legal a { font-size:.66rem; color:rgba(122,118,110,.45); text-decoration:none; transition:color .2s; }
+    .footer-legal a:hover { color:var(--gris); }
+    .wa-btn { position:fixed; bottom:2rem; right:2rem; z-index:985; width:52px; height:52px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,.35); transition:transform .2s ease,box-shadow .2s ease; text-decoration:none; }
+    .wa-btn:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,.5); }
+    .wa-btn svg { width:28px; height:28px; }
+    @media(max-width:720px) { .wa-btn { bottom:calc(68px + 1rem); right:1rem; width:46px; height:46px; } .wa-btn svg { width:24px; height:24px; } }
+    .article-header { padding:11rem 5rem 4rem; background:linear-gradient(160deg,#080706 0%,var(--charbon) 55%,#0A0908 100%); position:relative; overflow:hidden; }
+    .article-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 60%,rgba(196,160,64,.05) 0%,transparent 70%); }
+    .article-header-inner { position:relative; z-index:1; max-width:860px; }
+    .breadcrumb { display:flex; align-items:center; gap:.6rem; margin-bottom:2rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
+    .breadcrumb a { color:var(--gris); text-decoration:none; transition:color .2s; }
+    .breadcrumb a:hover { color:var(--or); }
+    .breadcrumb-sep { color:rgba(196,160,64,.4); }
+    .article-tags { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:1.75rem; align-items:center; }
+    .tag-cat { font-size:.52rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding:.28rem .8rem; border:1px solid var(--cat-border); color:var(--cat); background:var(--cat-bg); }
+    .tag-read { font-size:.52rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gris); }
+    .article-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:700; line-height:1.1; letter-spacing:-.02em; color:var(--blanc); margin-bottom:1.5rem; }
+    .article-title em { color:var(--or); font-style:italic; }
+    .article-intro { font-family:'Cormorant Garamond',serif; font-size:clamp(1.05rem,1.8vw,1.25rem); font-style:italic; font-weight:300; color:var(--blanc-dim); max-width:720px; line-height:1.7; }
+    .article-intro + .article-intro { margin-top:.9rem; }
+    .article-meta-bar { display:flex; align-items:center; gap:2rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); flex-wrap:wrap; }
+    .author-block { display:flex; align-items:center; gap:1rem; }
+    .author-photo { width:44px; height:44px; object-fit:cover; object-position:top; border:1px solid rgba(196,160,64,.2); filter:grayscale(.25); }
+    .author-info { display:flex; flex-direction:column; gap:.2rem; }
+    .author-name { font-size:.68rem; font-weight:600; color:var(--blanc); letter-spacing:.06em; }
+    .author-role { font-size:.58rem; font-weight:400; color:var(--gris); letter-spacing:.08em; }
+    .meta-sep { width:1px; height:28px; background:rgba(196,160,64,.15); }
+    .meta-date { font-size:.62rem; font-weight:500; color:var(--gris); letter-spacing:.1em; }
+    .article-layout { display:grid; grid-template-columns:260px 1fr; gap:0; padding:0 5rem 7rem; max-width:1280px; margin:0 auto; align-items:start; }
+    .article-sidebar { padding:4rem 2.5rem 4rem 0; align-self:start; }
+    @media(min-width:1101px) { .article-sidebar { position:sticky; top:110px; z-index:10; } }
+    .toc-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.5rem; display:flex; align-items:center; gap:.75rem; }
+    .toc-label::before { content:''; width:22px; height:1px; background:var(--or); }
+    .toc-nav { display:flex; flex-direction:column; border-left:1px solid rgba(196,160,64,.15); }
+    .toc-link { display:block; padding:.7rem 1.2rem; font-size:.68rem; font-weight:500; color:var(--gris); text-decoration:none; letter-spacing:.06em; position:relative; transition:color .2s,padding-left .2s; border-left:2px solid transparent; margin-left:-1px; }
+    .toc-link:hover { color:var(--blanc-dim); }
+    .toc-link.active { color:var(--or); border-left-color:var(--or); padding-left:1.4rem; }
+    .toc-back { display:flex; align-items:center; gap:.5rem; font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gris); text-decoration:none; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.1); transition:color .2s; }
+    .toc-back:hover { color:var(--or); }
+    .toc-back svg { width:12px; height:12px; }
+    .article-content { padding:4rem 0 4rem 4rem; border-left:1px solid rgba(196,160,64,.08); }
+    .article-section { margin-bottom:4rem; padding-bottom:4rem; border-bottom:1px solid rgba(196,160,64,.07); scroll-margin-top:130px; }
+    .article-section:last-of-type { border-bottom:none; margin-bottom:2rem; }
+    .section-title { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:600; color:var(--blanc); margin-bottom:1.4rem; line-height:1.3; display:flex; align-items:flex-start; gap:.75rem; }
+    .section-title::before { content:''; width:3px; height:1.2em; background:var(--or); flex-shrink:0; margin-top:.15em; }
+    .article-content p { font-size:.88rem; color:var(--blanc-dim); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
+    .article-content p:last-child { margin-bottom:0; }
+    .article-content strong { color:var(--blanc); font-weight:600; }
+    .article-content ul, .article-content ol { margin:1.2rem 0 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.65rem; }
+    .article-content li { font-size:.88rem; color:var(--blanc-dim); line-height:1.8; font-weight:300; padding-left:.5rem; }
+    .article-content ul li::marker { color:var(--or); }
+    .article-content ol li::marker { color:var(--or); font-weight:600; }
+    .highlight-box { background:var(--charbon-card); border-left:3px solid var(--or); padding:1.5rem 1.75rem; margin:1.75rem 0; }
+    .highlight-box-title { font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--or); margin-bottom:.75rem; }
+    .highlight-box p { font-size:.84rem; color:var(--blanc-dim); line-height:1.8; margin-bottom:0; }
+    .related-box { margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(196,160,64,.12); }
+    .related-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.25rem; display:flex; align-items:center; gap:.75rem; }
+    .related-label::before { content:''; width:22px; height:1px; background:var(--or); }
+    .related-list { display:flex; flex-direction:column; gap:.6rem; }
+    .related-btn { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.95rem 1.35rem; border:1px solid rgba(196,160,64,.22); background:var(--charbon-card); color:var(--blanc-dim); text-decoration:none; font-size:.8rem; font-weight:500; line-height:1.45; transition:border-color .2s, color .2s, background .2s; }
+    .related-btn:hover { border-color:var(--or); color:var(--or); background:#161210; }
+    .related-btn--inline { margin:1.9rem 0; }
+    /* plain links written in the article body (markdown produces no class) */
+    .article-content a:not([class]) { color:var(--or-pale); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(196,160,64,.45); transition:color .2s, text-decoration-color .2s; }
+    .article-content a:not([class]):hover { color:var(--or); text-decoration-color:var(--or); }
+    .related-btn svg { width:14px; height:14px; flex-shrink:0; color:var(--or); transition:transform .25s; }
+    .related-btn:hover svg { transform:translateX(4px); }
+    .article-cta-box { background:var(--charbon-card); border:1px solid rgba(196,160,64,.15); padding:2.5rem 2.75rem; margin-top:3rem; position:relative; overflow:hidden; }
+    .article-cta-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--or-dark),var(--or-pale)); }
+    .article-cta-title { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:600; color:var(--blanc); margin-bottom:.75rem; line-height:1.3; }
+    .article-cta-text { font-size:.82rem; color:var(--gris); line-height:1.8; margin-bottom:1.75rem; font-weight:300; }
+    .article-cta-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+    .btn-or { display:inline-flex; align-items:center; gap:.5rem; background:var(--or); color:var(--charbon); padding:.85rem 1.8rem; font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+    .btn-or:hover { background:var(--or-pale); }
+    .btn-outline { display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(196,160,64,.3); color:var(--blanc-dim); padding:.85rem 1.8rem; font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+    .btn-outline:hover { color:var(--or); border-color:var(--or); }
+    .btn-outline svg { width:13px; height:13px; flex-shrink:0; }
+    .btn-outline { white-space:nowrap; }
+    @media(max-width:1100px) {
+      nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+      .article-header, .article-layout, footer { padding-left:2.5rem; padding-right:2.5rem; }
+      .article-layout { grid-template-columns:1fr; }
+      .article-sidebar { position:static; padding:2rem 0 0; border-bottom:1px solid rgba(196,160,64,.1); margin-bottom:2rem; }
+      .toc-nav { flex-direction:row; flex-wrap:wrap; border-left:none; border-top:1px solid rgba(196,160,64,.15); padding-top:.5rem; }
+      .toc-link { border-left:none; border-bottom:2px solid transparent; padding:.5rem .75rem; }
+      .toc-link.active { border-bottom-color:var(--or); border-left-color:transparent; padding-left:.75rem; }
+      .article-content { padding:0; border-left:none; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
+    }
+    @media(max-width:720px) {
+      nav { padding:1rem 1.25rem; } nav.scrolled { padding:.75rem 1.25rem; }
+      .nav-logo { width:auto; height:44px; } .nav-links { display:none; } .nav-cta-group { display:none; } .hamburger { display:flex; }
+      .article-header, .article-layout, footer { padding-left:1.5rem; padding-right:1.5rem; }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
+      .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
+      .article-cta-actions { flex-direction:column; }
+    }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="/"><img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="nav-logo" width="1536" height="1024" /></a>
+  <ul class="nav-links">
+    <li class="nav-item-has-drop">
+      <a href="/#expertise">Expertise <span class="drop-chevron"></span></a>
+      <div class="nav-dropdown">
+        <a href="/droit-penal">Droit Pénal</a>
+        <a href="/droit-famille">Droit de la Famille</a>
+        <a href="/cryptomonnaies">Cryptomonnaies</a>
+      </div>
+    </li>
+    <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/divorce-amiable-nice-cannes">Nice · Cannes</a></li>
+    <li><a href="/cases">Affaires</a></li>
+    <li><a href="/blog" class="active">Actualités</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="tel:+33545383009" class="nav-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>05 45 38 30 09</span></a>
+    <a href="/#contact" class="btn-rdv">Prendre rendez-vous</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-nav" id="mob-nav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="mob-nav-logo" width="1536" height="1024" />
+  <ul class="mob-nav-links">
+    <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
+    <li><a href="/droit-famille" class="mob-close">Droit de la Famille</a></li>
+    <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/divorce-amiable-nice-cannes" class="mob-close">Nice · Cannes</a></li>
+    <li><a href="/cabinet" class="mob-close">Le Cabinet</a></li>
+    <li><a href="/cases" class="mob-close">Affaires</a></li>
+    <li><a href="/blog" class="mob-close active">Actualités</a></li>
+    <li><a href="/#contact" class="mob-close">Contact</a></li>
+  </ul>
+  <div class="mob-nav-divider"></div>
+  <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
+</div>
+
+<div class="article-header">
+  <div class="article-header-inner">
+    <div class="breadcrumb">
+      <a href="/">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="/blog">Actualités</a><span class="breadcrumb-sep">›</span>
+      <span>Cryptomonnaies</span>
+    </div>
+    <div class="article-tags">
+      <span class="tag-cat">Cryptomonnaies</span>
+      <span class="tag-read">5 min de lecture</span>
+    </div>
+    <h1 class="article-title">Blanchiment et cryptomonnaies : que risque-t-on et comment se défendre ?</h1>
+    <p class="article-intro">Les cryptomonnaies occupent désormais une place importante dans les enquêtes pénales portant sur des mouvements de fonds.</p>
+    <p class="article-intro">Bitcoin, Ethereum, stablecoins, plateformes d'échange, wallets personnels, transferts entre différentes blockchains : lorsqu'une enquête porte sur des fonds susceptibles de provenir d'une infraction, les opérations réalisées en crypto-actifs peuvent être examinées par les enquêteurs.</p>
+    <p class="article-intro">Une personne peut alors être convoquée par la police ou la gendarmerie, placée en garde à vue, faire l'objet d'une perquisition ou voir ses cryptomonnaies saisies.</p>
+    <p class="article-intro">Mais le simple fait d'avoir reçu, détenu, transféré ou converti des cryptomonnaies ne caractérise évidemment pas, à lui seul, une infraction de blanchiment.</p>
+    <p class="article-intro">Que recouvre exactement le blanchiment lorsqu'il est question de cryptomonnaies ? Quelles sont les peines encourues ? Et surtout, comment préparer sa défense lorsqu'on est soupçonné de blanchiment en lien avec des crypto-actifs ?</p>
+    <div class="article-meta-bar">
+      <div class="author-block">
+        <img src="brand_assets/Photo of the lawyer.png" alt="Maître François-Xavier LAPERONNIE" class="author-photo" />
+        <div class="author-info">
+          <span class="author-name">Maître François-Xavier LAPERONNIE</span>
+          <span class="author-role">Avocat au Barreau de Charente</span>
+        </div>
+      </div>
+      <div class="meta-sep"></div>
+      <span class="meta-date">10 octobre 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-layout">
+  <aside class="article-sidebar">
+    <div class="toc-label">Sommaire</div>
+    <div class="toc-nav">
+      <a href="#quest-ce-que-le-blanchiment" class="toc-link active">Qu'est-ce que le blanchiment ?</a>
+      <a href="#peut-on-commettre-un-blanchiment-avec-des-cryptomonnaies" class="toc-link">Peut-on commettre un blanchiment avec des cryptomonnaies ?</a>
+      <a href="#les-regles-concernant-les-cryptomonnaies-ont-elles-ete-renforcees" class="toc-link">Les règles concernant les cryptomonnaies ont-elles été renforcées ?</a>
+      <a href="#faut-il-avoir-connaissance-de-lorigine-frauduleuse-des-fonds" class="toc-link">Faut-il avoir connaissance de l'origine frauduleuse des fonds ?</a>
+      <a href="#une-operation-inhabituelle-suffit-elle-a-prouver-un-blanchiment" class="toc-link">Une opération inhabituelle suffit-elle à prouver un blanchiment ?</a>
+      <a href="#comment-les-enqueteurs-peuvent-ils-suivre-les-cryptomonnaies" class="toc-link">Comment les enquêteurs peuvent-ils suivre les cryptomonnaies ?</a>
+      <a href="#que-se-passe-t-il-en-cas-de-convocation-par-la-police-ou-la-gendarmerie" class="toc-link">Que se passe-t-il en cas de convocation par la police ou la gendarmerie ?</a>
+      <a href="#peut-on-etre-place-en-garde-a-vue-pour-blanchiment-lie-aux-cryptomonnaies" class="toc-link">Peut-on être placé en garde à vue pour blanchiment lié aux cryptomonnaies ?</a>
+      <a href="#une-perquisition-peut-elle-permettre-la-saisie-dun-wallet-ou-de-cryptomonnaies" class="toc-link">Une perquisition peut-elle permettre la saisie d'un wallet ou de cryptomonnaies ?</a>
+      <a href="#quelles-sont-les-peines-encourues-pour-blanchiment" class="toc-link">Quelles sont les peines encourues pour blanchiment ?</a>
+      <a href="#comment-preparer-sa-defense-lorsquon-est-soupconne-de-blanchiment-de-cryptomonnaies" class="toc-link">Comment préparer sa défense lorsqu'on est soupçonné de blanchiment de cryptomonnaies ?</a>
+      <a href="#pourquoi-la-connaissance-technique-des-cryptomonnaies-peut-elle-etre-importante-pour-la-defense" class="toc-link">Pourquoi la connaissance technique des cryptomonnaies peut-elle être importante pour la défense ?</a>
+      <a href="#que-faire-si-vous-etes-convoque-ou-poursuivi-pour-blanchiment-en-lien-avec-des-cryptomonnaies" class="toc-link">Que faire si vous êtes convoqué ou poursuivi pour blanchiment en lien avec des cryptomonnaies ?</a>
+      <a href="#questions-frequentes-faq" class="toc-link">Questions fréquentes (FAQ)</a>
+      <a href="#detenir-plusieurs-wallets-est-il-suspect" class="toc-link">Détenir plusieurs wallets est-il suspect ?</a>
+      <a href="#faire-passer-des-cryptomonnaies-dune-blockchain-a-une-autre-constitue-t-il-un-blanchiment" class="toc-link">Faire passer des cryptomonnaies d'une blockchain à une autre constitue-t-il un blanchiment ?</a>
+      <a href="#puis-je-etre-poursuivi-si-je-ne-savais-pas-que-les-fonds-provenaient-dune-infraction" class="toc-link">Puis-je être poursuivi si je ne savais pas que les fonds provenaient d'une infraction ?</a>
+      <a href="#les-transactions-bitcoin-sont-elles-anonymes" class="toc-link">Les transactions Bitcoin sont-elles anonymes ?</a>
+      <a href="#mes-cryptomonnaies-peuvent-elles-etre-saisies-pendant-lenquete" class="toc-link">Mes cryptomonnaies peuvent-elles être saisies pendant l'enquête ?</a>
+      <a href="#faut-il-preparer-ses-historiques-de-transactions-avant-une-audition" class="toc-link">Faut-il préparer ses historiques de transactions avant une audition ?</a>
+      <a href="#avocat-en-droit-penal-et-cryptomonnaies" class="toc-link">Avocat en droit pénal et cryptomonnaies</a>
+      <a href="#maitre-laperonnie-avocat-en-droit-penal-a-angouleme-intervient-dans-les-procedures-penales-impliquant-des-cryptomonnaies-et-peut-assister-les-personnes-convoquees-placees-en-garde-a-vue-mises-en-cause-ou-poursuivies-dans-ce-type-de-dossier" class="toc-link">Maître Laperonnie, avocat en droit pénal à Angoulême, intervient dans les procédures pénales impliquant des cryptomonnaies et peut assister les personnes convoquées, placées en garde à vue, mises en cause ou poursuivies dans ce type de dossier.</a>
+    </div>
+    <a href="/blog" class="toc-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Retour aux actualités
+    </a>
+  </aside>
+
+  <main class="article-content">
+
+    <div class="article-section" id="quest-ce-que-le-blanchiment">
+      <h2 class="section-title">Qu'est-ce que le blanchiment ?</h2>
+      <p>Le blanchiment est défini par l&#39;article 324-1 du Code pénal.</p>
+<p>Il peut notamment consister à faciliter la justification mensongère de l&#39;origine de biens ou de revenus provenant d&#39;un crime ou d&#39;un délit.</p>
+<p>Le Code pénal vise également le fait d&#39;apporter son concours à une opération de placement, de dissimulation ou de conversion du produit direct ou indirect d&#39;un crime ou d&#39;un délit.</p>
+<p>Il existe donc généralement, derrière le blanchiment, une infraction ayant généré les fonds concernés : escroquerie, trafic de stupéfiants, fraude, abus de confiance, fraude fiscale dans certaines circonstances, détournement de fonds ou encore diverses infractions économiques et financières.
+La question posée par l&#39;enquête consiste alors notamment à déterminer l&#39;origine des fonds et le rôle exact joué par la personne poursuivie dans leur circulation ou leur transformation.</p>
+
+    </div>
+    <div class="article-section" id="peut-on-commettre-un-blanchiment-avec-des-cryptomonnaies">
+      <h2 class="section-title">Peut-on commettre un blanchiment avec des cryptomonnaies ?</h2>
+      <p>Le blanchiment n&#39;est pas limité aux opérations bancaires traditionnelles ou aux espèces.
+Une opération portant sur des crypto-actifs peut entrer dans le champ du blanchiment lorsqu&#39;elle répond aux conditions prévues par le Code pénal.</p>
+<p>Les enquêteurs peuvent notamment s&#39;intéresser à des opérations telles que :</p>
+<p>\    • la réception de crypto-actifs provenant d&#39;un tiers ;
+    • leur transfert vers d&#39;autres wallets ;
+    • leur conversion d&#39;un crypto-actif vers un autre ;
+    • leur passage par différentes blockchains ;
+    • leur conversion en euros ou dans une autre monnaie ;
+    • l&#39;utilisation de plusieurs plateformes ou comptes ;
+    • certaines opérations destinées à rendre plus difficile l&#39;identification de l&#39;origine ou du bénéficiaire des fonds.</p>
+<p>Mais il faut distinguer la complexité d&#39;une opération en cryptomonnaies de son caractère pénalement répréhensible.</p>
+<p>Utiliser plusieurs wallets, effectuer des swaps, utiliser la DeFi ou transférer des crypto-actifs entre différentes blockchains ne signifie pas automatiquement que l&#39;on cherche à blanchir de l&#39;argent.</p>
+<p>C&#39;est précisément l&#39;analyse de l&#39;origine des fonds, des opérations effectuées, de leur justification et de la connaissance qu&#39;avait la personne de la situation qui peut devenir déterminante.</p>
+
+    </div>
+    <div class="article-section" id="les-regles-concernant-les-cryptomonnaies-ont-elles-ete-renforcees">
+      <h2 class="section-title">Les règles concernant les cryptomonnaies ont-elles été renforcées ?</h2>
+      <p>Le droit français prend désormais expressément en considération certaines techniques propres aux crypto-actifs.
+L&#39;article 324-1-1 du Code pénal prévoit une présomption concernant les biens ou revenus lorsque les conditions matérielles, juridiques ou financières d&#39;une opération de placement, de dissimulation ou de conversion ne peuvent avoir d&#39;autre justification que de dissimuler leur origine ou leur bénéficiaire effectif.</p>
+<p>Depuis 2025, le texte précise également que cette présomption peut s&#39;appliquer aux opérations réalisées au moyen d&#39;un crypto-actif comportant une fonction d&#39;anonymisation intégrée ou au moyen d&#39;un compte ou d&#39;une technique permettant l&#39;anonymisation ou l&#39;opacification des opérations en crypto-actifs.</p>
+<p>Elle ne signifie pas que toute utilisation d&#39;un outil permettant d&#39;améliorer la confidentialité constitue automatiquement un blanchiment.</p>
+<p>En revanche, certaines opérations susceptibles d&#39;opacifier la circulation des crypto-actifs peuvent désormais faire l&#39;objet d&#39;une attention particulière dans une enquête pénale.</p>
+
+    </div>
+    <div class="article-section" id="faut-il-avoir-connaissance-de-lorigine-frauduleuse-des-fonds">
+      <h2 class="section-title">Faut-il avoir connaissance de l'origine frauduleuse des fonds ?</h2>
+      <p>C&#39;est souvent l&#39;un des enjeux essentiels du dossier.</p>
+<p>Une personne peut avoir reçu de l&#39;argent ou des cryptomonnaies provenant d&#39;un tiers sans nécessairement connaître leur origine délictueuse.</p>
+<p>Elle peut également avoir effectué une opération pour le compte ou à la demande d&#39;une autre personne sans avoir connaissance de l&#39;ensemble des faits qui lui sont reprochés.</p>
+<p>La défense doit alors reconstituer très précisément les circonstances dans lesquelles les fonds ont été reçus ou transférés.</p>
+<p>Plusieurs questions peuvent être déterminantes :
+Qui a remis ou transféré les fonds ?
+Quelle explication avait été donnée concernant leur origine ?
+Quelle relation existait entre les personnes concernées ?
+La personne poursuivie avait-elle une raison particulière de douter de cette explication ?
+A-t-elle tiré un bénéfice de l&#39;opération ?
+Pourquoi les cryptomonnaies ont-elles été transférées, échangées ou converties ?
+Existe-t-il des messages, contrats, factures ou autres documents permettant d&#39;expliquer les opérations ?</p>
+
+    </div>
+    <div class="article-section" id="une-operation-inhabituelle-suffit-elle-a-prouver-un-blanchiment">
+      <h2 class="section-title">Une opération inhabituelle suffit-elle à prouver un blanchiment ?</h2>
+      <p>Non.
+Une transaction atypique ou complexe peut attirer l&#39;attention des enquêteurs, mais l&#39;existence d&#39;un mouvement inhabituel ne suffit pas nécessairement à caractériser l&#39;infraction.</p>
+<p>Dans l&#39;univers des crypto-actifs, certaines opérations parfaitement licites peuvent d&#39;ailleurs sembler complexes à une personne qui ne connaît pas leur fonctionnement.
+Un utilisateur peut, par exemple, transférer des actifs d&#39;une plateforme vers un wallet personnel, effectuer un bridge entre deux blockchains, réaliser un swap, utiliser un protocole DeFi puis replacer les actifs sur une plateforme centralisée.</p>
+<p>Ces différentes opérations produisent une succession de transactions sur la blockchain.
+L&#39;enjeu consiste donc à reconstituer la logique économique et chronologique des opérations.</p>
+<p>Une défense efficace ne peut pas toujours se limiter à une explication juridique. Elle peut nécessiter une compréhension technique des wallets, des transactions et des protocoles utilisés.</p>
+
+    </div>
+    <div class="article-section" id="comment-les-enqueteurs-peuvent-ils-suivre-les-cryptomonnaies">
+      <h2 class="section-title">Comment les enquêteurs peuvent-ils suivre les cryptomonnaies ?</h2>
+      <p>L&#39;idée selon laquelle les cryptomonnaies seraient nécessairement anonymes est inexacte.
+Sur de nombreuses blockchains publiques, les transactions sont enregistrées et peuvent être consultées.
+Une adresse apparaît sous la forme d&#39;une suite de caractères, mais l&#39;historique des mouvements peut être analysé.</p>
+<p>L&#39;enquête peut notamment chercher à rapprocher une adresse blockchain :
+    • d&#39;un compte ouvert sur une plateforme d&#39;échange ;
+    • d&#39;informations obtenues lors d&#39;une perquisition ;
+    • d&#39;un téléphone ou d&#39;un ordinateur ;
+    • d&#39;une application de wallet ;
+    • d&#39;une adresse électronique ;
+    • de documents bancaires ;
+    • ou encore d&#39;autres éléments recueillis dans le dossier.</p>
+<p>L&#39;analyse des flux peut ainsi permettre de reconstituer une partie du parcours des crypto-actifs.
+Mais retracer une transaction ne répond pas nécessairement à toutes les questions juridiques.
+Identifier un transfert ne permet pas, à lui seul, de déterminer pourquoi il a été effectué ni ce que savait la personne qui l&#39;a réalisé.</p>
+
+    </div>
+    <div class="article-section" id="que-se-passe-t-il-en-cas-de-convocation-par-la-police-ou-la-gendarmerie">
+      <h2 class="section-title">Que se passe-t-il en cas de convocation par la police ou la gendarmerie ?</h2>
+      <p>Une personne soupçonnée de blanchiment peut être convoquée pour être entendue.
+Selon les circonstances, l&#39;audition peut notamment intervenir sous le régime de l&#39;audition libre ou de la garde à vue.</p>
+<p>Dans un dossier impliquant des cryptomonnaies, il est particulièrement important de comprendre avant l&#39;audition les opérations susceptibles d&#39;être évoquées.</p>
+<p>Des transactions réalisées plusieurs mois ou plusieurs années auparavant peuvent être présentées à la personne entendue.</p>
+<p>Il peut être difficile d&#39;en expliquer immédiatement le contexte sans avoir pu reconstituer son historique.</p>
+<p>Lorsqu&#39;une personne sait qu&#39;elle est convoquée pour une affaire liée aux cryptomonnaies, il peut donc être utile de préparer en amont les éléments permettant de comprendre l&#39;origine et la destination des fonds.</p>
+<p>À lire également : Convocation à la police ou à la gendarmerie pour une affaire de cryptomonnaies : que faire ?</p>
+
+    </div>
+    <div class="article-section" id="peut-on-etre-place-en-garde-a-vue-pour-blanchiment-lie-aux-cryptomonnaies">
+      <h2 class="section-title">Peut-on être placé en garde à vue pour blanchiment lié aux cryptomonnaies ?</h2>
+      <p>Oui.
+Si les conditions légales sont réunies, une enquête pour blanchiment peut donner lieu à un placement en garde à vue.
+Les enquêteurs peuvent alors interroger la personne sur ses relations avec d&#39;autres protagonistes, l&#39;origine de certains fonds, les wallets utilisés ou encore les raisons de différents transferts.</p>
+<p>Dans ce type de dossier, les questions techniques peuvent rapidement se multiplier.
+Il est donc essentiel de distinguer ce dont la personne se souvient avec certitude de ce qu&#39;elle suppose ou tente de reconstituer.
+Une explication improvisée et techniquement inexacte peut ensuite être confrontée aux données recueillies par les enquêteurs.</p>
+<p>À lire également : Garde à vue et cryptomonnaies : vos droits et les réflexes à avoir.</p>
+
+    </div>
+    <div class="article-section" id="une-perquisition-peut-elle-permettre-la-saisie-dun-wallet-ou-de-cryptomonnaies">
+      <h2 class="section-title">Une perquisition peut-elle permettre la saisie d'un wallet ou de cryptomonnaies ?</h2>
+      <p>Une enquête peut également conduire à une perquisition.
+Les enquêteurs peuvent rechercher des éléments permettant d&#39;identifier des comptes ou des wallets et, selon le cadre juridique applicable, procéder à des saisies.
+Téléphones, ordinateurs et autres supports numériques peuvent contenir des informations utiles à l&#39;enquête.
+Des crypto-actifs peuvent également faire l&#39;objet de mesures de saisie.
+La question devient alors à la fois pénale et patrimoniale : il faut comprendre pourquoi les actifs ont été saisis, à quel titre et quelles voies de contestation peuvent éventuellement être exercées.</p>
+<p>À lire également : Perquisition et cryptomonnaies : que peut saisir la police ?
+À lire également : Cryptomonnaies saisies par la police ou la justice : comment les récupérer ?</p>
+
+    </div>
+    <div class="article-section" id="quelles-sont-les-peines-encourues-pour-blanchiment">
+      <h2 class="section-title">Quelles sont les peines encourues pour blanchiment ?</h2>
+      <p>Le blanchiment prévu par l&#39;article 324-1 du Code pénal est puni de :</p>
+<p>5 ans d&#39;emprisonnement et 375 000 euros d&#39;amende.</p>
+<p>Le blanchiment aggravé peut être puni de :</p>
+<p>10 ans d&#39;emprisonnement et 750 000 euros d&#39;amende, notamment lorsqu&#39;il est commis de façon habituelle, en utilisant les facilités procurées par l&#39;exercice d&#39;une activité professionnelle ou en bande organisée.</p>
+<p>Le Code pénal prévoit également que le montant de certaines amendes peut être élevé jusqu&#39;à la moitié de la valeur des biens ou fonds sur lesquels ont porté les opérations de blanchiment.
+D&#39;autres peines ou mesures peuvent également être prononcées selon la situation, notamment en matière de confiscation.
+Les conséquences patrimoniales d&#39;une procédure peuvent donc être particulièrement importantes.</p>
+
+    </div>
+    <div class="article-section" id="comment-preparer-sa-defense-lorsquon-est-soupconne-de-blanchiment-de-cryptomonnaies">
+      <h2 class="section-title">Comment préparer sa défense lorsqu'on est soupçonné de blanchiment de cryptomonnaies ?</h2>
+      <p>Dans une affaire impliquant des crypto-actifs, la défense peut nécessiter un travail de reconstitution particulièrement précis.</p>
+<p>Il peut notamment être utile de réunir :</p>
+<p>\    • les relevés des plateformes d&#39;échange utilisées ;
+    • l&#39;historique des transactions ;
+    • les adresses des wallets concernés ;
+    • les justificatifs d&#39;achat initial des crypto-actifs ;
+    • les relevés bancaires correspondant aux achats ou ventes ;
+    • les échanges de messages avec les personnes impliquées ;
+    • les contrats ou factures pouvant expliquer certaines opérations ;
+    • les éléments permettant de dater et d&#39;expliquer l&#39;origine des fonds.</p>
+<p>L&#39;objectif n&#39;est pas simplement d&#39;accumuler des documents.</p>
+<p>Il s&#39;agit de pouvoir reconstruire une chronologie compréhensible des flux :
+d&#39;où viennent les fonds → pourquoi ont-ils été reçus → quelles opérations ont été réalisées → pourquoi → où se trouvent-ils ensuite ?
+Cette chronologie peut ensuite être confrontée aux éléments retenus par l&#39;accusation.</p>
+
+    </div>
+    <div class="article-section" id="pourquoi-la-connaissance-technique-des-cryptomonnaies-peut-elle-etre-importante-pour-la-defense">
+      <h2 class="section-title">Pourquoi la connaissance technique des cryptomonnaies peut-elle être importante pour la défense ?</h2>
+      <p>Un dossier pénal lié aux cryptomonnaies peut comporter des éléments qui n&#39;existent pas dans une procédure financière classique.
+Wallets custodial ou non custodial, clés privées, seed phrase, transactions on-chain, stablecoins, bridges, swaps, plateformes centralisées ou protocoles DeFi peuvent apparaître dans le dossier.</p>
+<p>Il faut pouvoir distinguer, par exemple, la propriété apparente d&#39;une adresse, l&#39;accès à un wallet et la réalité économique d&#39;une opération.
+Une transaction visible sur une blockchain constitue une donnée technique.
+Son interprétation juridique constitue une autre question.
+C&#39;est précisément à l&#39;intersection de ces deux dimensions que peuvent se situer certains enjeux de la défense.</p>
+
+    </div>
+    <div class="article-section" id="que-faire-si-vous-etes-convoque-ou-poursuivi-pour-blanchiment-en-lien-avec-des-cryptomonnaies">
+      <h2 class="section-title">Que faire si vous êtes convoqué ou poursuivi pour blanchiment en lien avec des cryptomonnaies ?</h2>
+      <p>Il est préférable de ne pas attendre l&#39;audition ou l&#39;audience pour tenter de reconstituer plusieurs années d&#39;opérations.</p>
+<p>Dès qu&#39;une personne apprend qu&#39;elle est concernée par une enquête, elle peut commencer à identifier les plateformes utilisées, les wallets concernés et les transactions susceptibles d&#39;être discutées.</p>
+<p>L&#39;avocat pourra ensuite examiner la qualification pénale retenue, les éléments du dossier, les conditions dans lesquelles les preuves ont été recueillies et la cohérence entre les opérations reprochées et l&#39;explication de la personne poursuivie.</p>
+<p>Selon le stade de la procédure, la stratégie sera différente : préparation d&#39;une audition, assistance en garde à vue, contestation d&#39;une saisie, instruction ou défense devant le tribunal correctionnel.</p>
+
+    </div>
+    <div class="article-section" id="questions-frequentes-faq">
+      <h2 class="section-title">Questions fréquentes (FAQ)</h2>
+      
+    </div>
+    <div class="article-section" id="detenir-plusieurs-wallets-est-il-suspect">
+      <h2 class="section-title">Détenir plusieurs wallets est-il suspect ?</h2>
+      <p>Non. Il existe de nombreuses raisons parfaitement licites de détenir plusieurs wallets.
+Ce sont le contexte et les opérations réalisées qui doivent être examinés.</p>
+
+    </div>
+    <div class="article-section" id="faire-passer-des-cryptomonnaies-dune-blockchain-a-une-autre-constitue-t-il-un-blanchiment">
+      <h2 class="section-title">Faire passer des cryptomonnaies d'une blockchain à une autre constitue-t-il un blanchiment ?</h2>
+      <p>L&#39;utilisation d&#39;un bridge ou le transfert d&#39;actifs entre différentes blockchains constitue une opération technique courante. Elle ne devient pas automatiquement une opération de blanchiment.</p>
+
+    </div>
+    <div class="article-section" id="puis-je-etre-poursuivi-si-je-ne-savais-pas-que-les-fonds-provenaient-dune-infraction">
+      <h2 class="section-title">Puis-je être poursuivi si je ne savais pas que les fonds provenaient d'une infraction ?</h2>
+      <p>La question de ce que la personne savait réellement peut être centrale dans l&#39;analyse de l&#39;infraction.
+Elle doit être appréciée au regard des circonstances concrètes du dossier et des éléments de preuve recueillis.</p>
+
+    </div>
+    <div class="article-section" id="les-transactions-bitcoin-sont-elles-anonymes">
+      <h2 class="section-title">Les transactions Bitcoin sont-elles anonymes ?</h2>
+      <p>Bitcoin fonctionne sur une blockchain publique. Les transactions peuvent donc être suivies entre les différentes adresses, même si l&#39;identité civile du détenteur d&#39;une adresse n&#39;apparaît pas directement sur la blockchain.</p>
+
+    </div>
+    <div class="article-section" id="mes-cryptomonnaies-peuvent-elles-etre-saisies-pendant-lenquete">
+      <h2 class="section-title">Mes cryptomonnaies peuvent-elles être saisies pendant l'enquête ?</h2>
+      <p>Oui, des crypto-actifs peuvent faire l&#39;objet de saisies lorsque les conditions légales sont réunies.
+La possibilité de contester ou de demander la restitution dépend notamment du cadre de la saisie et du stade de la procédure.</p>
+
+    </div>
+    <div class="article-section" id="faut-il-preparer-ses-historiques-de-transactions-avant-une-audition">
+      <h2 class="section-title">Faut-il préparer ses historiques de transactions avant une audition ?</h2>
+      <p>Cela peut être particulièrement utile lorsqu&#39;une personne connaît l&#39;objet de la convocation.
+Des opérations anciennes peuvent être difficiles à expliquer de mémoire. Leur reconstitution préalable peut permettre de comprendre précisément les flux susceptibles d&#39;être évoqués.</p>
+
+    </div>
+    <div class="article-section" id="avocat-en-droit-penal-et-cryptomonnaies">
+      <h2 class="section-title">Avocat en droit pénal et cryptomonnaies</h2>
+      <p>Les procédures de blanchiment impliquant des cryptomonnaies présentent une double difficulté : comprendre le dossier pénal et comprendre les opérations techniques qui y figurent.
+Une succession de transactions blockchain ne suffit pas à expliquer l&#39;intention d&#39;une personne, sa connaissance de l&#39;origine des fonds ou la raison pour laquelle elle a réalisé une opération.
+L&#39;analyse de la chronologie des transactions, de leur contexte et des éléments de preuve peut donc être déterminante pour préparer la défense.</p>
+
+    </div>
+    <div class="article-section" id="maitre-laperonnie-avocat-en-droit-penal-a-angouleme-intervient-dans-les-procedures-penales-impliquant-des-cryptomonnaies-et-peut-assister-les-personnes-convoquees-placees-en-garde-a-vue-mises-en-cause-ou-poursuivies-dans-ce-type-de-dossier">
+      <h2 class="section-title">Maître Laperonnie, avocat en droit pénal à Angoulême, intervient dans les procédures pénales impliquant des cryptomonnaies et peut assister les personnes convoquées, placées en garde à vue, mises en cause ou poursuivies dans ce type de dossier.</h2>
+      <p>Le cabinet peut intervenir à Angoulême ainsi que dans le cadre de procédures suivies devant d&#39;autres juridictions en France.</p>
+
+    </div>
+
+
+    <div class="related-box">
+      <div class="related-label">Lire aussi</div>
+      <div class="related-list">
+        <a href="/article-convocation-a-la-police-ou-a-la-gendarmerie-pour-une-affaire-de-cryptomonnaies-que-faire" class="related-btn">
+          <span>À lire également : Convocation à la police ou à la gendarmerie pour une affaire de cryptomonnaies : que faire ?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/article-garde-a-vue-et-cryptomonnaies-vos-droits-et-les-reflexes-a-avoir" class="related-btn">
+          <span>À lire également : Garde à vue et cryptomonnaies : vos droits et les réflexes à avoir.</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/article-perquisition-et-cryptomonnaies-que-peut-saisir-la-police" class="related-btn">
+          <span>À lire également : Perquisition et cryptomonnaies : que peut saisir la police ?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/article-cryptomonnaies-saisies-par-la-police-ou-la-justice-comment-les-recuperer" class="related-btn">
+          <span>Cryptomonnaies saisies par la police ou la justice : comment les récupérer ?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="article-cta-box">
+      <div class="article-cta-title">Vous avez une question juridique ?</div>
+      <p class="article-cta-text">Maître François-Xavier LAPERONNIE est disponible pour une première consultation confidentielle. N'attendez pas pour protéger vos droits.</p>
+      <div class="article-cta-actions">
+        <a href="/#contact" class="btn-or">Prendre rendez-vous</a>
+        <a href="tel:+33545383009" class="btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>05 45 38 30 09</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="brand_assets/LF-Logo.svg" alt="Cabinet LAPERONNIE" class="footer-logo" loading="lazy" width="1536" height="1024" />
+      <p class="footer-blurb">Cabinet d'avocat fondé sur l'excellence, l'éthique et un engagement total envers chaque client. Angoulême et ses environs.</p>
+    </div>
+    <div>
+      <p class="f-col-title">Expertise</p>
+      <ul class="f-links">
+        <li><a href="/droit-penal">Droit Pénal</a></li>
+        <li><a href="/droit-famille">Droit de la Famille</a></li>
+        <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
+        <li><a href="/divorce-amiable-nice-cannes">Divorce Nice · Cannes</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Cabinet</p>
+      <ul class="f-links">
+        <li><a href="/#about">À propos</a></li>
+        <li><a href="/#valeurs">Nos valeurs</a></li>
+        <li><a href="/cases">Affaires</a></li>
+        <li><a href="/blog">Actualités</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Contact</p>
+      <ul class="f-links">
+        <li><a href="/#contact" class="f-rdv-btn">Prendre rendez-vous</a></li>
+        <li><a href="https://www.google.com/maps?q=45.648866470828835,0.15478420855165548&z=18" target="_blank" rel="noopener">14 Rue d'Arcole, 16000 Angoulême</a></li>
+        <li><a href="tel:+33545383009">05 45 38 30 09</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Cabinet d'Avocat LAPERONNIE — François-Xavier LAPERONNIE. Tous droits réservés.</p>
+    <div class="footer-legal"><a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/rgpd">RGPD</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 70); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mob-nav');
+  if (hamburger && mobNav) {
+    hamburger.addEventListener('click', () => { const o = mobNav.classList.toggle('open'); hamburger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    document.querySelectorAll('.mob-close').forEach(el => el.addEventListener('click', () => { mobNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }));
+  }
+</script>
+<script>
+  const sections = document.querySelectorAll('.article-section');
+  const links = document.querySelectorAll('.toc-link');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('.toc-link[href="#' + e.target.id + '"]');
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { threshold: .25, rootMargin: '-100px 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+<div class="mob-cta-bar">
+  <a href="tel:+33545383009" class="mob-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Appeler</a>
+  <a href="/#contact" class="mob-cta-rdv">Prendre rendez-vous</a>
+</div>
+
+<!-- TODO: replace 33677933504 with the lawyer's mobile WhatsApp number e.g. 336XXXXXXXX -->
+<a href="https://wa.me/33677933504?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20avec%20Ma%C3%AEtre%20LAPERONNIE." class="wa-btn" target="_blank" rel="noopener" aria-label="Contacter par WhatsApp" style="position:fixed;bottom:5rem;right:1rem;z-index:985;width:46px;height:46px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);text-decoration:none;">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="width:24px;height:24px;flex-shrink:0;">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<!-- Bannière consentement cookies RGPD/CNIL -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:rgba(6,5,4,.97);border-top:1px solid rgba(196,160,64,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:1.1rem 1.5rem;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;box-shadow:0 -6px 32px rgba(0,0,0,.55);">
+  <p style="color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.72rem;line-height:1.65;margin:0;flex:1;min-width:220px;">
+    Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies collectent des données anonymes et nécessitent votre consentement conformément au RGPD.
+    <a href="/confidentialite" style="color:#C4A040;text-decoration:underline;margin-left:.3em;">En savoir plus</a>
+  </p>
+  <div style="display:flex;gap:.6rem;flex-shrink:0;flex-wrap:wrap;margin-top:.1rem;">
+    <button onclick="refuseCookies()" style="background:transparent;border:1px solid rgba(196,160,64,.3);color:#C0BAB0;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;cursor:pointer;white-space:nowrap;transition:border-color .2s,color .2s;">Refuser</button>
+    <button onclick="acceptCookies()" style="background:#C4A040;border:1px solid #C4A040;color:#060504;font-family:Montserrat,sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.3rem;cursor:pointer;white-space:nowrap;transition:opacity .2s;">Accepter</button>
+  </div>
+</div>
+</body>
+</html>

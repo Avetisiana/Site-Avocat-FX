@@ -204,6 +204,7 @@ function buildNav(activeLink) {
       </div>
     </li>
     <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/divorce-amiable-nice-cannes">Nice · Cannes</a></li>
     <li><a href="/cases"${activeLink === 'cases' ? ' class="active"' : ''}>Affaires</a></li>
     <li><a href="/blog"${activeLink === 'blog' ? ' class="active"' : ''}>Actualités</a></li>
     <li><a href="/#contact">Contact</a></li>
@@ -221,6 +222,8 @@ function buildNav(activeLink) {
     <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
     <li><a href="/droit-famille" class="mob-close">Droit de la Famille</a></li>
     <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/divorce-amiable-nice-cannes" class="mob-close">Nice · Cannes</a></li>
+    <li><a href="/cabinet" class="mob-close">Le Cabinet</a></li>
     <li><a href="/cases" class="mob-close${activeLink === 'cases' ? ' active' : ''}">Affaires</a></li>
     <li><a href="/blog" class="mob-close${activeLink === 'blog' ? ' active' : ''}">Actualités</a></li>
     <li><a href="/#contact" class="mob-close">Contact</a></li>
@@ -245,6 +248,7 @@ const FOOTER = `
         <li><a href="/droit-penal">Droit Pénal</a></li>
         <li><a href="/droit-famille">Droit de la Famille</a></li>
         <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
+        <li><a href="/divorce-amiable-nice-cannes">Divorce Nice · Cannes</a></li>
       </ul>
     </div>
     <div>
@@ -325,7 +329,9 @@ const SHARED_CSS = `    :root { --charbon:#060504; --charbon-mid:#0D0B09; --char
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
     @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
-    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1500px) { .nav-links { gap:1.9rem; } }
+    @media(max-width:1400px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1300px) { nav .nav-links { display:none; } nav .hamburger { display:flex; } nav .nav-cta-group { margin-left:auto; margin-right:1rem; } }
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
     .nav-item-has-drop > a::after { display:none; }
@@ -489,7 +495,7 @@ function generateExpertisePage(cfg, data) {
   <meta property="og:url" content="https://laperonnie-avocat.fr/${slug}" />
   <meta property="og:site_name" content="Cabinet LAPERONNIE — Avocat Angoulême" />
   <meta property="og:locale" content="fr_FR" />
-  <link rel="preload" as="image" href="brand_assets/${bg}" type="image/webp" />
+  ${cfg.heroPreload ?? `<link rel="preload" as="image" href="brand_assets/${bg}" type="image/webp" />`}
   <link rel="preload" href="brand_assets/fonts/PlayfairDisplay-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="brand_assets/fonts/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="brand_assets/fonts/CormorantGaramond-300i.woff2" as="font" type="font/woff2" crossorigin>
@@ -509,6 +515,7 @@ function generateExpertisePage(cfg, data) {
     .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; white-space:nowrap; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
     .nav-links a:hover { color:var(--or); } .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-links a.active { color:var(--or); } .nav-links a.active::after { transform:scaleX(1); }
     .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s ease,color .22s ease; }
     .btn-rdv:hover { background:var(--or); color:var(--charbon); }
     .nav-cta-group { display:flex; align-items:center; gap:1rem; }
@@ -516,7 +523,9 @@ function generateExpertisePage(cfg, data) {
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
     @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
-    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1500px) { .nav-links { gap:1.9rem; } }
+    @media(max-width:1400px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1300px) { nav .nav-links { display:none; } nav .hamburger { display:flex; } nav .nav-cta-group { margin-left:auto; margin-right:1rem; } }
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
     .nav-item-has-drop > a::after { display:none; }
@@ -554,6 +563,8 @@ function generateExpertisePage(cfg, data) {
     #intro { padding:6rem 5rem; background:var(--charbon-mid); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
     .intro-text p { font-size:.86rem; color:var(--blanc-dim); line-height:1.92; font-weight:300; margin-bottom:1.2rem; }
     .intro-text p strong { color:var(--blanc); font-weight:500; }
+    .intro-text a:not([class]) { color:var(--or-pale); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(196,160,64,.45); transition:color .2s, text-decoration-color .2s; }
+    .intro-text a:not([class]):hover { color:var(--or); text-decoration-color:var(--or); }
     .intro-keys { display:flex; flex-direction:column; gap:1.25rem; padding-top:1rem; }
     .intro-key { padding:1.4rem 1.6rem; border:1px solid rgba(196,160,64,.12); background:rgba(196,160,64,.025); transition:border-color .3s; }
     .intro-key:hover { border-color:rgba(196,160,64,.3); }
@@ -660,8 +671,8 @@ function generateExpertisePage(cfg, data) {
       .footer-grid { grid-template-columns:1fr; gap:2rem; } .footer-bottom { flex-direction:column; gap:.75rem; }
       .mob-cta-bar { display:flex; } body { padding-bottom:68px; }
     }
-</style>
-  <script type="application/ld+json">
+${cfg.extraCss || ''}</style>
+  ${cfg.schemaHtml ?? `<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LegalService",
@@ -707,7 +718,7 @@ function generateExpertisePage(cfg, data) {
       }`).join(',\n      ')}
     ]
   }
-  </script>
+  </script>`}
 </head>
 <body>
 
@@ -723,6 +734,7 @@ function generateExpertisePage(cfg, data) {
       </div>
     </li>
     <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/divorce-amiable-nice-cannes"${navActive('nice-cannes')}>Nice · Cannes</a></li>
     <li><a href="/cases">Affaires</a></li>
     <li><a href="/blog">Actualités</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -740,6 +752,8 @@ function generateExpertisePage(cfg, data) {
     <li><a href="/droit-penal"${mobNavActive('droit-penal')}>Droit Pénal</a></li>
     <li><a href="/droit-famille"${mobNavActive('droit-famille')}>Droit de la Famille</a></li>
     <li><a href="/cryptomonnaies"${mobNavActive('cryptomonnaies')}>Cryptomonnaies</a></li>
+    <li><a href="/divorce-amiable-nice-cannes"${mobNavActive('nice-cannes')}>Nice · Cannes</a></li>
+    <li><a href="/cabinet" class="mob-close">Le Cabinet</a></li>
     <li><a href="/cases" class="mob-close">Affaires</a></li>
     <li><a href="/blog" class="mob-close">Actualités</a></li>
     <li><a href="#contact" class="mob-close">Contact</a></li>
@@ -748,7 +762,7 @@ function generateExpertisePage(cfg, data) {
   <a href="tel:+33545383009" class="mob-nav-phone mob-close">05 45 38 30 09</a>
 </div>
 
-<section class="page-hero">
+${cfg.mainHtml ?? `<section class="page-hero">
   <picture>
     <source srcset="${encodeURI('brand_assets/' + bg.replace('.webp', '.avif'))}" type="image/avif">
     <img src="brand_assets/${bg}" class="page-hero-bg" alt="" fetchpriority="high" width="1920" height="1280" />
@@ -859,15 +873,15 @@ function generateExpertisePage(cfg, data) {
     <a href="#contact" class="btn-cta-fill">Nous contacter ${ARROW_SVG_SM}</a>
     <a href="tel:+33545383009" class="btn-cta-outline">${PHONE_SVG}05 45 38 30 09</a>
   </div>
-</div>
+</div>`}
 
 <section id="contact">
   <div class="contact-grid">
     <div class="reveal">
       <div class="eyebrow">Contact</div>
       <h2 class="contact-info-title">${d.contact_heading1}<br/><em>${d.contact_heading2}</em></h2>
-      <p class="contact-intro">${d.contact_intro}</p>
-      <div class="c-detail">
+      ${cfg.contactIntroHtml ?? `<p class="contact-intro">${d.contact_intro}</p>`}
+      ${cfg.contactDetailsHtml ?? `<div class="c-detail">
         <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div><div class="c-label">Adresse</div><div class="c-value">14 Rue d'Arcole, 16000 Angoulême</div></div>
       </div>
@@ -878,7 +892,7 @@ function generateExpertisePage(cfg, data) {
       <div class="c-detail">
         <div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <div><div class="c-label">Horaires</div><div class="c-value">Lundi – Vendredi, 8h – 19h</div></div>
-      </div>
+      </div>`}
     </div>
     <div class="form-wrap reveal rd2">
       <form action="https://formsubmit.co/fx.laperonnie@gmail.com" method="POST">
@@ -895,7 +909,8 @@ function generateExpertisePage(cfg, data) {
             <option${formDomain === 'Droit Pénal' ? ' selected' : ''}>Droit Pénal</option>
             <option${formDomain === 'Droit de la Famille' ? ' selected' : ''}>Droit de la Famille</option>
             <option${formDomain === 'Cryptomonnaies' ? ' selected' : ''}>Cryptomonnaies</option>
-            <option>Autre</option>
+${cfg.extraFormOption ? `            <option selected>${cfg.extraFormOption}</option>
+` : ''}            <option>Autre</option>
           </select>
         </div>
         <button type="submit" class="btn-send">Envoyer — Réponse sous 24h →</button>
@@ -916,6 +931,7 @@ function generateExpertisePage(cfg, data) {
         <li><a href="/droit-penal">Droit Pénal</a></li>
         <li><a href="/droit-famille">Droit de la Famille</a></li>
         <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
+        <li><a href="/divorce-amiable-nice-cannes">Divorce Nice · Cannes</a></li>
       </ul>
     </div>
     <div>
@@ -965,6 +981,286 @@ ${WA_BTN}
 ${COOKIE_BANNER_HTML}
 </body>
 </html>`;
+}
+
+// ─── Divorce amiable Nice · Cannes page ───────────────────────────────────────
+// Reuses the expertise page shell (head, nav, contact form, footer) and swaps in
+// its own body, built from _content/pages/divorce-nice-cannes.yml. Long text
+// fields are split into paragraphs on blank lines; **bold** and [liens](/...)
+// work as in the rest of the CMS.
+
+const SVGS_NICE_STEPS = [
+  `<circle cx="20" cy="20" r="11"/><line x1="28" y1="28" x2="40" y2="40"/><line x1="15" y1="20" x2="25" y2="20"/><line x1="20" y1="15" x2="20" y2="25"/>`,
+  `<circle cx="15" cy="14" r="6"/><circle cx="33" cy="14" r="6"/><path d="M4 40c0-6.6 4.9-12 11-12s11 5.4 11 12"/><path d="M22 40c0-6.6 4.9-12 11-12s11 5.4 11 12"/>`,
+  `<rect x="10" y="6" width="28" height="36" rx="1.5"/><line x1="16" y1="15" x2="32" y2="15"/><line x1="16" y1="21" x2="32" y2="21"/><line x1="16" y1="27" x2="32" y2="27"/><line x1="16" y1="33" x2="25" y2="33"/>`,
+  `<line x1="14" y1="6" x2="34" y2="6"/><line x1="14" y1="42" x2="34" y2="42"/><path d="M16 6c0 10 16 12 16 18s-16 8-16 18"/><path d="M32 6c0 10-16 12-16 18s16 8 16 18"/>`,
+  `<path d="M30 8l10 10-20 20H10V28z"/><line x1="26" y1="12" x2="36" y2="22"/><path d="M6 44c6-3 10 1 14-2"/>`,
+  `<circle cx="24" cy="20" r="12"/><circle cx="24" cy="20" r="6"/><path d="M17 30l-4 13 11-5 11 5-4-13"/>`,
+];
+
+function generateNiceCannesPage(cfg, d) {
+  const inl = (s) => marked.parseInline(String(s || '')).replace(/ ([?!:;»])/g, ' $1');
+  const paras = (s, cls = '') => String(s || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
+    .map(p => `<p${cls ? ` class="${cls}"` : ''}>${inl(p)}</p>`).join('\n      ');
+  const plain = (s) => String(s || '').replace(/\*\*|__/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\s*\n\s*\n\s*/g, ' ').trim();
+  const list = (v) => (Array.isArray(v) ? v : []).filter(Boolean);
+  const url = `https://laperonnie-avocat.fr/${cfg.slug}`;
+  const PHONE_SVG = NAV_PHONE_SVG;
+  const img = (w) => `brand_assets/${cfg.heroBase}${w === 800 ? '-800' : ''}`;
+  const heroSizes = '(orientation:portrait) 94vh, 100vw';
+
+  const related = list(d.related).filter(l => l.label && l.article).map(l => `
+        <a href="/article-${slugify(String(l.article))}" class="related-btn">
+          <span>${inl(l.label)}</span>
+          ${ARROW_SVG_BTN}
+        </a>`).join('');
+
+  const mainHtml = `<section class="page-hero">
+  <picture>
+    <source type="image/avif" srcset="${img(800)}.avif 800w, ${img(1600)}.avif 1600w" sizes="${heroSizes}">
+    <img src="${img(1600)}.webp" srcset="${img(800)}.webp 800w, ${img(1600)}.webp 1600w" sizes="${heroSizes}" class="page-hero-bg" alt="" fetchpriority="high" width="1600" height="1201" />
+  </picture>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-tint"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="/">Accueil</a><span class="breadcrumb-sep">›</span>
+      <a href="/droit-famille">Droit de la Famille</a><span class="breadcrumb-sep">›</span>
+      <span>Nice · Cannes</span>
+    </div>
+    <p class="page-hero-sub">${inl(d.hero_sub)}</p>
+    <h1>${inl(d.hero_title1)}<br/><em>${inl(d.hero_title2)}</em></h1>
+    <p class="page-hero-tagline">${inl(d.hero_tagline)}</p>
+    <div class="page-hero-rule"></div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="intro-text reveal">
+    <div class="eyebrow">Divorce amiable</div>
+    <h2 class="section-title" style="margin-bottom:1.75rem">${inl(d.intro_heading1)}<br/><em>${inl(d.intro_heading2)}</em></h2>
+      ${paras(d.intro_text)}
+  </div>
+  <div class="intro-keys reveal rd2">${list(d.keys).map(k => `
+    <div class="intro-key">
+      <div class="intro-key-title">${inl(k.title)}</div>
+      <div class="intro-key-desc">${inl(k.text)}</div>
+    </div>`).join('')}
+  </div>
+</section>
+
+<section class="np-section">
+  <div class="np-split">
+    <div class="np-text reveal">
+      <div class="eyebrow">Votre accompagnement</div>
+      <h2 class="section-title" style="margin-bottom:1.75rem">${inl(d.accomp_heading1)}<br/><em>${inl(d.accomp_heading2)}</em></h2>
+      ${paras(d.accomp_text)}
+    </div>
+    <div class="reveal rd2">
+      <p class="np-list-intro">${inl(d.accomp_list_intro)}</p>
+      <ol class="np-list">${list(d.accomp_list).map(li => `
+        <li>${inl(li)}</li>`).join('')}
+      </ol>
+      <p class="np-note">${inl(d.accomp_outro)}</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">${inl(d.cta1_label)}</p>
+    <h3 class="cta-strip-heading">${inl(d.cta1_heading1)}<br/><em>${inl(d.cta1_heading2)}</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">Prendre rendez-vous ${ARROW_SVG_BTN}</a>
+    <a href="tel:+33545383009" class="btn-cta-outline">${PHONE_SVG}05 45 38 30 09</a>
+  </div>
+</div>
+
+<section id="services">
+  <div class="eyebrow reveal">La procédure</div>
+  <h2 class="section-title reveal rd1">${inl(d.steps_heading1)}<br/><em>${inl(d.steps_heading2)}</em></h2>
+  <div class="services-grid">${list(d.steps).map((st, i) => `
+    <div class="service-card reveal${i % 2 ? ' rd1' : ''}">
+      <div class="service-num">${String(i + 1).padStart(2, '0')}</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">${SVGS_NICE_STEPS[i % SVGS_NICE_STEPS.length]}</svg>
+      <h3 class="service-title">${inl(st.title)}</h3>
+      <div class="service-desc">
+      ${paras(st.text)}
+      </div>
+    </div>`).join('')}
+  </div>
+</section>
+
+<section class="np-section np-alt">
+  <div class="np-split">
+    <div class="np-text reveal">
+      <div class="eyebrow">Honoraires</div>
+      <h2 class="section-title np-title-sm">${inl(d.cost_heading1)}<br/><em>${inl(d.cost_heading2)}</em></h2>
+      ${paras(d.cost_text)}
+    </div>
+    <div class="np-text reveal rd2">
+      <div class="eyebrow">Conditions</div>
+      <h2 class="section-title np-title-sm">${inl(d.judge_heading1)}<br/><em>${inl(d.judge_heading2)}</em></h2>
+      ${paras(d.judge_text)}
+    </div>
+  </div>${related ? `
+  <div class="related-box reveal">
+    <div class="related-label">Lire aussi</div>
+    <div class="related-list">${related}
+    </div>
+  </div>` : ''}
+</section>
+
+<section class="np-section">
+  <div class="np-split">
+    <div class="np-text reveal">
+      <div class="eyebrow">Notre organisation</div>
+      <h2 class="section-title" style="margin-bottom:1.75rem">${inl(d.why_heading1)}<br/><em>${inl(d.why_heading2)}</em></h2>
+      ${paras(d.why_text)}
+    </div>
+    <div class="reveal rd2">
+      <p class="np-list-intro">${inl(d.why_list_intro)}</p>
+      <ul class="np-list np-check">${list(d.why_list).map(li => `
+        <li>${inl(li)}</li>`).join('')}
+      </ul>
+      <p class="np-note">${inl(d.why_outro)}</p>
+    </div>
+  </div>
+</section>
+
+<section class="np-section np-alt np-zone">
+  <div class="np-zone-inner reveal">
+    <div class="eyebrow">Zone d'intervention</div>
+    <h2 class="section-title" style="margin-bottom:1.75rem">${inl(d.zone_heading1)}<br/><em>${inl(d.zone_heading2)}</em></h2>
+    <div class="np-text">
+      ${paras(d.zone_text)}
+    </div>
+    <ul class="np-cities">${list(d.zone_cities).map(c => `
+      <li>${inl(c)}</li>`).join('')}
+    </ul>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div>
+    <p class="cta-strip-label">${inl(d.cta2_label)}</p>
+    <h3 class="cta-strip-heading">${inl(d.cta2_heading1)}<br/><em>${inl(d.cta2_heading2)}</em></h3>
+  </div>
+  <div class="cta-strip-actions">
+    <a href="#contact" class="btn-cta-fill">Prendre rendez-vous ${ARROW_SVG_BTN}</a>
+    <a href="tel:+33545383009" class="btn-cta-outline">${PHONE_SVG}05 45 38 30 09</a>
+  </div>
+</div>`;
+
+  const ICON = (path) => `<div class="c-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${path}</svg></div>`;
+  const contactDetailsHtml = `<div class="c-detail">
+        ${ICON('<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>')}
+        <div><div class="c-label">Cabinet principal</div><div class="c-value">${inl(d.contact_main_office)}</div></div>
+      </div>
+      <div class="c-detail">
+        ${ICON('<path d="M3 11l19-9-9 19-2-8-8-2z"/>')}
+        <div><div class="c-label">Nice · Cannes</div><div class="c-value">${inl(d.contact_interventions)}</div></div>
+      </div>
+      <div class="c-detail">
+        ${ICON('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81A16 16 0 0 0 15.19 16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>')}
+        <div><div class="c-label">Téléphone</div><div class="c-value">05 45 38 30 09</div></div>
+      </div>`;
+
+  // Structured data: a Service provided by the Angoulême firm and served in the
+  // Alpes-Maritimes. The address stays the real one — there is no Nice office.
+  const areaServed = [...list(d.zone_cities).map(c => ({ '@type': 'City', name: plain(c) })),
+    { '@type': 'AdministrativeArea', name: 'Alpes-Maritimes' }];
+  const ld = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: cfg.metaTitle,
+      serviceType: 'Divorce par consentement mutuel',
+      description: cfg.metaDesc,
+      url,
+      areaServed,
+      provider: {
+        '@type': 'LegalService',
+        name: 'Cabinet LAPERONNIE',
+        url: 'https://laperonnie-avocat.fr/',
+        telephone: '+33545383009',
+        email: 'fx.laperonnie@gmail.com',
+        address: { '@type': 'PostalAddress', streetAddress: "14 Rue d'Arcole", addressLocality: 'Angoulême', postalCode: '16000', addressRegion: 'Charente', addressCountry: 'FR' },
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://laperonnie-avocat.fr/' },
+        { '@type': 'ListItem', position: 2, name: 'Droit de la Famille', item: 'https://laperonnie-avocat.fr/droit-famille' },
+        { '@type': 'ListItem', position: 3, name: 'Divorce amiable Nice · Cannes', item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        [`${d.cost_heading1} ${d.cost_heading2}`, d.cost_text],
+        [`${d.judge_heading1} ${d.judge_heading2}`, d.judge_text],
+      ].filter(([, a]) => a).map(([q, a]) => ({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: plain(a) } })),
+    },
+  ];
+  // `<` escaped so CMS text can never close the script tag
+  const schemaHtml = ld.map(o => `<script type="application/ld+json">\n  ${JSON.stringify(o, null, 2).replace(/</g, '\\u003c').replace(/\n/g, '\n  ')}\n  </script>`).join('\n  ');
+
+  const heroPreload = `<link rel="preload" as="image" type="image/avif" imagesrcset="${img(800)}.avif 800w, ${img(1600)}.avif 1600w" imagesizes="${heroSizes}" fetchpriority="high" />`;
+
+  const extraCss = `    .page-hero h1 { font-size:clamp(2.3rem,4.6vw,4.4rem); line-height:1.02; }
+    .breadcrumb { flex-wrap:wrap; row-gap:.5rem; } .breadcrumb > * { white-space:nowrap; }
+    .np-section { padding:6rem 5rem; }
+    .np-alt { background:var(--charbon-mid); }
+    .np-split { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+    .np-text p, .service-desc p { font-size:.86rem; color:var(--blanc-dim); line-height:1.92; font-weight:300; margin-bottom:1.2rem; }
+    .service-desc p { font-size:.79rem; color:var(--gris); line-height:1.82; margin-bottom:.8rem; }
+    .service-desc p:last-child, .np-text p:last-child { margin-bottom:0; }
+    .np-text p strong, .intro-text p strong { color:var(--blanc); font-weight:500; }
+    .service-desc p strong { color:var(--blanc-dim); font-weight:500; }
+    .np-text a:not([class]) { color:var(--or-pale); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(196,160,64,.45); }
+    .np-title-sm { font-size:clamp(1.6rem,2.6vw,2.2rem); margin-bottom:1.75rem; }
+    .np-list-intro { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:var(--blanc-dim); line-height:1.6; margin-bottom:1.4rem; padding-top:1rem; }
+    .np-list { list-style:none; display:flex; flex-direction:column; gap:.75rem; counter-reset:np; }
+    .np-list li { display:flex; align-items:baseline; gap:1.1rem; padding:1.05rem 1.4rem; border:1px solid rgba(196,160,64,.12); background:rgba(196,160,64,.025); font-size:.8rem; color:var(--blanc-dim); line-height:1.7; font-weight:300; transition:border-color .3s; }
+    .np-list li:hover { border-color:rgba(196,160,64,.3); }
+    .np-list li::before { counter-increment:np; content:counter(np, decimal-leading-zero); font-family:'Playfair Display',serif; font-size:.62rem; letter-spacing:.2em; color:var(--or); flex-shrink:0; }
+    .np-check li::before { content:''; width:9px; height:5px; border-left:1.5px solid var(--or); border-bottom:1.5px solid var(--or); transform:rotate(-45deg) translateY(-3px); }
+    .np-note { margin-top:1.75rem; padding-left:1.25rem; border-left:1px solid var(--or); font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; color:var(--blanc-dim); line-height:1.65; }
+    .related-box { margin-top:4rem; padding-top:2.5rem; border-top:1px solid rgba(196,160,64,.12); }
+    .related-label { font-size:.55rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--or); margin-bottom:1.25rem; display:flex; align-items:center; gap:.75rem; }
+    .related-label::before { content:''; width:22px; height:1px; background:var(--or); }
+    .related-list { display:grid; grid-template-columns:1fr 1fr; gap:.6rem 1.5rem; }
+    .related-btn { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.95rem 1.35rem; border:1px solid rgba(196,160,64,.22); background:var(--charbon-card); color:var(--blanc-dim); text-decoration:none; font-size:.8rem; font-weight:500; line-height:1.45; transition:border-color .2s, color .2s, background .2s; }
+    .related-btn:hover { border-color:var(--or); color:var(--or); background:#161210; }
+    .related-btn svg { width:14px; height:14px; flex-shrink:0; color:var(--or); transition:transform .25s; }
+    .related-btn:hover svg { transform:translateX(3px); }
+    .np-zone-inner { max-width:760px; margin:0 auto; }
+    .np-cities { list-style:none; display:flex; flex-wrap:wrap; gap:.6rem; margin-top:2.25rem; }
+    .np-cities li { border:1px solid rgba(196,160,64,.22); padding:.55rem 1.1rem; font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--blanc-dim); }
+    .np-contact-intro { margin-bottom:2.5rem; }
+    .np-contact-intro .contact-intro { margin-bottom:1rem; }
+    .np-contact-intro .contact-intro:last-child { margin-bottom:0; }
+    @media(max-width:1100px) { .np-section { padding-left:2.5rem; padding-right:2.5rem; } .np-split { grid-template-columns:1fr; gap:3rem; } }
+    @media(max-width:720px) { .np-section { padding:4.5rem 1.5rem; } .related-list { grid-template-columns:1fr; } }
+`;
+
+  return generateExpertisePage({
+    ...cfg,
+    bg: `${cfg.heroBase}.webp`,
+    svgs: [],
+    heroPreload,
+    extraCss,
+    schemaHtml,
+    mainHtml,
+    contactIntroHtml: `<div class="np-contact-intro">\n      ${paras(d.contact_text, 'contact-intro')}\n      </div>`,
+    contactDetailsHtml,
+    extraFormOption: cfg.formDomain,
+  }, d);
 }
 
 // Renders the CMS "relatedLinks" list (label + target article slug) as buttons.
@@ -1535,6 +1831,7 @@ const SITEMAP_STATIC = [
   { loc: '/droit-penal', priority: '0.9' },
   { loc: '/droit-famille', priority: '0.9' },
   { loc: '/cryptomonnaies', priority: '0.9' },
+  { loc: '/divorce-amiable-nice-cannes', priority: '0.9' },
   { loc: '/blog', priority: '0.8' },
   { loc: '/cases', priority: '0.5' },
   { loc: '/mentions-legales', priority: '0.2' },
@@ -1659,6 +1956,16 @@ async function build() {
     if (data) {
       const html = generateExpertisePage(cfg, data);
       fs.writeFileSync(`${cfg.slug}.html`, html);
+      console.log(`✓ ${cfg.slug}.html`);
+    }
+  }
+
+  // Divorce amiable Nice · Cannes (own body inside the expertise page shell)
+  {
+    const data = readPageYaml('divorce-nice-cannes');
+    if (data) {
+      const cfg = { slug: 'divorce-amiable-nice-cannes', heroBase: 'Nice-Cannes', bgPosition: 'center 62%', bgFilter: 'contrast(1.08) brightness(0.5) saturate(0.55)', activeNav: 'nice-cannes', formDomain: 'Divorce amiable Nice / Cannes', metaTitle: 'Divorce amiable à Nice et Cannes — Avocat | Cabinet LAPERONNIE', metaDesc: 'Divorce par consentement mutuel à Nice et Cannes : dossier préparé à distance, signature sur place avec votre avocat. Maître LAPERONNIE. ☎ 05 45 38 30 09' };
+      fs.writeFileSync(`${cfg.slug}.html`, generateNiceCannesPage(cfg, data));
       console.log(`✓ ${cfg.slug}.html`);
     }
   }

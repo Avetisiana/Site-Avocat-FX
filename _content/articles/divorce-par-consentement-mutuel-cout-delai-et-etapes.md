@@ -104,3 +104,6 @@ Par ailleurs, il faut faire attention à un point souvent négligé : si vous a
 * préserver un dialogue constructif avec votre conjoint, même en cas de tensions ponctuelles.
 
 Vous envisagez un divorce par consentement mutuel ? Contactez le cabinet dès aujourd'hui pour un premier rendez-vous et une estimation personnalisée du coût et du délai de votre procédure.
+
+
+[Divorce amiable à Nice ou Cannes : votre avocat se déplace pour la signature](/divorce-amiable-nice-cannes)

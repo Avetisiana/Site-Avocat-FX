@@ -215,3 +215,6 @@ Maître Laperonnie, avocat au barreau de la Charente, accompagne les personnes s
 
 Le cabinet peut examiner votre situation, vous informer sur les démarches nécessaires et établir une convention d'honoraires adaptée à votre dossier.
 Pour obtenir des renseignements ou convenir d'un rendez-vous, contactez le cabinet de Maître Laperonnie à Angoulême.
+
+
+[Divorce amiable à Nice ou Cannes : votre avocat se déplace pour la signature](/divorce-amiable-nice-cannes)

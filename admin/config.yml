@@ -354,3 +354,76 @@ collections:
           - {label: "Contact — Titre ligne 1", name: contact_heading1, widget: string}
           - {label: "Contact — Titre ligne 2 (italique)", name: contact_heading2, widget: string}
           - {label: "Contact — Introduction", name: contact_intro, widget: text}
+
+      - name: divorce-nice-cannes
+        label: "Page Divorce amiable Nice · Cannes"
+        file: _content/pages/divorce-nice-cannes.yml
+        fields:
+          - {label: "Héro — Sous-titre", name: hero_sub, widget: string}
+          - {label: "Héro — Titre ligne 1", name: hero_title1, widget: string}
+          - {label: "Héro — Titre ligne 2 (italique)", name: hero_title2, widget: string}
+          - {label: "Héro — Tagline", name: hero_tagline, widget: text}
+          - {label: "Introduction — Titre ligne 1", name: intro_heading1, widget: string}
+          - {label: "Introduction — Titre ligne 2 (italique)", name: intro_heading2, widget: string}
+          - {label: "Introduction — Texte", name: intro_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes. **texte** pour du gras."}
+          - label: "Introduction — Encadrés (colonne de droite)"
+            name: keys
+            widget: list
+            label_singular: "Encadré"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Texte", name: text, widget: text}
+          - {label: "Accompagnement — Titre ligne 1", name: accomp_heading1, widget: string}
+          - {label: "Accompagnement — Titre ligne 2 (italique)", name: accomp_heading2, widget: string}
+          - {label: "Accompagnement — Texte", name: accomp_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Accompagnement — Phrase avant la liste", name: accomp_list_intro, widget: string}
+          - {label: "Accompagnement — Liste des étapes", name: accomp_list, widget: list, field: {label: "Élément", name: item, widget: string}}
+          - {label: "Accompagnement — Phrase de conclusion", name: accomp_outro, widget: text}
+          - {label: "Bandeau CTA 1 — Sur-titre", name: cta1_label, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 1", name: cta1_heading1, widget: string}
+          - {label: "Bandeau CTA 1 — Titre ligne 2 (italique)", name: cta1_heading2, widget: string}
+          - {label: "Procédure — Titre ligne 1", name: steps_heading1, widget: string}
+          - {label: "Procédure — Titre ligne 2 (italique)", name: steps_heading2, widget: string}
+          - label: "Procédure — Étapes"
+            name: steps
+            widget: list
+            label_singular: "Étape"
+            summary: "{{fields.title}}"
+            hint: "Les étapes sont numérotées automatiquement (01, 02…) dans l'ordre de la liste."
+            fields:
+              - {label: "Titre", name: title, widget: string}
+              - {label: "Texte", name: text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Coût — Titre ligne 1", name: cost_heading1, widget: string}
+          - {label: "Coût — Titre ligne 2 (italique)", name: cost_heading2, widget: string}
+          - {label: "Coût — Texte", name: cost_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Sans juge — Titre ligne 1", name: judge_heading1, widget: string}
+          - {label: "Sans juge — Titre ligne 2 (italique)", name: judge_heading2, widget: string}
+          - {label: "Sans juge — Texte", name: judge_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - label: "Boutons « Lire aussi » vers des articles"
+            name: related
+            widget: list
+            required: false
+            label_singular: "Bouton"
+            summary: "{{fields.label}}"
+            fields:
+              - {label: "Texte du bouton", name: label, widget: string}
+              - {label: "Article de destination", name: article, widget: relation, collection: articles, search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"]}
+          - {label: "Pourquoi nous — Titre ligne 1", name: why_heading1, widget: string}
+          - {label: "Pourquoi nous — Titre ligne 2 (italique)", name: why_heading2, widget: string}
+          - {label: "Pourquoi nous — Texte", name: why_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Pourquoi nous — Phrase avant la liste", name: why_list_intro, widget: string}
+          - {label: "Pourquoi nous — Liste des avantages", name: why_list, widget: list, field: {label: "Avantage", name: item, widget: string}}
+          - {label: "Pourquoi nous — Phrase de conclusion", name: why_outro, widget: text}
+          - {label: "Zone — Titre ligne 1", name: zone_heading1, widget: string}
+          - {label: "Zone — Titre ligne 2 (italique)", name: zone_heading2, widget: string}
+          - {label: "Zone — Texte", name: zone_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Zone — Villes (étiquettes)", name: zone_cities, widget: list, field: {label: "Ville", name: city, widget: string}}
+          - {label: "Bandeau CTA 2 — Sur-titre", name: cta2_label, widget: string}
+          - {label: "Bandeau CTA 2 — Titre ligne 1", name: cta2_heading1, widget: string}
+          - {label: "Bandeau CTA 2 — Titre ligne 2 (italique)", name: cta2_heading2, widget: string}
+          - {label: "Contact — Titre ligne 1", name: contact_heading1, widget: string}
+          - {label: "Contact — Titre ligne 2 (italique)", name: contact_heading2, widget: string}
+          - {label: "Contact — Texte", name: contact_text, widget: text, hint: "Laissez une ligne vide entre deux paragraphes."}
+          - {label: "Contact — Cabinet principal", name: contact_main_office, widget: string}
+          - {label: "Contact — Interventions", name: contact_interventions, widget: string}

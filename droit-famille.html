@@ -70,6 +70,7 @@
     .nav-links a { color:var(--blanc-dim); text-decoration:none; font-size:.68rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; position:relative; transition:color .2s; white-space:nowrap; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--or); transform:scaleX(0); transform-origin:left; transition:transform .35s cubic-bezier(.4,0,.2,1); }
     .nav-links a:hover { color:var(--or); } .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-links a.active { color:var(--or); } .nav-links a.active::after { transform:scaleX(1); }
     .btn-rdv { border:1px solid var(--or); color:var(--or); background:transparent; padding:.6rem 1.6rem; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .22s ease,color .22s ease; }
     .btn-rdv:hover { background:var(--or); color:var(--charbon); }
     .nav-cta-group { display:flex; align-items:center; gap:1rem; }
@@ -77,7 +78,9 @@
     .nav-phone:hover { color:#ff5548; border-color:rgba(232,53,42,.6); background:rgba(232,53,42,.06); }
     .nav-phone svg { width:13px; height:13px; color:#E8352A; flex-shrink:0; }
     @media(max-width:1100px) { nav { padding:1rem 2.5rem; } nav.scrolled { padding:.75rem 2.5rem; } .nav-logo { width:auto; height:80px; } .nav-links { gap:1.5rem; } .btn-rdv { white-space:nowrap; } }
-    @media(max-width:900px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1500px) { .nav-links { gap:1.9rem; } }
+    @media(max-width:1400px) { .nav-phone span { display:none; } .nav-phone { padding:.55rem .7rem; } }
+    @media(max-width:1300px) { nav .nav-links { display:none; } nav .hamburger { display:flex; } nav .nav-cta-group { margin-left:auto; margin-right:1rem; } }
     .nav-item-has-drop { position:relative; }
     .nav-item-has-drop > a { display:flex; align-items:center; gap:.45rem; }
     .nav-item-has-drop > a::after { display:none; }
@@ -115,6 +118,8 @@
     #intro { padding:6rem 5rem; background:var(--charbon-mid); display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
     .intro-text p { font-size:.86rem; color:var(--blanc-dim); line-height:1.92; font-weight:300; margin-bottom:1.2rem; }
     .intro-text p strong { color:var(--blanc); font-weight:500; }
+    .intro-text a:not([class]) { color:var(--or-pale); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; text-decoration-color:rgba(196,160,64,.45); transition:color .2s, text-decoration-color .2s; }
+    .intro-text a:not([class]):hover { color:var(--or); text-decoration-color:var(--or); }
     .intro-keys { display:flex; flex-direction:column; gap:1.25rem; padding-top:1rem; }
     .intro-key { padding:1.4rem 1.6rem; border:1px solid rgba(196,160,64,.12); background:rgba(196,160,64,.025); transition:border-color .3s; }
     .intro-key:hover { border-color:rgba(196,160,64,.3); }
@@ -299,6 +304,7 @@
       </div>
     </li>
     <li><a href="/cabinet">Le Cabinet</a></li>
+    <li><a href="/divorce-amiable-nice-cannes">Nice · Cannes</a></li>
     <li><a href="/cases">Affaires</a></li>
     <li><a href="/blog">Actualités</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -316,6 +322,8 @@
     <li><a href="/droit-penal" class="mob-close">Droit Pénal</a></li>
     <li><a href="/droit-famille" class="mob-close active">Droit de la Famille</a></li>
     <li><a href="/cryptomonnaies" class="mob-close">Cryptomonnaies</a></li>
+    <li><a href="/divorce-amiable-nice-cannes" class="mob-close">Nice · Cannes</a></li>
+    <li><a href="/cabinet" class="mob-close">Le Cabinet</a></li>
     <li><a href="/cases" class="mob-close">Affaires</a></li>
     <li><a href="/blog" class="mob-close">Actualités</a></li>
     <li><a href="#contact" class="mob-close">Contact</a></li>
@@ -349,7 +357,7 @@
     <h2 class="section-title" style="margin-bottom:1.75rem">Le droit de la famille,<br/><em>avec humanité</em></h2>
     <p>Les procédures familiales touchent à ce que vous avez de plus précieux : votre famille, vos enfants, votre patrimoine. Maître LAPERONNIE vous accompagne avec <strong>bienveillance et fermeté</strong> pour défendre vos droits et ceux de vos proches, à Angoulême et dans toute la Charente.</p>
     <p>Chaque situation familiale est unique. Le cabinet propose une <strong>approche sur mesure</strong>, privilégiant la médiation et la résolution amiable lorsque cela est possible, et la défense contentieuse lorsque vos intérêts l&#39;exigent.</p>
-    <p>Qu&#39;il s&#39;agisse d&#39;un divorce, d&#39;une séparation difficile ou d&#39;un litige successoral en Charente, Maître LAPERONNIE met son expertise au service de votre sérénité et de <strong>l&#39;intérêt supérieur de vos enfants</strong>.</p>
+    <p>Qu&#39;il s&#39;agisse d&#39;un divorce, d&#39;une séparation difficile ou d&#39;un litige successoral en Charente, Maître LAPERONNIE met son expertise au service de votre sérénité et de <strong>l&#39;intérêt supérieur de vos enfants</strong>. Il accompagne également les <a href="/divorce-amiable-nice-cannes">divorces par consentement mutuel à Nice et Cannes</a>.</p>
   </div>
   <div class="intro-keys reveal rd2">
     <div class="intro-key">
@@ -513,6 +521,7 @@
         <li><a href="/droit-penal">Droit Pénal</a></li>
         <li><a href="/droit-famille">Droit de la Famille</a></li>
         <li><a href="/cryptomonnaies">Cryptomonnaies</a></li>
+        <li><a href="/divorce-amiable-nice-cannes">Divorce Nice · Cannes</a></li>
       </ul>
     </div>
     <div>

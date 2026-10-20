@@ -51,3 +51,6 @@ Un avocat de proximité à Angoulême est également disponible pour vous rencon
 ## Prenez rendez-vous avec Maître LAPERONNIE
 
 Vous envisagez un divorce à Angoulême ou en Charente ? Vous souhaitez connaître vos droits et les meilleures options pour votre situation ? Maître François-Xavier LAPERONNIE, avocat spécialisé en droit de la famille au barreau d'Angoulême, vous reçoit pour une première consultation confidentielle. Appelez dès maintenant le **05 45 38 30 09** ou envoyez une demande via le formulaire de contact du cabinet.
+
+
+[Divorce amiable à Nice ou Cannes : votre avocat se déplace pour la signature](/divorce-amiable-nice-cannes)
